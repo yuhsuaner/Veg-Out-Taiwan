@@ -8,5 +8,8 @@ target 'Veg Out Taiwan' do
   # Pods for Veg Out Taiwan
   pod 'SwiftLint'
   pod 'Kingfisher'
+  pod 'GoogleMaps'
+  pod 'GooglePlaces'
+  pod 'Firebase/Analytics'
 
 end
