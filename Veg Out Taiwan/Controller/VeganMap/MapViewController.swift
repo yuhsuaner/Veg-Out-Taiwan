@@ -30,13 +30,14 @@ class MapViewController: UIViewController {
         mapView.addSubview(collectionView)
         collectionView.delegate = self
         collectionView.dataSource = self
-        collectionView.backgroundColor = UIColor.W1
+        
+        collectionView.backgroundColor = .clear
         
         NSLayoutConstraint.activate([
-            collectionView.widthAnchor.constraint(equalToConstant: 64),
-            collectionView.widthAnchor.constraint(equalTo: collectionView.heightAnchor),
-            collectionView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
-            collectionView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor)
+            collectionView.widthAnchor.constraint(equalTo: view.widthAnchor, constant: -40),
+            collectionView.heightAnchor.constraint(equalTo: mapView.heightAnchor, multiplier: 1/5),
+            collectionView.centerXAnchor.constraint(equalTo: mapView.centerXAnchor),
+            collectionView.bottomAnchor.constraint(equalTo: mapView.bottomAnchor, constant: -150)
         ])
     }
     
@@ -49,6 +50,7 @@ class MapViewController: UIViewController {
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.register(RestaurantCollectionViewCell.self, forCellWithReuseIdentifier: "cell")
         collectionView.showsHorizontalScrollIndicator = false
+        collectionView.layer.cornerRadius = 15
         return collectionView
     }()
 }
@@ -63,14 +65,14 @@ extension MapViewController: CLLocationManagerDelegate {
 extension MapViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        10
+        20
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? RestaurantCollectionViewCell else { return UICollectionViewCell() }
         
-        cell.backgroundColor = UIColor.DG
+        cell.backgroundColor = .clear
         
         return cell
     }
@@ -81,6 +83,6 @@ extension MapViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        return CGSize(width: collectionView.frame.width/2.5, height: collectionView.frame.width/2)
+        return CGSize(width: collectionView.frame.width, height: collectionView.frame.width/3)
     }
 }
