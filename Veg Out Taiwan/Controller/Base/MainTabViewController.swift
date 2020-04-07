@@ -12,6 +12,7 @@ class MainTabViewController: UITabBarController {
     
     // MARK: - Properties
     
+    
     // MARK: - LifeCycle
     
     override func viewDidLoad() {
@@ -27,13 +28,15 @@ class MainTabViewController: UITabBarController {
         
         viewControllers = [
             
-            generateNavigationController(for: MapViewController(), image: #imageLiteral(resourceName: "Map")),
+            generateNavigationController(for: MapViewController(), image: #imageLiteral(resourceName: "Map 點擊")),
             
-            generateNavigationController(for: ToEatListViewController(), image: #imageLiteral(resourceName: "EatList")),
-         
+            generateNavigationController(for: ToEatListViewController(), image: #imageLiteral(resourceName: "To-eat未點擊")),
+            
+            generateNavigationController(for: PhotoWallViewController(), image: #imageLiteral(resourceName: "Latest 未點擊")),
+            
 //            generateNavigationController(for: LibraryController.storyboardInstance()!, title: "Library", image: #imageLiteral(resourceName: "playlist-3")),
             
-            generateNavigationController(for: ProfileViewController(), image: #imageLiteral(resourceName: "Profile"))
+            generateNavigationController(for: ProfileViewController(), image: #imageLiteral(resourceName: "Profile 未點擊"))
         ]
     }
     

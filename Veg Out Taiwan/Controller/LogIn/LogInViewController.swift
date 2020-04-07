@@ -1,15 +1,15 @@
 //
-//  ToEatListViewController.swift
+//  LogInViewController.swift
 //  Veg Out Taiwan
 //
-//  Created by Irene.C on 2020/3/16.
+//  Created by Irene.C on 2020/4/6.
 //  Copyright © 2020 Irene.C. All rights reserved.
 //
 
 import UIKit
 
-class ToEatListViewController: UIViewController {
-
+class LogInViewController: UIViewController {
+    
     // MARK: - Properties
     
     
