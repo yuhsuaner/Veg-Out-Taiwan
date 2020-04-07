@@ -19,7 +19,9 @@ class MainTabViewController: UITabBarController {
         super.viewDidLoad()
         
         setupViewController()
-
+        
+        tabBar.barTintColor = UIColor(named: "CreamyWhite")
+        tabBar.unselectedItemTintColor = UIColor.systemPink
     }
     
     // MARK: - Helpers
@@ -28,24 +30,23 @@ class MainTabViewController: UITabBarController {
         
         viewControllers = [
             
-            generateNavigationController(for: MapViewController(), image: #imageLiteral(resourceName: "Map 點擊")),
+            generateNavigationController(for: MapViewController(), image: #imageLiteral(resourceName: "VOT tab bar icons-2"), selectedImage: #imageLiteral(resourceName: "VOT tab bar icons-3")),
             
-            generateNavigationController(for: ToEatListViewController(), image: #imageLiteral(resourceName: "To-eat未點擊")),
+            generateNavigationController(for: PhotoWallViewController(), image: #imageLiteral(resourceName: "VOT tab bar icons-7"), selectedImage: #imageLiteral(resourceName: "VOT tab bar icons-8")),
             
-            generateNavigationController(for: PhotoWallViewController(), image: #imageLiteral(resourceName: "Latest 未點擊")),
+            generateNavigationController(for: ToEatListViewController(), image: #imageLiteral(resourceName: "VOT tab bar icons-4"), selectedImage: #imageLiteral(resourceName: "VOT tab bar icons-5")),
             
-//            generateNavigationController(for: LibraryController.storyboardInstance()!, title: "Library", image: #imageLiteral(resourceName: "playlist-3")),
-            
-            generateNavigationController(for: ProfileViewController(), image: #imageLiteral(resourceName: "Profile 未點擊"))
+            generateNavigationController(for: ProfileViewController(), image: #imageLiteral(resourceName: "VOT tab bar icons-10"), selectedImage: #imageLiteral(resourceName: "VOT tab bar icons-11"))
         ]
     }
     
-    fileprivate func generateNavigationController(for rootViewConroller: UIViewController, image: UIImage) -> UIViewController {
+    fileprivate func generateNavigationController(for rootViewConroller: UIViewController, image: UIImage, selectedImage: UIImage) -> UIViewController {
         
         let navController = UINavigationController(rootViewController: rootViewConroller)
         rootViewConroller.navigationItem.title = title
-//        navController.tabBarItem.title = title
         navController.tabBarItem.image = image
+        navController.tabBarItem.selectedImage = selectedImage
+        navController.tabBarItem.imageInsets = UIEdgeInsets.init(top: 5, left: 0, bottom: -5, right: 0)
         
         return navController
     }

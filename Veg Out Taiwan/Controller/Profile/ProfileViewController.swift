@@ -10,8 +10,7 @@ import UIKit
 
 class ProfileViewController: UIViewController {
     // MARK: - Properties
-    
-    
+        
     // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()

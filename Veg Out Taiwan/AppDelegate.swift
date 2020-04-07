@@ -22,8 +22,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         window = UIWindow(frame: UIScreen.main.bounds)
-        window?.rootViewController = LogInViewController()
+        window?.rootViewController = MainTabViewController()
         window?.makeKeyAndVisible()
+        
+        // Remove TabBar Top Line
+        UITabBar.appearance().clipsToBounds = true
+        UITabBar.appearance().shadowImage = nil
         
         FirebaseApp.configure()
         

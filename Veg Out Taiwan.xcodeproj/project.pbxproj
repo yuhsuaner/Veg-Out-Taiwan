@@ -21,11 +21,10 @@
 		42471EB224324CD2002B1577 /* RestaurantCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42471EB024324CD2002B1577 /* RestaurantCollectionViewCell.swift */; };
 		42471EB324324CD2002B1577 /* RestaurantCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 42471EB124324CD2002B1577 /* RestaurantCollectionViewCell.xib */; };
 		42471F2724399898002B1577 /* RestaurantInfomationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42471F2624399898002B1577 /* RestaurantInfomationViewController.swift */; };
-		42471F30243B5EEA002B1577 /* VOT tab bar icons.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 42471F2F243B5EEA002B1577 /* VOT tab bar icons.pdf */; };
-		42471F32243B76E3002B1577 /* background.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 42471F31243B76E2002B1577 /* background.pdf */; };
 		42471F35243B778B002B1577 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42471F34243B778B002B1577 /* LogInViewController.swift */; };
 		42471F38243C195F002B1577 /* PhotoWallViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42471F37243C195F002B1577 /* PhotoWallViewController.swift */; };
 		42471F3A243C2606002B1577 /* Background.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42471F39243C2605002B1577 /* Background.swift */; };
+		42471F3C243C4C5D002B1577 /* VOT tab bar icons.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 42471F3B243C4C5C002B1577 /* VOT tab bar icons.pdf */; };
 		7A409E371BAB71AD01BBE07F /* Pods_Veg_Out_Taiwan.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AEFAC4F1D191A2C3B5C4700 /* Pods_Veg_Out_Taiwan.framework */; };
 /* End PBXBuildFile section */
 
@@ -47,11 +46,10 @@
 		42471EB024324CD2002B1577 /* RestaurantCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantCollectionViewCell.swift; sourceTree = "<group>"; };
 		42471EB124324CD2002B1577 /* RestaurantCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RestaurantCollectionViewCell.xib; sourceTree = "<group>"; };
 		42471F2624399898002B1577 /* RestaurantInfomationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantInfomationViewController.swift; sourceTree = "<group>"; };
-		42471F2F243B5EEA002B1577 /* VOT tab bar icons.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "VOT tab bar icons.pdf"; sourceTree = "<group>"; };
-		42471F31243B76E2002B1577 /* background.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = background.pdf; sourceTree = "<group>"; };
 		42471F34243B778B002B1577 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		42471F37243C195F002B1577 /* PhotoWallViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoWallViewController.swift; sourceTree = "<group>"; };
 		42471F39243C2605002B1577 /* Background.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Background.swift; sourceTree = "<group>"; };
+		42471F3B243C4C5C002B1577 /* VOT tab bar icons.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "VOT tab bar icons.pdf"; sourceTree = "<group>"; };
 		5AEFAC4F1D191A2C3B5C4700 /* Pods_Veg_Out_Taiwan.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Veg_Out_Taiwan.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B7A18B52CEFFAAB7F14BF56 /* Pods-Veg Out Taiwan.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Veg Out Taiwan.release.xcconfig"; path = "Target Support Files/Pods-Veg Out Taiwan/Pods-Veg Out Taiwan.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -137,8 +135,7 @@
 				42461E0A241E4429009EC9AB /* View */,
 				42461E09241E441E009EC9AB /* Controller */,
 				42461DEA241DC74D009EC9AB /* AppDelegate.swift */,
-				42471F2F243B5EEA002B1577 /* VOT tab bar icons.pdf */,
-				42471F31243B76E2002B1577 /* background.pdf */,
+				42471F3B243C4C5C002B1577 /* VOT tab bar icons.pdf */,
 				42461DF8241DC74F009EC9AB /* Info.plist */,
 				4241177C241F85A50094B0FB /* GoogleService-Info.plist */,
 			);
@@ -160,8 +157,8 @@
 				42471F33243B7762002B1577 /* LogIn */,
 				42411777241F382E0094B0FB /* VeganMap */,
 				42471F252439984A002B1577 /* Restaurant */,
-				42471F36243C18E7002B1577 /* PhotoWall */,
 				42411776241F382C0094B0FB /* ToEatList */,
+				42471F36243C18E7002B1577 /* PhotoWall */,
 				42411775241F38280094B0FB /* Profile */,
 				4241170A241E868F0094B0FB /* Base */,
 			);
@@ -309,9 +306,8 @@
 				42461DF4241DC74F009EC9AB /* Assets.xcassets in Resources */,
 				42471EB324324CD2002B1577 /* RestaurantCollectionViewCell.xib in Resources */,
 				42471EAB24309A9E002B1577 /* jf-openhuninn-1.0.ttf in Resources */,
-				42471F30243B5EEA002B1577 /* VOT tab bar icons.pdf in Resources */,
+				42471F3C243C4C5D002B1577 /* VOT tab bar icons.pdf in Resources */,
 				4241177D241F85A50094B0FB /* GoogleService-Info.plist in Resources */,
-				42471F32243B76E3002B1577 /* background.pdf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -558,7 +554,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.irenechen.Veg-Out-Taiwan";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -578,7 +574,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.irenechen.Veg-Out-Taiwan";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
