@@ -28,6 +28,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Remove TabBar Top Line
         UITabBar.appearance().clipsToBounds = true
         UITabBar.appearance().shadowImage = nil
+        // Remove NavigationBar Under Line
+        UINavigationBar.appearance().shadowImage = UIImage()
         
         FirebaseApp.configure()
         

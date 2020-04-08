@@ -16,6 +16,5 @@ extension UIView {
          backgroundImage.image = UIImage(named: "background")
          backgroundImage.contentMode = .scaleAspectFill
          self.insertSubview(backgroundImage, at: 0)
-        
     }
 }

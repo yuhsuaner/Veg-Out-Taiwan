@@ -12,7 +12,6 @@ class PhotoWallViewController: UIViewController {
 
     // MARK: - Properties
     
-    
     // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,5 +24,10 @@ class PhotoWallViewController: UIViewController {
     func configureUI() {
         
         view.setBackgroundView()
+        
+//        navigationItem.largeTitleDisplayMode = .always
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationController?.navigationBar.largeTitleTextAttributes = [.foregroundColor: UIColor.W1!, .font: UIFont(name: "jf-openhuninn-1.0", size: 25)!]
+        navigationItem.title = "你今天 Veg 了嗎？"
     }
 }

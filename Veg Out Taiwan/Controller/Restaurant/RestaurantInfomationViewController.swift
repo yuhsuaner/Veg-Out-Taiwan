@@ -12,7 +12,6 @@ class RestaurantInfomationViewController: UIViewController {
 
     // MARK: - Properties
     
-    
     // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,5 +24,8 @@ class RestaurantInfomationViewController: UIViewController {
     func configureUI() {
         
         view.setBackgroundView()
+        
+//        navigationController?.navigationBar.isHidden = true
+        navigationController?.navigationBar.tintColor = .G1
     }
 }

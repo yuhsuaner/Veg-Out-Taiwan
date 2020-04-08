@@ -12,7 +12,6 @@ class ToEatListViewController: UIViewController {
 
     // MARK: - Properties
     
-    
     // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,5 +24,7 @@ class ToEatListViewController: UIViewController {
     func configureUI() {
         
         view.setBackgroundView()
+        
+        navigationItem.title = "我的 To Eat List"
     }
 }

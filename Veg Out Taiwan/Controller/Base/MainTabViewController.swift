@@ -20,7 +20,7 @@ class MainTabViewController: UITabBarController {
         
         setupViewController()
         
-        tabBar.barTintColor = UIColor(named: "CreamyWhite")
+        tabBar.barTintColor = .W1
         tabBar.unselectedItemTintColor = UIColor.systemPink
     }
     
@@ -43,10 +43,13 @@ class MainTabViewController: UITabBarController {
     fileprivate func generateNavigationController(for rootViewConroller: UIViewController, image: UIImage, selectedImage: UIImage) -> UIViewController {
         
         let navController = UINavigationController(rootViewController: rootViewConroller)
-        rootViewConroller.navigationItem.title = title
+        
         navController.tabBarItem.image = image
         navController.tabBarItem.selectedImage = selectedImage
         navController.tabBarItem.imageInsets = UIEdgeInsets.init(top: 5, left: 0, bottom: -5, right: 0)
+        
+        navController.navigationBar.barTintColor = UIColor.W1
+        navController.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "jf-openhuninn-1.0", size: 20)!, NSAttributedString.Key.foregroundColor: UIColor.G2!]
         
         return navController
     }

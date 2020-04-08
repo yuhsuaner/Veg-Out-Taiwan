@@ -25,6 +25,9 @@
 		42471F38243C195F002B1577 /* PhotoWallViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42471F37243C195F002B1577 /* PhotoWallViewController.swift */; };
 		42471F3A243C2606002B1577 /* Background.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42471F39243C2605002B1577 /* Background.swift */; };
 		42471F3C243C4C5D002B1577 /* VOT tab bar icons.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 42471F3B243C4C5C002B1577 /* VOT tab bar icons.pdf */; };
+		42471F3E243C66BD002B1577 /* UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42471F3D243C66BD002B1577 /* UIFont.swift */; };
+		42471F40243C69EA002B1577 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42471F3F243C69E9002B1577 /* UIColor.swift */; };
+		42471F42243C944F002B1577 /* Constraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42471F41243C944E002B1577 /* Constraint.swift */; };
 		7A409E371BAB71AD01BBE07F /* Pods_Veg_Out_Taiwan.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AEFAC4F1D191A2C3B5C4700 /* Pods_Veg_Out_Taiwan.framework */; };
 /* End PBXBuildFile section */
 
@@ -50,6 +53,9 @@
 		42471F37243C195F002B1577 /* PhotoWallViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoWallViewController.swift; sourceTree = "<group>"; };
 		42471F39243C2605002B1577 /* Background.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Background.swift; sourceTree = "<group>"; };
 		42471F3B243C4C5C002B1577 /* VOT tab bar icons.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "VOT tab bar icons.pdf"; sourceTree = "<group>"; };
+		42471F3D243C66BD002B1577 /* UIFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFont.swift; sourceTree = "<group>"; };
+		42471F3F243C69E9002B1577 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
+		42471F41243C944E002B1577 /* Constraint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constraint.swift; sourceTree = "<group>"; };
 		5AEFAC4F1D191A2C3B5C4700 /* Pods_Veg_Out_Taiwan.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Veg_Out_Taiwan.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B7A18B52CEFFAAB7F14BF56 /* Pods-Veg Out Taiwan.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Veg Out Taiwan.release.xcconfig"; path = "Target Support Files/Pods-Veg Out Taiwan/Pods-Veg Out Taiwan.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -157,8 +163,8 @@
 				42471F33243B7762002B1577 /* LogIn */,
 				42411777241F382E0094B0FB /* VeganMap */,
 				42471F252439984A002B1577 /* Restaurant */,
-				42411776241F382C0094B0FB /* ToEatList */,
 				42471F36243C18E7002B1577 /* PhotoWall */,
+				42411776241F382C0094B0FB /* ToEatList */,
 				42411775241F38280094B0FB /* Profile */,
 				4241170A241E868F0094B0FB /* Base */,
 			);
@@ -178,6 +184,9 @@
 			isa = PBXGroup;
 			children = (
 				42471F39243C2605002B1577 /* Background.swift */,
+				42471F3D243C66BD002B1577 /* UIFont.swift */,
+				42471F3F243C69E9002B1577 /* UIColor.swift */,
+				42471F41243C944E002B1577 /* Constraint.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -396,7 +405,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				42471EB224324CD2002B1577 /* RestaurantCollectionViewCell.swift in Sources */,
+				42471F40243C69EA002B1577 /* UIColor.swift in Sources */,
 				42471F38243C195F002B1577 /* PhotoWallViewController.swift in Sources */,
+				42471F42243C944F002B1577 /* Constraint.swift in Sources */,
 				42461DEB241DC74D009EC9AB /* AppDelegate.swift in Sources */,
 				42461E07241E440E009EC9AB /* JGProgressHUDWrapper.swift in Sources */,
 				42411779241F424F0094B0FB /* ToEatListViewController.swift in Sources */,
@@ -404,6 +415,7 @@
 				42471EAD2430E240002B1577 /* MainTabViewController.swift in Sources */,
 				42471F2724399898002B1577 /* RestaurantInfomationViewController.swift in Sources */,
 				4241177B241F42630094B0FB /* ProfileViewController.swift in Sources */,
+				42471F3E243C66BD002B1577 /* UIFont.swift in Sources */,
 				42471F35243B778B002B1577 /* LogInViewController.swift in Sources */,
 				42461E01241E2BCE009EC9AB /* MapViewController.swift in Sources */,
 				42471F3A243C2606002B1577 /* Background.swift in Sources */,

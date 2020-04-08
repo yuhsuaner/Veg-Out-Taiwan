@@ -9,19 +9,214 @@
 import UIKit
 
 class ProfileViewController: UIViewController {
+    
     // MARK: - Properties
+    lazy var containerHeaderView: UIView = {
         
+        let view = UIView()
+        
+        view.addSubview(outerView)
+        NSLayoutConstraint(item: outerView, attribute: NSLayoutConstraint.Attribute.centerX, relatedBy: NSLayoutConstraint.Relation.equal, toItem: view, attribute: NSLayoutConstraint.Attribute.centerX, multiplier: 3/5, constant: -25).isActive = true
+        outerView.anchor(top: view.topAnchor,
+                         paddingTop: 85,
+                         width: 100,
+                         height: 100)
+        
+        view.addSubview(nameLabel)
+        NSLayoutConstraint(item: nameLabel, attribute: NSLayoutConstraint.Attribute.centerX, relatedBy: NSLayoutConstraint.Relation.equal, toItem: view, attribute: NSLayoutConstraint.Attribute.centerX, multiplier: 4/5, constant: 0).isActive = true
+        nameLabel.centerYAnchor.constraint(equalTo: outerView.centerYAnchor).isActive = true
+        nameLabel.anchor(top: view.topAnchor, left: outerView.rightAnchor, right: view.rightAnchor, paddingTop: 15, paddingLeft: 15, paddingRight: 15)
+        
+        view.addSubview(generateStackView)
+        
+        generateStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        generateStackView.anchor(top: outerView.bottomAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: 25, paddingLeft: 40, paddingBottom: 0, paddingRight: 40)
+        return view
+    }()
+    
+    /* Reference:
+     https://stackoverflow.com/questions/41475501/creating-a-shadow-for-a-uiimageview-that-has-rounded-corners
+     */
+    
+        lazy var profileImageView: UIImageView = {
+    //        let image = UIImageView(frame: outerView.bounds)
+            let image = UIImageView(frame: outerView.bounds)
+            image.clipsToBounds = true
+            image.layer.cornerRadius = 10
+            image.image = #imageLiteral(resourceName: "vegan-healthy-food")
+    //        image.layer.cornerRadius = image.frame.size.width / 2
+            image.contentMode = .scaleAspectFill
+            return image
+        }()
+    
+    lazy var outerView: UIView = {
+//        let view = UIView(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
+        let view = UIView()
+        view.clipsToBounds = false
+        view.layer.shadowColor = UIColor.black.cgColor
+        view.layer.shadowOpacity = 1
+        view.layer.shadowOffset = CGSize.zero
+        view.layer.shadowRadius = 10
+        view.layer.shadowPath = UIBezierPath(roundedRect: view.bounds, cornerRadius: 10).cgPath
+        view.addSubview(profileImageView)
+        return view
+    }()
+    
+
+    
+    //    let profileImageView: UIImageView = {
+    //        let image = UIImageView(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
+    ////        let image = UIImageView()
+    //        image.image = #imageLiteral(resourceName: "vegan-healthy-food")
+    ////        image.clipsToBounds = true
+    //        image.layer.masksToBounds = false
+    //        image.layer.cornerRadius = image.frame.size.width / 2
+    //        image.contentMode = .scaleAspectFill
+    //        image.clipsToBounds = true
+    //        image.layer.shadowOpacity = 0.8
+    //        image.layer.shadowRadius = 20
+    //        return image
+    //    }()
+    
+    let nameLabel: UILabel = {
+        let label = UILabel()
+        label.textAlignment = .center
+        label.text = "Irene Chen"
+        label.font = UIFont(name: "jf-openhuninn-1.0", size: 24)
+        label.textColor = .G2
+        return label
+    }()
+    
+    lazy var generateStackView: UIStackView = {
+        let stackV = UIStackView(arrangedSubviews: [commentSatckView, followerSatckView, followingSatckView])
+        
+        stackV.translatesAutoresizingMaskIntoConstraints = false
+        stackV.axis = .horizontal
+        stackV.spacing = 20
+        stackV.distribution = .equalCentering
+        
+        return stackV
+    }()
+    
+    lazy var commentSatckView: UIStackView = {
+        let stackV = UIStackView(arrangedSubviews: [commentOfCountsLabel, commentOfNameLabel])
+        
+        stackV.translatesAutoresizingMaskIntoConstraints = false
+        stackV.axis = .vertical
+        stackV.spacing = 0
+        stackV.distribution = .fillEqually
+        
+        return stackV
+    }()
+    
+    lazy var followerSatckView: UIStackView = {
+        let stackV = UIStackView(arrangedSubviews: [followerOfCountsLabel, followerOfNameLabel])
+        
+        stackV.translatesAutoresizingMaskIntoConstraints = false
+        stackV.axis = .vertical
+        stackV.spacing = 5
+        stackV.distribution = .fillEqually
+        
+        return stackV
+    }()
+    
+    lazy var followingSatckView: UIStackView = {
+        let stackV = UIStackView(arrangedSubviews: [followingOfCountsLabel, followingOfNameLabel])
+        
+        stackV.translatesAutoresizingMaskIntoConstraints = false
+        stackV.axis = .vertical
+        stackV.spacing = 5
+        stackV.distribution = .fillEqually
+        
+        return stackV
+    }()
+    
+    private lazy var commentOfCountsLabel: UILabel = {
+        let label = UILabel()
+        label.text = "115"
+        label.textColor = .G2
+        label.textAlignment = .center
+        label.font = UIFont(name: "jf-openhuninn-1.0", size: 21)
+        return label
+    }()
+    
+    private lazy var commentOfNameLabel: UILabel = {
+        let label = UILabel()
+        label.text = "評論"
+        label.textColor = .G2
+        label.textAlignment = .center
+        label.font = UIFont(name: "jf-openhuninn-1.0", size: 15)
+        return label
+    }()
+    
+    private lazy var followerOfCountsLabel: UILabel = {
+        let label = UILabel()
+        label.text = "1000"
+        label.textColor = .G2
+        label.textAlignment = .center
+        label.font = UIFont(name: "jf-openhuninn-1.0", size: 21)
+        return label
+    }()
+    
+    private lazy var followerOfNameLabel: UILabel = {
+        let label = UILabel()
+        label.text = "粉絲"
+        label.textColor = .G2
+        label.textAlignment = .center
+        label.font = UIFont(name: "jf-openhuninn-1.0", size: 15)
+        return label
+    }()
+    
+    private lazy var followingOfCountsLabel: UILabel = {
+        let label = UILabel()
+        label.text = "8"
+        label.textColor = .G2
+        label.textAlignment = .center
+        label.font = UIFont(name: "jf-openhuninn-1.0", size: 21)
+        return label
+    }()
+    
+    private lazy var followingOfNameLabel: UILabel = {
+        let label = UILabel()
+        label.text = "追蹤中"
+        label.textColor = .G2
+        label.textAlignment = .center
+        label.font = UIFont(name: "jf-openhuninn-1.0", size: 15)
+        return label
+    }()
+    
     // MARK: - LifeCycle
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+//
+//        profileImageView.layer.masksToBounds = false
+//        profileImageView.layer.cornerRadius = profileImageView.frame.size.width/2
+//        profileImageView.clipsToBounds = true
+        //        profileImageView.layer.shadowOpacity = 0.5
+        //        profileImageView.layer.shadowRadius = 20
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         configureUI()
+        
+        view.addSubview(containerHeaderView)
+        containerHeaderView.anchor(top: view.topAnchor,
+                                   left: view.leftAnchor,
+                                   right: view.rightAnchor,
+                                   height: 280)
     }
     
     // MARK: - Helper
-
+    
     func configureUI() {
         
-        view.setBackgroundView()
+        view.backgroundColor = .white
+        
+        //hide NavigationBar
+        let barAppearance =  UINavigationBarAppearance()
+        barAppearance.configureWithTransparentBackground()
+        navigationController?.navigationBar.standardAppearance = barAppearance
     }
 }
