@@ -12,7 +12,6 @@ class MainTabViewController: UITabBarController {
     
     // MARK: - Properties
     
-    
     // MARK: - LifeCycle
     
     override func viewDidLoad() {
@@ -36,7 +35,7 @@ class MainTabViewController: UITabBarController {
             
             generateNavigationController(for: ToEatListViewController(), image: #imageLiteral(resourceName: "VOT tab bar icons-4"), selectedImage: #imageLiteral(resourceName: "VOT tab bar icons-5")),
             
-            generateNavigationController(for: ProfileViewController(), image: #imageLiteral(resourceName: "VOT tab bar icons-10"), selectedImage: #imageLiteral(resourceName: "VOT tab bar icons-11"))
+            generateNavigationController(for: ProfileController(), image: #imageLiteral(resourceName: "VOT tab bar icons-10"), selectedImage: #imageLiteral(resourceName: "VOT tab bar icons-11"))
         ]
     }
     
