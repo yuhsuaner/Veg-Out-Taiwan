@@ -27,7 +27,7 @@ class MapViewController: UIViewController {
     private var searchTextField: UITextField = {
         let textField = UITextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
-        textField.attributedPlaceholder = NSAttributedString(string: "搜尋美食")
+        textField.attributedPlaceholder = NSAttributedString(string: "探索美食...")
 //        textField.keyboardType = UIKeyboardType.default
 //        textField.returnKeyType = UIReturnKeyType.done
 //        textField.autocorrectionType = UITextAutocorrectionType.no
@@ -38,14 +38,6 @@ class MapViewController: UIViewController {
         textField.addTarget(self, action: #selector(searchControl), for: .editingChanged)
         return textField
     }()
-    
-//    lazy var restaurantLayout: RestaurantCollectionViewFlowLayout = {
-//        let layout = RestaurantCollectionViewFlowLayout()
-//
-//        let cardItemSize: CGSize = CGSize(width: 200, height: 150)
-//        layout.itemSize = view.cardItemSize
-//        return layout
-//    }()
     
     private lazy var collectionView: UICollectionView = {
         
@@ -102,7 +94,7 @@ class MapViewController: UIViewController {
         marker.map = mapView
         marker.title = "台北101"
         marker.snippet = "好吃！"
-        marker.icon = UIImage(named: "VOT tab bar icons-3")
+        marker.icon = UIImage(named: "VOT_pin")
         
         let marker2 = GMSMarker()
         marker2.position = CLLocationCoordinate2DMake(25.034012, 121.566461)
@@ -197,7 +189,7 @@ extension MapViewController: UICollectionViewDataSource {
 //
 //        navigationController?.pushViewController(controller, animated: true)
         
-        guard let viewController = UIStoryboard(name: "RestaurantInfomation", bundle: nil).instantiateViewController(identifier: "RestaurantInfomation") as? RestaurantInfomationViewController else { return }
+        guard let viewController = UIStoryboard(name: "RestaurantInformation", bundle: nil).instantiateViewController(identifier: "RestaurantInformation") as? RestaurantInformationViewController else { return }
         
         show(viewController, sender: nil)
     }

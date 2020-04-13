@@ -8,11 +8,16 @@
 
 import UIKit
 
+
+
 class CommentTableViewCell: UITableViewCell {
     
     @IBOutlet weak var tapForMoreLabel: UILabel!
     
     @IBOutlet weak var collectionView: UICollectionView!
+    
+//    weak var delegate: CustomCollectionCellDelegate?
+    weak var delegate:CategoryRowDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -38,6 +43,22 @@ extension CommentTableViewCell: UICollectionViewDataSource {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CommentCollectionViewCell", for: indexPath) as? CommentCollectionViewCell else { return UICollectionViewCell() }
         
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+//        guard let viewController = UIStoryboard(name: "UserFoodDiary", bundle: nil).instantiateViewController(identifier: "UserFoodDiary") as? RestaurantInformationViewController else { return }
+//
+//        show(viewController, sender: nil)
+        print("didSelect")
+        
+//        let home = UserFoodDiaryViewController()
+//        home.show(home, sender: nil)
+        
+        if delegate != nil {
+        delegate?.cellTapped()
+        }
+
     }
 }
 

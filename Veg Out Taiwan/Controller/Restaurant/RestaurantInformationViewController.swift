@@ -8,8 +8,8 @@
 
 import UIKit
 
-class RestaurantInfomationViewController: UIViewController {
-
+class RestaurantInformationViewController: UIViewController {
+    
     // MARK: - Properties
     @IBOutlet weak var tableView: UITableView!
     
@@ -24,7 +24,7 @@ class RestaurantInfomationViewController: UIViewController {
     }
     
     // MARK: - Helper
-
+    
     func configureUI() {
         
         view.setBackgroundView()
@@ -33,7 +33,7 @@ class RestaurantInfomationViewController: UIViewController {
     }
 }
 
-extension RestaurantInfomationViewController: UITableViewDataSource {
+extension RestaurantInformationViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
@@ -52,15 +52,29 @@ extension RestaurantInfomationViewController: UITableViewDataSource {
         case 1:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "CommentTableViewCell", for: indexPath) as? CommentTableViewCell else { return UITableViewCell() }
             
+            let tap = UITapGestureRecognizer(target: self, action: #selector(toNextPage))
+            cell.tapForMoreLabel.addGestureRecognizer(tap)
+            
+            cell.delegate = self
+            
             return cell
             
         default:
             return UITableViewCell()
         }
+        
+    }
+    
+    // MARK: - Selector
+    @objc func toNextPage() {
+        
+        let controller = UserCommentWallViewController()
+        
+        navigationController?.pushViewController(controller, animated: true)
     }
 }
 
-extension RestaurantInfomationViewController: UITableViewDelegate {
+extension RestaurantInformationViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
@@ -69,5 +83,16 @@ extension RestaurantInfomationViewController: UITableViewDelegate {
         } else {
             return (UIScreen.main.bounds.height / 4) + 10
         }
+    }
+}
+
+
+extension RestaurantInformationViewController: CategoryRowDelegate {
+    
+    func cellTapped() {
+        
+        guard let viewController = UIStoryboard(name: "UserFoodDiary", bundle: nil).instantiateViewController(identifier: "UserFoodDiary") as? UserFoodDiaryViewController else { return }
+        
+        show(viewController, sender: nil)
     }
 }
