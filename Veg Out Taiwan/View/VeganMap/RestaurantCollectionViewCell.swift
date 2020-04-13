@@ -14,7 +14,7 @@ class RestaurantCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var restaurantNameLabel: UILabel!
     
-    @IBOutlet weak var numberOfStarLabel: UILabel!
+    @IBOutlet weak var ratingLabel: UILabel!
     
     @IBOutlet weak var distanceLabel: UILabel!
     
@@ -22,5 +22,16 @@ class RestaurantCollectionViewCell: UICollectionViewCell {
         super.awakeFromNib()
         
     }
-
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        self.layer.cornerRadius = 15
+        layer.shadowOpacity = 0.4
+        layer.shadowColor = UIColor.DG?.cgColor
+        layer.shadowOffset = CGSize(width: 5, height: 5)
+        
+//        self.clipsToBounds = false
+    }
+    
 }

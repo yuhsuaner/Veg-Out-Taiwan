@@ -8,8 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		42411779241F424F0094B0FB /* ToEatListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42411778241F424F0094B0FB /* ToEatListViewController.swift */; };
-		4241177B241F42630094B0FB /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4241177A241F42630094B0FB /* ProfileViewController.swift */; };
 		4241177D241F85A50094B0FB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4241177C241F85A50094B0FB /* GoogleService-Info.plist */; };
+		4244483824430CE800000E96 /* BaseInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4244483724430CE800000E96 /* BaseInfoTableViewCell.swift */; };
+		4244483A2443118C00000E96 /* CommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 424448392443118C00000E96 /* CommentTableViewCell.swift */; };
+		4244483C244315D600000E96 /* CommentCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4244483B244315D600000E96 /* CommentCollectionViewCell.swift */; };
+		4244483E24432E1100000E96 /* UserCommentWallViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4244483D24432E1100000E96 /* UserCommentWallViewController.swift */; };
+		424448422444260200000E96 /* RestaurantCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 424448412444260200000E96 /* RestaurantCollectionViewFlowLayout.swift */; };
 		42461DEB241DC74D009EC9AB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42461DEA241DC74D009EC9AB /* AppDelegate.swift */; };
 		42461DF4241DC74F009EC9AB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 42461DF3241DC74F009EC9AB /* Assets.xcassets */; };
 		42461DF7241DC74F009EC9AB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42461DF5241DC74F009EC9AB /* LaunchScreen.storyboard */; };
@@ -30,16 +34,21 @@
 		42471F42243C944F002B1577 /* Constraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42471F41243C944E002B1577 /* Constraint.swift */; };
 		42471F49243D7AB4002B1577 /* ProfileCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42471F48243D7AB4002B1577 /* ProfileCollectionViewCell.swift */; };
 		42471FB02440336C002B1577 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42471FAE2440336C002B1577 /* HeaderView.swift */; };
-		42471FB12440336C002B1577 /* HeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 42471FAF2440336C002B1577 /* HeaderView.xib */; };
 		42471FB324405214002B1577 /* ProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42471FB224405214002B1577 /* ProfileController.swift */; };
+		42471FB724418B04002B1577 /* MapStyle.json in Resources */ = {isa = PBXBuildFile; fileRef = 42471FB624418B03002B1577 /* MapStyle.json */; };
+		42471FBA2441C64B002B1577 /* RestaurantInfomation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42471FB92441C64A002B1577 /* RestaurantInfomation.storyboard */; };
 		7A409E371BAB71AD01BBE07F /* Pods_Veg_Out_Taiwan.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AEFAC4F1D191A2C3B5C4700 /* Pods_Veg_Out_Taiwan.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		1930BBD6D392A26188062ED7 /* Pods-Veg Out Taiwan.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Veg Out Taiwan.debug.xcconfig"; path = "Target Support Files/Pods-Veg Out Taiwan/Pods-Veg Out Taiwan.debug.xcconfig"; sourceTree = "<group>"; };
 		42411778241F424F0094B0FB /* ToEatListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToEatListViewController.swift; sourceTree = "<group>"; };
-		4241177A241F42630094B0FB /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		4241177C241F85A50094B0FB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		4244483724430CE800000E96 /* BaseInfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseInfoTableViewCell.swift; sourceTree = "<group>"; };
+		424448392443118C00000E96 /* CommentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentTableViewCell.swift; sourceTree = "<group>"; };
+		4244483B244315D600000E96 /* CommentCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentCollectionViewCell.swift; sourceTree = "<group>"; };
+		4244483D24432E1100000E96 /* UserCommentWallViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCommentWallViewController.swift; sourceTree = "<group>"; };
+		424448412444260200000E96 /* RestaurantCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
 		42461DE7241DC74D009EC9AB /* Veg Out Taiwan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Veg Out Taiwan.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		42461DEA241DC74D009EC9AB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		42461DF3241DC74F009EC9AB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -62,8 +71,9 @@
 		42471F41243C944E002B1577 /* Constraint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constraint.swift; sourceTree = "<group>"; };
 		42471F48243D7AB4002B1577 /* ProfileCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCollectionViewCell.swift; sourceTree = "<group>"; };
 		42471FAE2440336C002B1577 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
-		42471FAF2440336C002B1577 /* HeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeaderView.xib; sourceTree = "<group>"; };
 		42471FB224405214002B1577 /* ProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileController.swift; sourceTree = "<group>"; };
+		42471FB624418B03002B1577 /* MapStyle.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = MapStyle.json; sourceTree = "<group>"; };
+		42471FB92441C64A002B1577 /* RestaurantInfomation.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RestaurantInfomation.storyboard; sourceTree = "<group>"; };
 		5AEFAC4F1D191A2C3B5C4700 /* Pods_Veg_Out_Taiwan.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Veg_Out_Taiwan.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B7A18B52CEFFAAB7F14BF56 /* Pods-Veg Out Taiwan.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Veg Out Taiwan.release.xcconfig"; path = "Target Support Files/Pods-Veg Out Taiwan/Pods-Veg Out Taiwan.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -99,7 +109,6 @@
 		42411775241F38280094B0FB /* Profile */ = {
 			isa = PBXGroup;
 			children = (
-				4241177A241F42630094B0FB /* ProfileViewController.swift */,
 				42471FB224405214002B1577 /* ProfileController.swift */,
 			);
 			path = Profile;
@@ -153,6 +162,7 @@
 				42471F3B243C4C5C002B1577 /* VOT tab bar icons.pdf */,
 				42461DF8241DC74F009EC9AB /* Info.plist */,
 				4241177C241F85A50094B0FB /* GoogleService-Info.plist */,
+				42471FB624418B03002B1577 /* MapStyle.json */,
 			);
 			path = "Veg Out Taiwan";
 			sourceTree = "<group>";
@@ -184,6 +194,7 @@
 			isa = PBXGroup;
 			children = (
 				42761E262424953400405CC9 /* VeganMap */,
+				42471FB82441C621002B1577 /* Restaurant */,
 				42471F47243D7A95002B1577 /* Profile */,
 				42461DF5241DC74F009EC9AB /* LaunchScreen.storyboard */,
 			);
@@ -220,6 +231,7 @@
 			isa = PBXGroup;
 			children = (
 				42471F2624399898002B1577 /* RestaurantInfomationViewController.swift */,
+				4244483D24432E1100000E96 /* UserCommentWallViewController.swift */,
 			);
 			path = Restaurant;
 			sourceTree = "<group>";
@@ -245,9 +257,19 @@
 			children = (
 				42471F48243D7AB4002B1577 /* ProfileCollectionViewCell.swift */,
 				42471FAE2440336C002B1577 /* HeaderView.swift */,
-				42471FAF2440336C002B1577 /* HeaderView.xib */,
 			);
 			path = Profile;
+			sourceTree = "<group>";
+		};
+		42471FB82441C621002B1577 /* Restaurant */ = {
+			isa = PBXGroup;
+			children = (
+				42471FB92441C64A002B1577 /* RestaurantInfomation.storyboard */,
+				4244483724430CE800000E96 /* BaseInfoTableViewCell.swift */,
+				424448392443118C00000E96 /* CommentTableViewCell.swift */,
+				4244483B244315D600000E96 /* CommentCollectionViewCell.swift */,
+			);
+			path = Restaurant;
 			sourceTree = "<group>";
 		};
 		42761E262424953400405CC9 /* VeganMap */ = {
@@ -255,6 +277,7 @@
 			children = (
 				42471EB024324CD2002B1577 /* RestaurantCollectionViewCell.swift */,
 				42471EB124324CD2002B1577 /* RestaurantCollectionViewCell.xib */,
+				424448412444260200000E96 /* RestaurantCollectionViewFlowLayout.swift */,
 			);
 			path = VeganMap;
 			sourceTree = "<group>";
@@ -334,10 +357,11 @@
 				42461DF7241DC74F009EC9AB /* LaunchScreen.storyboard in Resources */,
 				42461DF4241DC74F009EC9AB /* Assets.xcassets in Resources */,
 				42471EB324324CD2002B1577 /* RestaurantCollectionViewCell.xib in Resources */,
+				42471FBA2441C64B002B1577 /* RestaurantInfomation.storyboard in Resources */,
 				42471EAB24309A9E002B1577 /* jf-openhuninn-1.0.ttf in Resources */,
 				42471F3C243C4C5D002B1577 /* VOT tab bar icons.pdf in Resources */,
 				4241177D241F85A50094B0FB /* GoogleService-Info.plist in Resources */,
-				42471FB12440336C002B1577 /* HeaderView.xib in Resources */,
+				42471FB724418B04002B1577 /* MapStyle.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -428,17 +452,21 @@
 				42471EB224324CD2002B1577 /* RestaurantCollectionViewCell.swift in Sources */,
 				42471F40243C69EA002B1577 /* UIColor.swift in Sources */,
 				42471F49243D7AB4002B1577 /* ProfileCollectionViewCell.swift in Sources */,
+				4244483E24432E1100000E96 /* UserCommentWallViewController.swift in Sources */,
 				42471F38243C195F002B1577 /* PhotoWallViewController.swift in Sources */,
 				42471F42243C944F002B1577 /* Constraint.swift in Sources */,
 				42471FB324405214002B1577 /* ProfileController.swift in Sources */,
 				42461DEB241DC74D009EC9AB /* AppDelegate.swift in Sources */,
+				4244483A2443118C00000E96 /* CommentTableViewCell.swift in Sources */,
 				42471FB02440336C002B1577 /* HeaderView.swift in Sources */,
 				42461E07241E440E009EC9AB /* JGProgressHUDWrapper.swift in Sources */,
 				42411779241F424F0094B0FB /* ToEatListViewController.swift in Sources */,
 				42461E08241E440E009EC9AB /* KingFisherWrapper.swift in Sources */,
+				424448422444260200000E96 /* RestaurantCollectionViewFlowLayout.swift in Sources */,
+				4244483C244315D600000E96 /* CommentCollectionViewCell.swift in Sources */,
 				42471EAD2430E240002B1577 /* MainTabViewController.swift in Sources */,
+				4244483824430CE800000E96 /* BaseInfoTableViewCell.swift in Sources */,
 				42471F2724399898002B1577 /* RestaurantInfomationViewController.swift in Sources */,
-				4241177B241F42630094B0FB /* ProfileViewController.swift in Sources */,
 				42471F3E243C66BD002B1577 /* UIFont.swift in Sources */,
 				42471F35243B778B002B1577 /* LogInViewController.swift in Sources */,
 				42461E01241E2BCE009EC9AB /* MapViewController.swift in Sources */,

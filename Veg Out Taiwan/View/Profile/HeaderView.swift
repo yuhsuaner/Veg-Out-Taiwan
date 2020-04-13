@@ -11,6 +11,7 @@ import UIKit
 class HeaderView: UICollectionViewCell {
     
  // MARK: - Properties
+    
     let profileImageView: UIImageView = {
         let image = UIImageView()
         image.image = #imageLiteral(resourceName: "IMG_1308")
@@ -49,10 +50,19 @@ class HeaderView: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        self.contentView.addSubview(profileImageView)
-        profileImageView.anchor(top: topAnchor, left: self.leftAnchor, paddingTop: 12, paddingLeft: 40, width: 80, height: 80)
+        let outerView = UIView()
+        outerView.clipsToBounds = false
+        outerView.layer.shadowColor = UIColor.black.cgColor
+        outerView.layer.shadowOpacity = 0.7
+        outerView.layer.shadowOffset = CGSize.zero
+        outerView.layer.shadowRadius = 20
+        outerView.layer.cornerRadius = 100/2
+        self.contentView.addSubview(outerView)
         
-        profileImageView.layer.cornerRadius = 80/2
+        outerView.addSubview(profileImageView)
+        profileImageView.anchor(top: topAnchor, left: self.leftAnchor, paddingTop: 12, paddingLeft: 40, width: 100, height: 100)
+        
+        profileImageView.layer.cornerRadius = 100/2
         profileImageView.layer.masksToBounds = true
     
         renderUsernameLabel()
