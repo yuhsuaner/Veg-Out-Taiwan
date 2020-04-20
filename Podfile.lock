@@ -1,4 +1,28 @@
 PODS:
+  - collection-view-layouts (0.2.2):
+    - collection-view-layouts/Core (= 0.2.2)
+    - collection-view-layouts/FacebookLayout (= 0.2.2)
+    - collection-view-layouts/FlickrLayout (= 0.2.2)
+    - collection-view-layouts/FlipboardLayout (= 0.2.2)
+    - collection-view-layouts/InstagramLayout (= 0.2.2)
+    - collection-view-layouts/PinterestLayout (= 0.2.2)
+    - collection-view-layouts/Px500Layout (= 0.2.2)
+    - collection-view-layouts/TagsLayout (= 0.2.2)
+  - collection-view-layouts/Core (0.2.2)
+  - collection-view-layouts/FacebookLayout (0.2.2):
+    - collection-view-layouts/Core
+  - collection-view-layouts/FlickrLayout (0.2.2):
+    - collection-view-layouts/Core
+  - collection-view-layouts/FlipboardLayout (0.2.2):
+    - collection-view-layouts/Core
+  - collection-view-layouts/InstagramLayout (0.2.2):
+    - collection-view-layouts/Core
+  - collection-view-layouts/PinterestLayout (0.2.2):
+    - collection-view-layouts/Core
+  - collection-view-layouts/Px500Layout (0.2.2):
+    - collection-view-layouts/Core
+  - collection-view-layouts/TagsLayout (0.2.2):
+    - collection-view-layouts/Core
   - Firebase/Analytics (6.14.0):
     - Firebase/Core
   - Firebase/Core (6.14.0):
@@ -77,6 +101,7 @@ PODS:
   - SwiftLint (0.38.0)
 
 DEPENDENCIES:
+  - collection-view-layouts
   - Firebase/Analytics
   - GoogleMaps
   - GooglePlaces
@@ -85,6 +110,7 @@ DEPENDENCIES:
 
 SPEC REPOS:
   trunk:
+    - collection-view-layouts
     - Firebase
     - FirebaseAnalytics
     - FirebaseCore
@@ -102,6 +128,7 @@ SPEC REPOS:
     - SwiftLint
 
 SPEC CHECKSUMS:
+  collection-view-layouts: 474ec4cce601a26247737227a97fa6a4eb30213f
   Firebase: 0219bb4782eb1406f1b9b0628a2e625484ce910d
   FirebaseAnalytics: f68b9f3f1241385129ae0a83b63627fc420c05e5
   FirebaseCore: 632e05cc5e1199d9147122c16d92305eb04c34bd
@@ -118,6 +145,6 @@ SPEC CHECKSUMS:
   nanopb: 18003b5e52dab79db540fe93fe9579f399bd1ccd
   SwiftLint: 4105f061f9812b214568b736dab580ab2c73a582
 
-PODFILE CHECKSUM: a24900d1f87ed8667571e10abef9169227413560
+PODFILE CHECKSUM: ae5ecc6c2f6dcdc786cc39553cc28f046052980e
 
 COCOAPODS: 1.8.4

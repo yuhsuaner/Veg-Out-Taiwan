@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -16,77 +16,75 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="RestaurantCell" id="e3e-uC-xHp" userLabel="Restaurant Collection View Cell" customClass="RestaurantCollectionViewCell" customModule="Veg_Out_Taiwan" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="405" height="121"/>
+            <rect key="frame" x="0.0" y="0.0" width="309" height="78"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="FdU-FN-ySc">
-                <rect key="frame" x="0.0" y="0.0" width="405" height="121"/>
+                <rect key="frame" x="0.0" y="0.0" width="309" height="78"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="vegan-healthy-food" translatesAutoresizingMaskIntoConstraints="NO" id="UGm-u1-jXw">
-                        <rect key="frame" x="0.0" y="0.0" width="115.5" height="115.5"/>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Pic5" translatesAutoresizingMaskIntoConstraints="NO" id="UGm-u1-jXw">
+                        <rect key="frame" x="0.0" y="0.0" width="77.5" height="77.5"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="UGm-u1-jXw" secondAttribute="height" multiplier="1:1" id="B6x-XC-3Xc"/>
                         </constraints>
                     </imageView>
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="by3-ZY-mFz">
-                        <rect key="frame" x="130.5" y="15" width="133" height="95"/>
+                        <rect key="frame" x="92.5" y="8" width="117" height="59"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Restaurant Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3wO-de-pAQ">
-                                <rect key="frame" x="0.0" y="0.0" width="133" height="22.5"/>
-                                <fontDescription key="fontDescription" name="jf-openhuninn-1.0" family="jf-openhuninn-1.0" pointSize="17"/>
+                                <rect key="frame" x="0.0" y="0.0" width="117" height="10.5"/>
+                                <fontDescription key="fontDescription" name="jf-openhuninn-1.0" family="jf-openhuninn-1.0" pointSize="15"/>
                                 <color key="textColor" name="DarkGary"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="NP6-Le-WVD">
-                                <rect key="frame" x="0.0" y="36.5" width="54" height="22"/>
+                                <rect key="frame" x="0.0" y="24.5" width="51" height="10"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="ZEw-fJ-mQ2">
-                                        <rect key="frame" x="0.0" y="0.0" width="22" height="22"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="22" height="10"/>
                                         <color key="tintColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4.5" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NlN-JE-m34">
-                                        <rect key="frame" x="30" y="0.0" width="24" height="22"/>
-                                        <fontDescription key="fontDescription" name="jf-openhuninn-1.0" family="jf-openhuninn-1.0" pointSize="17"/>
+                                        <rect key="frame" x="30" y="0.0" width="21" height="10"/>
+                                        <fontDescription key="fontDescription" name="jf-openhuninn-1.0" family="jf-openhuninn-1.0" pointSize="15"/>
                                         <color key="textColor" name="DarkGary"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="190公尺" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AaK-4K-3YK">
-                                <rect key="frame" x="0.0" y="72.5" width="62.5" height="22.5"/>
-                                <fontDescription key="fontDescription" name="jf-openhuninn-1.0" family="jf-openhuninn-1.0" pointSize="17"/>
+                                <rect key="frame" x="0.0" y="48.5" width="48" height="10.5"/>
+                                <fontDescription key="fontDescription" name="jf-openhuninn-1.0" family="jf-openhuninn-1.0" pointSize="13"/>
                                 <color key="textColor" name="DarkGary"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="95" id="lg9-R6-MTc"/>
-                        </constraints>
                     </stackView>
                 </subviews>
                 <constraints>
                     <constraint firstItem="UGm-u1-jXw" firstAttribute="top" secondItem="FdU-FN-ySc" secondAttribute="top" id="4NQ-Jc-hTq"/>
+                    <constraint firstItem="by3-ZY-mFz" firstAttribute="height" secondItem="UGm-u1-jXw" secondAttribute="height" multiplier="0.761905" id="HLx-1I-cDx"/>
                     <constraint firstItem="UGm-u1-jXw" firstAttribute="centerY" secondItem="FdU-FN-ySc" secondAttribute="centerY" id="Nl7-4m-bUU"/>
-                    <constraint firstItem="by3-ZY-mFz" firstAttribute="top" secondItem="FdU-FN-ySc" secondAttribute="top" constant="15" id="SYV-2c-hK3"/>
+                    <constraint firstItem="by3-ZY-mFz" firstAttribute="top" secondItem="FdU-FN-ySc" secondAttribute="top" constant="8" id="SYV-2c-hK3"/>
                     <constraint firstItem="UGm-u1-jXw" firstAttribute="leading" secondItem="FdU-FN-ySc" secondAttribute="leading" id="aLj-xr-zKq"/>
                     <constraint firstAttribute="bottom" secondItem="UGm-u1-jXw" secondAttribute="bottom" id="ooT-IK-ms5"/>
-                    <constraint firstItem="UGm-u1-jXw" firstAttribute="width" secondItem="FdU-FN-ySc" secondAttribute="width" multiplier="1:3.5" id="sJH-r0-K7X"/>
+                    <constraint firstItem="UGm-u1-jXw" firstAttribute="width" secondItem="FdU-FN-ySc" secondAttribute="width" multiplier="1:4" id="sJH-r0-K7X"/>
                     <constraint firstItem="by3-ZY-mFz" firstAttribute="leading" secondItem="UGm-u1-jXw" secondAttribute="trailing" constant="15" id="v0W-x1-A9q"/>
                 </constraints>
             </collectionViewCellContentView>
-            <size key="customSize" width="405" height="121"/>
+            <size key="customSize" width="309" height="78"/>
             <connections>
                 <outlet property="distanceLabel" destination="AaK-4K-3YK" id="c9U-Gv-Pm7"/>
                 <outlet property="ratingLabel" destination="NlN-JE-m34" id="m3u-6K-aJh"/>
                 <outlet property="restaurantImage" destination="UGm-u1-jXw" id="bka-UX-qko"/>
                 <outlet property="restaurantNameLabel" destination="3wO-de-pAQ" id="gxz-W5-jYM"/>
             </connections>
-            <point key="canvasLocation" x="103.62318840579711" y="198.54910714285714"/>
+            <point key="canvasLocation" x="34.057971014492757" y="176.78571428571428"/>
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="star.fill" catalog="system" width="64" height="58"/>
-        <image name="vegan-healthy-food" width="3517" height="5276"/>
+        <image name="Pic5" width="4679" height="7020"/>
+        <image name="star.fill" catalog="system" width="128" height="116"/>
         <namedColor name="DarkGary">
             <color red="0.2630000114440918" green="0.2630000114440918" blue="0.2630000114440918" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

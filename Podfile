@@ -11,5 +11,7 @@ target 'Veg Out Taiwan' do
   pod 'GoogleMaps'
   pod 'GooglePlaces'
   pod 'Firebase/Analytics'
+  
+  pod 'collection-view-layouts'
 
 end

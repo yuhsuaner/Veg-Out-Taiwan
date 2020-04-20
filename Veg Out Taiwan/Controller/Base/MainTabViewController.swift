@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class MainTabViewController: UITabBarController {
     
@@ -19,9 +20,54 @@ class MainTabViewController: UITabBarController {
         
         setupViewController()
         
-        tabBar.barTintColor = .W1
-        tabBar.unselectedItemTintColor = UIColor.systemPink
+//        tabBar.barTintColor = .W1
+        
+//        authenicateAndConfigureUI()
     }
+    
+    // MARK: - API
+//    func authenicateAndConfigureUI() {
+//        let isLoggedIn = Auth.auth().currentUser != nil
+//
+//        if !isLoggedIn {
+//            DispatchQueue.main.async {
+//                let nav = UINavigationController(rootViewController: LogInViewController())
+//
+//                nav.modalPresentationStyle = .fullScreen
+//
+//                self.present(nav, animated: true)
+//            }
+//        }
+//        else {
+//            configureViewControllers()
+//
+//            UserService.shared.fetchUser { user in
+//                let _ = (self.viewControllers ?? []).map { (viewController) -> Void in
+//                    guard let nav = viewController as? UINavigationController else {
+//                        return
+//                    }
+//
+//                    guard let vc = nav.viewControllers.first as? RootViewController else {
+//                        return
+//                    }
+//
+//                    vc.currentUser = user
+//
+//                    return
+//                }
+//            }
+//        }
+//    }
+//
+//    func logOut() {
+//
+//        do {
+//            try Auth.auth().signOut()
+//        } catch let error {
+//            print(error)
+//        }
+//    }
+    
     
     // MARK: - Helpers
     
@@ -29,7 +75,7 @@ class MainTabViewController: UITabBarController {
         
         viewControllers = [
             
-            generateNavigationController(for: MapViewController(), image: #imageLiteral(resourceName: "VOT tab bar icons-2"), selectedImage: #imageLiteral(resourceName: "VOT tab bar icons-3")),
+            generateNavigationController(for: MapViewController(), image: #imageLiteral(resourceName: "VOT tab bar icons-2"), selectedImage: #imageLiteral(resourceName: "VOT tab bar icons-1")),
             
             generateNavigationController(for: PhotoWallViewController(), image: #imageLiteral(resourceName: "VOT tab bar icons-7"), selectedImage: #imageLiteral(resourceName: "VOT tab bar icons-8")),
             
