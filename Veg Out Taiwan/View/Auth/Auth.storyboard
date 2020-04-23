@@ -208,13 +208,14 @@
         <!--Sign Up View Controller-->
         <scene sceneID="FNF-TV-aoK">
             <objects>
-                <viewController storyboardIdentifier="SignUpViewController" id="Lpo-ae-x1v" customClass="SignUpViewController" customModule="Veg_Out_Taiwan" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SignUpVC" id="Lpo-ae-x1v" customClass="SignUpViewController" customModule="Veg_Out_Taiwan" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="7QE-Cg-DUt">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="Rti-mP-xiP"/>
                     </view>
+                    <navigationItem key="navigationItem" id="gno-pG-rBs"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Eig-Fc-haj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

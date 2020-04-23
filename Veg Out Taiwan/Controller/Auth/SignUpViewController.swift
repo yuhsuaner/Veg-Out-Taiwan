@@ -17,8 +17,8 @@ class SignUpViewController: UIViewController {
     
     private let plusPhotoButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setImage(UIImage(named: "VOT tab bar icons-12"), for: .normal)
-        button.tintColor = .DG
+        button.setImage(UIImage(named: "plus_photo"), for: .normal)
+        button.tintColor = .W1
         button.addTarget(self, action: #selector(handleAddProfilePhoto), for: .touchUpInside)
         return button
     }()
@@ -79,7 +79,7 @@ class SignUpViewController: UIViewController {
     
     private let registrationButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle("Sign Up", for: .normal)
+        button.setTitle("註冊", for: .normal)
         button.backgroundColor = .DG
         button.setTitleColor(.W1, for: .normal)
         button.heightAnchor.constraint(equalToConstant: 50).isActive = true
@@ -90,7 +90,7 @@ class SignUpViewController: UIViewController {
     }()
     
     private let alreadyHaveAccountButton: UIButton = {
-        let button = Utilies().attributedButton("Already have an account", " Log In")
+        let button = Utilies().attributedButton("我已經有帳戶囉～", " 回到登入頁")
         button.addTarget(self, action: #selector(handleShowLogin), for: .touchUpInside)
         return button
     }()
@@ -104,7 +104,8 @@ class SignUpViewController: UIViewController {
     
     // MARK: - Selectors
     @objc func handleShowLogin() {
-        navigationController?.popViewController(animated: true)
+//        navigationController?.popViewController(animated: true)
+        self.dismiss(animated: true, completion: nil)
     }
     
     @objc func handleAddProfilePhoto() {
@@ -123,7 +124,6 @@ class SignUpViewController: UIViewController {
         let credentials = AuthCredentials(email: email, username: userName, fullname: fullName, password: password, profileImage: profileImage)
         
         AuthService.shared.registerUser(credentials: credentials) { (error, ref) in
-            
         }
     }
     
@@ -136,8 +136,8 @@ class SignUpViewController: UIViewController {
         imagePicker.allowsEditing = true
         
         view.addSubview(plusPhotoButton)
-        plusPhotoButton.centerX(inView: view, topAnchor: view.safeAreaLayoutGuide.topAnchor, paddingTop: 0)
-        plusPhotoButton.setDimensions(width: 128, height: 128)
+        plusPhotoButton.centerX(inView: view, topAnchor: view.safeAreaLayoutGuide.topAnchor, paddingTop: 10)
+        plusPhotoButton.setDimensions(width: 120, height: 120)
         
         let stackView = UIStackView(arrangedSubviews: [emailContainerView,
                                                        passwordContainerView,

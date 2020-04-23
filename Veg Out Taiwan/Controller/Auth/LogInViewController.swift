@@ -77,13 +77,20 @@ class LogInViewController: UIViewController {
     
     @IBAction func handleSignup(_ sender: UIButton) {
         
-        guard let authVC =
-        UIStoryboard.init(name: "Auth", bundle: nil).instantiateViewController(
-                withIdentifier: String(describing: SignUpViewController.self))
-                as? SignUpViewController else { return }
+        let controller = SignUpViewController()
+        navigationController?.pushViewController(controller, animated: true)
         
-        authVC.modalPresentationStyle = .popover
-        present(authVC, animated: false, completion: nil)
+        guard let viewController = UIStoryboard(name: "Auth", bundle: nil).instantiateViewController(identifier: "SignUpVC") as? SignUpViewController else { return }
+
+        show(viewController, sender: nil)
+        
+//        guard let authVC =
+//        UIStoryboard.init(name: "Auth", bundle: nil).instantiateViewController(
+//                withIdentifier: String(describing: SignUpViewController.self))
+//                as? SignUpViewController else { return }
+//
+//        authVC.modalPresentationStyle = .popover
+//        present(authVC, animated: false, completion: nil)
         
     }
     

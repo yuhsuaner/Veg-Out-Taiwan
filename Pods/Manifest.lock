@@ -328,6 +328,7 @@ DEPENDENCIES:
   - collection-view-layouts
   - Firebase/Analytics
   - Firebase/Auth
+  - Firebase/Core
   - Firebase/Database
   - Firebase/Firestore
   - Firebase/Storage
@@ -398,6 +399,6 @@ SPEC CHECKSUMS:
   nanopb: 18003b5e52dab79db540fe93fe9579f399bd1ccd
   SwiftLint: 4105f061f9812b214568b736dab580ab2c73a582
 
-PODFILE CHECKSUM: e20482a2dd202c2d4ad97c941b61702b729f59ba
+PODFILE CHECKSUM: 856b21fbafa5cecf2a78e550df451ec54309db45
 
 COCOAPODS: 1.8.4

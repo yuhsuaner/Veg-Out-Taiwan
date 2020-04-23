@@ -45,6 +45,7 @@
 		42B980C2244DF70000B4DE22 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B980C1244DF70000B4DE22 /* SignUpViewController.swift */; };
 		42B980F424516D4100B4DE22 /* Utilies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B980F324516D4100B4DE22 /* Utilies.swift */; };
 		42B980F624516E6900B4DE22 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B980F524516E6900B4DE22 /* AuthService.swift */; };
+		42B980FA2451831300B4DE22 /* RestaurantService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B980F92451831300B4DE22 /* RestaurantService.swift */; };
 		42C004F2244DD23E007BDF69 /* Auth.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42C004F1244DD23E007BDF69 /* Auth.storyboard */; };
 		7A409E371BAB71AD01BBE07F /* Pods_Veg_Out_Taiwan.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AEFAC4F1D191A2C3B5C4700 /* Pods_Veg_Out_Taiwan.framework */; };
 /* End PBXBuildFile section */
@@ -91,6 +92,7 @@
 		42B980C1244DF70000B4DE22 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		42B980F324516D4100B4DE22 /* Utilies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilies.swift; sourceTree = "<group>"; };
 		42B980F524516E6900B4DE22 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
+		42B980F92451831300B4DE22 /* RestaurantService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantService.swift; sourceTree = "<group>"; };
 		42C004F1244DD23E007BDF69 /* Auth.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Auth.storyboard; sourceTree = "<group>"; };
 		5AEFAC4F1D191A2C3B5C4700 /* Pods_Veg_Out_Taiwan.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Veg_Out_Taiwan.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B7A18B52CEFFAAB7F14BF56 /* Pods-Veg Out Taiwan.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Veg Out Taiwan.release.xcconfig"; path = "Target Support Files/Pods-Veg Out Taiwan/Pods-Veg Out Taiwan.release.xcconfig"; sourceTree = "<group>"; };
@@ -245,6 +247,7 @@
 		42461E27241E4495009EC9AB /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				42B980F92451831300B4DE22 /* RestaurantService.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -530,6 +533,7 @@
 				42471F3E243C66BD002B1577 /* UIFont.swift in Sources */,
 				42471F35243B778B002B1577 /* LogInViewController.swift in Sources */,
 				42461E01241E2BCE009EC9AB /* MapViewController.swift in Sources */,
+				42B980FA2451831300B4DE22 /* RestaurantService.swift in Sources */,
 				42471F3A243C2606002B1577 /* Background.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

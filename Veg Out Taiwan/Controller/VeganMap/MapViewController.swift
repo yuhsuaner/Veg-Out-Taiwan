@@ -8,6 +8,7 @@
 
 import UIKit
 import GoogleMaps
+import FirebaseDatabase
 
 class MapViewController: UIViewController {
     
@@ -124,6 +125,9 @@ class MapViewController: UIViewController {
         super.viewDidLoad()
         
         configureUI()
+        
+        //拿全部餐廳資料
+        RestaurantService.shared.fetchRestaurant()
     }
     
     // MARK: - selector
@@ -207,16 +211,9 @@ extension MapViewController: UICollectionViewDataSource {
         //
         //        navigationController?.pushViewController(controller, animated: true)
         
-//         guard let viewController = UIStoryboard(name: "RestaurantInformation", bundle: nil).instantiateViewController(identifier: "RestaurantInformation") as? RestaurantInformationViewController else { return }
-//
-//        show(viewController, sender: nil)
-
-        if let authVC = UIStoryboard(name: "Auth", bundle: nil).instantiateViewController(identifier: "LogInVC") as? LogInViewController {
-
-            authVC.modalPresentationStyle = .overCurrentContext
-
-            present(authVC, animated: false, completion: nil)
-        }
+        guard let viewController = UIStoryboard(name: "RestaurantInformation", bundle: nil).instantiateViewController(identifier: "RestaurantInformation") as? RestaurantInformationViewController else { return }
+        
+        show(viewController, sender: nil)
         
     }
 }
@@ -225,15 +222,15 @@ extension MapViewController: UICollectionViewDataSource {
 extension MapViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-
+        
         return CGSize(width: (collectionView.frame.width)*3/4,
                       height: collectionView.frame.width / 3)
     }
     
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-//
-//        return 0
-//    }
+    //    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+    //
+    //        return 0
+    //    }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         
@@ -241,6 +238,6 @@ extension MapViewController: UICollectionViewDelegateFlowLayout {
     }
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-
+        
     }
 }

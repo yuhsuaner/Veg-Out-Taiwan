@@ -48,9 +48,9 @@ class Utilies {
     func attributedButton(_ firstPart: String, _ secondPart: String ) -> UIButton {
         let button = UIButton(type: .system)
         
-        let attributedTitle = NSMutableAttributedString(string: firstPart, attributes: [ NSAttributedString.Key.font: UIFont.systemFont(ofSize: 16), NSAttributedString.Key.foregroundColor: UIColor.white])
+        let attributedTitle = NSMutableAttributedString(string: firstPart, attributes: [ NSAttributedString.Key.font: UIFont(name: "jf-openhuninn-1.0", size: 16), NSAttributedString.Key.foregroundColor: UIColor.white])
         
-        attributedTitle.append(NSAttributedString(string: secondPart, attributes: [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 16), NSAttributedString.Key.foregroundColor: UIColor.white]))
+        attributedTitle.append(NSAttributedString(string: secondPart, attributes: [NSAttributedString.Key.font: UIFont(name: "jf-openhuninn-1.0", size: 16), NSAttributedString.Key.foregroundColor: UIColor.white]))
         
         button.setAttributedTitle(attributedTitle, for: .normal)
         
