@@ -10,13 +10,11 @@ import UIKit
 import Firebase
 import GoogleMaps
 import GooglePlaces
+import IQKeyboardManagerSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
-    // swiftlint:disable force_cast
-    static let shared = UIApplication.shared.delegate as! AppDelegate
-    // swiftlint:enable force_cast
     var window: UIWindow?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
@@ -28,6 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Remove TabBar Top Line
         UITabBar.appearance().clipsToBounds = true
         UITabBar.appearance().shadowImage = nil
+        
         // Remove NavigationBar Under Line
         UINavigationBar.appearance().shadowImage = UIImage()
         
@@ -35,6 +34,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         GMSServices.provideAPIKey("AIzaSyCLkSUXcmNSdFZZEBybhsiTGz3dwoY1zBQ")
         GMSPlacesClient.provideAPIKey("AIzaSyCLkSUXcmNSdFZZEBybhsiTGz3dwoY1zBQ")
+        
+        IQKeyboardManager.shared.enable = true
+        IQKeyboardManager.shared.shouldResignOnTouchOutside = true
         
         return true
     }

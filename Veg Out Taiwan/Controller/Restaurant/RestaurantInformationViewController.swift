@@ -86,7 +86,6 @@ extension RestaurantInformationViewController: UITableViewDelegate {
     }
 }
 
-
 extension RestaurantInformationViewController: CategoryRowDelegate {
     
     func cellTapped() {

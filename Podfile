@@ -11,7 +11,12 @@ target 'Veg Out Taiwan' do
   pod 'GoogleMaps'
   pod 'GooglePlaces'
   pod 'Firebase/Analytics'
+  pod 'Firebase/Auth'
+  pod 'Firebase/Firestore'
+  pod 'Firebase/Storage'
+  pod 'Firebase/Database'
   
   pod 'collection-view-layouts'
+  pod 'IQKeyboardManagerSwift'
 
 end

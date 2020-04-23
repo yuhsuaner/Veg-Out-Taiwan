@@ -21,7 +21,7 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Please </string>
+	<string>Show your location on a map!!!!</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>jf-openhuninn-1.0.ttf</string>

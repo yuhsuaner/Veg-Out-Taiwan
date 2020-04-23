@@ -7,9 +7,9 @@
 //
 
 import UIKit
-import Firebase
+import FirebaseAuth
 
-class MainTabViewController: UITabBarController {
+class MainTabViewController: UITabBarController, UITabBarControllerDelegate {
     
     // MARK: - Properties
     
@@ -19,55 +19,10 @@ class MainTabViewController: UITabBarController {
         super.viewDidLoad()
         
         setupViewController()
+        delegate = self
         
-//        tabBar.barTintColor = .W1
-        
-//        authenicateAndConfigureUI()
+        //        tabBar.barTintColor = .W1
     }
-    
-    // MARK: - API
-//    func authenicateAndConfigureUI() {
-//        let isLoggedIn = Auth.auth().currentUser != nil
-//
-//        if !isLoggedIn {
-//            DispatchQueue.main.async {
-//                let nav = UINavigationController(rootViewController: LogInViewController())
-//
-//                nav.modalPresentationStyle = .fullScreen
-//
-//                self.present(nav, animated: true)
-//            }
-//        }
-//        else {
-//            configureViewControllers()
-//
-//            UserService.shared.fetchUser { user in
-//                let _ = (self.viewControllers ?? []).map { (viewController) -> Void in
-//                    guard let nav = viewController as? UINavigationController else {
-//                        return
-//                    }
-//
-//                    guard let vc = nav.viewControllers.first as? RootViewController else {
-//                        return
-//                    }
-//
-//                    vc.currentUser = user
-//
-//                    return
-//                }
-//            }
-//        }
-//    }
-//
-//    func logOut() {
-//
-//        do {
-//            try Auth.auth().signOut()
-//        } catch let error {
-//            print(error)
-//        }
-//    }
-    
     
     // MARK: - Helpers
     
@@ -75,7 +30,7 @@ class MainTabViewController: UITabBarController {
         
         viewControllers = [
             
-            generateNavigationController(for: MapViewController(), image: #imageLiteral(resourceName: "VOT tab bar icons-2"), selectedImage: #imageLiteral(resourceName: "VOT tab bar icons-1")),
+            generateNavigationController(for: MapViewController(), image: #imageLiteral(resourceName: "VOT tab bar icons-2"), selectedImage: #imageLiteral(resourceName: "VOT tab bar icons-3")),
             
             generateNavigationController(for: PhotoWallViewController(), image: #imageLiteral(resourceName: "VOT tab bar icons-7"), selectedImage: #imageLiteral(resourceName: "VOT tab bar icons-8")),
             
@@ -91,7 +46,7 @@ class MainTabViewController: UITabBarController {
         
         navController.tabBarItem.image = image
         navController.tabBarItem.selectedImage = selectedImage
-        navController.tabBarItem.imageInsets = UIEdgeInsets.init(top: 5, left: 0, bottom: -5, right: 0)
+        navController.tabBarItem.imageInsets = UIEdgeInsets.init(top: 8, left: 0, bottom: -5, right: 0)
         
         navController.navigationBar.barTintColor = UIColor.W1
         navController.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "jf-openhuninn-1.0", size: 20)!, NSAttributedString.Key.foregroundColor: UIColor.G2!]
@@ -99,4 +54,25 @@ class MainTabViewController: UITabBarController {
         return navController
     }
     
+    // MARK: - UITabBarControllerDelegate
+    func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
+        
+        guard let navVC = viewController as? UINavigationController,
+            navVC.viewControllers.first is ProfileController else {
+                return true
+        }
+        
+        guard Auth.auth().currentUser != nil else {
+            
+            if let authVC = UIStoryboard(name: "Auth", bundle: nil).instantiateViewController(identifier: "LogInVC") as? LogInViewController {
+                
+                authVC.modalPresentationStyle = .overCurrentContext
+                
+                present(authVC, animated: false, completion: nil)
+            }
+            
+            return false
+        }
+        return true
+    }
 }

@@ -42,6 +42,10 @@
 		42471FBA2441C64B002B1577 /* RestaurantInformation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42471FB92441C64A002B1577 /* RestaurantInformation.storyboard */; };
 		429B9538244D7E1E00596956 /* PhotoWallCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429B9537244D7E1E00596956 /* PhotoWallCollectionViewCell.swift */; };
 		429B953A244D904100596956 /* MapStyle_Orange.json in Resources */ = {isa = PBXBuildFile; fileRef = 429B9539244D904100596956 /* MapStyle_Orange.json */; };
+		42B980C2244DF70000B4DE22 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B980C1244DF70000B4DE22 /* SignUpViewController.swift */; };
+		42B980F424516D4100B4DE22 /* Utilies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B980F324516D4100B4DE22 /* Utilies.swift */; };
+		42B980F624516E6900B4DE22 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B980F524516E6900B4DE22 /* AuthService.swift */; };
+		42C004F2244DD23E007BDF69 /* Auth.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42C004F1244DD23E007BDF69 /* Auth.storyboard */; };
 		7A409E371BAB71AD01BBE07F /* Pods_Veg_Out_Taiwan.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AEFAC4F1D191A2C3B5C4700 /* Pods_Veg_Out_Taiwan.framework */; };
 /* End PBXBuildFile section */
 
@@ -84,6 +88,10 @@
 		42471FB92441C64A002B1577 /* RestaurantInformation.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RestaurantInformation.storyboard; sourceTree = "<group>"; };
 		429B9537244D7E1E00596956 /* PhotoWallCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoWallCollectionViewCell.swift; sourceTree = "<group>"; };
 		429B9539244D904100596956 /* MapStyle_Orange.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = MapStyle_Orange.json; sourceTree = "<group>"; };
+		42B980C1244DF70000B4DE22 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		42B980F324516D4100B4DE22 /* Utilies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilies.swift; sourceTree = "<group>"; };
+		42B980F524516E6900B4DE22 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
+		42C004F1244DD23E007BDF69 /* Auth.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Auth.storyboard; sourceTree = "<group>"; };
 		5AEFAC4F1D191A2C3B5C4700 /* Pods_Veg_Out_Taiwan.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Veg_Out_Taiwan.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B7A18B52CEFFAAB7F14BF56 /* Pods-Veg Out Taiwan.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Veg Out Taiwan.release.xcconfig"; path = "Target Support Files/Pods-Veg Out Taiwan/Pods-Veg Out Taiwan.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -165,6 +173,7 @@
 				42461E04241E43F5009EC9AB /* Third Party Wrapper */,
 				42461E26241E446C009EC9AB /* Resource */,
 				42461E0B241E442F009EC9AB /* Extension */,
+				42B980E824505A5A00B4DE22 /* API */,
 				42461E27241E4495009EC9AB /* Model */,
 				42461E0A241E4429009EC9AB /* View */,
 				42461E09241E441E009EC9AB /* Controller */,
@@ -189,7 +198,7 @@
 		42461E09241E441E009EC9AB /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				42471F33243B7762002B1577 /* LogIn */,
+				42471F33243B7762002B1577 /* Auth */,
 				42411777241F382E0094B0FB /* VeganMap */,
 				42471F252439984A002B1577 /* Restaurant */,
 				42471F36243C18E7002B1577 /* PhotoWall */,
@@ -203,6 +212,7 @@
 		42461E0A241E4429009EC9AB /* View */ = {
 			isa = PBXGroup;
 			children = (
+				42C004F3244DD2C2007BDF69 /* Auth */,
 				42761E262424953400405CC9 /* VeganMap */,
 				42471FB82441C621002B1577 /* Restaurant */,
 				429B9536244D7DF100596956 /* PhotoWall */,
@@ -219,6 +229,7 @@
 				42471F3D243C66BD002B1577 /* UIFont.swift */,
 				42471F3F243C69E9002B1577 /* UIColor.swift */,
 				42471F41243C944E002B1577 /* Constraint.swift */,
+				42B980F324516D4100B4DE22 /* Utilies.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -248,12 +259,13 @@
 			path = Restaurant;
 			sourceTree = "<group>";
 		};
-		42471F33243B7762002B1577 /* LogIn */ = {
+		42471F33243B7762002B1577 /* Auth */ = {
 			isa = PBXGroup;
 			children = (
 				42471F34243B778B002B1577 /* LogInViewController.swift */,
+				42B980C1244DF70000B4DE22 /* SignUpViewController.swift */,
 			);
-			path = LogIn;
+			path = Auth;
 			sourceTree = "<group>";
 		};
 		42471F36243C18E7002B1577 /* PhotoWall */ = {
@@ -305,6 +317,22 @@
 			path = PhotoWall;
 			sourceTree = "<group>";
 		};
+		42B980E824505A5A00B4DE22 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				42B980F524516E6900B4DE22 /* AuthService.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		42C004F3244DD2C2007BDF69 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				42C004F1244DD23E007BDF69 /* Auth.storyboard */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
 		E65F627A00BD39985ED421A9 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -345,7 +373,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1130;
-				LastUpgradeCheck = 1130;
+				LastUpgradeCheck = 1140;
 				ORGANIZATIONNAME = Irene.C;
 				TargetAttributes = {
 					42461DE6241DC74D009EC9AB = {
@@ -379,6 +407,7 @@
 			files = (
 				42461DF7241DC74F009EC9AB /* LaunchScreen.storyboard in Resources */,
 				42461DF4241DC74F009EC9AB /* Assets.xcassets in Resources */,
+				42C004F2244DD23E007BDF69 /* Auth.storyboard in Resources */,
 				42471EB324324CD2002B1577 /* RestaurantCollectionViewCell.xib in Resources */,
 				42471FBA2441C64B002B1577 /* RestaurantInformation.storyboard in Resources */,
 				42471EAB24309A9E002B1577 /* jf-openhuninn-1.0.ttf in Resources */,
@@ -479,10 +508,12 @@
 				42471F49243D7AB4002B1577 /* ProfileCollectionViewCell.swift in Sources */,
 				4244483E24432E1100000E96 /* UserCommentWallViewController.swift in Sources */,
 				42471F38243C195F002B1577 /* PhotoWallViewController.swift in Sources */,
+				42B980C2244DF70000B4DE22 /* SignUpViewController.swift in Sources */,
 				42471F42243C944F002B1577 /* Constraint.swift in Sources */,
 				42471FB324405214002B1577 /* ProfileController.swift in Sources */,
 				42461DEB241DC74D009EC9AB /* AppDelegate.swift in Sources */,
 				4244483A2443118C00000E96 /* CommentTableViewCell.swift in Sources */,
+				42B980F624516E6900B4DE22 /* AuthService.swift in Sources */,
 				42444846244460EC00000E96 /* UserFoodDiaryViewController.swift in Sources */,
 				42471FB02440336C002B1577 /* HeaderView.swift in Sources */,
 				4244484424445CA700000E96 /* UserCommentWallCollectionViewCell.swift in Sources */,
@@ -491,6 +522,7 @@
 				42411779241F424F0094B0FB /* ToEatListViewController.swift in Sources */,
 				42461E08241E440E009EC9AB /* KingFisherWrapper.swift in Sources */,
 				424448422444260200000E96 /* RestaurantCollectionViewFlowLayout.swift in Sources */,
+				42B980F424516D4100B4DE22 /* Utilies.swift in Sources */,
 				4244483C244315D600000E96 /* CommentCollectionViewCell.swift in Sources */,
 				42471EAD2430E240002B1577 /* MainTabViewController.swift in Sources */,
 				4244483824430CE800000E96 /* BaseInfoTableViewCell.swift in Sources */,
@@ -520,6 +552,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -580,6 +613,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";

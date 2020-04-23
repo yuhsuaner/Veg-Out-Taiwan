@@ -124,11 +124,6 @@ class MapViewController: UIViewController {
         super.viewDidLoad()
         
         configureUI()
-        
-        //hide NavigationBar
-        let barAppearance =  UINavigationBarAppearance()
-        barAppearance.configureWithTransparentBackground()
-        navigationController?.navigationBar.standardAppearance = barAppearance
     }
     
     // MARK: - selector
@@ -145,6 +140,11 @@ class MapViewController: UIViewController {
     // MARK: - Helper
     
     func configureUI() {
+        
+        //hide NavigationBar
+        let barAppearance =  UINavigationBarAppearance()
+        barAppearance.configureWithTransparentBackground()
+        navigationController?.navigationBar.standardAppearance = barAppearance
         
         view.addSubview(searchTextField)
         NSLayoutConstraint.activate([
@@ -207,9 +207,17 @@ extension MapViewController: UICollectionViewDataSource {
         //
         //        navigationController?.pushViewController(controller, animated: true)
         
-        guard let viewController = UIStoryboard(name: "RestaurantInformation", bundle: nil).instantiateViewController(identifier: "RestaurantInformation") as? RestaurantInformationViewController else { return }
+//         guard let viewController = UIStoryboard(name: "RestaurantInformation", bundle: nil).instantiateViewController(identifier: "RestaurantInformation") as? RestaurantInformationViewController else { return }
+//
+//        show(viewController, sender: nil)
+
+        if let authVC = UIStoryboard(name: "Auth", bundle: nil).instantiateViewController(identifier: "LogInVC") as? LogInViewController {
+
+            authVC.modalPresentationStyle = .overCurrentContext
+
+            present(authVC, animated: false, completion: nil)
+        }
         
-        show(viewController, sender: nil)
     }
 }
 

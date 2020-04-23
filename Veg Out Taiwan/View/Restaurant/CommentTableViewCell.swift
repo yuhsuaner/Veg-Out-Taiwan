@@ -8,8 +8,6 @@
 
 import UIKit
 
-
-
 class CommentTableViewCell: UITableViewCell {
     
     @IBOutlet weak var tapForMoreLabel: UILabel!
