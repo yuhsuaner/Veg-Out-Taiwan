@@ -46,6 +46,13 @@ class HeaderView: UICollectionViewCell {
         return label
     }()
     
+    let settingButton: UIButton = {
+        let button = UIButton()
+        button.setImage(UIImage(named: "Setting"), for: .normal)
+
+        return button
+    }()
+    
 // MARK: - Lifecycle
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -64,7 +71,8 @@ class HeaderView: UICollectionViewCell {
         
         profileImageView.layer.cornerRadius = 100/2
         profileImageView.layer.masksToBounds = true
-    
+        
+        renderSettingButton()
         renderUsernameLabel()
         renderInfoLabelGroup()
     }
@@ -74,6 +82,11 @@ class HeaderView: UICollectionViewCell {
     }
     
      // MARK: - Helper
+    
+    fileprivate func renderSettingButton() {
+        addSubview(settingButton)
+        settingButton.anchor(top: topAnchor, right: rightAnchor, paddingTop: 10, paddingRight: 15, width: 25, height: 25)
+    }
     
     fileprivate func renderUsernameLabel() {
         addSubview(usernameLabel)

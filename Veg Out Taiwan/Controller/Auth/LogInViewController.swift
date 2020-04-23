@@ -16,7 +16,7 @@ class LogInViewController: UIViewController {
     @IBOutlet weak var backgroundView: UIView! {
         
         didSet {
-//            backgroundView.setBackgroundView()
+            //            backgroundView.setBackgroundView()
             backgroundView.layer.cornerRadius = 25
         }
     }
@@ -30,6 +30,8 @@ class LogInViewController: UIViewController {
         }
     }
     
+    @IBOutlet weak var emailTextField: UITextField!
+    
     @IBOutlet weak var passwordView: UIView! {
         
         didSet {
@@ -38,6 +40,8 @@ class LogInViewController: UIViewController {
             passwordView.layer.borderWidth = 0.5
         }
     }
+    
+    @IBOutlet weak var passwordTextField: UITextField!
     
     @IBOutlet weak var enterButton: UIButton! {
         
@@ -50,21 +54,21 @@ class LogInViewController: UIViewController {
         }
     }
     
-    func setupAppleSignInView() {
-        let appleButton = ASAuthorizationAppleIDButton(authorizationButtonType: .default, authorizationButtonStyle: .white)
-        appleButton.translatesAutoresizingMaskIntoConstraints = false
-        appleButton.cornerRadius = 25
-
-        appleButton.addTarget(self, action: #selector(didTapAppleButton), for: .touchUpInside)
-        
-        backgroundView.addSubview(appleButton)
-        NSLayoutConstraint.activate([
-            appleButton.bottomAnchor.constraint(equalTo: enterButton.bottomAnchor, constant: 110),
-            appleButton.centerXAnchor.constraint(equalTo: backgroundView.centerXAnchor),
-            appleButton.widthAnchor.constraint(equalTo: enterButton.widthAnchor),
-            appleButton.heightAnchor.constraint(equalTo: enterButton.heightAnchor)
-        ])
-    }
+    //    func setupAppleSignInView() {
+    //        let appleButton = ASAuthorizationAppleIDButton(authorizationButtonType: .default, authorizationButtonStyle: .white)
+    //        appleButton.translatesAutoresizingMaskIntoConstraints = false
+    //        appleButton.cornerRadius = 25
+    //
+    //        appleButton.addTarget(self, action: #selector(didTapAppleButton), for: .touchUpInside)
+    //
+    //        backgroundView.addSubview(appleButton)
+    //        NSLayoutConstraint.activate([
+    //            appleButton.bottomAnchor.constraint(equalTo: enterButton.bottomAnchor, constant: 110),
+    //            appleButton.centerXAnchor.constraint(equalTo: backgroundView.centerXAnchor),
+    //            appleButton.widthAnchor.constraint(equalTo: enterButton.widthAnchor),
+    //            appleButton.heightAnchor.constraint(equalTo: enterButton.heightAnchor)
+    //        ])
+    //    }
     
     @IBAction func handleCancelAction(_ sender: UIButton) {
         
@@ -73,6 +77,22 @@ class LogInViewController: UIViewController {
     
     @IBAction func handleEnterAction(_ sender: UIButton) {
         
+        guard let email = emailTextField.text else { return }
+        guard let password = passwordTextField.text else { return }
+        
+        AuthService.shared.signIn(withEmail: email, password: password) { (result, error) in
+            if let error = error {
+                print(error.localizedDescription)
+                return
+            }
+            print("Successfully log in")
+                        
+            guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+            guard let tab = appDelegate.window?.rootViewController as? MainTabViewController else { return }
+            tab.selectedIndex = 3
+            
+            self.dismiss(animated: true, completion: nil)
+        }
     }
     
     @IBAction func handleSignup(_ sender: UIButton) {
@@ -81,26 +101,17 @@ class LogInViewController: UIViewController {
         navigationController?.pushViewController(controller, animated: true)
         
         guard let viewController = UIStoryboard(name: "Auth", bundle: nil).instantiateViewController(identifier: "SignUpVC") as? SignUpViewController else { return }
-
-        show(viewController, sender: nil)
         
-//        guard let authVC =
-//        UIStoryboard.init(name: "Auth", bundle: nil).instantiateViewController(
-//                withIdentifier: String(describing: SignUpViewController.self))
-//                as? SignUpViewController else { return }
-//
-//        authVC.modalPresentationStyle = .popover
-//        present(authVC, animated: false, completion: nil)
-        
+        show(viewController, sender: nil)        
     }
     
     @IBAction func handleForgotPassword(_ sender: UIButton) {
         
     }
     
-    @objc func didTapAppleButton() {
-        print("APPLE Sign in")
-    }
+    //    @objc func didTapAppleButton() {
+    //        print("APPLE Sign in")
+    //    }
     
     // MARK: - LifeCycle
     override func viewDidLoad() {
@@ -114,11 +125,11 @@ class LogInViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        setupAppleSignInView()
+        //        setupAppleSignInView()
     }
     
     // MARK: - Helper
-
+    
     func configureUI() {
         
     }

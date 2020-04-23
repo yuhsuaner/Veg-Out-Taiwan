@@ -9,13 +9,11 @@
 import UIKit
 import FirebaseDatabase
 
-
 class RestaurantService {
     
     static let shared = RestaurantService()
     
     var ref: DatabaseReference!
-    
     
     func fetchRestaurant() {
         

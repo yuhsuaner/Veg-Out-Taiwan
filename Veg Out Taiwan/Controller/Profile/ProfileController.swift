@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class ProfileController: UICollectionViewController {
     
@@ -46,7 +47,6 @@ class ProfileController: UICollectionViewController {
         collectionView.register(HeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: headerViewId)
         
         self.collectionView.register(ProfileCollectionViewCell.self, forCellWithReuseIdentifier: cellId)
-        
     }
 }
 
@@ -63,7 +63,31 @@ extension ProfileController {
                 fatalError("Cannot create header view")
         }
         
+        headerView.settingButton.addTarget(self, action: #selector(handleSetting), for: .touchUpInside)
+        
         return headerView
+    }
+    
+    @objc func handleSetting() {
+        do {
+            try Auth.auth().signOut()
+        } catch let error {
+            print(error.localizedDescription)
+        }
+        
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+        guard let tab = appDelegate.window?.rootViewController as? MainTabViewController else { return }
+        tab.selectedIndex = 0
+        
+//
+//        if let authVC = UIStoryboard(name: "Auth", bundle: nil).instantiateViewController(identifier: "LogInVC") as? LogInViewController {
+//            
+//
+//            
+//            authVC.modalPresentationStyle = .overCurrentContext
+//            
+//            present(authVC, animated: false, completion: nil)
+//        }
     }
     
     override func numberOfSections(in collectionView: UICollectionView) -> Int {

@@ -146,15 +146,6 @@
                                             <action selector="handleCancelAction:" destination="ZwT-0l-bOx" eventType="touchUpInside" id="f1K-WP-gCi"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="OR" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A8a-zk-daN">
-                                        <rect key="frame" x="95" y="480.5" width="224" height="20"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="20" id="IL4-78-Uwx"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="jf-openhuninn-1.0" family="jf-openhuninn-1.0" pointSize="15"/>
-                                        <color key="textColor" name="CreamyWhite"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" name="DarkGreen"/>
                                 <constraints>
@@ -167,16 +158,13 @@
                                     <constraint firstItem="JDT-ow-DAx" firstAttribute="top" secondItem="N5v-aX-uur" secondAttribute="bottom" constant="3" id="UBe-w7-2k9"/>
                                     <constraint firstItem="2b2-Bi-heR" firstAttribute="top" secondItem="mDF-r7-pMD" secondAttribute="bottom" constant="20" id="UYS-7i-LNg"/>
                                     <constraint firstItem="mDF-r7-pMD" firstAttribute="top" secondItem="JDT-ow-DAx" secondAttribute="bottom" constant="25" id="XwN-2Z-PXu"/>
-                                    <constraint firstItem="mDF-r7-pMD" firstAttribute="bottom" secondItem="A8a-zk-daN" secondAttribute="bottom" constant="-60" id="ZnG-cB-eAK"/>
                                     <constraint firstItem="6aE-D0-I2Z" firstAttribute="top" secondItem="mDF-r7-pMD" secondAttribute="bottom" constant="20" id="amp-nf-tfd"/>
                                     <constraint firstAttribute="trailing" secondItem="Lqd-sC-8f6" secondAttribute="trailing" constant="25" id="ccf-QQ-OCw"/>
                                     <constraint firstItem="6aE-D0-I2Z" firstAttribute="leading" secondItem="fn5-PO-vha" secondAttribute="leading" id="dHW-ph-od4"/>
                                     <constraint firstItem="Lqd-sC-8f6" firstAttribute="top" secondItem="Zoc-I8-isK" secondAttribute="top" constant="30" id="eJA-pb-NKZ"/>
                                     <constraint firstItem="N5v-aX-uur" firstAttribute="width" secondItem="Zoc-I8-isK" secondAttribute="width" multiplier="180:375" id="hcR-dl-kln"/>
                                     <constraint firstItem="2b2-Bi-heR" firstAttribute="trailing" secondItem="fn5-PO-vha" secondAttribute="trailing" id="mLt-2P-0pm"/>
-                                    <constraint firstItem="A8a-zk-daN" firstAttribute="width" secondItem="fn5-PO-vha" secondAttribute="width" id="sjL-mu-Hru"/>
                                     <constraint firstItem="N5v-aX-uur" firstAttribute="top" secondItem="Zoc-I8-isK" secondAttribute="top" constant="25" id="tD6-kj-wih"/>
-                                    <constraint firstItem="A8a-zk-daN" firstAttribute="centerX" secondItem="Zoc-I8-isK" secondAttribute="centerX" id="zVk-0w-vk2"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -197,7 +185,9 @@
                     <connections>
                         <outlet property="accountView" destination="kJU-WV-AO2" id="eaV-BH-3EF"/>
                         <outlet property="backgroundView" destination="Zoc-I8-isK" id="1bu-S3-2Ni"/>
+                        <outlet property="emailTextField" destination="She-P4-nbf" id="XzE-pu-xmC"/>
                         <outlet property="enterButton" destination="fn5-PO-vha" id="d1r-gG-xHp"/>
+                        <outlet property="passwordTextField" destination="FbL-nM-hIy" id="JC3-vU-bw6"/>
                         <outlet property="passwordView" destination="bi7-js-J4C" id="cv4-Gc-vz4"/>
                     </connections>
                 </viewController>
