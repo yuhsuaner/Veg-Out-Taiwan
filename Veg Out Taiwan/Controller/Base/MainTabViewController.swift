@@ -48,6 +48,8 @@ class MainTabViewController: UITabBarController, UITabBarControllerDelegate {
         navController.tabBarItem.selectedImage = selectedImage
         navController.tabBarItem.imageInsets = UIEdgeInsets.init(top: 8, left: 0, bottom: -5, right: 0)
         
+        tabBar.barTintColor = UIColor.W1
+        
         navController.navigationBar.barTintColor = UIColor.W1
         navController.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "jf-openhuninn-1.0", size: 20)!, NSAttributedString.Key.foregroundColor: UIColor.G2!]
         
