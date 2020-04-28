@@ -7,6 +7,9 @@
 		<key>Veg Out Taiwan.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
+<<<<<<< HEAD
+			<integer>32</integer>
+=======
 			<integer>5</integer>
 		</dict>
 	</dict>
@@ -16,6 +19,7 @@
 		<dict>
 			<key>primary</key>
 			<true/>
+>>>>>>> fbf79cc13df86372d2084711b531c18b2fd22067
 		</dict>
 	</dict>
 </dict>
