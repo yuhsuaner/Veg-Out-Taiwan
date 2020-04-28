@@ -7,14 +7,19 @@
 //
 
 import UIKit
+import SDWebImage
 
 class HeaderView: UICollectionViewCell {
     
  // MARK: - Properties
     
+    var user: User? {
+        didSet { configure() }
+    }
+    
     let profileImageView: UIImageView = {
         let image = UIImageView()
-        image.image = #imageLiteral(resourceName: "IMG_1308")
+        image.image = #imageLiteral(resourceName: "Pic2")
         image.contentMode = .scaleAspectFill
         return image
     }()
@@ -65,6 +70,7 @@ class HeaderView: UICollectionViewCell {
         outerView.layer.shadowRadius = 20
         outerView.layer.cornerRadius = 100/2
         self.contentView.addSubview(outerView)
+        outerView.anchor(top: topAnchor, left: self.leftAnchor, paddingTop: 12, paddingLeft: 40, width: 100, height: 100)
         
         outerView.addSubview(profileImageView)
         profileImageView.anchor(top: topAnchor, left: self.leftAnchor, paddingTop: 12, paddingLeft: 40, width: 100, height: 100)
@@ -98,6 +104,14 @@ class HeaderView: UICollectionViewCell {
         stackView.distribution = .fillEqually
         addSubview(stackView)
         stackView.anchor(top: profileImageView.bottomAnchor, left: leftAnchor, right: rightAnchor, paddingTop: 5, paddingLeft: 12, paddingRight: 12, height: 80)
+    }
+    
+    func configure() {
+        guard let user = user else { return }
+        
+        profileImageView.sd_setImage(with: user.profileImageUrl)
+        
+        usernameLabel.text = user.userNmae
     }
     
 }

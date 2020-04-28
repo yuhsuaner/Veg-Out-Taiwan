@@ -10,7 +10,6 @@ import Foundation
 
 struct User {
     
-    let fullName: String
     let email: String
     let userNmae: String
     let uid: String
@@ -18,7 +17,6 @@ struct User {
     
     init(uid: String, dictionary: [String: AnyObject]) {
         self.uid = uid
-        self.fullName = dictionary["fullName"] as? String ?? ""
         self.email = dictionary["email"] as? String ?? ""
         self.userNmae = dictionary["userNmae"] as? String ?? ""
         

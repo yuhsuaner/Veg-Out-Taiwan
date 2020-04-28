@@ -111,13 +111,15 @@
                                 <rect key="frame" x="187.66666666666666" y="348" width="39" height="128"/>
                             </pageControl>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DOE-3c-gMS">
-                                <rect key="frame" x="20" y="488" width="374" height="388"/>
+                                <rect key="frame" x="25" y="488" width="364" height="388"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="hx5-IM-pVj">
-                                        <rect key="frame" x="0.0" y="0.0" width="140.33333333333334" height="50"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="hx5-IM-pVj">
+                                        <rect key="frame" x="0.0" y="0.0" width="143.33333333333334" height="50"/>
                                         <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="IMG_1308" translatesAutoresizingMaskIntoConstraints="NO" id="u53-qW-aIe">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Pic8" translatesAutoresizingMaskIntoConstraints="NO" id="u53-qW-aIe">
                                                 <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                <color key="backgroundColor" red="0.84313725490000002" green="0.41960784309999999" blue="0.36470588240000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="50" id="Z1y-lE-2Tv"/>
                                                     <constraint firstAttribute="height" constant="50" id="ngH-Zt-uc0"/>
@@ -129,7 +131,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="User Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Szw-uP-c7e">
-                                                <rect key="frame" x="54.999999999999993" y="15" width="85.333333333333314" height="20"/>
+                                                <rect key="frame" x="57.999999999999993" y="15" width="85.333333333333314" height="20"/>
                                                 <fontDescription key="fontDescription" name="jf-openhuninn-1.0" family="jf-openhuninn-1.0" pointSize="17"/>
                                                 <color key="textColor" name="DarkGary"/>
                                                 <nil key="highlightedColor"/>
@@ -142,7 +144,7 @@
                                         </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="MM4-ES-x9m">
-                                        <rect key="frame" x="281.66666666666669" y="306.66666666666663" width="92.333333333333314" height="81.333333333333314"/>
+                                        <rect key="frame" x="271.66666666666669" y="306.66666666666663" width="92.333333333333314" height="81.333333333333314"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="koF-vH-qzF">
                                                 <rect key="frame" x="0.0" y="0.0" width="17.333333333333332" height="81.333333333333329"/>
@@ -168,10 +170,10 @@
                                         </subviews>
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qf7-L6-WlR">
-                                        <rect key="frame" x="344" y="16.000000000000021" width="30" height="18.000000000000007"/>
-                                        <fontDescription key="fontDescription" name="jf-openhuninn-1.0" family="jf-openhuninn-1.0" pointSize="15"/>
+                                        <rect key="frame" x="332" y="9" width="32" height="32"/>
+                                        <fontDescription key="fontDescription" name="jf-openhuninn-1.0" family="jf-openhuninn-1.0" pointSize="13"/>
                                         <color key="tintColor" red="0.73333333329999995" green="0.73333333329999995" blue="0.73333333329999995" alpha="1" colorSpace="calibratedRGB"/>
-                                        <state key="normal" title="追蹤" backgroundImage="folder" catalog="system">
+                                        <state key="normal" title="追蹤" backgroundImage="rounded-rectangle">
                                             <color key="titleColor" name="CreamyWhite"/>
                                         </state>
                                         <connections>
@@ -179,7 +181,7 @@
                                         </connections>
                                     </button>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hfu-j7-3Wh">
-                                        <rect key="frame" x="0.0" y="57.999999999999986" width="374" height="238.66666666666663"/>
+                                        <rect key="frame" x="0.0" y="57.999999999999986" width="364" height="238.66666666666663"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</string>
                                         <color key="textColor" name="DarkGary"/>
@@ -215,11 +217,11 @@
                         </subviews>
                         <color key="backgroundColor" name="DarkGreen"/>
                         <constraints>
-                            <constraint firstItem="sa4-t6-c7N" firstAttribute="trailing" secondItem="DOE-3c-gMS" secondAttribute="trailing" constant="20" id="0Fm-7c-b0q"/>
+                            <constraint firstItem="sa4-t6-c7N" firstAttribute="trailing" secondItem="DOE-3c-gMS" secondAttribute="trailing" constant="25" id="0Fm-7c-b0q"/>
                             <constraint firstItem="Dhh-13-94X" firstAttribute="centerX" secondItem="EYa-nv-1AY" secondAttribute="centerX" id="1ie-cR-pgC"/>
                             <constraint firstItem="DOE-3c-gMS" firstAttribute="centerY" secondItem="bNB-fa-7Eg" secondAttribute="centerY" multiplier="9/6" constant="10" id="7E0-5L-Dr6"/>
                             <constraint firstItem="JVa-kr-ZDv" firstAttribute="leading" secondItem="EYa-nv-1AY" secondAttribute="leading" id="7PI-KD-FZl"/>
-                            <constraint firstItem="DOE-3c-gMS" firstAttribute="leading" secondItem="sa4-t6-c7N" secondAttribute="leading" constant="20" id="KcP-MQ-F9h"/>
+                            <constraint firstItem="DOE-3c-gMS" firstAttribute="leading" secondItem="sa4-t6-c7N" secondAttribute="leading" constant="25" id="KcP-MQ-F9h"/>
                             <constraint firstItem="EYa-nv-1AY" firstAttribute="width" secondItem="bNB-fa-7Eg" secondAttribute="width" multiplier="0.6" id="NPk-3M-hwx"/>
                             <constraint firstItem="EYa-nv-1AY" firstAttribute="centerX" secondItem="bNB-fa-7Eg" secondAttribute="centerX" id="RL3-aJ-ncT"/>
                             <constraint firstItem="DOE-3c-gMS" firstAttribute="height" secondItem="bNB-fa-7Eg" secondAttribute="height" multiplier="1/2" constant="-60" id="XGu-lG-PkD"/>
@@ -249,14 +251,14 @@
         </scene>
     </scenes>
     <resources>
-        <image name="IMG_1308" width="2880" height="3840"/>
+        <image name="Pic8" width="5184" height="3456"/>
         <image name="VOT_pin" width="30" height="30"/>
         <image name="bookmark" catalog="system" width="112" height="128"/>
-        <image name="folder" catalog="system" width="128" height="95"/>
         <image name="heart" catalog="system" width="128" height="109"/>
+        <image name="rounded-rectangle" width="32" height="32"/>
         <image name="text.bubble" catalog="system" width="128" height="110"/>
         <namedColor name="CreamyWhite">
-            <color red="0.9882352941176471" green="0.98039215686274506" blue="0.94901960784313721" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color red="0.98799997568130493" green="0.98000001907348633" blue="0.94900000095367432" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="DarkGary">
             <color red="0.2630000114440918" green="0.2630000114440918" blue="0.2630000114440918" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

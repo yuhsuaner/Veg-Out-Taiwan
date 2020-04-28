@@ -10,9 +10,5 @@ import UIKit
 
 class ImageCollectionViewCell: UICollectionViewCell {
     
-    @IBOutlet weak var postImage: UIImageView! {
-        didSet {
-            postImage.layer.cornerRadius = 5
-        }
-    }
+    @IBOutlet weak var postImage: UIImageView!
 }

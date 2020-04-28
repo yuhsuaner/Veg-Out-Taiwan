@@ -14,7 +14,6 @@ import FirebaseDatabase
 struct AuthCredentials {
     let email: String
     let username: String
-    let fullname: String
     let password: String
     let profileImage: UIImage
 }
@@ -27,7 +26,6 @@ struct AuthService {
         let email = credentials.email
         let password = credentials.password
         let userName = credentials.username
-        let fullName = credentials.fullname
         
         guard let imageData = credentials.profileImage.jpegData(compressionQuality: 0.3) else {return }
         let fileNmae = NSUUID().uuidString
@@ -50,7 +48,6 @@ struct AuthService {
                     
                     let value = ["email": email,
                                  "userName": userName,
-                                 "fullName": fullName,
                                  "profileImageUrl": profileImageUrl]
                     
                     Database.database().reference().child("users").child(uid).updateChildValues(value, withCompletionBlock: completion)

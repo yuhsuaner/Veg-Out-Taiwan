@@ -23,12 +23,17 @@ class ProfileController: UICollectionViewController {
         
         configureCollectionView()
     }
+//
+//    override func viewDidAppear(_ animated: Bool) {
+//        super.viewDidAppear(animated)
+//
+//        print(harderview?.profileImageView.frame)
+//    }
     
-    // initialized with a non-nil layout parameter
     init() {
         super.init(collectionViewLayout: UICollectionViewFlowLayout())
-        
     }
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -69,6 +74,8 @@ extension ProfileController {
                 
                 fatalError("Cannot create header view")
         }
+        
+//        self.harderview = headerView
         
         headerView.settingButton.addTarget(self, action: #selector(handleSetting), for: .touchUpInside)
         
@@ -114,7 +121,6 @@ extension ProfileController {
         
         return cell
     }
-    
 }
 
 // MARK: - UICollectionViewDelegateFlowLayout
@@ -127,7 +133,7 @@ extension ProfileController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        return CGSize(width: (collectionView.frame.width - 40) / 3, height: collectionView.frame.width / 3)
+        return CGSize(width: Int((collectionView.frame.width - 40) / 3), height: Int(collectionView.frame.width / 3))
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {

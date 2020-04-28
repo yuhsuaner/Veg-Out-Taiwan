@@ -12,6 +12,9 @@ import Firebase
 class SignUpViewController: UIViewController {
     
     // MARK: - Properties
+    
+    var user: User?
+    
     private let imagePicker = UIImagePickerController()
     private var profileImage: UIImage?
     
@@ -37,13 +40,6 @@ class SignUpViewController: UIViewController {
         return view
     }()
     
-    private lazy var fullNameContainerView: UIView = {
-        let image = #imageLiteral(resourceName: "VOT tab bar icons-12")
-        let view = Utilies().inputContainView(withImage: image, textFiled: fullNameTextField)
-        
-        return view
-    }()
-    
     private lazy var userNameContainerView: UIView = {
         let image = #imageLiteral(resourceName: "VOT tab bar icons-12")
         let view = Utilies().inputContainView(withImage: image, textFiled: userNameTextField)
@@ -62,12 +58,6 @@ class SignUpViewController: UIViewController {
         
         let textField = Utilies().textField(withPlaceholer: "Password")
         textField.isSecureTextEntry = true
-        return textField
-    }()
-    
-    private let fullNameTextField: UITextField = {
-        
-        let textField = Utilies().textField(withPlaceholer: "Full Name")
         return textField
     }()
     
@@ -118,10 +108,9 @@ class SignUpViewController: UIViewController {
         
         guard let email = emailTextField.text else { return }
         guard let password  = passwordTextField.text else { return }
-        guard let fullName = fullNameTextField.text else { return }
         guard let userName = userNameTextField.text else { return }
         
-        let credentials = AuthCredentials(email: email, username: userName, fullname: fullName, password: password, profileImage: profileImage)
+        let credentials = AuthCredentials(email: email, username: userName, password: password, profileImage: profileImage)
         
         AuthService.shared.registerUser(credentials: credentials) { (error, ref) in
             if let error = error {
@@ -153,7 +142,6 @@ class SignUpViewController: UIViewController {
         
         let stackView = UIStackView(arrangedSubviews: [emailContainerView,
                                                        passwordContainerView,
-                                                       fullNameContainerView,
                                                        userNameContainerView,
                                                        registrationButton])
         stackView.axis = .vertical
