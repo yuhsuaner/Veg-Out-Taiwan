@@ -15,7 +15,7 @@ class UserFoodDiaryViewController: UIViewController, UIGestureRecognizerDelegate
     
     @IBOutlet weak var restaurantAddressLabel: UILabel!
     
-    @IBOutlet weak var imageCollectionView: UICollectionView!
+    @IBOutlet weak var collectionView: UICollectionView!
     
     @IBOutlet weak var userImageView: UIImageView!
     
@@ -67,8 +67,8 @@ class UserFoodDiaryViewController: UIViewController, UIGestureRecognizerDelegate
         navigationItem.leftBarButtonItem = backBTN
         navigationController?.interactivePopGestureRecognizer?.delegate = self
         
-        imageCollectionView.dataSource = self
-        imageCollectionView.delegate = self
+        collectionView.dataSource = self
+        collectionView.delegate = self
     }
     
 //    @objc func back(sender: UIBarButtonItem) {

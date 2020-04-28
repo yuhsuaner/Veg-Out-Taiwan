@@ -8,6 +8,8 @@
 
 import UIKit
 import FirebaseAuth
+import FirebaseDatabase
+import SDWebImage
 
 class ProfileController: UICollectionViewController {
     
@@ -15,6 +17,7 @@ class ProfileController: UICollectionViewController {
     fileprivate let headerViewId = "HeaderView"
     
     // MARK: - Properties
+    var user: User?
     
     // MARK: - LifeCycle
     
@@ -23,12 +26,6 @@ class ProfileController: UICollectionViewController {
         
         configureCollectionView()
     }
-//
-//    override func viewDidAppear(_ animated: Bool) {
-//        super.viewDidAppear(animated)
-//
-//        print(harderview?.profileImageView.frame)
-//    }
     
     init() {
         super.init(collectionViewLayout: UICollectionViewFlowLayout())
@@ -48,21 +45,14 @@ class ProfileController: UICollectionViewController {
         
         collectionView.backgroundColor = .white
         
-//        let headerNib = UINib(nibName: "HeaderView", bundle: nil)
-//        self.collectionView.register(headerNib, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: headerViewId)
-        
         collectionView.register(HeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: headerViewId)
         
         self.collectionView.register(ProfileCollectionViewCell.self, forCellWithReuseIdentifier: cellId)
     }
-    
-    func fetchUserData() {
-        
-//        UserService.shared.fetchUser
-    }
+
 }
 
-// MARK: - UICollectionViewDataSource
+// MARK: - UICollectionView DataSource/ Delegate
 extension ProfileController {
     
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
@@ -75,7 +65,7 @@ extension ProfileController {
                 fatalError("Cannot create header view")
         }
         
-//        self.harderview = headerView
+        headerView.user = user
         
         headerView.settingButton.addTarget(self, action: #selector(handleSetting), for: .touchUpInside)
         
@@ -92,16 +82,7 @@ extension ProfileController {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
         guard let tab = appDelegate.window?.rootViewController as? MainTabViewController else { return }
         tab.selectedIndex = 0
-        
-//
-//        if let authVC = UIStoryboard(name: "Auth", bundle: nil).instantiateViewController(identifier: "LogInVC") as? LogInViewController {
-//
-//
-//
-//            authVC.modalPresentationStyle = .overCurrentContext
-//
-//            present(authVC, animated: false, completion: nil)
-//        }
+
     }
     
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -120,6 +101,13 @@ extension ProfileController {
         cell.layer.cornerRadius = 10
         
         return cell
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        guard let viewController = UIStoryboard(name: "UserFoodDiary", bundle: nil).instantiateViewController(identifier: "UserFoodDiary") as? UserFoodDiaryViewController else { return }
+        
+        show(viewController, sender: nil)
     }
 }
 

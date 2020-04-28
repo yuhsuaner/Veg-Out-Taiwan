@@ -8,6 +8,8 @@
 
 import UIKit
 import SDWebImage
+import FirebaseDatabase
+import FirebaseAuth
 
 class HeaderView: UICollectionViewCell {
     
@@ -81,6 +83,8 @@ class HeaderView: UICollectionViewCell {
         renderSettingButton()
         renderUsernameLabel()
         renderInfoLabelGroup()
+        
+        fetchUser()
     }
     
     required init?(coder: NSCoder) {
@@ -104,6 +108,16 @@ class HeaderView: UICollectionViewCell {
         stackView.distribution = .fillEqually
         addSubview(stackView)
         stackView.anchor(top: profileImageView.bottomAnchor, left: leftAnchor, right: rightAnchor, paddingTop: 5, paddingLeft: 12, paddingRight: 12, height: 80)
+    }
+    
+    func fetchUser() {
+        
+        guard let uid = Auth.auth().currentUser?.uid  else { return }
+        
+        UserService.shared.fetchUser(uid: uid) { user in
+            
+            self.user = user
+        }
     }
     
     func configure() {

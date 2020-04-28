@@ -235,9 +235,9 @@
                     </view>
                     <connections>
                         <outlet property="collectionButton" destination="koF-vH-qzF" id="Evl-jC-hl7"/>
+                        <outlet property="collectionView" destination="EYa-nv-1AY" id="yyk-kj-erZ"/>
                         <outlet property="contentOfCommentTextView" destination="hfu-j7-3Wh" id="mtm-E5-0uV"/>
                         <outlet property="favoriteButton" destination="bmb-rt-8Jn" id="eXp-gS-hCg"/>
-                        <outlet property="imageCollectionView" destination="EYa-nv-1AY" id="yyk-kj-erZ"/>
                         <outlet property="imagePageControl" destination="Ki5-VY-94T" id="j7K-Ct-fI3"/>
                         <outlet property="postDateLabel" destination="ilN-ek-RGZ" id="V3R-Pq-tpE"/>
                         <outlet property="restaurantAddressLabel" destination="4V7-Rf-fcR" id="YG2-DS-kX4"/>

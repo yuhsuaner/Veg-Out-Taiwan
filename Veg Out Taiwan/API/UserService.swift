@@ -15,7 +15,7 @@ struct UserService {
 
     var ref = Database.database().reference()
     
-    func fetchUser(completion: @escaping(User) -> Void) {
+    func fetchUser(uid: String, completion: @escaping(User) -> Void) {
         
         guard let uid = Auth.auth().currentUser?.uid else { return }
         
@@ -26,9 +26,7 @@ struct UserService {
             let username = dictionary["userName"] as? String ?? ""
             
             let user = User(uid: uid, dictionary: dictionary)
-            
-            print(username)
-            print(user.userNmae)
+
             completion(user)
         }
     }
