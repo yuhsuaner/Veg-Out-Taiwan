@@ -16,9 +16,10 @@ struct User {
     var profileImageUrl: URL?
     
     init(uid: String, dictionary: [String: AnyObject]) {
+        
         self.uid = uid
         self.email = dictionary["email"] as? String ?? ""
-        self.userNmae = dictionary["userNmae"] as? String ?? ""
+        self.userNmae = dictionary["userName"] as? String ?? ""
         
         if let profileImageUrlString = dictionary["profileImageUrl"]  as? String {
             

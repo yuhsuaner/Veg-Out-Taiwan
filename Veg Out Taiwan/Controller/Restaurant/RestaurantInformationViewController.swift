@@ -13,6 +13,8 @@ class RestaurantInformationViewController: UIViewController {
     // MARK: - Properties
     @IBOutlet weak var tableView: UITableView!
     
+    @IBOutlet weak var collectionView: UICollectionView!
+        
     // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,18 +23,21 @@ class RestaurantInformationViewController: UIViewController {
         
         tableView.delegate = self
         tableView.dataSource = self
+        
+        collectionView.dataSource = self
     }
     
     // MARK: - Helper
     
     func configureUI() {
         
-        view.setBackgroundView()
+//        view.setBackgroundView()
         
         navigationController?.navigationBar.tintColor = .W1
     }
 }
 
+// MARK: - UITableViewDataSource
 extension RestaurantInformationViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -74,6 +79,7 @@ extension RestaurantInformationViewController: UITableViewDataSource {
     }
 }
 
+// MARK: - UITableViewDelegate
 extension RestaurantInformationViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -86,6 +92,7 @@ extension RestaurantInformationViewController: UITableViewDelegate {
     }
 }
 
+// MARK: - CategoryRowDelegate
 extension RestaurantInformationViewController: CategoryRowDelegate {
     
     func cellTapped() {
@@ -94,4 +101,20 @@ extension RestaurantInformationViewController: CategoryRowDelegate {
         
         show(viewController, sender: nil)
     }
+}
+
+extension RestaurantInformationViewController: UICollectionViewDataSource {
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        
+        return 2
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RestaurantHeaderImageViewCell", for: indexPath) as? RestaurantHeaderImageViewCell else { return UICollectionViewCell() }
+        
+        return cell
+    }
+       
 }

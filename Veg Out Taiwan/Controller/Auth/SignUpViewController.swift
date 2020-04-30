@@ -118,6 +118,7 @@ class SignUpViewController: UIViewController {
                 return
             }
             print("Successfully Sign up")
+            print("_______\(credentials.username)______")
                         
             guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
             guard let tab = appDelegate.window?.rootViewController as? MainTabViewController else { return }

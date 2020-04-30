@@ -15,7 +15,7 @@ class CommentTableViewCell: UITableViewCell {
     @IBOutlet weak var collectionView: UICollectionView!
     
 //    weak var delegate: CustomCollectionCellDelegate?
-    weak var delegate:CategoryRowDelegate?
+    weak var delegate: CategoryRowDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -44,19 +44,12 @@ extension CommentTableViewCell: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
-//        guard let viewController = UIStoryboard(name: "UserFoodDiary", bundle: nil).instantiateViewController(identifier: "UserFoodDiary") as? RestaurantInformationViewController else { return }
-//
-//        show(viewController, sender: nil)
+
         print("didSelect")
-        
-//        let home = UserFoodDiaryViewController()
-//        home.show(home, sender: nil)
         
         if delegate != nil {
         delegate?.cellTapped()
         }
-
     }
 }
 
@@ -76,5 +69,4 @@ extension CommentTableViewCell: UICollectionViewDelegateFlowLayout {
         
         return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
     }
-    
 }

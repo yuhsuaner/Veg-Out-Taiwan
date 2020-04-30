@@ -17,7 +17,11 @@ class ProfileController: UICollectionViewController {
     fileprivate let headerViewId = "HeaderView"
     
     // MARK: - Properties
-    var user: User?
+    var user: User? {
+        didSet {
+            collectionView.reloadData()
+        }
+    }
     
     // MARK: - LifeCycle
     

@@ -128,6 +128,8 @@ class MapViewController: UIViewController {
         
         //拿全部餐廳資料
         RestaurantService.shared.fetchRestaurant()
+        
+        searchTextField.delegate = self
     }
     
     // MARK: - selector
@@ -240,4 +242,8 @@ extension MapViewController: UICollectionViewDelegateFlowLayout {
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         
     }
+}
+
+extension MapViewController: UITextFieldDelegate {
+    
 }

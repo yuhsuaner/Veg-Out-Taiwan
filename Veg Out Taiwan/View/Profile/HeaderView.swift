@@ -28,7 +28,7 @@ class HeaderView: UICollectionViewCell {
     
     let usernameLabel: UILabel = {
         let label = UILabel()
-        label.text = "Irene Chen"
+//        label.text = "Irene Chen"
         label.textAlignment = .center
         label.font = UIFont(name: "jf-openhuninn-1.0", size: 24)
         label.textColor = .G2
@@ -123,11 +123,12 @@ class HeaderView: UICollectionViewCell {
     func configure() {
         guard let user = user else { return }
         
+        print("===", user.userNmae, user.profileImageUrl, user.email)
+        
         profileImageView.sd_setImage(with: user.profileImageUrl)
         
         usernameLabel.text = user.userNmae
     }
-    
 }
 
 extension UILabel {

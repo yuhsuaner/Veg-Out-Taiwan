@@ -17,7 +17,11 @@ class BaseInfoTableViewCell: UITableViewCell {
     @IBOutlet weak var businessHoursLabel: UILabel!
     
     @IBOutlet weak var ratingLabel: UILabel!
+    
+    @IBAction func addCommentAction(_ sender: UIButton) {
         
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

@@ -12,13 +12,14 @@ import FirebaseDatabase
 class RestaurantService {
     
     static let shared = RestaurantService()
+    private init() {}
     
     var ref: DatabaseReference!
     
     func fetchRestaurant() {
         
         ref = Database.database().reference()
-        ref.child("restaurantData").observeSingleEvent(of: .value) { (snapshot) in
+        ref.child("VOT_Restaurants").observeSingleEvent(of: .value) { (snapshot) in
             print(snapshot)
         }
     }
