@@ -89,27 +89,6 @@ extension UserFoodDiaryViewController: UICollectionViewDataSource {
         
         cell.postImage.image = UIImage(named: "Pic\(indexPath.item)")
         
-//        switch indexPath.item {
-//
-//        case 0:
-//            cell.postImage.image = UIImage(named: "Pic1")
-//
-//        case 1:
-//            cell.postImage.image = UIImage(named: "Pic2")
-//
-//        case 2:
-//            cell.postImage.image = UIImage(named: "Pic3")
-//
-//        case 3:
-//            cell.postImage.image = UIImage(named: "Pic4")
-//
-//        case 4:
-//            cell.postImage.image = UIImage(named: "Pic5")
-//
-//        default:
-//            cell.postImage.image = UIImage(named: "Pic6")
-//        }
-        
         return cell
     }
 }

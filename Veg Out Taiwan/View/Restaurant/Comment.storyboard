@@ -5,6 +5,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -37,11 +38,37 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="34k-8j-KlC">
-                                <rect key="frame" x="124" y="212" width="150" height="150"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="4Gj-uh-8Uk">
+                                <rect key="frame" x="58" y="178" width="279" height="256"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="Add_Photo"/>
-                            </button>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="qUu-ws-7qg">
+                                    <size key="itemSize" width="255" height="249"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ImageCollectionViewCell" id="h99-mk-THU" customClass="ImageCollectionViewCell" customModule="Veg_Out_Taiwan" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="3.5" width="255" height="249"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="eAt-ER-Coo">
+                                            <rect key="frame" x="0.0" y="0.0" width="255" height="249"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Add_Photo" translatesAutoresizingMaskIntoConstraints="NO" id="fJ3-QB-08m">
+                                                    <rect key="frame" x="7" y="8" width="248" height="233"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
+                                            </subviews>
+                                        </collectionViewCellContentView>
+                                        <size key="customSize" width="255" height="249"/>
+                                        <connections>
+                                            <outlet property="postImage" destination="fJ3-QB-08m" id="xMY-7f-fPg"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
                         </subviews>
                         <color key="backgroundColor" name="CreamyWhite"/>
                         <viewLayoutGuide key="safeArea" id="JH2-Nn-pNy"/>
@@ -49,7 +76,7 @@
                     <connections>
                         <outlet property="commentTextView" destination="Ufe-3n-ObU" id="u5J-xl-cQ5"/>
                         <outlet property="enterButton" destination="DEu-Xl-q4E" id="ahL-0m-7vT"/>
-                        <outlet property="photoImageButton" destination="34k-8j-KlC" id="UdN-7f-vnM"/>
+                        <outlet property="imageCollectionView" destination="4Gj-uh-8Uk" id="jKL-pq-9vb"/>
                         <outlet property="restaurantNameLabel" destination="3aU-bA-Irr" id="tXa-Qb-5nn"/>
                     </connections>
                 </viewController>
