@@ -7,12 +7,6 @@
 //
 
 import UIKit
-//
-//protocol CustomCollectionCellDelegate: class {
-//
-//func selectedCollectionView(collectioncell: CommentCollectionViewCell?, collectionRow: IndexPath)
-//
-//}
 
 protocol CategoryRowDelegate: class {
     func cellTapped()

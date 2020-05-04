@@ -34,22 +34,22 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="5Fz-dS-kOa">
-                                                    <rect key="frame" x="16" y="16" width="197.5" height="78"/>
+                                                    <rect key="frame" x="16" y="16" width="189.5" height="87"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="XXXXXX餐廳" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tfe-KN-T65">
-                                                            <rect key="frame" x="0.0" y="0.0" width="197.5" height="18"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="189.5" height="21"/>
                                                             <fontDescription key="fontDescription" name="jf-openhuninn-1.0" family="jf-openhuninn-1.0" pointSize="18"/>
                                                             <color key="textColor" name="DarkGary"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="台北市松山區南京東路" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JJ3-mu-XiP">
-                                                            <rect key="frame" x="0.0" y="30" width="197.5" height="18"/>
+                                                            <rect key="frame" x="0.0" y="33" width="189.5" height="21"/>
                                                             <fontDescription key="fontDescription" name="jf-openhuninn-1.0" family="jf-openhuninn-1.0" pointSize="18"/>
                                                             <color key="textColor" name="DarkGary"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="營業時間: 10:00 - 20:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b5e-dj-vs7">
-                                                            <rect key="frame" x="0.0" y="60" width="197.5" height="18"/>
+                                                            <rect key="frame" x="0.0" y="66" width="189.5" height="21"/>
                                                             <fontDescription key="fontDescription" name="jf-openhuninn-1.0" family="jf-openhuninn-1.0" pointSize="18"/>
                                                             <color key="textColor" name="DarkGary"/>
                                                             <nil key="highlightedColor"/>
@@ -57,7 +57,7 @@
                                                     </subviews>
                                                 </stackView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="★ 3.8" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RkG-ho-2wA">
-                                                    <rect key="frame" x="334" y="16" width="50" height="18"/>
+                                                    <rect key="frame" x="335.5" y="16" width="48.5" height="18"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="18" id="2We-RR-9If"/>
                                                     </constraints>
@@ -66,7 +66,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Miy-Fa-GES">
-                                                    <rect key="frame" x="20" y="114" width="32" height="32"/>
+                                                    <rect key="frame" x="20" y="123" width="32" height="32"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="Miy-Fa-GES" secondAttribute="height" multiplier="1:1" id="acN-ut-Pxp"/>
                                                     </constraints>
@@ -74,7 +74,7 @@
                                                     <state key="normal" image="new icon_0424_2-1"/>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sb4-1J-je2">
-                                                    <rect key="frame" x="92" y="114" width="31.5" height="32"/>
+                                                    <rect key="frame" x="92" y="123" width="31.5" height="32"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="sb4-1J-je2" secondAttribute="height" multiplier="1:1" id="ocI-K3-yvv"/>
                                                     </constraints>
@@ -82,7 +82,7 @@
                                                     <state key="normal" image="phone"/>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bwB-ie-ohz">
-                                                    <rect key="frame" x="163.5" y="114" width="32" height="32"/>
+                                                    <rect key="frame" x="163.5" y="123" width="32" height="32"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="bwB-ie-ohz" secondAttribute="height" multiplier="1:1" id="iid-eh-WsG"/>
                                                     </constraints>
@@ -90,16 +90,13 @@
                                                     <state key="normal" image="new icon 0424-9"/>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H7T-vn-NOD">
-                                                    <rect key="frame" x="325" y="59" width="68" height="29"/>
+                                                    <rect key="frame" x="326" y="59" width="68" height="32"/>
                                                     <fontDescription key="fontDescription" name="jf-openhuninn-1.0" family="jf-openhuninn-1.0" pointSize="17"/>
                                                     <color key="tintColor" name="MainGreen"/>
                                                     <state key="normal" title="我要評分">
                                                         <color key="titleColor" name="MainGreen"/>
                                                         <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </state>
-                                                    <connections>
-                                                        <action selector="addCommentAction:" destination="wJD-Yx-e5Y" eventType="touchUpInside" id="OFu-fb-fVC"/>
-                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
@@ -124,6 +121,7 @@
                                             <constraint firstItem="Miy-Fa-GES" firstAttribute="width" secondItem="wJD-Yx-e5Y" secondAttribute="width" multiplier="1:13" id="0i7-KP-br5"/>
                                         </constraints>
                                         <connections>
+                                            <outlet property="addCommentLabel" destination="H7T-vn-NOD" id="x0Z-9z-775"/>
                                             <outlet property="addressLabel" destination="JJ3-mu-XiP" id="HT2-uj-BLQ"/>
                                             <outlet property="businessHoursLabel" destination="b5e-dj-vs7" id="oPo-hU-18f"/>
                                             <outlet property="ratingLabel" destination="RkG-ho-2wA" id="q2W-GW-Gh1"/>
@@ -192,7 +190,7 @@
                                                     </cells>
                                                 </collectionView>
                                                 <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="更多 〉" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LdR-aS-IdB">
-                                                    <rect key="frame" x="349.5" y="32" width="59.5" height="18"/>
+                                                    <rect key="frame" x="349.5" y="30.5" width="59.5" height="21"/>
                                                     <fontDescription key="fontDescription" name="jf-openhuninn-1.0" family="jf-openhuninn-1.0" pointSize="18"/>
                                                     <color key="textColor" name="DarkGary"/>
                                                     <nil key="highlightedColor"/>
@@ -294,7 +292,7 @@
             <color red="0.42399999499320984" green="0.50999999046325684" blue="0.35699999332427979" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="MainGreen">
-            <color red="0.5690000057220459" green="0.67799997329711914" blue="0.43900001049041748" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.56862745098039214" green="0.67843137254901964" blue="0.4392156862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="Orange">
             <color red="0.93699997663497925" green="0.5690000057220459" blue="0.37599998712539673" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

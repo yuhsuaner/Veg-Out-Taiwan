@@ -52,6 +52,14 @@ extension RestaurantInformationViewController: UITableViewDataSource {
         case 0:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "BaseInfoTableViewCell", for: indexPath) as? BaseInfoTableViewCell else { return UITableViewCell() }
             
+            //            cell.delegate = self
+            cell.commentButtonAction = { [unowned self] in
+                
+                guard let viewController = UIStoryboard(name: "Comment", bundle: nil).instantiateViewController(identifier: "Comment") as? CommentViewController else { return }
+                
+                self.show(viewController, sender: nil)
+            }
+            
             return cell
             
         case 1:
@@ -92,17 +100,7 @@ extension RestaurantInformationViewController: UITableViewDelegate {
     }
 }
 
-// MARK: - CategoryRowDelegate
-extension RestaurantInformationViewController: CategoryRowDelegate {
-    
-    func cellTapped() {
-        
-        guard let viewController = UIStoryboard(name: "UserFoodDiary", bundle: nil).instantiateViewController(identifier: "UserFoodDiary") as? UserFoodDiaryViewController else { return }
-        
-        show(viewController, sender: nil)
-    }
-}
-
+// MARK: - UICollectionViewDataSource
 extension RestaurantInformationViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -117,4 +115,25 @@ extension RestaurantInformationViewController: UICollectionViewDataSource {
         return cell
     }
        
+}
+
+// MARK: - AddCommentDelegate
+//extension RestaurantInformationViewController: AddCommentDelegate {
+//    func goToWriteComment() {
+//
+//        guard let viewController = UIStoryboard(name: "Comment", bundle: nil).instantiateViewController(identifier: "Comment") as? CommentViewController else { return }
+//
+//        show(viewController, sender: nil)
+//    }
+//}
+
+// MARK: - CategoryRowDelegate
+extension RestaurantInformationViewController: CategoryRowDelegate {
+    
+    func cellTapped() {
+        
+        guard let viewController = UIStoryboard(name: "UserFoodDiary", bundle: nil).instantiateViewController(identifier: "UserFoodDiary") as? UserFoodDiaryViewController else { return }
+        
+        show(viewController, sender: nil)
+    }
 }

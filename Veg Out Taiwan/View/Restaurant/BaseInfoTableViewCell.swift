@@ -8,7 +8,13 @@
 
 import UIKit
 
+//protocol AddCommentDelegate: class {
+//    func goToWriteComment()
+//}
+
 class BaseInfoTableViewCell: UITableViewCell {
+    
+//    weak var delegate: AddCommentDelegate?
     
     @IBOutlet weak var restaurantNameLabel: UILabel!
     
@@ -18,19 +24,26 @@ class BaseInfoTableViewCell: UITableViewCell {
     
     @IBOutlet weak var ratingLabel: UILabel!
     
-    @IBAction func addCommentAction(_ sender: UIButton) {
-        
-    }
+    @IBOutlet weak var addCommentLabel: UIButton!
+    
+    var commentButtonAction : (() -> ())?
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        
+        self.addCommentLabel.addTarget(self, action: #selector(commentButtonTapped), for: .touchUpInside)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    
+    @objc func commentButtonTapped() {
+        
+        commentButtonAction?()
     }
 
 }
