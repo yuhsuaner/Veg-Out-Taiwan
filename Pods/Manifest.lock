@@ -188,6 +188,7 @@ PODS:
     - collection-view-layouts/Core
   - collection-view-layouts/TagsLayout (0.2.2):
     - collection-view-layouts/Core
+  - Cosmos (21.0.0)
   - Firebase/Analytics (6.14.0):
     - Firebase/Core
   - Firebase/Auth (6.14.0):
@@ -329,6 +330,7 @@ PODS:
 
 DEPENDENCIES:
   - collection-view-layouts
+  - Cosmos
   - Firebase/Analytics
   - Firebase/Auth
   - Firebase/Core
@@ -347,6 +349,7 @@ SPEC REPOS:
     - abseil
     - BoringSSL-GRPC
     - collection-view-layouts
+    - Cosmos
     - Firebase
     - FirebaseAnalytics
     - FirebaseAuth
@@ -378,6 +381,7 @@ SPEC CHECKSUMS:
   abseil: 18063d773f5366ff8736a050fe035a28f635fd27
   BoringSSL-GRPC: db8764df3204ccea016e1c8dd15d9a9ad63ff318
   collection-view-layouts: 474ec4cce601a26247737227a97fa6a4eb30213f
+  Cosmos: 3dfb6e4ba48bd48b8c9aa2a77048ae11ed114f96
   Firebase: 0219bb4782eb1406f1b9b0628a2e625484ce910d
   FirebaseAnalytics: f68b9f3f1241385129ae0a83b63627fc420c05e5
   FirebaseAuth: 831577b184ecaba38bc886768c1c22a450cc44e3
@@ -405,6 +409,6 @@ SPEC CHECKSUMS:
   SDWebImage: 1245d058b7b8f59adef7a6da6bbafd4f1ab67041
   SwiftLint: 4105f061f9812b214568b736dab580ab2c73a582
 
-PODFILE CHECKSUM: 4b114ba7487ee90b0285c1da7bdad0f765758cce
+PODFILE CHECKSUM: ca3a90870a25a96004719707a1e175bfb4141982
 
 COCOAPODS: 1.8.4

@@ -24,6 +24,7 @@ target 'Veg Out Taiwan' do
   pod 'collection-view-layouts'
   pod 'IQKeyboardManagerSwift'
   pod 'SDWebImage'
+  pod 'Cosmos'
   
 
 end

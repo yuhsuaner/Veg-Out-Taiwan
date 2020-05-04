@@ -117,15 +117,7 @@ extension RestaurantInformationViewController: UICollectionViewDataSource {
        
 }
 
-// MARK: - AddCommentDelegate
-//extension RestaurantInformationViewController: AddCommentDelegate {
-//    func goToWriteComment() {
-//
-//        guard let viewController = UIStoryboard(name: "Comment", bundle: nil).instantiateViewController(identifier: "Comment") as? CommentViewController else { return }
-//
-//        show(viewController, sender: nil)
-//    }
-//}
+
 
 // MARK: - CategoryRowDelegate
 extension RestaurantInformationViewController: CategoryRowDelegate {
