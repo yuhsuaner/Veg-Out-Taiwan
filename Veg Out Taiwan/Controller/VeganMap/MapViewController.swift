@@ -17,6 +17,16 @@ class MapViewController: UIViewController {
      Reference: https://www.freecodecamp.org/news/how-to-create-an-autocompletion-uitextfield-using-coredata-in-swift-dbedad03ea3d/
      */
     
+    var restaurant: [Restaurants] = [] {
+        didSet {
+            
+            if restaurant.isEmpty {
+            } else {
+                collectionView.reloadData()
+            }
+        }
+    }
+    
     private var searchButton: UIButton = {
         let button = UIButton(type: .system)
         button.tintColor = UIColor.G2
@@ -42,10 +52,16 @@ class MapViewController: UIViewController {
     
     private lazy var collectionView: UICollectionView = {
         
-        let layout = RestaurantCollectionViewFlowLayout()
+        //        let layout = RestaurantCollectionViewFlowLayout()
+        //        layout.scrollDirection = .horizontal
+        
+        //        let collectionView  = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        
+        let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         
-        let collectionView  = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.register(UINib(nibName: "RestaurantCollectionViewCell",
                                       bundle: nil),
@@ -127,7 +143,10 @@ class MapViewController: UIViewController {
         configureUI()
         
         //拿全部餐廳資料
-        RestaurantService.shared.fetchRestaurant()
+//        RestaurantService.shared.fetchRestaurant { restaurant in
+//            
+//            self.restaurant = restaurant
+//        }
         
         searchTextField.delegate = self
     }
@@ -191,7 +210,8 @@ extension MapViewController: CLLocationManagerDelegate {
 extension MapViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        20
+        
+        return 10
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -200,23 +220,18 @@ extension MapViewController: UICollectionViewDataSource {
         
         cell.backgroundColor = UIColor.W1
         cell.layer.cornerRadius = 15
-        cell.ratingLabel.text = "3.5"
-        cell.restaurantNameLabel.text = "qwertyuiodfghjvbnm"
-        cell.restaurantImage.image = #imageLiteral(resourceName: "Pic0")
+        cell.ratingLabel.text = "4.5"
+        cell.restaurantNameLabel.text = "Plants"
+        cell.restaurantImage.image = #imageLiteral(resourceName: "Pic4")
         
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        //        let controller = RestaurantInfomationViewController()
-        //
-        //        navigationController?.pushViewController(controller, animated: true)
-        
         guard let viewController = UIStoryboard(name: "RestaurantInformation", bundle: nil).instantiateViewController(identifier: "RestaurantInformation") as? RestaurantInformationViewController else { return }
         
         show(viewController, sender: nil)
-        
     }
 }
 
@@ -225,8 +240,10 @@ extension MapViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        return CGSize(width: (collectionView.frame.width)*3/4,
-                      height: collectionView.frame.width / 3)
+        //        return CGSize(width: (collectionView.frame.width)*3/4,
+        //                      height: collectionView.frame.width / 3)
+        return CGSize(width: collectionView.frame.size.width,
+                      height: collectionView.frame.size.height)
     }
     
     //    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
@@ -234,14 +251,85 @@ extension MapViewController: UICollectionViewDelegateFlowLayout {
     //        return 0
     //    }
     
+    //    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+    //
+    //        return UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
+    //    }
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         
-        return UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
+        //        collectionView.contentInset = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
+        //
+        //        return collectionView.contentInset
+        return UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
+    }
+}
+
+extension MapViewController: UIScrollViewDelegate {
+    
+    // perform scaling whenever the collection view is being scrolled
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        
+        // center X of collection View
+        let centerX = self.collectionView.center.x
+        
+        // only perform the scaling on cells that are visible on screen
+        for cell in self.collectionView.visibleCells {
+            
+            // coordinate of the cell in the viewcontroller's root view coordinate space
+            let basePosition = cell.convert(CGPoint.zero, to: self.view)
+            let cellCenterX = basePosition.x + self.collectionView.frame.size.height / 2.0
+            
+            let distance = abs(cellCenterX - centerX)
+            
+            let tolerance: CGFloat = 0.02
+            var scale = 1.00 + tolerance - (( distance / centerX ) * 0.105)
+            if (scale > 1.0) {
+                scale = 1.0
+            }
+            
+            if (scale < 0.860091) {
+                scale = 0.860091
+            }
+            
+            // Transform the cell size based on the scale
+            cell.transform = CGAffineTransform(scaleX: scale, y: scale)
+            
+            // change the alpha of the image view
+            guard let cell = cell as? RestaurantCollectionViewCell else { return }
+            cell.restaurantImage.alpha = changeSizeScaleToAlphaScale(scale)
+        }
     }
     
-    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+    func changeSizeScaleToAlphaScale(_ xSize: CGFloat) -> CGFloat {
+        let minScale: CGFloat = 0.86
+        let maxScale: CGFloat = 1.0
         
+        let minAlpha: CGFloat = 0.25
+        let maxAlpha: CGFloat = 1.0
+        
+        return ((maxAlpha - minAlpha) * (xSize - minScale)) / (maxScale - minScale) + minAlpha
     }
+    
+    // for custom snap-to paging, when user stop scrolling
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        
+        var indexOfCellWithLargestWidth = 0
+        var largestWidth: CGFloat = 1
+        
+        for cell in self.collectionView.visibleCells {
+            
+            if cell.frame.size.width > largestWidth {
+                largestWidth = cell.frame.size.width
+                if let indexPath = self.collectionView.indexPath(for: cell) {
+                    indexOfCellWithLargestWidth = indexPath.item
+                }
+            }
+        }
+        
+        collectionView.scrollToItem(at: IndexPath(item: indexOfCellWithLargestWidth, section: 0), at: .centeredHorizontally, animated: true)
+    }
+    
 }
 
 extension MapViewController: UITextFieldDelegate {

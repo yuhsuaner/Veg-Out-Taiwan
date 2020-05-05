@@ -28,6 +28,7 @@ struct UserService {
             let user = User(uid: uid, dictionary: dictionary)
 
             print("+++\(username)+++")
+            
             completion(user)
         }
     }

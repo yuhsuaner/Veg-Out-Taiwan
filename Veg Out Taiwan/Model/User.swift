@@ -26,6 +26,5 @@ struct User {
             guard let url = URL(string: profileImageUrlString) else { return }
             self.profileImageUrl = url
         }
-        
     }
 }

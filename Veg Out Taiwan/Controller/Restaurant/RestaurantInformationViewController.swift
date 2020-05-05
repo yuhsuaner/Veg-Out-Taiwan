@@ -14,26 +14,25 @@ class RestaurantInformationViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     @IBOutlet weak var collectionView: UICollectionView!
-        
+    
     // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
         configureUI()
         
-        tableView.delegate = self
-        tableView.dataSource = self
         
-        collectionView.dataSource = self
     }
     
     // MARK: - Helper
     
     func configureUI() {
         
-//        view.setBackgroundView()
-        
         navigationController?.navigationBar.tintColor = .W1
+        
+        tableView.delegate = self
+        tableView.dataSource = self
+        collectionView.dataSource = self
     }
 }
 
@@ -114,10 +113,8 @@ extension RestaurantInformationViewController: UICollectionViewDataSource {
         
         return cell
     }
-       
+    
 }
-
-
 
 // MARK: - CategoryRowDelegate
 extension RestaurantInformationViewController: CategoryRowDelegate {

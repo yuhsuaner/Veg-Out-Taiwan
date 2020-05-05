@@ -6,21 +6,23 @@
 //  Copyright © 2020 Irene.C. All rights reserved.
 //
 
-import UIKit
 import FirebaseDatabase
 
-class RestaurantService {
+struct RestaurantService {
     
     static let shared = RestaurantService()
-    private init() {}
+
+    var ref = Database.database().reference()
     
-    var ref: DatabaseReference!
-    
-    func fetchRestaurant() {
+    func fetchRestaurant(completion: @escaping(Restaurants) -> Void) {
         
-        ref = Database.database().reference()
         ref.child("VOT_Restaurants").observeSingleEvent(of: .value) { (snapshot) in
-            print(snapshot)
+            
+            guard let dictionary = snapshot.value as? [String: AnyObject] else { return }
+            
+            let restaurants = Restaurants(dictionary: dictionary)
+            
+            completion(restaurants)
         }
     }
 }

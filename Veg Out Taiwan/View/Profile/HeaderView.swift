@@ -123,8 +123,6 @@ class HeaderView: UICollectionViewCell {
     func configure() {
         guard let user = user else { return }
         
-        print("===", user.userNmae, user.profileImageUrl, user.email)
-        
         profileImageView.sd_setImage(with: user.profileImageUrl)
         
         usernameLabel.text = user.userNmae

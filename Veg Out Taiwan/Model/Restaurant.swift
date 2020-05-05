@@ -11,16 +11,27 @@ import Firebase
 
 struct Restaurants {
     
-//    let Address: String
-//    let phone: String
-//    let RestaurantName: String
-//    let categories: String
-//    let locastion: GeoPoint
-//    let image_url: String
-//    let rating: Double
-//
-//    init(uid: String, dictionary: [String: AnyObject]) {
-//
-//    }
+    let address: String
+    let phone: String
+    let restaurantName: String
+    let categories: [String]
+    var coordinates: Coordinates?
+    let imageUrl: String
+    let rating: Double
+
+    init(dictionary: [String: AnyObject]) {
+        
+        self.address = dictionary["Address"] as? String ?? ""
+        self.phone = dictionary["phone"] as? String ?? ""
+        self.restaurantName = dictionary["RestaurantName"] as? String ?? ""
+        self.categories = dictionary["categories"] as? [String] ?? [""]
+        self.imageUrl = dictionary["image_url"] as? String ?? ""
+        self.rating = dictionary["rating"] as? Double ?? 0
+    }
+}
+
+struct Coordinates {
     
+    let latitude: Double
+    let longitude: Double
 }

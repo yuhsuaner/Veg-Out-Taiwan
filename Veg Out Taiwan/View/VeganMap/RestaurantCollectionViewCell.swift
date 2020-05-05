@@ -11,7 +11,7 @@ import UIKit
 class RestaurantCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var restaurantImage: UIImageView! {
-        didSet{
+        didSet {
             restaurantImage.layer.cornerRadius = 15
         }
     }
