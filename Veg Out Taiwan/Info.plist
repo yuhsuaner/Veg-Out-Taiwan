@@ -45,5 +45,7 @@
 	</array>
 	<key>UIUserInterfaceStyle</key>
 	<string>light</string>
+	<key>VOTBaseURL</key>
+	<string>https://veg-out-taiwan-1584254182301.firebaseio.com</string>
 </dict>
 </plist>

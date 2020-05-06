@@ -9,15 +9,15 @@
 import Foundation
 import Firebase
 
-struct Restaurants: Codable {
+struct Restaurant: Codable {
     
     let address: String
     let phone: String
     let restaurantName: String
-    var categories:  [String]?
+    var categories: [String]?
     var coordinates: Coordinates?
     var imageUrl: String?
-    let rating: Double
+    let rating: String
 }
 
 struct Coordinates: Codable {

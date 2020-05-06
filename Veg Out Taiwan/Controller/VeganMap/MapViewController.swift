@@ -17,7 +17,7 @@ class MapViewController: UIViewController {
      Reference: https://www.freecodecamp.org/news/how-to-create-an-autocompletion-uitextfield-using-coredata-in-swift-dbedad03ea3d/
      */
     
-    var restaurant: [Restaurants] = []
+    var restaurant: [Restaurant] = []
     
     private var searchButton: UIButton = {
         let button = UIButton(type: .system)
@@ -162,7 +162,7 @@ class MapViewController: UIViewController {
             }
 
             do {
-                let json = try JSONSerialization.jsonObject(with: data!, options: [])
+                let json = try JSONDecoder().decode([Restaurant].self, from: data!)
                 print(json)
             } catch {
                 print("JSON error: \(error.localizedDescription)")
