@@ -60,7 +60,7 @@ extension VOTRequest {
     
     func makeRequest() -> URLRequest {
 
-        let urlString = Bundle.STValueForString(key: VOTConstant.urlKey) + endPoint
+        let urlString = Bundle.VOTValueForString(key: VOTConstant.urlKey) + endPoint
 
         let url = URL(string: urlString)!
 

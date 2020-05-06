@@ -16,8 +16,10 @@ struct Restaurant: Codable {
     let restaurantName: String
     var categories: [String]?
     var coordinates: Coordinates?
-    var imageUrl: String?
+    var imageURL: String?
     let rating: String
+    
+    
 }
 
 struct Coordinates: Codable {

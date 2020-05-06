@@ -56,7 +56,6 @@
 		42B980C2244DF70000B4DE22 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B980C1244DF70000B4DE22 /* SignUpViewController.swift */; };
 		42B980F424516D4100B4DE22 /* Utilies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B980F324516D4100B4DE22 /* Utilies.swift */; };
 		42B980F624516E6900B4DE22 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B980F524516E6900B4DE22 /* AuthService.swift */; };
-		42B980FA2451831300B4DE22 /* RestaurantService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B980F92451831300B4DE22 /* RestaurantService.swift */; };
 		42B980FC2451DE8900B4DE22 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B980FB2451DE8900B4DE22 /* UserService.swift */; };
 		42B980FE2451DF0200B4DE22 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B980FD2451DF0200B4DE22 /* User.swift */; };
 		42B981062452B34800B4DE22 /* ToEatListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B981052452B34700B4DE22 /* ToEatListTableViewCell.swift */; };
@@ -117,7 +116,6 @@
 		42B980C1244DF70000B4DE22 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		42B980F324516D4100B4DE22 /* Utilies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilies.swift; sourceTree = "<group>"; };
 		42B980F524516E6900B4DE22 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
-		42B980F92451831300B4DE22 /* RestaurantService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantService.swift; sourceTree = "<group>"; };
 		42B980FB2451DE8900B4DE22 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		42B980FD2451DF0200B4DE22 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		42B981052452B34700B4DE22 /* ToEatListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToEatListTableViewCell.swift; sourceTree = "<group>"; };
@@ -261,6 +259,7 @@
 				42471F41243C944E002B1577 /* Constraint.swift */,
 				42B980F324516D4100B4DE22 /* Utilies.swift */,
 				426F4C942462A138003DE5C6 /* Bundle.swift */,
+				426F4C8F2462A022003DE5C6 /* VOTConstant.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -271,7 +270,6 @@
 				429B9539244D904100596956 /* MapStyle_Orange.json */,
 				42471FB624418B03002B1577 /* MapStyle.json */,
 				42461DF3241DC74F009EC9AB /* Assets.xcassets */,
-				426F4C8F2462A022003DE5C6 /* VOTConstant.swift */,
 			);
 			path = " Supporting Files";
 			sourceTree = "<group>";
@@ -279,10 +277,10 @@
 		42461E27241E4495009EC9AB /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				426F4C9E2462CD5A003DE5C6 /* User */,
 				426F4C962462A2D0003DE5C6 /* Restaurant */,
 				426F4C992462A4B2003DE5C6 /* Parser */,
 				426F4C912462A080003DE5C6 /* HTTP */,
-				42B980FD2451DF0200B4DE22 /* User.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -366,6 +364,16 @@
 			path = Parser;
 			sourceTree = "<group>";
 		};
+		426F4C9E2462CD5A003DE5C6 /* User */ = {
+			isa = PBXGroup;
+			children = (
+				42B980FD2451DF0200B4DE22 /* User.swift */,
+				42B980F524516E6900B4DE22 /* AuthService.swift */,
+				42B980FB2451DE8900B4DE22 /* UserService.swift */,
+			);
+			path = User;
+			sourceTree = "<group>";
+		};
 		42761E262424953400405CC9 /* VeganMap */ = {
 			isa = PBXGroup;
 			children = (
@@ -387,9 +395,6 @@
 		42B980E824505A5A00B4DE22 /* API */ = {
 			isa = PBXGroup;
 			children = (
-				42B980F524516E6900B4DE22 /* AuthService.swift */,
-				42B980FB2451DE8900B4DE22 /* UserService.swift */,
-				42B980F92451831300B4DE22 /* RestaurantService.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -621,7 +626,6 @@
 				42471F3E243C66BD002B1577 /* UIFont.swift in Sources */,
 				42471F35243B778B002B1577 /* LogInViewController.swift in Sources */,
 				42461E01241E2BCE009EC9AB /* MapViewController.swift in Sources */,
-				42B980FA2451831300B4DE22 /* RestaurantService.swift in Sources */,
 				42471F3A243C2606002B1577 /* Background.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

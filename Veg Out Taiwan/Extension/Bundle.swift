@@ -10,7 +10,14 @@ import Foundation
 
 extension Bundle {
     // swiftlint:disable force_cast
-    static func STValueForString(key: String) -> String {
+    static func VOTValueForMapJSON(resource: String, json: String) -> URL? {
+        
+//        Bundle.main.url(forResource: "MapStyle_Orange", withExtension: "json")
+        
+        return Bundle.main.url(forResource: resource, withExtension: json)
+    }
+    
+    static func VOTValueForString(key: String) -> String {
         
         return Bundle.main.infoDictionary![key] as! String
     }

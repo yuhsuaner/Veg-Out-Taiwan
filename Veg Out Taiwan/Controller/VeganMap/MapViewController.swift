@@ -23,6 +23,7 @@ class MapViewController: UIViewController {
             collectionView.reloadData()
         }
     }
+    
     let votProvider = VOTProvider()
     
     private var searchButton: UIButton = {
@@ -241,7 +242,6 @@ class MapViewController: UIViewController {
         
         NSLayoutConstraint(item: collectionView, attribute: NSLayoutConstraint.Attribute.centerY, relatedBy: NSLayoutConstraint.Relation.equal, toItem: view, attribute: NSLayoutConstraint.Attribute.centerY, multiplier: 1.5, constant: 0).isActive = true
     }
-    
 }
 
 // MARK: - CLLocationManagerDelegate
@@ -257,7 +257,7 @@ extension MapViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        return 10
+        return restaurant.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -266,9 +266,9 @@ extension MapViewController: UICollectionViewDataSource {
         
         cell.backgroundColor = UIColor.W1
         cell.layer.cornerRadius = 15
-        cell.ratingLabel.text = "4.5"
-        cell.restaurantNameLabel.text = "Plants"
-        cell.restaurantImage.image = #imageLiteral(resourceName: "Pic4")
+        cell.ratingLabel.text = restaurant[indexPath.row].rating
+        cell.restaurantNameLabel.text = restaurant[indexPath.row].restaurantName
+        cell.restaurantImage.loadImage(restaurant[indexPath.row].imageURL)
         
         return cell
     }
@@ -286,10 +286,10 @@ extension MapViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        //        return CGSize(width: (collectionView.frame.width)*3/4,
-        //                      height: collectionView.frame.width / 3)
-        return CGSize(width: collectionView.frame.size.width,
-                      height: collectionView.frame.size.height)
+        return CGSize(width: (collectionView.frame.width)*3/4,
+                      height: collectionView.frame.width / 3)
+//        return CGSize(width: collectionView.frame.size.width,
+//                      height: collectionView.frame.size.height)
     }
     
     //    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {

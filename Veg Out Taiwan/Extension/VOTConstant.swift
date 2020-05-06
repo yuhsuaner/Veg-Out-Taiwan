@@ -11,4 +11,5 @@ import Foundation
 struct VOTConstant {
 
     static let urlKey = "VOTBaseURL"
+    
 }
