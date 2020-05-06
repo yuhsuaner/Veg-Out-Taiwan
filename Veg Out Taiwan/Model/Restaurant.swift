@@ -9,28 +9,18 @@
 import Foundation
 import Firebase
 
-struct Restaurants {
+struct Restaurants: Codable {
     
     let address: String
     let phone: String
     let restaurantName: String
-    let categories: [String]
+    var categories:  [String]?
     var coordinates: Coordinates?
-    let imageUrl: String
+    var imageUrl: String?
     let rating: Double
-
-    init(dictionary: [String: AnyObject]) {
-        
-        self.address = dictionary["Address"] as? String ?? ""
-        self.phone = dictionary["phone"] as? String ?? ""
-        self.restaurantName = dictionary["RestaurantName"] as? String ?? ""
-        self.categories = dictionary["categories"] as? [String] ?? [""]
-        self.imageUrl = dictionary["image_url"] as? String ?? ""
-        self.rating = dictionary["rating"] as? Double ?? 0
-    }
 }
 
-struct Coordinates {
+struct Coordinates: Codable {
     
     let latitude: Double
     let longitude: Double

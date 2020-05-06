@@ -17,15 +17,7 @@ class MapViewController: UIViewController {
      Reference: https://www.freecodecamp.org/news/how-to-create-an-autocompletion-uitextfield-using-coredata-in-swift-dbedad03ea3d/
      */
     
-    var restaurant: [Restaurants] = [] {
-        didSet {
-            
-            if restaurant.isEmpty {
-            } else {
-                collectionView.reloadData()
-            }
-        }
-    }
+    var restaurant: [Restaurants] = []
     
     private var searchButton: UIButton = {
         let button = UIButton(type: .system)
@@ -142,13 +134,42 @@ class MapViewController: UIViewController {
         
         configureUI()
         
-        //拿全部餐廳資料
-//        RestaurantService.shared.fetchRestaurant { restaurant in
-//            
-//            self.restaurant = restaurant
-//        }
-        
         searchTextField.delegate = self
+        
+        fetchAllRestaurants()
+    }
+    
+    func fetchAllRestaurants() {
+        
+        let session = URLSession.shared
+        let url = URL(string: "https://veg-out-taiwan-1584254182301.firebaseio.com/VOT_Restaurants.json")!
+
+        let task = session.dataTask(with: url) { data, response, error in
+
+            if error != nil || data == nil {
+                print("Client error!")
+                return
+            }
+
+            guard let response = response as? HTTPURLResponse, (200...299).contains(response.statusCode) else {
+                print("Server error!")
+                return
+            }
+
+            guard let mime = response.mimeType, mime == "application/json" else {
+                print("Wrong MIME type!")
+                return
+            }
+
+            do {
+                let json = try JSONSerialization.jsonObject(with: data!, options: [])
+                print(json)
+            } catch {
+                print("JSON error: \(error.localizedDescription)")
+            }
+        }
+
+        task.resume()
     }
     
     // MARK: - selector
