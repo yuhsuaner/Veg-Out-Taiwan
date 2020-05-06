@@ -17,7 +17,13 @@ class MapViewController: UIViewController {
      Reference: https://www.freecodecamp.org/news/how-to-create-an-autocompletion-uitextfield-using-coredata-in-swift-dbedad03ea3d/
      */
     
-    var restaurant: [Restaurant] = []
+    var restaurant: [Restaurant] = [] {
+        didSet {
+            
+            collectionView.reloadData()
+        }
+    }
+    let votProvider = VOTProvider()
     
     private var searchButton: UIButton = {
         let button = UIButton(type: .system)
@@ -136,7 +142,26 @@ class MapViewController: UIViewController {
         
         searchTextField.delegate = self
         
-        fetchAllRestaurants()
+//        fetchAllRestaurants()
+        fetchData()
+    }
+    
+    func fetchData() {
+        
+        votProvider.fetchRestaurant(completion: { [weak self] result in
+
+            switch result {
+
+            case .success(let restaurants):
+
+                self?.restaurant = restaurants
+                print(result)
+
+            case .failure:
+
+                VOTProgressHUD.showFailure(text: "讀取資料失敗！")
+            }
+        })
     }
     
     func fetchAllRestaurants() {

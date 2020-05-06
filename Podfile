@@ -25,6 +25,7 @@ target 'Veg Out Taiwan' do
   pod 'IQKeyboardManagerSwift'
   pod 'SDWebImage'
   pod 'Cosmos'
+  pod 'JGProgressHUD'
   
 
 end
