@@ -12,19 +12,22 @@ class RestaurantInformationViewController: UIViewController {
     
     // MARK: - Properties
     
-    var restaurant: [Restaurant] = [] {
-        didSet {
-            
-            tableView.reloadData()
-            collectionView.reloadData()
-        }
-    }
-        
+    let  restaurant: Restaurant
+    
     @IBOutlet weak var tableView: UITableView!
     
     @IBOutlet weak var collectionView: UICollectionView!
     
     // MARK: - LifeCycle
+    
+    init?(coder: NSCoder, restaurant: Restaurant) {
+       self.restaurant = restaurant
+       super.init(coder: coder)
+    }
+    required init?(coder: NSCoder) {
+       fatalError()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -117,6 +120,8 @@ extension RestaurantInformationViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RestaurantHeaderImageViewCell", for: indexPath) as? RestaurantHeaderImageViewCell else { return UICollectionViewCell() }
+        
+//        cell.topImageView.loadImage(restaurant.imageURL[0])
         
         return cell
     }

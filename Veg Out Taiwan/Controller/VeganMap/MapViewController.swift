@@ -13,10 +13,6 @@ import FirebaseDatabase
 class MapViewController: UIViewController {
     
     // MARK: - Properties
-    /*
-     Reference: https://www.freecodecamp.org/news/how-to-create-an-autocompletion-uitextfield-using-coredata-in-swift-dbedad03ea3d/
-     */
-    
     var restaurant: [Restaurant] = [] {
         didSet {
             
@@ -143,23 +139,23 @@ class MapViewController: UIViewController {
         
         searchTextField.delegate = self
         
-//        fetchAllRestaurants()
+        //        fetchAllRestaurants()
         fetchData()
     }
     
     func fetchData() {
         
         votProvider.fetchRestaurant(completion: { [weak self] result in
-
+            
             switch result {
-
+                
             case .success(let restaurants):
-
+                
                 self?.restaurant = restaurants
                 print(result)
-
+                
             case .failure:
-
+                
                 VOTProgressHUD.showFailure(text: "讀取資料失敗！")
             }
         })
@@ -169,24 +165,24 @@ class MapViewController: UIViewController {
         
         let session = URLSession.shared
         let url = URL(string: "https://veg-out-taiwan-1584254182301.firebaseio.com/VOT_Restaurants.json")!
-
+        
         let task = session.dataTask(with: url) { data, response, error in
-
+            
             if error != nil || data == nil {
                 print("Client error!")
                 return
             }
-
+            
             guard let response = response as? HTTPURLResponse, (200...299).contains(response.statusCode) else {
                 print("Server error!")
                 return
             }
-
+            
             guard let mime = response.mimeType, mime == "application/json" else {
                 print("Wrong MIME type!")
                 return
             }
-
+            
             do {
                 let json = try JSONDecoder().decode([Restaurant].self, from: data!)
                 print(json)
@@ -194,7 +190,7 @@ class MapViewController: UIViewController {
                 print("JSON error: \(error.localizedDescription)")
             }
         }
-
+        
         task.resume()
     }
     
@@ -275,12 +271,14 @@ extension MapViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        guard let viewController = UIStoryboard(name: "RestaurantInformation", bundle: nil).instantiateViewController(identifier: "RestaurantInformation") as? RestaurantInformationViewController else { return }
+        let data = restaurant[indexPath.row]
         
-//        let restaurant = self.restaurant[indexPath.row]
-//        viewController.restaurant = restaurant
-        
-        show(viewController, sender: restaurant[indexPath.row])
+        let viewController = UIStoryboard(name: "RestaurantInformation", bundle: nil).instantiateViewController(
+              identifier: "RestaurantInformation",
+              creator: { coder in
+              RestaurantInformationViewController(coder: coder, restaurant: data)
+          })
+        show(viewController, sender: self)
     }
 }
 
@@ -291,8 +289,8 @@ extension MapViewController: UICollectionViewDelegateFlowLayout {
         
         return CGSize(width: (collectionView.frame.width)*3/4,
                       height: collectionView.frame.width / 3)
-//        return CGSize(width: collectionView.frame.size.width,
-//                      height: collectionView.frame.size.height)
+        //        return CGSize(width: collectionView.frame.size.width,
+        //                      height: collectionView.frame.size.height)
     }
     
     //    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
