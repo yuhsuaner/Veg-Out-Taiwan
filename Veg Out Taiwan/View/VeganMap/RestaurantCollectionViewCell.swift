@@ -67,7 +67,6 @@ class RestaurantCollectionViewCell: UICollectionViewCell {
 //        })
 //    }
     
-    
 //    func configure() {
 //        guard let restaurant = restaurant else { return }
 //

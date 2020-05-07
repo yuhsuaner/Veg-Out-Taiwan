@@ -268,7 +268,7 @@ extension MapViewController: UICollectionViewDataSource {
         cell.layer.cornerRadius = 15
         cell.ratingLabel.text = restaurant[indexPath.row].rating
         cell.restaurantNameLabel.text = restaurant[indexPath.row].restaurantName
-        cell.restaurantImage.loadImage(restaurant[indexPath.row].imageURL)
+        cell.restaurantImage.loadImage(restaurant[indexPath.row].imageURL[0])
         
         return cell
     }
@@ -277,7 +277,10 @@ extension MapViewController: UICollectionViewDataSource {
         
         guard let viewController = UIStoryboard(name: "RestaurantInformation", bundle: nil).instantiateViewController(identifier: "RestaurantInformation") as? RestaurantInformationViewController else { return }
         
-        show(viewController, sender: nil)
+//        let restaurant = self.restaurant[indexPath.row]
+//        viewController.restaurant = restaurant
+        
+        show(viewController, sender: restaurant[indexPath.row])
     }
 }
 
@@ -292,11 +295,6 @@ extension MapViewController: UICollectionViewDelegateFlowLayout {
 //                      height: collectionView.frame.size.height)
     }
     
-    //    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-    //
-    //        return 0
-    //    }
-    
     //    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
     //
     //        return UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
@@ -304,9 +302,6 @@ extension MapViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         
-        //        collectionView.contentInset = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
-        //
-        //        return collectionView.contentInset
         return UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
     }
 }

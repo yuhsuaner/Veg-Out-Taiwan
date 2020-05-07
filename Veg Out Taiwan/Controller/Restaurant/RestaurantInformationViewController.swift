@@ -11,6 +11,15 @@ import UIKit
 class RestaurantInformationViewController: UIViewController {
     
     // MARK: - Properties
+    
+    var restaurant: [Restaurant] = [] {
+        didSet {
+            
+            tableView.reloadData()
+            collectionView.reloadData()
+        }
+    }
+        
     @IBOutlet weak var tableView: UITableView!
     
     @IBOutlet weak var collectionView: UICollectionView!
@@ -50,7 +59,6 @@ extension RestaurantInformationViewController: UITableViewDataSource {
         case 0:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "BaseInfoTableViewCell", for: indexPath) as? BaseInfoTableViewCell else { return UITableViewCell() }
             
-            //            cell.delegate = self
             cell.commentButtonAction = { [unowned self] in
                 
                 guard let viewController = UIStoryboard(name: "Comment", bundle: nil).instantiateViewController(identifier: "Comment") as? CommentViewController else { return }
