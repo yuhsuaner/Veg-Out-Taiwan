@@ -290,8 +290,8 @@
 			children = (
 				42471F2624399898002B1577 /* RestaurantInformationViewController.swift */,
 				4244483D24432E1100000E96 /* UserCommentWallViewController.swift */,
-				42444845244460EC00000E96 /* UserFoodDiaryViewController.swift */,
 				426F4C5C245AD402003DE5C6 /* CommentViewController.swift */,
+				42444845244460EC00000E96 /* UserFoodDiaryViewController.swift */,
 			);
 			path = Restaurant;
 			sourceTree = "<group>";

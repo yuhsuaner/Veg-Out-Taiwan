@@ -21,11 +21,11 @@ class RestaurantInformationViewController: UIViewController {
     // MARK: - LifeCycle
     
     init?(coder: NSCoder, restaurant: Restaurant) {
-       self.restaurant = restaurant
-       super.init(coder: coder)
+        self.restaurant = restaurant
+        super.init(coder: coder)
     }
     required init?(coder: NSCoder) {
-       fatalError()
+        fatalError()
     }
     
     override func viewDidLoad() {
@@ -62,11 +62,26 @@ extension RestaurantInformationViewController: UITableViewDataSource {
         case 0:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "BaseInfoTableViewCell", for: indexPath) as? BaseInfoTableViewCell else { return UITableViewCell() }
             
+            cell.restaurantNameLabel.text = restaurant.restaurantName
+            cell.addressLabel.text = restaurant.address
+            cell.ratingLabel.text = "★ \(restaurant.rating)"
+            
             cell.commentButtonAction = { [unowned self] in
                 
-                guard let viewController = UIStoryboard(name: "Comment", bundle: nil).instantiateViewController(identifier: "Comment") as? CommentViewController else { return }
+                guard let title = cell.restaurantNameLabel.text else { return }
                 
-                self.show(viewController, sender: nil)
+                let viewController = UIStoryboard(name: "Comment", bundle: nil).instantiateViewController(
+                    identifier: "Comment",
+                    creator: { coder in
+                        
+                        CommentViewController(coder: coder)
+                })
+                
+                viewController.loadViewIfNeeded()
+                
+                viewController.restaurantNameLabel.text = title
+                
+                self.show(viewController, sender: self)
             }
             
             return cell
@@ -102,9 +117,9 @@ extension RestaurantInformationViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
         if indexPath.row == 0 {
-            return UIScreen.main.bounds.height / 4
+            return UIScreen.main.bounds.height / 4 + 10
         } else {
-            return (UIScreen.main.bounds.height / 4) + 10
+            return (UIScreen.main.bounds.height / 4) + 5
         }
     }
 }
@@ -121,7 +136,7 @@ extension RestaurantInformationViewController: UICollectionViewDataSource {
         
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RestaurantHeaderImageViewCell", for: indexPath) as? RestaurantHeaderImageViewCell else { return UICollectionViewCell() }
         
-//        cell.topImageView.loadImage(restaurant.imageURL[0])
+        cell.topImageView.loadImage(restaurant.imageURL[0])
         
         return cell
     }

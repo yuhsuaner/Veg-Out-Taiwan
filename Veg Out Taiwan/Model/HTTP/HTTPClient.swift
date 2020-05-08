@@ -29,6 +29,8 @@ enum VOTHTTPClientError: Error {
 enum VOTHTTPMethod: String {
 
     case GET
+    
+    case PUT
 
     case POST
 }

@@ -25,7 +25,7 @@ class CommentViewController: UIViewController {
     private let imagePicker = UIImagePickerController()
     
     @IBOutlet weak var imageCollectionView: UICollectionView!
-
+    
     @IBOutlet weak var ratingView: CosmosView!
     
     @IBOutlet weak var commentTextView: UITextView!
@@ -49,13 +49,13 @@ class CommentViewController: UIViewController {
     }
     
     var datas: [String] = []
-    // MARK: - ViewLifecyele
     
+    // MARK: - ViewLifecyele
     override func viewDidLoad() {
         super.viewDidLoad()
         
         configureUI()
-    
+        
         viewStates = .data(["12", "24"])
     }
     
@@ -87,7 +87,7 @@ class CommentViewController: UIViewController {
     }
     
     // MARK: - selectors
-
+    
 }
 
 // MARK: - UICollectionViewDataSource

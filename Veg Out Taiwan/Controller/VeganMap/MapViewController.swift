@@ -110,6 +110,17 @@ class MapViewController: UIViewController {
         //  Google Map SDK: User's loaction
         mapView.isMyLocationEnabled = true
         mapView.settings.myLocationButton = true
+        mapView.padding = UIEdgeInsets(top: 0, left: 0, bottom: view.frame.height / 4 + 5, right: 10)
+        
+        let locationButton = mapView.subviews
+               .filter { $0.description.contains("GMSUISettingsPaddingView") }
+               .flatMap { $0.subviews }
+               .flatMap { $0.subviews }
+               .filter { $0.description.contains("GMSx_QTMButton") }
+               .first
+             let customImage = UIImage(imageLiteralResourceName: "VOT_nav")
+             let myLocationButton = locationButton as? UIButton
+             myLocationButton?.setImage(customImage, for: .normal)
         
         let marker = GMSMarker()
         marker.position = CLLocationCoordinate2DMake(25.034012, 121.563461)
@@ -278,6 +289,7 @@ extension MapViewController: UICollectionViewDataSource {
               creator: { coder in
               RestaurantInformationViewController(coder: coder, restaurant: data)
           })
+        
         show(viewController, sender: self)
     }
 }

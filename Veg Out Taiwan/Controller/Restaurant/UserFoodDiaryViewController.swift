@@ -11,6 +11,8 @@ import UIKit
 class UserFoodDiaryViewController: UIViewController, UIGestureRecognizerDelegate {
     
     // MARK: - Properties
+    let  restaurant: Restaurant
+    
     var currentPage = 0
     
     @IBOutlet weak var restaurantAddressLabel: UILabel!
@@ -40,6 +42,14 @@ class UserFoodDiaryViewController: UIViewController, UIGestureRecognizerDelegate
     @IBOutlet weak var imagePageControl: UIPageControl!
     
     // MARK: - LifeCycle
+    init?(coder: NSCoder, restaurant: Restaurant) {
+       self.restaurant = restaurant
+       super.init(coder: coder)
+    }
+    required init?(coder: NSCoder) {
+       fatalError()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
