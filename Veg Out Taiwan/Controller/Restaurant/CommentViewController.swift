@@ -13,7 +13,7 @@ enum ViewState {
     
     case empty
     
-    case data([String])
+    case data([UIImage])
 }
 
 class CommentViewController: UIViewController {
@@ -38,7 +38,7 @@ class CommentViewController: UIViewController {
             
             switch viewStates {
                 
-            case .empty: datas = []
+            case .empty: datas = [#imageLiteral(resourceName: "Add_Photo")]
                 
             case .data(let data): datas = data
                 
@@ -48,7 +48,7 @@ class CommentViewController: UIViewController {
         }
     }
     
-    var datas: [String] = []
+    var datas: [UIImage] = []
     
     // MARK: - ViewLifecyele
     override func viewDidLoad() {
@@ -56,7 +56,7 @@ class CommentViewController: UIViewController {
         
         configureUI()
         
-        viewStates = .data(["12", "24"])
+        viewStates = .empty
     }
     
     // MARK: - Helper
@@ -93,12 +93,13 @@ class CommentViewController: UIViewController {
 // MARK: - UICollectionViewDataSource
 extension CommentViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        
         return datas.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        guard let cell = imageCollectionView.dequeueReusableCell(withReuseIdentifier: "ImageCollectionViewCell", for: indexPath) as? ImageCollectionViewCell else { return UICollectionViewCell()}
+        guard let cell = imageCollectionView.dequeueReusableCell(withReuseIdentifier: "ImageCollectionViewCell", for: indexPath) as? ImageCollectionViewCell else { return UICollectionViewCell() }
         
         return cell
     }
@@ -111,7 +112,11 @@ extension CommentViewController: UICollectionViewDelegate {
         switch viewStates {
         case .empty:
             //Open Image Picker
+            imagePicker.delegate = self
+            imagePicker.allowsEditing = true
+            imagePicker.sourceType = .photoLibrary
             present(imagePicker, animated: true, completion: nil)
+            
         default: break
         }
     }
@@ -131,4 +136,12 @@ extension CommentViewController: UICollectionViewDelegateFlowLayout {
         return 0
     }
     
+}
+
+extension CommentViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        
+        
+    }
 }

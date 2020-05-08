@@ -9,49 +9,51 @@
 import Foundation
 
 typealias RestaurantHanlder = (Result<[Restaurant]>) -> Void
+typealias CommentHanlder = (Result<[Comment]>) -> Void
 
 class VOTProvider {
-
+    
     let decoder = JSONDecoder()
-
-    // MARK: - Public method
+    let encoder = JSONEncoder()
+    
     func fetchRestaurant(completion: @escaping RestaurantHanlder) {
-
+        
         HTTPClient.shared.request(
             VOTDataRequest.restaurant,
             completion: { [weak self] result in
-
+                
                 guard let strongSelf = self else { return }
-
+                
                 switch result {
-
+                    
                 case .success(let data):
-
+                    
                     do {
                         let restaurantData = try strongSelf.decoder.decode(
                             [Restaurant].self,
                             from: data
                         )
                         
-                        print("****\(data)****")
-                        
                         DispatchQueue.main.async {
-
-                           completion(Result.success(restaurantData))
+                            
+                            completion(Result.success(restaurantData))
                         }
-
+                        
                     } catch {
-
+                        
                         completion(Result.failure(error))
-                        print("____\(error)___")
+                        
                     }
-
+                    
                 case .failure(let error):
-
+                    
                     completion(Result.failure(error))
-                    print("===\(error)=====")
-
                 }
         })
     }
+    
+    func postComment(completion: @escaping CommentHanlder) {
+        
+    }
+    
 }

@@ -163,7 +163,6 @@ class MapViewController: UIViewController {
             case .success(let restaurants):
                 
                 self?.restaurant = restaurants
-                print(result)
                 
             case .failure:
                 
@@ -172,38 +171,38 @@ class MapViewController: UIViewController {
         })
     }
     
-    func fetchAllRestaurants() {
-        
-        let session = URLSession.shared
-        let url = URL(string: "https://veg-out-taiwan-1584254182301.firebaseio.com/VOT_Restaurants.json")!
-        
-        let task = session.dataTask(with: url) { data, response, error in
-            
-            if error != nil || data == nil {
-                print("Client error!")
-                return
-            }
-            
-            guard let response = response as? HTTPURLResponse, (200...299).contains(response.statusCode) else {
-                print("Server error!")
-                return
-            }
-            
-            guard let mime = response.mimeType, mime == "application/json" else {
-                print("Wrong MIME type!")
-                return
-            }
-            
-            do {
-                let json = try JSONDecoder().decode([Restaurant].self, from: data!)
-                print(json)
-            } catch {
-                print("JSON error: \(error.localizedDescription)")
-            }
-        }
-        
-        task.resume()
-    }
+//    func fetchAllRestaurants() {
+//
+//        let session = URLSession.shared
+//        let url = URL(string: "https://veg-out-taiwan-1584254182301.firebaseio.com/VOT_Restaurants.json")!
+//
+//        let task = session.dataTask(with: url) { data, response, error in
+//
+//            if error != nil || data == nil {
+//                print("Client error!")
+//                return
+//            }
+//
+//            guard let response = response as? HTTPURLResponse, (200...299).contains(response.statusCode) else {
+//                print("Server error!")
+//                return
+//            }
+//
+//            guard let mime = response.mimeType, mime == "application/json" else {
+//                print("Wrong MIME type!")
+//                return
+//            }
+//
+//            do {
+//                let json = try JSONDecoder().decode([Restaurant].self, from: data!)
+//                print(json)
+//            } catch {
+//                print("JSON error: \(error.localizedDescription)")
+//            }
+//        }
+//
+//        task.resume()
+//    }
     
     // MARK: - selector
     @objc func handleSearchAction() {

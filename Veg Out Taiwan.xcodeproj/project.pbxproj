@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4237B0CC24651D33008A395E /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4237B0CB24651D33008A395E /* Comment.swift */; };
 		42411779241F424F0094B0FB /* ToEatListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42411778241F424F0094B0FB /* ToEatListController.swift */; };
 		4241177D241F85A50094B0FB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4241177C241F85A50094B0FB /* GoogleService-Info.plist */; };
 		4244483824430CE800000E96 /* BaseInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4244483724430CE800000E96 /* BaseInfoTableViewCell.swift */; };
@@ -65,6 +66,7 @@
 
 /* Begin PBXFileReference section */
 		1930BBD6D392A26188062ED7 /* Pods-Veg Out Taiwan.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Veg Out Taiwan.debug.xcconfig"; path = "Target Support Files/Pods-Veg Out Taiwan/Pods-Veg Out Taiwan.debug.xcconfig"; sourceTree = "<group>"; };
+		4237B0CB24651D33008A395E /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
 		42411778241F424F0094B0FB /* ToEatListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToEatListController.swift; sourceTree = "<group>"; };
 		4241177C241F85A50094B0FB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		4244483724430CE800000E96 /* BaseInfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseInfoTableViewCell.swift; sourceTree = "<group>"; };
@@ -352,6 +354,7 @@
 				426F4C5624581738003DE5C6 /* Restaurant.swift */,
 				426F4C972462A3A2003DE5C6 /* RestaurantRequest.swift */,
 				426F4C9C2462A509003DE5C6 /* VOTProvider.swift */,
+				4237B0CB24651D33008A395E /* Comment.swift */,
 			);
 			path = Restaurant;
 			sourceTree = "<group>";
@@ -617,6 +620,7 @@
 				42411779241F424F0094B0FB /* ToEatListController.swift in Sources */,
 				42461E08241E440E009EC9AB /* KingFisherWrapper.swift in Sources */,
 				424448422444260200000E96 /* RestaurantCollectionViewFlowLayout.swift in Sources */,
+				4237B0CC24651D33008A395E /* Comment.swift in Sources */,
 				42B980F424516D4100B4DE22 /* Utilies.swift in Sources */,
 				42B981062452B34800B4DE22 /* ToEatListTableViewCell.swift in Sources */,
 				4244483C244315D600000E96 /* CommentCollectionViewCell.swift in Sources */,

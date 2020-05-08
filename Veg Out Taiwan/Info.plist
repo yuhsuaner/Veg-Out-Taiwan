@@ -21,7 +21,9 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Show your location on a map!!!!</string>
+	<string>探索周邊美食資訊，允許開啟您的“地點位置”，謝謝。</string>
+	<key>NSCameraUsageDescription</key>
+	<string>請開啟相機權限，上傳照片。</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>jf-openhuninn-1.0.ttf</string>
