@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4237B0CC24651D33008A395E /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4237B0CB24651D33008A395E /* Comment.swift */; };
+		4237B0D624692F67008A395E /* YPImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4237B0D524692F67008A395E /* YPImagePicker.swift */; };
 		42411779241F424F0094B0FB /* ToEatListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42411778241F424F0094B0FB /* ToEatListController.swift */; };
 		4241177D241F85A50094B0FB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4241177C241F85A50094B0FB /* GoogleService-Info.plist */; };
 		4244483824430CE800000E96 /* BaseInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4244483724430CE800000E96 /* BaseInfoTableViewCell.swift */; };
@@ -49,7 +50,7 @@
 		426F4C902462A022003DE5C6 /* VOTConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426F4C8F2462A022003DE5C6 /* VOTConstant.swift */; };
 		426F4C932462A092003DE5C6 /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426F4C922462A092003DE5C6 /* HTTPClient.swift */; };
 		426F4C952462A138003DE5C6 /* Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426F4C942462A138003DE5C6 /* Bundle.swift */; };
-		426F4C982462A3A2003DE5C6 /* RestaurantRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426F4C972462A3A2003DE5C6 /* RestaurantRequest.swift */; };
+		426F4C982462A3A2003DE5C6 /* VOTDataRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426F4C972462A3A2003DE5C6 /* VOTDataRequest.swift */; };
 		426F4C9B2462A4CF003DE5C6 /* VOTParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426F4C9A2462A4CF003DE5C6 /* VOTParser.swift */; };
 		426F4C9D2462A509003DE5C6 /* VOTProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426F4C9C2462A509003DE5C6 /* VOTProvider.swift */; };
 		429B9538244D7E1E00596956 /* PhotoWallCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429B9537244D7E1E00596956 /* PhotoWallCollectionViewCell.swift */; };
@@ -67,6 +68,7 @@
 /* Begin PBXFileReference section */
 		1930BBD6D392A26188062ED7 /* Pods-Veg Out Taiwan.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Veg Out Taiwan.debug.xcconfig"; path = "Target Support Files/Pods-Veg Out Taiwan/Pods-Veg Out Taiwan.debug.xcconfig"; sourceTree = "<group>"; };
 		4237B0CB24651D33008A395E /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
+		4237B0D524692F67008A395E /* YPImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YPImagePicker.swift; sourceTree = "<group>"; };
 		42411778241F424F0094B0FB /* ToEatListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToEatListController.swift; sourceTree = "<group>"; };
 		4241177C241F85A50094B0FB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		4244483724430CE800000E96 /* BaseInfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseInfoTableViewCell.swift; sourceTree = "<group>"; };
@@ -110,7 +112,7 @@
 		426F4C8F2462A022003DE5C6 /* VOTConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VOTConstant.swift; sourceTree = "<group>"; };
 		426F4C922462A092003DE5C6 /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
 		426F4C942462A138003DE5C6 /* Bundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bundle.swift; sourceTree = "<group>"; };
-		426F4C972462A3A2003DE5C6 /* RestaurantRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantRequest.swift; sourceTree = "<group>"; };
+		426F4C972462A3A2003DE5C6 /* VOTDataRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VOTDataRequest.swift; sourceTree = "<group>"; };
 		426F4C9A2462A4CF003DE5C6 /* VOTParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VOTParser.swift; sourceTree = "<group>"; };
 		426F4C9C2462A509003DE5C6 /* VOTProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VOTProvider.swift; sourceTree = "<group>"; };
 		429B9537244D7E1E00596956 /* PhotoWallCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoWallCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -220,6 +222,7 @@
 			children = (
 				42461E06241E440E009EC9AB /* KingFisherWrapper.swift */,
 				42461E05241E440E009EC9AB /* JGProgressHUDWrapper.swift */,
+				4237B0D524692F67008A395E /* YPImagePicker.swift */,
 			);
 			path = "Third Party Wrapper";
 			sourceTree = "<group>";
@@ -352,7 +355,7 @@
 			isa = PBXGroup;
 			children = (
 				426F4C5624581738003DE5C6 /* Restaurant.swift */,
-				426F4C972462A3A2003DE5C6 /* RestaurantRequest.swift */,
+				426F4C972462A3A2003DE5C6 /* VOTDataRequest.swift */,
 				426F4C9C2462A509003DE5C6 /* VOTProvider.swift */,
 				4237B0CB24651D33008A395E /* Comment.swift */,
 			);
@@ -610,7 +613,7 @@
 				42444846244460EC00000E96 /* UserFoodDiaryViewController.swift in Sources */,
 				426F4C5724581738003DE5C6 /* Restaurant.swift in Sources */,
 				42B980FC2451DE8900B4DE22 /* UserService.swift in Sources */,
-				426F4C982462A3A2003DE5C6 /* RestaurantRequest.swift in Sources */,
+				426F4C982462A3A2003DE5C6 /* VOTDataRequest.swift in Sources */,
 				42471FB02440336C002B1577 /* HeaderView.swift in Sources */,
 				4244484424445CA700000E96 /* UserCommentWallCollectionViewCell.swift in Sources */,
 				426F4C9D2462A509003DE5C6 /* VOTProvider.swift in Sources */,
@@ -620,6 +623,7 @@
 				42411779241F424F0094B0FB /* ToEatListController.swift in Sources */,
 				42461E08241E440E009EC9AB /* KingFisherWrapper.swift in Sources */,
 				424448422444260200000E96 /* RestaurantCollectionViewFlowLayout.swift in Sources */,
+				4237B0D624692F67008A395E /* YPImagePicker.swift in Sources */,
 				4237B0CC24651D33008A395E /* Comment.swift in Sources */,
 				42B980F424516D4100B4DE22 /* Utilies.swift in Sources */,
 				42B981062452B34800B4DE22 /* ToEatListTableViewCell.swift in Sources */,

@@ -10,8 +10,9 @@ import Foundation
 
 struct Comment: Codable {
     
+    private(set) var uuid: String = UUID().uuidString
     let restaurantName: String
     let imageURL: [String]
-    let rating: String
+    let rating: String?
     let commentText: String
 }

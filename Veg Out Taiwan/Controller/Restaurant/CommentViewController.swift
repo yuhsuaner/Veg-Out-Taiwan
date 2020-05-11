@@ -20,6 +20,10 @@ class CommentViewController: UIViewController {
     
     // MARK: - Properties
     
+    var userComment = [Comment]()
+    
+    let votProvider = VOTProvider()
+    
     @IBOutlet weak var restaurantNameLabel: UILabel!
     
     private let imagePicker = UIImagePickerController()
@@ -30,7 +34,11 @@ class CommentViewController: UIViewController {
     
     @IBOutlet weak var commentTextView: UITextView!
     
-    @IBOutlet weak var enterButton: UIButton!
+    @IBOutlet weak var enterButton: UIButton! {
+        didSet {
+            enterButton.addTarget(self, action: #selector(enterButtonTapped), for: .touchUpInside)
+        }
+    }
     
     var viewStates: ViewState = .empty {
         
@@ -40,8 +48,15 @@ class CommentViewController: UIViewController {
                 
             case .empty: datas = [#imageLiteral(resourceName: "Add_Photo")]
                 
-            case .data(let data): datas = data
+            case .data(let data):
                 
+                switch oldValue {
+                    
+                case .empty: datas = data
+                    
+                case .data: datas.append(contentsOf: data)
+                    
+                }
             }
             
             imageCollectionView.reloadData()
@@ -87,8 +102,41 @@ class CommentViewController: UIViewController {
     }
     
     // MARK: - selectors
-    
+    @objc func enterButtonTapped() {
+        guard
+            let restaurantName = restaurantNameLabel.text,
+            let commentText = commentTextView.text
+            else { return }
+        
+        let newComment = Comment(restaurantName: restaurantName, imageURL: [""], rating: "", commentText: commentText)
+        
+        votProvider.createComment(newComment: newComment) { result in
+            guard result else {
+                return
+            }
+            self.userComment.append(newComment)
+            print(newComment)
+            
+//            DispatchQueue.main.async {
+//
+//                self.navigationController?.popViewController(animated: true)
+//            }
+        }
+    }
 }
+
+//    @objc func enterButtonTapped() {
+//
+//        VOTProvider.shared.createComment(commentText: "happy day is Monday", imageURL: ["hnfjenfl", "fendjlf"], reating: 4.3, restaurantName: "POPOPOO") { (err) in
+//
+//            if let err = err {
+//                print("Failed to create post object", err)
+//                return
+//            }
+//
+//            print("Finished post comment")
+//        }
+//    }
 
 // MARK: - UICollectionViewDataSource
 extension CommentViewController: UICollectionViewDataSource {
@@ -101,24 +149,23 @@ extension CommentViewController: UICollectionViewDataSource {
         
         guard let cell = imageCollectionView.dequeueReusableCell(withReuseIdentifier: "ImageCollectionViewCell", for: indexPath) as? ImageCollectionViewCell else { return UICollectionViewCell() }
         
+        cell.postImage.image = datas[indexPath.item]
+        
         return cell
     }
 }
 
 // MARK: - UICollectionViewDelegate
 extension CommentViewController: UICollectionViewDelegate {
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        switch viewStates {
-        case .empty:
-            //Open Image Picker
-            imagePicker.delegate = self
-            imagePicker.allowsEditing = true
-            imagePicker.sourceType = .photoLibrary
-            present(imagePicker, animated: true, completion: nil)
-            
-        default: break
-        }
+        //Open Image Picker
+        imagePicker.delegate = self
+        imagePicker.allowsEditing = true
+        
+        imagePicker.sourceType = .photoLibrary
+        present(imagePicker, animated: true, completion: nil)
     }
 }
 
@@ -135,13 +182,24 @@ extension CommentViewController: UICollectionViewDelegateFlowLayout {
         
         return 0
     }
-    
 }
 
 extension CommentViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
         
+        guard let image: UIImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else { return }
         
+        viewStates = .data([image])
+        
+        picker.dismiss(animated: true) { () -> Void in
+            
+            self.imageCollectionView.reloadData()
+        }
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        
+        imagePicker.dismiss(animated: true, completion: nil)
     }
 }

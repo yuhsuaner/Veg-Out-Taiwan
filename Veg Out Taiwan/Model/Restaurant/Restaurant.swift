@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import Firebase
 
 struct Restaurant: Codable {
     

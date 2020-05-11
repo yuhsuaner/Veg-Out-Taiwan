@@ -8,7 +8,6 @@
 
 import UIKit
 import GoogleMaps
-import FirebaseDatabase
 
 class MapViewController: UIViewController {
     

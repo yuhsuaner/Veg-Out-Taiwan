@@ -189,6 +189,9 @@ PODS:
   - collection-view-layouts/TagsLayout (0.2.2):
     - collection-view-layouts/Core
   - Cosmos (21.0.0)
+  - Crashlytics (3.14.0):
+    - Fabric (~> 1.10.2)
+  - Fabric (1.10.2)
   - Firebase/Analytics (6.14.0):
     - Firebase/Core
   - Firebase/Auth (6.14.0):
@@ -324,14 +327,21 @@ PODS:
     - nanopb/encode (= 0.3.9011)
   - nanopb/decode (0.3.9011)
   - nanopb/encode (0.3.9011)
+  - PryntTrimmerView (4.0.0)
   - SDWebImage (5.5.1):
     - SDWebImage/Core (= 5.5.1)
   - SDWebImage/Core (5.5.1)
+  - SteviaLayout (4.7.3)
   - SwiftLint (0.38.0)
+  - YPImagePicker (4.2.0):
+    - PryntTrimmerView (~> 4.0.0)
+    - SteviaLayout (~> 4.7.3)
 
 DEPENDENCIES:
   - collection-view-layouts
   - Cosmos
+  - Crashlytics
+  - Fabric
   - Firebase/Analytics
   - Firebase/Auth
   - Firebase/Core
@@ -345,6 +355,7 @@ DEPENDENCIES:
   - Kingfisher
   - SDWebImage
   - SwiftLint
+  - YPImagePicker
 
 SPEC REPOS:
   trunk:
@@ -352,6 +363,8 @@ SPEC REPOS:
     - BoringSSL-GRPC
     - collection-view-layouts
     - Cosmos
+    - Crashlytics
+    - Fabric
     - Firebase
     - FirebaseAnalytics
     - FirebaseAuth
@@ -377,14 +390,19 @@ SPEC REPOS:
     - Kingfisher
     - leveldb-library
     - nanopb
+    - PryntTrimmerView
     - SDWebImage
+    - SteviaLayout
     - SwiftLint
+    - YPImagePicker
 
 SPEC CHECKSUMS:
   abseil: 18063d773f5366ff8736a050fe035a28f635fd27
   BoringSSL-GRPC: db8764df3204ccea016e1c8dd15d9a9ad63ff318
   collection-view-layouts: 474ec4cce601a26247737227a97fa6a4eb30213f
   Cosmos: 3dfb6e4ba48bd48b8c9aa2a77048ae11ed114f96
+  Crashlytics: 540b7e5f5da5a042647227a5e3ac51d85eed06df
+  Fabric: 706c8b8098fff96c33c0db69cbf81f9c551d0d74
   Firebase: 0219bb4782eb1406f1b9b0628a2e625484ce910d
   FirebaseAnalytics: f68b9f3f1241385129ae0a83b63627fc420c05e5
   FirebaseAuth: 831577b184ecaba38bc886768c1c22a450cc44e3
@@ -410,9 +428,12 @@ SPEC CHECKSUMS:
   Kingfisher: dc6e0f53bb5b12c3e75bedb0e01bbd7a640eea69
   leveldb-library: 55d93ee664b4007aac644a782d11da33fba316f7
   nanopb: 18003b5e52dab79db540fe93fe9579f399bd1ccd
+  PryntTrimmerView: 67e67573ffd4c073f1308effa66aefd0cfa667a0
   SDWebImage: 1245d058b7b8f59adef7a6da6bbafd4f1ab67041
+  SteviaLayout: c2ecdcff57d44e38fd2f65e54ad52aeae28ca0c4
   SwiftLint: 4105f061f9812b214568b736dab580ab2c73a582
+  YPImagePicker: accf310f9526641a84372c0ecf943547d9b1e52c
 
-PODFILE CHECKSUM: 8df9c11685688eb1fc4746bd453ee0475ca3b8f3
+PODFILE CHECKSUM: d56db1963df83c16605da84474e5531b01f1ee4f
 
 COCOAPODS: 1.8.4
