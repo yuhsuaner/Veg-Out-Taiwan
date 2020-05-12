@@ -8,6 +8,8 @@
 
 import UIKit
 import Cosmos
+import YPImagePicker
+import AVKit
 
 enum ViewState {
     
@@ -23,6 +25,8 @@ class CommentViewController: UIViewController {
     var userComment = [Comment]()
     
     let votProvider = VOTProvider()
+    
+    var currentStar = 3.7
     
     @IBOutlet weak var restaurantNameLabel: UILabel!
     
@@ -46,15 +50,15 @@ class CommentViewController: UIViewController {
             
             switch viewStates {
                 
-            case .empty: datas = [#imageLiteral(resourceName: "Add_Photo")]
+            case .empty: selectedImageDatas = [#imageLiteral(resourceName: "Add_Photo")]
                 
             case .data(let data):
                 
                 switch oldValue {
                     
-                case .empty: datas = data
+                case .empty: selectedImageDatas = data
                     
-                case .data: datas.append(contentsOf: data)
+                case .data: selectedImageDatas.append(contentsOf: data)
                     
                 }
             }
@@ -63,13 +67,15 @@ class CommentViewController: UIViewController {
         }
     }
     
-    var datas: [UIImage] = []
+    var selectedImageDatas: [UIImage] = []
     
     // MARK: - ViewLifecyele
     override func viewDidLoad() {
         super.viewDidLoad()
         
         configureUI()
+        
+        configureRatingView()
         
         viewStates = .empty
     }
@@ -80,10 +86,17 @@ class CommentViewController: UIViewController {
         navigationController?.navigationBar.tintColor = .black
         navigationItem.title = "我要評論"
         
+        imageCollectionView.backgroundColor = .clear
+        
         commentTextView.layer.cornerRadius = 5
         
         imageCollectionView.dataSource = self
         imageCollectionView.delegate = self
+        
+        commentTextView.text = "這裏輸入留言..."
+        commentTextView.textColor = UIColor.lightGray
+        commentTextView.returnKeyType = .done
+        commentTextView.delegate = self
     }
     
     func configureRatingView() {
@@ -92,64 +105,49 @@ class CommentViewController: UIViewController {
         // This can be used to update UI as the rating is being changed by moving a finger.
         ratingView.didTouchCosmos = { rating in
             
-        }
-        
-        // Called when user finishes changing the rating by lifting the finger from the view.
-        // This may be a good place to save the rating in the database or send to the server.
-        ratingView.didFinishTouchingCosmos = { rating in
+            self.currentStar = Double(rating)
             
+            print(rating)
         }
     }
     
     // MARK: - selectors
+    
     @objc func enterButtonTapped() {
         guard
             let restaurantName = restaurantNameLabel.text,
             let commentText = commentTextView.text
             else { return }
         
-        let newComment = Comment(restaurantName: restaurantName, imageURL: [""], rating: "", commentText: commentText)
+        let newComment = Comment(restaurantName: restaurantName, imageURL: [""], rating: currentStar, commentText: commentText)
         
         votProvider.createComment(newComment: newComment) { result in
             guard result else {
                 return
             }
             self.userComment.append(newComment)
-            print(newComment)
             
-//            DispatchQueue.main.async {
-//
-//                self.navigationController?.popViewController(animated: true)
-//            }
+            DispatchQueue.main.async {
+                
+                self.navigationController?.popViewController(animated: true)
+            }
         }
     }
 }
-
-//    @objc func enterButtonTapped() {
-//
-//        VOTProvider.shared.createComment(commentText: "happy day is Monday", imageURL: ["hnfjenfl", "fendjlf"], reating: 4.3, restaurantName: "POPOPOO") { (err) in
-//
-//            if let err = err {
-//                print("Failed to create post object", err)
-//                return
-//            }
-//
-//            print("Finished post comment")
-//        }
-//    }
 
 // MARK: - UICollectionViewDataSource
 extension CommentViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        return datas.count
+        return selectedImageDatas.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         guard let cell = imageCollectionView.dequeueReusableCell(withReuseIdentifier: "ImageCollectionViewCell", for: indexPath) as? ImageCollectionViewCell else { return UICollectionViewCell() }
         
-        cell.postImage.image = datas[indexPath.item]
+        cell.backgroundColor = .clear
+        cell.postImage.image = selectedImageDatas[indexPath.item]
         
         return cell
     }
@@ -160,12 +158,12 @@ extension CommentViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        //Open Image Picker
-        imagePicker.delegate = self
-        imagePicker.allowsEditing = true
+                //Open Image Picker
+                imagePicker.delegate = self
+                imagePicker.allowsEditing = true
         
-        imagePicker.sourceType = .photoLibrary
-        present(imagePicker, animated: true, completion: nil)
+                imagePicker.sourceType = .photoLibrary
+                present(imagePicker, animated: true, completion: nil)
     }
 }
 
@@ -186,20 +184,36 @@ extension CommentViewController: UICollectionViewDelegateFlowLayout {
 
 extension CommentViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
-        
-        guard let image: UIImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else { return }
-        
-        viewStates = .data([image])
-        
-        picker.dismiss(animated: true) { () -> Void in
-            
-            self.imageCollectionView.reloadData()
+        func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
+    
+            guard let image: UIImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else { return }
+    
+            viewStates = .data([image])
+    
+            picker.dismiss(animated: true) { () -> Void in
+    
+                self.imageCollectionView.reloadData()
+            }
+        }
+    
+        func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+    
+            imagePicker.dismiss(animated: true, completion: nil)
+        }
+}
+
+extension CommentViewController: UITextViewDelegate {
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if commentTextView.text == "這裏輸入留言..." {
+            commentTextView.text = ""
+            commentTextView.textColor = UIColor.DG
         }
     }
     
-    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        
-        imagePicker.dismiss(animated: true, completion: nil)
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if commentTextView.text == "" {
+            commentTextView.text = "這裏輸入留言..."
+            commentTextView.textColor = UIColor.lightGray
+        }
     }
 }

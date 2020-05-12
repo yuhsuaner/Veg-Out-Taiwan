@@ -54,38 +54,9 @@ class VOTProvider {
         })
     }
     
-    //    func createComment(commentID: Int, restaurantName: String, rating: String, imageURL: [String], commentText: String, completion: @escaping RestaurantHanlder) {
-    //
-    //        HTTPClient.shared.request(VOTDataRequest.comment(commentID: commentID, restaurantName: restaurantName, rating: rating, imageURL: imageURL, commentText: commentText)) { result in
-    //
-    //            switch result {
-    //
-    //            case .success(let data):
-    //                do {
-    //                    let jsonData = try JSONSerialization.jsonObject(with: data, options: .allowFragments)
-    //                    print(jsonData)
-    //
-    //                    completion(Result.success(jsonData as! [Restaurant]))
-    //                } catch {
-    //
-    //                    print(error)
-    //
-    //                    completion(Result.failure(error))
-    //                }
-    //
-    //            case .failure(let error):
-    //
-    //                print(error)
-    //
-    //                completion(Result.failure(error))
-    //            }
-    //        }
-    //    }
-    //
-    
     func createComment(newComment: Comment, completion: @escaping (Bool) -> Void) {
         
-        let url = URL(string: "https://veg-out-taiwan-1584254182301.firebaseio.com/comment_user" + "/\(newComment.uuid)/.json")!
+        let url = URL(string: "https://veg-out-taiwan-1584254182301.firebaseio.com/comment_user" + "/\(newComment.commentId)/.json")!
         var request = URLRequest(url: url)
         
         request.httpMethod = "PUT"
@@ -95,34 +66,4 @@ class VOTProvider {
         }
         task.resume()
     }
-    
-    //    func createComment(commentText: String, imageURL: [String], reating: Double, restaurantName: String, completion: @escaping (Error?) -> ()) {
-    //
-    //        guard let url = URL(string: "https://veg-out-taiwan-1584254182301.firebaseio.com/comment_user") else { return }
-    //
-    //        var urlRequest = URLRequest(url: url)
-    //        urlRequest.httpMethod = "PUT"
-    //
-    //        let params = ["commentText": commentText,
-    //                      "restaurantName": restaurantName]
-    //        do {
-    //            let data = try JSONSerialization.data(withJSONObject: params, options: .init())
-    //
-    //            urlRequest.httpBody = data
-    //            urlRequest.setValue("application/json", forHTTPHeaderField: "content-type")
-    //
-    //            URLSession.shared.dataTask(with: urlRequest) { (data, response, error) in
-    //
-    //                guard let data = data else { return }
-    //
-    //                print(String(data: data, encoding: .utf8))
-    //
-    //                completion(nil)
-    //
-    //            }.resume()
-    //
-    //        } catch {
-    //            completion(error)
-    //        }
-    //    }
 }
