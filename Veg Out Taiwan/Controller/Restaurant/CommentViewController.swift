@@ -115,17 +115,22 @@ class CommentViewController: UIViewController {
     
     // MARK: - selectors
     
+    let group = DispatchGroup()
+    
     @objc func enterButtonTapped() {
+        
         guard
             let restaurantName = restaurantNameLabel.text,
             let commentText = commentTextView.text
             else { return }
         
-        var newComment = Comment(restaurantName: restaurantName, imageURL: [""], rating: currentStar, commentText: commentText)
+        var newComment = Comment(restaurantName: restaurantName, imageURL: [], rating: currentStar, commentText: commentText)
         
         //seletedImages upload firestore
         
         for image in selectedImages {
+            
+            group.enter()
             
             ImageService.shared.saveImage(image: image) { (error, url) in
                 
@@ -136,23 +141,37 @@ class CommentViewController: UIViewController {
                 
                 print("=======")
                 print(url)
+                
+                guard let url = url else { return }
+                //[String] 放到 newComment 裡面的 imageURL
+                newComment.imageURL.append(url)
+                
+                self.group.leave()
             }
         }
-        //[String] 放到 newComment 裡面的 imageURL
         
+        
+        group.notify(queue: .main) {
+            
+            print("+++")
+            print(newComment.imageURL)
+            
+            //Upload comment 到 realtime database
+            self.votProvider.createComment(newComment: newComment) { result in
+                guard result else {
+                    return
+                }
+                self.userComment.append(newComment)
+
+                DispatchQueue.main.async {
+
+                    self.navigationController?.popViewController(animated: true)
+                }
+            }
+        }
+                
         //Upload comment 到 realtime database
         
-//        votProvider.createComment(newComment: newComment) { result in
-//            guard result else {
-//                return
-//            }
-//            self.userComment.append(newComment)
-//
-//            DispatchQueue.main.async {
-//
-//                self.navigationController?.popViewController(animated: true)
-//            }
-//        }
     }
 }
 

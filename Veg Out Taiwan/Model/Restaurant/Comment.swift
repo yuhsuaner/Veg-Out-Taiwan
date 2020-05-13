@@ -16,7 +16,7 @@ struct Comment: Codable {
     private(set) var commentId: String = UUID().uuidString
     
     let restaurantName: String
-    let imageURL: [String]
+    var imageURL: [String]
     let rating: Double
     let commentText: String
 }
