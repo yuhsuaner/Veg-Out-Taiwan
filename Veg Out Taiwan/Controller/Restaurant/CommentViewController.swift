@@ -52,15 +52,15 @@ class CommentViewController: UIViewController {
             
             switch viewStates {
                 
-            case .empty: selectedImageDatas = [#imageLiteral(resourceName: "Add_Photo")]
+            case .empty: selectedImages = [#imageLiteral(resourceName: "Add_Photo")]
                 
             case .data(let data):
                 
                 switch oldValue {
                     
-                case .empty: selectedImageDatas = data
+                case .empty: selectedImages = data
                     
-                case .data: selectedImageDatas.append(contentsOf: data)
+                case .data: selectedImages.append(contentsOf: data)
                     
                 }
             }
@@ -69,9 +69,7 @@ class CommentViewController: UIViewController {
         }
     }
     
-    var selectedImageDatas: [UIImage] = []
-    
-    var postImageData: Image?
+    var selectedImages: [UIImage] = []
     
     // MARK: - ViewLifecyele
     override func viewDidLoad() {
@@ -123,22 +121,38 @@ class CommentViewController: UIViewController {
             let commentText = commentTextView.text
             else { return }
         
-        let newComment = Comment(restaurantName: restaurantName, imageURL: [""], rating: currentStar, commentText: commentText)
+        var newComment = Comment(restaurantName: restaurantName, imageURL: [""], rating: currentStar, commentText: commentText)
         
-        votProvider.createComment(newComment: newComment) { result in
-            guard result else {
-                return
-            }
-            self.userComment.append(newComment)
+        //seletedImages upload firestore
+        
+        for image in selectedImages {
             
-            DispatchQueue.main.async {
+            ImageService.shared.saveImage(image: image) { (error, url) in
                 
-                self.navigationController?.popViewController(animated: true)
+                if let error = error {
+                    print(error.localizedDescription)
+                    return
+                }
+                
+                print("=======")
+                print(url)
             }
         }
+        //[String] 放到 newComment 裡面的 imageURL
         
-        //Upload image to Firestore
-        ImageService.shared.saveImage(image: <#T##Image#>, completion: <#T##(Error?, DatabaseReference) -> Void#>)
+        //Upload comment 到 realtime database
+        
+//        votProvider.createComment(newComment: newComment) { result in
+//            guard result else {
+//                return
+//            }
+//            self.userComment.append(newComment)
+//
+//            DispatchQueue.main.async {
+//
+//                self.navigationController?.popViewController(animated: true)
+//            }
+//        }
     }
 }
 
@@ -146,7 +160,7 @@ class CommentViewController: UIViewController {
 extension CommentViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        return selectedImageDatas.count
+        return selectedImages.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -154,7 +168,7 @@ extension CommentViewController: UICollectionViewDataSource {
         guard let cell = imageCollectionView.dequeueReusableCell(withReuseIdentifier: "ImageCollectionViewCell", for: indexPath) as? ImageCollectionViewCell else { return UICollectionViewCell() }
         
         cell.backgroundColor = .clear
-        cell.postImage.image = selectedImageDatas[indexPath.item]
+        cell.postImage.image = selectedImages[indexPath.item]
         
         return cell
     }

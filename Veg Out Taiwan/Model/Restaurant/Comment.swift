@@ -21,35 +21,32 @@ struct Comment: Codable {
     let commentText: String
 }
 
-struct Image {
-    
-    let postImage: UIImage
-}
-
 struct ImageService {
     
     static let shared = ImageService()
     
-    func saveImage(image: Image, completion: @escaping(Error?, DatabaseReference) -> Void) {
+    let storageRef = Storage.storage().reference().child("post_images")
+    
+    func saveImage(image: UIImage, completion: @escaping(Error?, String?) -> Void) {
         
-        guard let imageData = image.postImage.jpegData(compressionQuality: 1.0) else { return }
-        let fileNmae = NSUUID().uuidString
-        let storageRef = Storage.storage().reference().child("post_images").child(fileNmae)
+        guard let imageData = image.jpegData(compressionQuality: 1.0) else { return }
         
-        storageRef.putData(imageData, metadata: nil) { (meta, error) in
+        let imageReference = storageRef.child(UUID().uuidString + ".jpg" )
+        
+        imageReference.putData(imageData, metadata: nil) { (meta, error) in
             
-            storageRef.downloadURL { (url, error) in
+            imageReference.downloadURL { (url, error) in
+                
+                if let error = error {
+                    
+                    completion(error, nil)
+                    
+                    return
+                }
                 
                 guard let postImageUrl = url?.absoluteString else { return }
                     
-                    if let error = error {
-                        print(error.localizedDescription)
-                        return
-                    }
-                    
-                    let value = ["profileImageUrl": postImageUrl]
-                    
-                    Database.database().reference().child("postImage").updateChildValues(value, withCompletionBlock: completion)
+                completion(nil, postImageUrl)
             }
         }
     }

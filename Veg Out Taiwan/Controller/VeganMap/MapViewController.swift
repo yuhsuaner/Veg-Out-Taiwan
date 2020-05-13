@@ -273,8 +273,7 @@ extension MapViewController: UICollectionViewDataSource {
         cell.layer.cornerRadius = 15
         cell.ratingLabel.text = restaurant[indexPath.row].rating
         cell.restaurantNameLabel.text = restaurant[indexPath.row].restaurantName
-        cell.restaurantImage.loadImage(restaurant[indexPath.row].imageURL[0])
-        
+        cell.restaurantImage.loadImage("https://firebasestorage.googleapis.com/v0/b/veg-out-taiwan-1584254182301.appspot.com/o/post_images%2F027F6DBA-F04E-46CE-8CC5-904E9BDEAC7C.jpg?alt=media&token=329df240-6236-41f3-931d-3a7309de9a08")
         return cell
     }
     
