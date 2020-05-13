@@ -123,9 +123,9 @@ class HeaderView: UICollectionViewCell {
     func configure() {
         guard let user = user else { return }
         
-        profileImageView.sd_setImage(with: user.profileImageUrl)
+        profileImageView.loadImage(user.profileImageUrl, placeHolder: #imageLiteral(resourceName: "VOT tab bar icons-11"))
         
-        usernameLabel.text = user.userNmae
+        usernameLabel.text = user.userName
     }
 }
 

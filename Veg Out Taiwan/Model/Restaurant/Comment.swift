@@ -19,6 +19,7 @@ struct Comment: Codable {
     var imageURL: [String]
     let rating: Double
     let commentText: String
+    let user: User
 }
 
 struct ImageService {

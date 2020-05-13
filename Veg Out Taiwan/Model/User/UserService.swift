@@ -29,6 +29,11 @@ struct UserService {
 
             print("+++\(username)+++")
             
+            UserDefaults.standard.set(user.userName, forKey: "Username")
+            UserDefaults.standard.set(user.profileImageUrl, forKey: "UserImage")
+            UserDefaults.standard.set(user.email, forKey: "UserMail")
+            UserDefaults.standard.set(user.uid, forKey: "UID")
+            
             completion(user)
         }
     }

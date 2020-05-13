@@ -8,23 +8,26 @@
 
 import Foundation
 
-struct User {
+struct User: Codable {
     
     let email: String
-    let userNmae: String
+    let userName: String
     let uid: String
-    var profileImageUrl: URL?
+    var profileImageUrl: String?
     
     init(uid: String, dictionary: [String: AnyObject]) {
         
         self.uid = uid
         self.email = dictionary["email"] as? String ?? ""
-        self.userNmae = dictionary["userName"] as? String ?? ""
+        self.userName = dictionary["userName"] as? String ?? ""
+        self.profileImageUrl = dictionary["profileImageUrl"]  as? String
+    }
+    
+    init(uid: String, username: String, userImage: String, email: String) {
         
-        if let profileImageUrlString = dictionary["profileImageUrl"]  as? String {
-            
-            guard let url = URL(string: profileImageUrlString) else { return }
-            self.profileImageUrl = url
-        }
+        self.userName = username
+        self.profileImageUrl = userImage
+        self.uid = uid
+        self.email = email
     }
 }

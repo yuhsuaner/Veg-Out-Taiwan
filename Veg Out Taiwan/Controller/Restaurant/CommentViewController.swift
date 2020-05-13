@@ -23,6 +23,7 @@ enum ViewState {
 class CommentViewController: UIViewController {
     
     // MARK: - Properties
+    var user = [User]()
     
     var userComment = [Comment]()
     
@@ -124,10 +125,20 @@ class CommentViewController: UIViewController {
             let commentText = commentTextView.text
             else { return }
         
-        var newComment = Comment(restaurantName: restaurantName, imageURL: [], rating: currentStar, commentText: commentText)
+        guard
+            let userName = UserDefaults.standard.value(forKey: "Username") as? String,
+            let userImage = UserDefaults.standard.value(forKey: "UserImage") as? String,
+            let userMail = UserDefaults.standard.value(forKey: "UserMail") as? String,
+            let uid = UserDefaults.standard.value(forKey: "UID") as? String
+            else { return }
+        
+        var newComment = Comment(restaurantName: restaurantName,
+                                 imageURL: [],
+                                 rating: currentStar,
+                                 commentText: commentText,
+                                 user: User(uid: uid, username: userName, userImage: userImage, email: userMail))
         
         //seletedImages upload firestore
-        
         for image in selectedImages {
             
             group.enter()
@@ -150,7 +161,6 @@ class CommentViewController: UIViewController {
             }
         }
         
-        
         group.notify(queue: .main) {
             
             print("+++")
@@ -162,16 +172,13 @@ class CommentViewController: UIViewController {
                     return
                 }
                 self.userComment.append(newComment)
-
+                
                 DispatchQueue.main.async {
-
+                    
                     self.navigationController?.popViewController(animated: true)
                 }
             }
         }
-                
-        //Upload comment 到 realtime database
-        
     }
 }
 

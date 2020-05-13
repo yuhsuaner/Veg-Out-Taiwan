@@ -8,10 +8,13 @@
 
 import UIKit
 import GoogleMaps
+import FirebaseAuth
 
 class MapViewController: UIViewController {
     
     // MARK: - Properties
+    var user: User?
+    
     var restaurant: [Restaurant] = [] {
         didSet {
             
@@ -151,6 +154,7 @@ class MapViewController: UIViewController {
         
         //        fetchAllRestaurants()
         fetchData()
+        fetchUser()
     }
     
     func fetchData() {
@@ -168,6 +172,16 @@ class MapViewController: UIViewController {
                 VOTProgressHUD.showFailure(text: "讀取資料失敗！")
             }
         })
+    }
+    
+    func fetchUser() {
+        
+        guard let uid = Auth.auth().currentUser?.uid  else { return }
+        
+        UserService.shared.fetchUser(uid: uid) { user in
+            
+            self.user = user
+        }
     }
     
 //    func fetchAllRestaurants() {
@@ -273,7 +287,7 @@ extension MapViewController: UICollectionViewDataSource {
         cell.layer.cornerRadius = 15
         cell.ratingLabel.text = restaurant[indexPath.row].rating
         cell.restaurantNameLabel.text = restaurant[indexPath.row].restaurantName
-        cell.restaurantImage.loadImage("https://firebasestorage.googleapis.com/v0/b/veg-out-taiwan-1584254182301.appspot.com/o/post_images%2F027F6DBA-F04E-46CE-8CC5-904E9BDEAC7C.jpg?alt=media&token=329df240-6236-41f3-931d-3a7309de9a08")
+        cell.restaurantImage.loadImage(restaurant[indexPath.row].imageURL[0], placeHolder: #imageLiteral(resourceName: "Pic7"))
         return cell
     }
     
