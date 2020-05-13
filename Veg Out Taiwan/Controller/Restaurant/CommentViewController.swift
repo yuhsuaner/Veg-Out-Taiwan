@@ -10,6 +10,8 @@ import UIKit
 import Cosmos
 import YPImagePicker
 import AVKit
+import FirebaseStorage
+import FirebaseFirestore
 
 enum ViewState {
     
@@ -68,6 +70,8 @@ class CommentViewController: UIViewController {
     }
     
     var selectedImageDatas: [UIImage] = []
+    
+    var postImageData: Image?
     
     // MARK: - ViewLifecyele
     override func viewDidLoad() {
@@ -132,6 +136,9 @@ class CommentViewController: UIViewController {
                 self.navigationController?.popViewController(animated: true)
             }
         }
+        
+        //Upload image to Firestore
+        ImageService.shared.saveImage(image: <#T##Image#>, completion: <#T##(Error?, DatabaseReference) -> Void#>)
     }
 }
 
@@ -158,12 +165,12 @@ extension CommentViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-                //Open Image Picker
-                imagePicker.delegate = self
-                imagePicker.allowsEditing = true
+        //Open Image Picker
+        imagePicker.delegate = self
+        imagePicker.allowsEditing = true
         
-                imagePicker.sourceType = .photoLibrary
-                present(imagePicker, animated: true, completion: nil)
+        imagePicker.sourceType = .photoLibrary
+        present(imagePicker, animated: true, completion: nil)
     }
 }
 
@@ -184,22 +191,22 @@ extension CommentViewController: UICollectionViewDelegateFlowLayout {
 
 extension CommentViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
-        func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
-    
-            guard let image: UIImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else { return }
-    
-            viewStates = .data([image])
-    
-            picker.dismiss(animated: true) { () -> Void in
-    
-                self.imageCollectionView.reloadData()
-            }
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
+        
+        guard let image: UIImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else { return }
+        
+        viewStates = .data([image])
+        
+        picker.dismiss(animated: true) { () -> Void in
+            
+            self.imageCollectionView.reloadData()
         }
+    }
     
-        func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-    
-            imagePicker.dismiss(animated: true, completion: nil)
-        }
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        
+        imagePicker.dismiss(animated: true, completion: nil)
+    }
 }
 
 extension CommentViewController: UITextViewDelegate {

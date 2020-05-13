@@ -60,6 +60,7 @@ class VOTProvider {
         var request = URLRequest(url: url)
         
         request.httpMethod = "PUT"
+        
         request.httpBody = try? JSONEncoder().encode(newComment)
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             completion(error == nil)
