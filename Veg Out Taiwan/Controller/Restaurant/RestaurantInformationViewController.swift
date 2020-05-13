@@ -24,6 +24,7 @@ class RestaurantInformationViewController: UIViewController {
         self.restaurant = restaurant
         super.init(coder: coder)
     }
+    
     required init?(coder: NSCoder) {
         fatalError()
     }
@@ -99,7 +100,6 @@ extension RestaurantInformationViewController: UITableViewDataSource {
         default:
             return UITableViewCell()
         }
-        
     }
     
     // MARK: - Selector
@@ -129,18 +129,17 @@ extension RestaurantInformationViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        return 2
+        return 1
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RestaurantHeaderImageViewCell", for: indexPath) as? RestaurantHeaderImageViewCell else { return UICollectionViewCell() }
         
-        cell.topImageView.loadImage(restaurant.imageURL[0])
+        cell.topImageView.loadImage(restaurant.imageURL[0], placeHolder: #imageLiteral(resourceName: "Pic0"))
         
         return cell
     }
-    
 }
 
 // MARK: - CategoryRowDelegate

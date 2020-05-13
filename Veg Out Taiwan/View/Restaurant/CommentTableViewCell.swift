@@ -22,6 +22,8 @@ class CommentTableViewCell: UITableViewCell {
         
         collectionView.dataSource = self
         collectionView.delegate = self
+        
+        collectionView.layer.cornerRadius = 15
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -33,19 +35,27 @@ class CommentTableViewCell: UITableViewCell {
 extension CommentTableViewCell: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return 3
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CommentCollectionViewCell", for: indexPath) as? CommentCollectionViewCell else { return UICollectionViewCell() }
+//        cell.commentLabel.text = ""
+//        cell.photoFromCommentImage.loadImage(<#T##urlString: String?##String?#>, placeHolder: #imageLiteral(resourceName: "Pic7"))
+//        cell.ratingFromCommentLabel.text = "★ 4.7"
+        
+        cell.layer.masksToBounds = true
+        cell.layer.borderWidth = 1
+        cell.layer.shadowOffset = CGSize(width: -1, height: 1)
+        cell.layer.borderColor = UIColor.G1?.cgColor
         
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 
-        print("didSelect")
+        print("DidSelect: CommentCollectionViewCell")
         
         if delegate != nil {
         delegate?.cellTapped()
@@ -57,16 +67,22 @@ extension CommentTableViewCell: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        return CGSize(width: collectionView.frame.width, height: collectionView.frame.width/3)
+        return CGSize(width: self.frame.width * 0.9,
+                      height: collectionView.frame.width/3)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         
-        return 0
+        return 10
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        
-        return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-    }
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+//
+//        return 10
+//    }
+    
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+//
+//        return UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
+//    }
 }

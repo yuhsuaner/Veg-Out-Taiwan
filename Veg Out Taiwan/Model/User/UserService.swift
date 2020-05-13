@@ -27,7 +27,7 @@ struct UserService {
             
             let user = User(uid: uid, dictionary: dictionary)
 
-            print("+++\(username)+++")
+            print("USER: +++\(username)+++")
             
             UserDefaults.standard.set(user.userName, forKey: "Username")
             UserDefaults.standard.set(user.profileImageUrl, forKey: "UserImage")

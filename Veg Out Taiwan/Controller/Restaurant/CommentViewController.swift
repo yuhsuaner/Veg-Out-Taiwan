@@ -120,6 +120,8 @@ class CommentViewController: UIViewController {
     
     @objc func enterButtonTapped() {
         
+        VOTProgressHUD.show()
+        
         guard
             let restaurantName = restaurantNameLabel.text,
             let commentText = commentTextView.text
@@ -147,6 +149,7 @@ class CommentViewController: UIViewController {
                 
                 if let error = error {
                     print(error.localizedDescription)
+                    VOTProgressHUD.showFailure(text: "上傳失敗")
                     return
                 }
                 
@@ -163,7 +166,7 @@ class CommentViewController: UIViewController {
         
         group.notify(queue: .main) {
             
-            print("+++")
+            print("===")
             print(newComment.imageURL)
             
             //Upload comment 到 realtime database
@@ -175,6 +178,7 @@ class CommentViewController: UIViewController {
                 
                 DispatchQueue.main.async {
                     
+                    VOTProgressHUD.showSuccess()
                     self.navigationController?.popViewController(animated: true)
                 }
             }

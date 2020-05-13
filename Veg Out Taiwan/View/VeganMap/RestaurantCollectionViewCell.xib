@@ -29,23 +29,23 @@
                         </constraints>
                     </imageView>
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="by3-ZY-mFz">
-                        <rect key="frame" x="134" y="8" width="123" height="90.5"/>
+                        <rect key="frame" x="134" y="8" width="117" height="90.5"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Restaurant Name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3wO-de-pAQ">
-                                <rect key="frame" x="0.0" y="0.0" width="123" height="21"/>
+                                <rect key="frame" x="0.0" y="0.0" width="117" height="21"/>
                                 <fontDescription key="fontDescription" name="jf-openhuninn-1.0" family="jf-openhuninn-1.0" pointSize="15"/>
                                 <color key="textColor" name="DarkGary"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="NP6-Le-WVD">
-                                <rect key="frame" x="0.0" y="35" width="52.5" height="21"/>
+                                <rect key="frame" x="0.0" y="35" width="51" height="21"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="ZEw-fJ-mQ2">
                                         <rect key="frame" x="0.0" y="0.0" width="22" height="21"/>
                                         <color key="tintColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4.5" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NlN-JE-m34">
-                                        <rect key="frame" x="30" y="0.0" width="22.5" height="21"/>
+                                        <rect key="frame" x="30" y="0.0" width="21" height="21"/>
                                         <fontDescription key="fontDescription" name="jf-openhuninn-1.0" family="jf-openhuninn-1.0" pointSize="15"/>
                                         <color key="textColor" name="DarkGary"/>
                                         <nil key="highlightedColor"/>
@@ -53,7 +53,7 @@
                                 </subviews>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="190公尺" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AaK-4K-3YK">
-                                <rect key="frame" x="0.0" y="70" width="50" height="20.5"/>
+                                <rect key="frame" x="0.0" y="70" width="48" height="20.5"/>
                                 <fontDescription key="fontDescription" name="jf-openhuninn-1.0" family="jf-openhuninn-1.0" pointSize="13"/>
                                 <color key="textColor" name="DarkGary"/>
                                 <nil key="highlightedColor"/>
