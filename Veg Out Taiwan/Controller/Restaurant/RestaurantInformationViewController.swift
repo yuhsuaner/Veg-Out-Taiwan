@@ -95,6 +95,8 @@ extension RestaurantInformationViewController: UITableViewDataSource {
             let tap = UITapGestureRecognizer(target: self, action: #selector(toNextPage))
             cell.tapForMoreLabel.addGestureRecognizer(tap)
             
+            cell.updateData(restaurantName: restaurant.restaurantName)
+            
             cell.delegate = self
             
             return cell
@@ -147,8 +149,14 @@ extension RestaurantInformationViewController: UICollectionViewDataSource {
 // MARK: - InfoCellDelegate
 extension RestaurantInformationViewController: InfoCellDelegate {
     func didTapAddToEatListButton(_ sender: UIButton) {
-        print("123")
         
+        self.openAlert(title: "!",
+         message: "正在開發中🚧",
+         alertStyle: .alert,
+         actionTitles: ["OK"],
+         actionStyles: [.default],
+         actions: [{ _ in print("okay click")}]
+        )
     }
     
     func didTapMakePhoneCallButton(_ sender: UIButton) {
@@ -159,7 +167,7 @@ extension RestaurantInformationViewController: InfoCellDelegate {
     }
     
     func didTapNavigationButton(_ sender: UIButton) {
-        print("789")
+        
     }
     
 }

@@ -14,8 +14,9 @@ enum VOTDataRequest: VOTRequest {
 
     case user
     
-    case comment(commentID:Int, restaurantName: String, rating: String, imageURL: [String], commentText: String)
-
+//    case comment
+    case comment(commentID: String)
+    
     var headers: [String: String] {
 
         switch self {
@@ -29,18 +30,18 @@ enum VOTDataRequest: VOTRequest {
 
         switch self {
 
-        case .restaurant, .user: return nil
+        case .restaurant, .user, .comment: return nil
             
-        case .comment(let commentID, let restaurantName, let reating, let imageURL, let commentText):
-        
-        let commentID = [
-            "restaurantName": restaurantName,
-            "reating": reating,
-            "imageURL": [imageURL],
-            "commentText": commentText
-        ] as [String: Any]
-        
-        return try? JSONSerialization.data(withJSONObject: commentID, options: .prettyPrinted)
+//        case .comment(let commentID, let restaurantName, let reating, let imageURL, let commentText):
+//
+//        let commentID = [
+//            "restaurantName": restaurantName,
+//            "reating": reating,
+//            "imageURL": [imageURL],
+//            "commentText": commentText
+//        ] as [String: Any]
+//
+//        return try? JSONSerialization.data(withJSONObject: commentID, options: .prettyPrinted)
 
         }
     }
@@ -49,9 +50,9 @@ enum VOTDataRequest: VOTRequest {
 
         switch self {
 
-        case .restaurant, .user: return VOTHTTPMethod.GET.rawValue
+        case .restaurant, .user, .comment: return VOTHTTPMethod.GET.rawValue
             
-        case .comment: return VOTHTTPMethod.PUT.rawValue
+//        case .comment: return VOTHTTPMethod.PUT.rawValue
 
         }
     }

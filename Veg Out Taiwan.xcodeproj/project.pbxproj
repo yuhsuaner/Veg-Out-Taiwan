@@ -55,6 +55,7 @@
 		426F4C9D2462A509003DE5C6 /* VOTProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426F4C9C2462A509003DE5C6 /* VOTProvider.swift */; };
 		429B9538244D7E1E00596956 /* PhotoWallCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429B9537244D7E1E00596956 /* PhotoWallCollectionViewCell.swift */; };
 		429B953A244D904100596956 /* MapStyle_Orange.json in Resources */ = {isa = PBXBuildFile; fileRef = 429B9539244D904100596956 /* MapStyle_Orange.json */; };
+		42ABD1C5246D7B0D00A58BDA /* UIAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42ABD1C4246D7B0D00A58BDA /* UIAlertController.swift */; };
 		42B980C2244DF70000B4DE22 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B980C1244DF70000B4DE22 /* SignUpViewController.swift */; };
 		42B980F424516D4100B4DE22 /* Utilies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B980F324516D4100B4DE22 /* Utilies.swift */; };
 		42B980F624516E6900B4DE22 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B980F524516E6900B4DE22 /* AuthService.swift */; };
@@ -117,6 +118,7 @@
 		426F4C9C2462A509003DE5C6 /* VOTProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VOTProvider.swift; sourceTree = "<group>"; };
 		429B9537244D7E1E00596956 /* PhotoWallCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoWallCollectionViewCell.swift; sourceTree = "<group>"; };
 		429B9539244D904100596956 /* MapStyle_Orange.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = MapStyle_Orange.json; sourceTree = "<group>"; };
+		42ABD1C4246D7B0D00A58BDA /* UIAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAlertController.swift; sourceTree = "<group>"; };
 		42B980C1244DF70000B4DE22 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		42B980F324516D4100B4DE22 /* Utilies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilies.swift; sourceTree = "<group>"; };
 		42B980F524516E6900B4DE22 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
@@ -265,6 +267,7 @@
 				426F4C942462A138003DE5C6 /* Bundle.swift */,
 				426F4C8F2462A022003DE5C6 /* VOTConstant.swift */,
 				4237B11D246A9EE9008A395E /* UIImageView.swift */,
+				42ABD1C4246D7B0D00A58BDA /* UIAlertController.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -596,6 +599,7 @@
 				42471EB224324CD2002B1577 /* RestaurantCollectionViewCell.swift in Sources */,
 				4244484A2445B05100000E96 /* ImageCollectionViewCell.swift in Sources */,
 				42471F40243C69EA002B1577 /* UIColor.swift in Sources */,
+				42ABD1C5246D7B0D00A58BDA /* UIAlertController.swift in Sources */,
 				42471F49243D7AB4002B1577 /* ProfileCollectionViewCell.swift in Sources */,
 				42B980FE2451DF0200B4DE22 /* User.swift in Sources */,
 				4244483E24432E1100000E96 /* UserCommentWallViewController.swift in Sources */,

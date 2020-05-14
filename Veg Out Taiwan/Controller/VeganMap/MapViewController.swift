@@ -260,15 +260,7 @@ class MapViewController: UIViewController {
         ])
         
         NSLayoutConstraint(item: collectionView, attribute: NSLayoutConstraint.Attribute.centerY, relatedBy: NSLayoutConstraint.Relation.equal, toItem: view, attribute: NSLayoutConstraint.Attribute.centerY, multiplier: 1.5, constant: 0).isActive = true
-    }
-}
-
-// MARK: - CLLocationManagerDelegate
-extension MapViewController: CLLocationManagerDelegate {
-    
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        
-    }
+    }    
 }
 
 // MARK: - UICollectionViewDataSource

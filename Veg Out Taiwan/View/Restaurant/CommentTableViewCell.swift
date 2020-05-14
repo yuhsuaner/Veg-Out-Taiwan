@@ -7,15 +7,24 @@
 //
 
 import UIKit
+import FirebaseDatabase
 
 class CommentTableViewCell: UITableViewCell {
+    
+    // MARK: - Properties
+    var restaurantName = ""
+    
+    var restaurantComments: [Comment] = []
+    
+    var ref: DatabaseReference!
     
     @IBOutlet weak var tapForMoreLabel: UILabel!
     
     @IBOutlet weak var collectionView: UICollectionView!
     
-//    weak var delegate: CustomCollectionCellDelegate?
     weak var delegate: CategoryRowDelegate?
+    
+    // MARK: - Lifecycle
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -24,16 +33,46 @@ class CommentTableViewCell: UITableViewCell {
         collectionView.delegate = self
         
         collectionView.layer.cornerRadius = 15
+            
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
+    }
+    
+    func updateData(restaurantName: String) {
+        
+        self.restaurantName = restaurantName
+        
+        getCommentfromFirebase()
+    }
+    // MARK: - API
+    
+    func getCommentfromFirebase() {
+
+        ref = Database.database().reference()
+        ref.child("comment_user").queryOrdered(byChild: "restaurantName").queryEqual(toValue: self.restaurantName).observe(.value, with: { (snapshot) in
+            
+            guard let dictionary = snapshot.value as? [String: [String: Any]] else { return }
+            
+            guard let data = try? JSONSerialization.data(withJSONObject: Array(dictionary.values), options: .fragmentsAllowed) else { return }
+            
+            do {
+                
+                let json = try JSONDecoder().decode([Comment].self, from: data)
+                self.restaurantComments = json
+                
+            } catch {
+                print(error)
+            }
+        })
     }
 }
 
 extension CommentTableViewCell: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        
         return 3
     }
     
@@ -71,14 +110,4 @@ extension CommentTableViewCell: UICollectionViewDelegateFlowLayout {
         
         return 10
     }
-    
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-//
-//        return 10
-//    }
-    
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-//
-//        return UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
-//    }
 }
