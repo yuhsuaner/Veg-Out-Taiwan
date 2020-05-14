@@ -148,10 +148,14 @@ extension RestaurantInformationViewController: UICollectionViewDataSource {
 extension RestaurantInformationViewController: InfoCellDelegate {
     func didTapAddToEatListButton(_ sender: UIButton) {
         print("123")
+        
     }
     
     func didTapMakePhoneCallButton(_ sender: UIButton) {
-        print("456")
+        
+        let phoneNumber = restaurant.phone.replacingOccurrences(of: " ", with: "")
+        guard let number = URL(string: "tel://" + "\(phoneNumber)") else { return }
+        UIApplication.shared.open(number)
     }
     
     func didTapNavigationButton(_ sender: UIButton) {
