@@ -61,6 +61,7 @@ class CommentTableViewCell: UITableViewCell {
                 
                 let json = try JSONDecoder().decode([Comment].self, from: data)
                 self.restaurantComments = json
+                self.collectionView.reloadData()
                 
             } catch {
                 print(error)
@@ -73,12 +74,17 @@ extension CommentTableViewCell: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        return 3
+        return restaurantComments.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CommentCollectionViewCell", for: indexPath) as? CommentCollectionViewCell else { return UICollectionViewCell() }
+        
+        let restaurantComment = restaurantComments[indexPath.row]
+        cell.photoFromCommentImage.loadImage(restaurantComment.imageURL[0], placeHolder: #imageLiteral(resourceName: "Pic0"))
+        cell.commentLabel.text = restaurantComment.commentText
+        cell.ratingFromCommentLabel.text = "★ \(restaurantComment.rating)"
         
         cell.layer.masksToBounds = true
         cell.layer.borderWidth = 1

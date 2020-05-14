@@ -71,13 +71,8 @@ class VOTProvider {
     
     func fetchComment(completion: @escaping([Comment]) -> Void) {
         
-        var comments = [Comment]()
-        
         Database.database().reference().child("comment_user").observe(.childAdded) { (snapshot) in
             guard let dictionary = snapshot.value as? [String: Any] else { return }
-            
-//                comments.append(comments)
-                completion(comments)
            
         }
     }
