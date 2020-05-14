@@ -29,7 +29,6 @@ class CommentTableViewCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
-
 }
 
 extension CommentTableViewCell: UICollectionViewDataSource {
@@ -41,9 +40,6 @@ extension CommentTableViewCell: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CommentCollectionViewCell", for: indexPath) as? CommentCollectionViewCell else { return UICollectionViewCell() }
-//        cell.commentLabel.text = ""
-//        cell.photoFromCommentImage.loadImage(<#T##urlString: String?##String?#>, placeHolder: #imageLiteral(resourceName: "Pic7"))
-//        cell.ratingFromCommentLabel.text = "★ 4.7"
         
         cell.layer.masksToBounds = true
         cell.layer.borderWidth = 1

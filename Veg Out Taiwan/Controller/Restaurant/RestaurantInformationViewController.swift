@@ -85,6 +85,8 @@ extension RestaurantInformationViewController: UITableViewDataSource {
                 self.show(viewController, sender: self)
             }
             
+            cell.delegate = self
+            
             return cell
             
         case 1:
@@ -140,6 +142,22 @@ extension RestaurantInformationViewController: UICollectionViewDataSource {
         
         return cell
     }
+}
+
+// MARK: - InfoCellDelegate
+extension RestaurantInformationViewController: InfoCellDelegate {
+    func didTapAddToEatListButton(_ sender: UIButton) {
+        print("123")
+    }
+    
+    func didTapMakePhoneCallButton(_ sender: UIButton) {
+        print("456")
+    }
+    
+    func didTapNavigationButton(_ sender: UIButton) {
+        print("789")
+    }
+    
 }
 
 // MARK: - CategoryRowDelegate

@@ -78,6 +78,9 @@
                                                             </constraints>
                                                             <color key="tintColor" name="DarkGreen"/>
                                                             <state key="normal" image="addToList"/>
+                                                            <connections>
+                                                                <action selector="addToEatListAction:" destination="wJD-Yx-e5Y" eventType="touchUpInside" id="spb-kF-gmK"/>
+                                                            </connections>
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sb4-1J-je2">
                                                             <rect key="frame" x="72" y="0.0" width="32" height="32"/>
@@ -86,6 +89,9 @@
                                                             </constraints>
                                                             <color key="tintColor" name="DarkGreen"/>
                                                             <state key="normal" image="phone"/>
+                                                            <connections>
+                                                                <action selector="makePhoneCallAction:" destination="wJD-Yx-e5Y" eventType="touchUpInside" id="IIk-BN-jMD"/>
+                                                            </connections>
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bwB-ie-ohz">
                                                             <rect key="frame" x="144" y="0.0" width="32" height="32"/>
@@ -94,6 +100,9 @@
                                                             </constraints>
                                                             <color key="tintColor" name="DarkGreen"/>
                                                             <state key="normal" image="new icon 0424-9"/>
+                                                            <connections>
+                                                                <action selector="navigatedAction:" destination="wJD-Yx-e5Y" eventType="touchUpInside" id="KaD-2Y-a3P"/>
+                                                            </connections>
                                                         </button>
                                                     </subviews>
                                                     <constraints>
@@ -129,11 +138,8 @@
                                         <color key="backgroundColor" name="CreamyWhite"/>
                                         <connections>
                                             <outlet property="addCommentButton" destination="H7T-vn-NOD" id="x0Z-9z-775"/>
-                                            <outlet property="addToMyEatListButton" destination="Miy-Fa-GES" id="EVd-fV-Utp"/>
                                             <outlet property="addressLabel" destination="JJ3-mu-XiP" id="HT2-uj-BLQ"/>
                                             <outlet property="businessHoursLabel" destination="b5e-dj-vs7" id="oPo-hU-18f"/>
-                                            <outlet property="navigationButton" destination="bwB-ie-ohz" id="tSy-y7-On0"/>
-                                            <outlet property="phoneButton" destination="sb4-1J-je2" id="Mul-2N-70y"/>
                                             <outlet property="ratingLabel" destination="RkG-ho-2wA" id="q2W-GW-Gh1"/>
                                             <outlet property="restaurantNameLabel" destination="Tfe-KN-T65" id="Abd-sU-NIa"/>
                                         </connections>
