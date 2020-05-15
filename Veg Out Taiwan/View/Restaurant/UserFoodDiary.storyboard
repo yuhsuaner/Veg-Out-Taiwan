@@ -240,9 +240,9 @@
                         <outlet property="favoriteButton" destination="bmb-rt-8Jn" id="eXp-gS-hCg"/>
                         <outlet property="imagePageControl" destination="Ki5-VY-94T" id="j7K-Ct-fI3"/>
                         <outlet property="postDateLabel" destination="ilN-ek-RGZ" id="V3R-Pq-tpE"/>
-                        <outlet property="restaurantAddressLabel" destination="4V7-Rf-fcR" id="YG2-DS-kX4"/>
+                        <outlet property="restaurantNameLabel" destination="4V7-Rf-fcR" id="YG2-DS-kX4"/>
                         <outlet property="userImageView" destination="u53-qW-aIe" id="HAi-5z-4qC"/>
-                        <outlet property="userNameLabel" destination="bPs-aS-f20" id="9Fp-S2-U3I"/>
+                        <outlet property="userNameLabel" destination="Szw-uP-c7e" id="0di-CK-9pC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="90B-aY-WQf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

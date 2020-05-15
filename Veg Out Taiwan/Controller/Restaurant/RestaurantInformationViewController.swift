@@ -109,8 +109,6 @@ extension RestaurantInformationViewController: UITableViewDataSource {
                         UserFoodDiaryViewController(coder: coder)
                 })
                 
-                viewController.loadViewIfNeeded()
-                
                 viewController.restaurantComments = comment
                 
                 self?.show(viewController, sender: self)

@@ -29,7 +29,7 @@ class CommentTableViewCell: UITableViewCell {
     
 //    weak var delegate: CategoryRowDelegate?
     
-    var didpassCommentData: (([Comment]) -> Void)?
+    var didpassCommentData: ((Comment) -> Void)?
     
     // MARK: - Lifecycle
     
@@ -108,7 +108,7 @@ extension CommentTableViewCell: UICollectionViewDataSource {
 //            delegate.collectionView(collectionView, didSelectItemAt: indexPath)
 //        }
         
-        let comment = restaurantComments
+        let comment = restaurantComments[indexPath.row]
         didpassCommentData?(comment)
     }
 }

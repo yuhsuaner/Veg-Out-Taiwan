@@ -14,6 +14,7 @@ struct User: Codable {
     let userName: String
     let uid: String
     var profileImageUrl: String?
+    var userComment: [UserComment]?
     
     init(uid: String, dictionary: [String: AnyObject]) {
         
@@ -30,4 +31,14 @@ struct User: Codable {
         self.uid = uid
         self.email = email
     }
+}
+
+struct UserComment: Codable {
+    
+    var commentId: String
+    
+    let restaurantName: String
+    var imageURL: [String]
+    let rating: Double
+    let commentText: String
 }

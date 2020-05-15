@@ -12,6 +12,7 @@ import YPImagePicker
 import AVKit
 import FirebaseStorage
 import FirebaseFirestore
+import FirebaseAuth
 
 enum ViewState {
     
@@ -24,6 +25,8 @@ class CommentViewController: UIViewController {
     
     // MARK: - Properties
     var user = [User]()
+    
+    var uidComment = [UserComment]()
     
     var userComment = [Comment]()
     
@@ -140,6 +143,12 @@ class CommentViewController: UIViewController {
                                  commentText: commentText,
                                  user: User(uid: uid, username: userName, userImage: userImage, email: userMail))
         
+        let userComment = UserComment(commentId: newComment.commentId,
+                                      restaurantName: newComment.restaurantName,
+                                      imageURL: newComment.imageURL,
+                                      rating: newComment.rating,
+                                      commentText: newComment.commentText)
+        
         //seletedImages upload firestore
         for image in selectedImages {
             
@@ -163,6 +172,8 @@ class CommentViewController: UIViewController {
         
         group.notify(queue: .main) {
             
+            guard let uid = Auth.auth().currentUser?.uid else { return }
+            
             //Upload comment 到 realtime database
             self.votProvider.createComment(newComment: newComment) { result in
                 guard result else {
@@ -175,6 +186,15 @@ class CommentViewController: UIViewController {
                     VOTProgressHUD.showSuccess()
                     self.navigationController?.popViewController(animated: true)
                 }
+            }
+            
+            self.votProvider.createComment(uid: uid, comment: newComment, newComment: userComment) { result in
+                
+                guard result else {
+                    return
+                }
+                
+                self.uidComment.append(userComment)
             }
         }
     }

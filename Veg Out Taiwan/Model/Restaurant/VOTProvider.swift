@@ -8,6 +8,7 @@
 
 import Foundation
 import FirebaseDatabase
+import FirebaseAuth
 
 typealias RestaurantHanlder = (Result<[Restaurant]>) -> Void
 typealias CommentHanlder = (Result<[Comment]>) -> Void
@@ -70,5 +71,23 @@ class VOTProvider {
         }
         
         task.resume()
+    }
+    
+    func createComment(uid: String, comment: Comment, newComment: UserComment, completion: @escaping (Bool) -> Void) {
+        
+        let url = URL(string: "https://veg-out-taiwan-1584254182301.firebaseio.com/users/\(uid)/comments/\(comment.commentId)/.json")!
+        
+        var request = URLRequest(url: url)
+        
+        request.httpMethod = "PUT"
+        
+        request.httpBody = try? JSONEncoder().encode(newComment)
+        
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            completion(error == nil)
+        }
+        
+        task.resume()
+        
     }
 }

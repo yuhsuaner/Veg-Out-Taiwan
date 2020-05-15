@@ -15,15 +15,15 @@ class UserFoodDiaryViewController: UIViewController, UIGestureRecognizerDelegate
     
     var currentPage = 0
     
-    var restaurantComments: [Comment] = []
+    var restaurantComments: Comment?
     
-    @IBOutlet weak var restaurantAddressLabel: UILabel!
+    @IBOutlet weak var restaurantNameLabel: UILabel!
     
     @IBOutlet weak var collectionView: UICollectionView!
     
     @IBOutlet weak var userImageView: UIImageView!
     
-    @IBOutlet weak var userNameLabel: NSLayoutConstraint!
+    @IBOutlet weak var userNameLabel: UILabel!
     
     @IBAction func handleFollowAction(_ sender: UIButton) {
     }
@@ -44,18 +44,12 @@ class UserFoodDiaryViewController: UIViewController, UIGestureRecognizerDelegate
     @IBOutlet weak var imagePageControl: UIPageControl!
     
     // MARK: - LifeCycle
-//    init?(coder: NSCoder, restaurant: Restaurant) {
-//       self.restaurant = restaurant
-//       super.init(coder: coder)
-//    }
-//    required init?(coder: NSCoder) {
-//       fatalError()
-//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         configureUI()
+        configureComment()
         
         imagePageControl.numberOfPages = 10
         imagePageControl.pageIndicatorTintColor = UIColor.W1
@@ -69,9 +63,6 @@ class UserFoodDiaryViewController: UIViewController, UIGestureRecognizerDelegate
         view.setBackgroundView()
         navigationController?.navigationBar.largeTitleTextAttributes = [.foregroundColor: UIColor.W1!, .font: UIFont(name: "jf-openhuninn-1.0", size: 25)!]
         
-//        navigationItem.hidesBackButton = true
-//        navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "VOT_back_Gray"), style: .plain, target: self, action: #selector(back(sender:)))
-        
         let backBTN = UIBarButtonItem(image: UIImage(named: "VOT_back_Gray"),
                                       style: .plain,
                                       target: navigationController,
@@ -84,25 +75,29 @@ class UserFoodDiaryViewController: UIViewController, UIGestureRecognizerDelegate
         
     }
     
-//    @objc func back(sender: UIBarButtonItem) {
-//        self.navigationController?.popViewController(animated: true)
-//    }
+    func configureComment() {
+        
+        self.restaurantNameLabel.text = restaurantComments?.restaurantName
+        userNameLabel.text = restaurantComments?.user.userName
+        userImageView.loadImage(restaurantComments?.user.profileImageUrl, placeHolder: #imageLiteral(resourceName: "VOT tab bar icons-10"))
+        contentOfCommentTextView.text = restaurantComments?.commentText
+    }
 }
 
 extension UserFoodDiaryViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        return restaurantComments[section].imageURL.count
+        guard let image = restaurantComments?.imageURL else { return 0 }
+        
+        return image.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ImageCollectionViewCell", for: indexPath) as? ImageCollectionViewCell else { return UICollectionViewCell() }
         
-        cell.postImage.image = UIImage(named: "Pic\(indexPath.item)")
-        cell.postImage.loadImage(restaurantComments[indexPath.row].imageURL[indexPath.item],
-                                 placeHolder: #imageLiteral(resourceName: "Pic10"))
+        cell.postImage.loadImage(restaurantComments?.imageURL[indexPath.row], placeHolder: #imageLiteral(resourceName: "Pic2"))
         
         return cell
     }
