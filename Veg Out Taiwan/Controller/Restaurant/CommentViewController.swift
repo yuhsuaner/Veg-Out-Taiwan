@@ -153,9 +153,6 @@ class CommentViewController: UIViewController {
                     return
                 }
                 
-                print("=======")
-                print(url)
-                
                 guard let url = url else { return }
                 //[String] 放到 newComment 裡面的 imageURL
                 newComment.imageURL.append(url)
@@ -165,9 +162,6 @@ class CommentViewController: UIViewController {
         }
         
         group.notify(queue: .main) {
-            
-            print("===")
-            print(newComment.imageURL)
             
             //Upload comment 到 realtime database
             self.votProvider.createComment(newComment: newComment) { result in

@@ -8,10 +8,6 @@
 
 import UIKit
 
-protocol CategoryRowDelegate: class {
-    func cellTapped()
-}
-
 class CommentCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var photoFromCommentImage: UIImageView!

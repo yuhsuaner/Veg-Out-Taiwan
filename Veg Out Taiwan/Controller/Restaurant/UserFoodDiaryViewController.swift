@@ -15,6 +15,8 @@ class UserFoodDiaryViewController: UIViewController, UIGestureRecognizerDelegate
     
     var currentPage = 0
     
+    var restaurantComments: [Comment] = []
+    
     @IBOutlet weak var restaurantAddressLabel: UILabel!
     
     @IBOutlet weak var collectionView: UICollectionView!
@@ -79,6 +81,7 @@ class UserFoodDiaryViewController: UIViewController, UIGestureRecognizerDelegate
         
         collectionView.dataSource = self
         collectionView.delegate = self
+        
     }
     
 //    @objc func back(sender: UIBarButtonItem) {
@@ -90,7 +93,7 @@ extension UserFoodDiaryViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        return 10
+        return restaurantComments[section].imageURL.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -98,6 +101,8 @@ extension UserFoodDiaryViewController: UICollectionViewDataSource {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ImageCollectionViewCell", for: indexPath) as? ImageCollectionViewCell else { return UICollectionViewCell() }
         
         cell.postImage.image = UIImage(named: "Pic\(indexPath.item)")
+        cell.postImage.loadImage(restaurantComments[indexPath.row].imageURL[indexPath.item],
+                                 placeHolder: #imageLiteral(resourceName: "Pic10"))
         
         return cell
     }

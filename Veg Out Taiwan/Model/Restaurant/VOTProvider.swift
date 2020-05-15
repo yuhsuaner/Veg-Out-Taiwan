@@ -58,22 +58,17 @@ class VOTProvider {
     func createComment(newComment: Comment, completion: @escaping (Bool) -> Void) {
         
         let url = URL(string: "https://veg-out-taiwan-1584254182301.firebaseio.com/comment_user" + "/\(newComment.commentId)/.json")!
+        
         var request = URLRequest(url: url)
         
         request.httpMethod = "PUT"
         
         request.httpBody = try? JSONEncoder().encode(newComment)
+        
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             completion(error == nil)
         }
-        task.resume()
-    }
-    
-    func fetchComment(completion: @escaping([Comment]) -> Void) {
         
-        Database.database().reference().child("comment_user").observe(.childAdded) { (snapshot) in
-            guard let dictionary = snapshot.value as? [String: Any] else { return }
-           
-        }
+        task.resume()
     }
 }

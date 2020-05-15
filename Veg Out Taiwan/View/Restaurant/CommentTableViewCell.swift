@@ -9,6 +9,11 @@
 import UIKit
 import FirebaseDatabase
 
+//protocol CategoryRowDelegate: AnyObject {
+//
+//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath)
+//}
+
 class CommentTableViewCell: UITableViewCell {
     
     // MARK: - Properties
@@ -22,7 +27,9 @@ class CommentTableViewCell: UITableViewCell {
     
     @IBOutlet weak var collectionView: UICollectionView!
     
-    weak var delegate: CategoryRowDelegate?
+//    weak var delegate: CategoryRowDelegate?
+    
+    var didpassCommentData: (([Comment]) -> Void)?
     
     // MARK: - Lifecycle
     
@@ -96,11 +103,13 @@ extension CommentTableViewCell: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 
-        print("DidSelect: CommentCollectionViewCell")
+//        if let delegate = delegate {
+//
+//            delegate.collectionView(collectionView, didSelectItemAt: indexPath)
+//        }
         
-        if delegate != nil {
-        delegate?.cellTapped()
-        }
+        let comment = restaurantComments
+        didpassCommentData?(comment)
     }
 }
 

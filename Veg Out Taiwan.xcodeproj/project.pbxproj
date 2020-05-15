@@ -336,13 +336,13 @@
 			isa = PBXGroup;
 			children = (
 				42471FB92441C64A002B1577 /* RestaurantInformation.storyboard */,
+				426F4C58245AAE34003DE5C6 /* RestaurantHeaderImageViewCell.swift */,
 				4244483724430CE800000E96 /* BaseInfoTableViewCell.swift */,
 				424448392443118C00000E96 /* CommentTableViewCell.swift */,
 				4244483B244315D600000E96 /* CommentCollectionViewCell.swift */,
 				4244484324445CA700000E96 /* UserCommentWallCollectionViewCell.swift */,
 				424448472444611400000E96 /* UserFoodDiary.storyboard */,
 				424448492445B05000000E96 /* ImageCollectionViewCell.swift */,
-				426F4C58245AAE34003DE5C6 /* RestaurantHeaderImageViewCell.swift */,
 				426F4C5A245AD3B5003DE5C6 /* Comment.storyboard */,
 			);
 			path = Restaurant;

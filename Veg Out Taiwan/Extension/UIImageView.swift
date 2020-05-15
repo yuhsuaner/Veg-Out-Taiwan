@@ -11,7 +11,7 @@ import Kingfisher
 
 extension UIImageView {
     
-    func setImageWith(_ linkString: String?)  {
+    func setImageWith(_ linkString: String?) {
         guard let linkString = linkString,
             let url = URL(string: linkString) else { return }
         self.kf.setImage(with: url)
