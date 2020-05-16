@@ -46,6 +46,7 @@ class RestaurantInformationViewController: UIViewController {
         
         tableView.delegate = self
         tableView.dataSource = self
+        
         collectionView.dataSource = self
     }
 }
@@ -101,7 +102,7 @@ extension RestaurantInformationViewController: UITableViewDataSource {
             
             //            cell.delegate = self
             cell.didpassCommentData = { [weak self] comment in
-                                
+                
                 let viewController = UIStoryboard(name: "UserFoodDiary", bundle: nil).instantiateViewController(
                     identifier: "UserFoodDiary",
                     creator: { coder in
@@ -114,87 +115,75 @@ extension RestaurantInformationViewController: UITableViewDataSource {
                 self?.show(viewController, sender: self)
             }
             
-                return cell
-                
-                default:
-                return UITableViewCell()
-            }
-        }
-        
-        // MARK: - Selector
-        @objc func toNextPage() {
-            
-            let controller = UserCommentWallViewController()
-            
-            navigationController?.pushViewController(controller, animated: true)
-        }
-    }
-    
-    // MARK: - UITableViewDelegate
-    extension RestaurantInformationViewController: UITableViewDelegate {
-        
-        func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-            
-            if indexPath.row == 0 {
-                return UIScreen.main.bounds.height / 4 + 10
-            } else {
-                return (UIScreen.main.bounds.height / 4) + 5
-            }
-        }
-    }
-    
-    // MARK: - UICollectionViewDataSource
-    extension RestaurantInformationViewController: UICollectionViewDataSource {
-        
-        func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-            
-            return 1
-        }
-        
-        func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-            
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RestaurantHeaderImageViewCell", for: indexPath) as? RestaurantHeaderImageViewCell else { return UICollectionViewCell() }
-            
-            cell.topImageView.loadImage(restaurant.imageURL[0], placeHolder: #imageLiteral(resourceName: "Pic0"))
-            
             return cell
+            
+        default: return UITableViewCell()
         }
     }
     
-    // MARK: - InfoCellDelegate
-    extension RestaurantInformationViewController: InfoCellDelegate {
+    // MARK: - Selector
+    @objc func toNextPage() {
         
-        func didTapAddToEatListButton(_ sender: UIButton) {
-            
-            self.openAlert(title: "!",
-                           message: "正在開發中🚧",
-                           alertStyle: .alert,
-                           actionTitles: ["OK"],
-                           actionStyles: [.default],
-                           actions: [{_ in print("okay click")}]
-            )
-        }
+        let controller = UserCommentWallViewController()
         
-        func didTapMakePhoneCallButton(_ sender: UIButton) {
-            
-            let phoneNumber = restaurant.phone.replacingOccurrences(of: " ", with: "")
-            guard let number = URL(string: "tel://" + "\(phoneNumber)") else { return }
-            UIApplication.shared.open(number)
-        }
-        
-        func didTapNavigationButton(_ sender: UIButton) {
-            
-        }
-        
+        navigationController?.pushViewController(controller, animated: true)
+    }
 }
 
-// MARK: - CategoryRowDelegate
-//extension RestaurantInformationViewController: CategoryRowDelegate {
-//
-//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//
-//        guard let viewController = UIStoryboard(name: "UserFoodDiary", bundle: nil).instantiateViewController(identifier: "UserFoodDiary") as? UserFoodDiaryViewController else { return }
-//
-//        show(viewController, sender: nil)
-//    }
-//}
+// MARK: - UITableViewDelegate
+extension RestaurantInformationViewController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
+        if indexPath.row == 0 {
+            return UIScreen.main.bounds.height / 4 + 10
+        } else {
+            return (UIScreen.main.bounds.height / 4) + 5
+        }
+    }
+}
+
+// MARK: - UICollectionViewDataSource
+extension RestaurantInformationViewController: UICollectionViewDataSource {
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        
+        return 1
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RestaurantHeaderImageViewCell", for: indexPath) as? RestaurantHeaderImageViewCell else { return UICollectionViewCell() }
+        
+        cell.topImageView.loadImage(restaurant.imageURL[0], placeHolder: #imageLiteral(resourceName: "Pic0"))
+        
+        return cell
+    }
+}
+
+// MARK: - InfoCellDelegate
+extension RestaurantInformationViewController: InfoCellDelegate {
+    
+    func didTapAddToEatListButton(_ sender: UIButton) {
+        
+        self.openAlert(title: "!",
+                       message: "正在開發中🚧",
+                       alertStyle: .alert,
+                       actionTitles: ["OK"],
+                       actionStyles: [.default],
+                       actions: [{_ in print("okay click")}]
+        )
+    }
+    
+    func didTapMakePhoneCallButton(_ sender: UIButton) {
+        
+        let phoneNumber = restaurant.phone.replacingOccurrences(of: " ", with: "")
+        guard let number = URL(string: "tel://" + "\(phoneNumber)") else { return }
+        UIApplication.shared.open(number)
+    }
+    
+    func didTapNavigationButton(_ sender: UIButton) {
+        
+    }
+    
+}

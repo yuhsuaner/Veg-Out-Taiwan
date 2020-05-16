@@ -17,11 +17,13 @@ enum VOTDataRequest: VOTRequest {
 //    case comment
     case comment(commentID: String)
     
+    case userComment(uid: String)
+    
     var headers: [String: String] {
 
         switch self {
 
-        case .restaurant, .user, .comment: return [:]
+        case .restaurant, .user, .comment, .userComment: return [:]
 
         }
     }
@@ -30,7 +32,7 @@ enum VOTDataRequest: VOTRequest {
 
         switch self {
 
-        case .restaurant, .user, .comment: return nil
+        case .restaurant, .user, .comment, .userComment: return nil
             
 //        case .comment(let commentID, let restaurantName, let reating, let imageURL, let commentText):
 //
@@ -50,13 +52,13 @@ enum VOTDataRequest: VOTRequest {
 
         switch self {
 
-        case .restaurant, .user, .comment: return VOTHTTPMethod.GET.rawValue
+        case .restaurant, .user, .comment, .userComment: return VOTHTTPMethod.GET.rawValue
             
 //        case .comment: return VOTHTTPMethod.PUT.rawValue
 
         }
     }
-
+    
     var endPoint: String {
 
         switch self {
@@ -66,6 +68,8 @@ enum VOTDataRequest: VOTRequest {
         case .user: return "/users.json"
             
         case .comment(let commentID): return "/comment_user/\(commentID).json"
+            
+        case .userComment(let uid): return "/users/\(uid)/comments.json"
             
         }
     }

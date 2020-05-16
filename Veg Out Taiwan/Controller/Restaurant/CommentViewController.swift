@@ -26,9 +26,9 @@ class CommentViewController: UIViewController {
     // MARK: - Properties
     var user = [User]()
     
-    var uidComment = [UserComment]()
+    var userComment = [UserComment]()
     
-    var userComment = [Comment]()
+    var comment = [Comment]()
     
     let votProvider = VOTProvider()
     
@@ -143,12 +143,11 @@ class CommentViewController: UIViewController {
                                  commentText: commentText,
                                  user: User(uid: uid, username: userName, userImage: userImage, email: userMail))
         
-        let userComment = UserComment(commentId: newComment.commentId,
-                                      restaurantName: newComment.restaurantName,
-                                      imageURL: newComment.imageURL,
+        var userComment = UserComment(restaurantName: newComment.restaurantName,
+                                      imageURL: [],
                                       rating: newComment.rating,
                                       commentText: newComment.commentText)
-        
+                                      
         //seletedImages upload firestore
         for image in selectedImages {
             
@@ -165,6 +164,7 @@ class CommentViewController: UIViewController {
                 guard let url = url else { return }
                 //[String] 放到 newComment 裡面的 imageURL
                 newComment.imageURL.append(url)
+                userComment.imageURL.append(url)
                 
                 self.group.leave()
             }
@@ -179,7 +179,7 @@ class CommentViewController: UIViewController {
                 guard result else {
                     return
                 }
-                self.userComment.append(newComment)
+                self.comment.append(newComment)
                 
                 DispatchQueue.main.async {
                     
@@ -188,13 +188,13 @@ class CommentViewController: UIViewController {
                 }
             }
             
-            self.votProvider.createComment(uid: uid, comment: newComment, newComment: userComment) { result in
+            self.votProvider.createComment(uid: uid, comment: newComment, userComment: userComment) { result in
                 
                 guard result else {
                     return
                 }
                 
-                self.uidComment.append(userComment)
+                self.userComment.append(userComment)
             }
         }
     }

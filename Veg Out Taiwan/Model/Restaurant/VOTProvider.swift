@@ -12,6 +12,7 @@ import FirebaseAuth
 
 typealias RestaurantHanlder = (Result<[Restaurant]>) -> Void
 typealias CommentHanlder = (Result<[Comment]>) -> Void
+typealias UserCommentHanlder = (Result<[UserComment]>) -> Void
 
 class VOTProvider {
     
@@ -58,7 +59,7 @@ class VOTProvider {
     
     func createComment(newComment: Comment, completion: @escaping (Bool) -> Void) {
         
-        let url = URL(string: "https://veg-out-taiwan-1584254182301.firebaseio.com/comment_user" + "/\(newComment.commentId)/.json")!
+        let url = URL(string: "https://veg-out-taiwan-1584254182301.firebaseio.com/comments" + "/\(newComment.commentId)/.json")!
         
         var request = URLRequest(url: url)
         
@@ -73,21 +74,53 @@ class VOTProvider {
         task.resume()
     }
     
-    func createComment(uid: String, comment: Comment, newComment: UserComment, completion: @escaping (Bool) -> Void) {
+    func createComment(uid: String, comment: Comment, userComment: UserComment, completion: @escaping (Bool) -> Void) {
         
-        let url = URL(string: "https://veg-out-taiwan-1584254182301.firebaseio.com/users/\(uid)/comments/\(comment.commentId)/.json")!
+        let url = URL(string: "https://veg-out-taiwan-1584254182301.firebaseio.com/user_comments/\(uid)/\(comment.commentId).json")!
         
         var request = URLRequest(url: url)
         
         request.httpMethod = "PUT"
         
-        request.httpBody = try? JSONEncoder().encode(newComment)
+        request.httpBody = try? JSONEncoder().encode(userComment)
         
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             completion(error == nil)
         }
         
         task.resume()
-        
     }
+    
+//    func fetchUserComment(uid: String, completion: @escaping UserCommentHanlder) {
+//
+//        HTTPClient.shared.request(
+//            VOTDataRequest.userComment(uid: uid),
+//            completion: { [weak self] result in
+//
+//                guard let strongSelf = self else { return }
+//
+//                switch result {
+//
+//                case .success(let data):
+//
+//                    do {
+//                        let commentData = try strongSelf.decoder.decode([UserComment].self, from: data)
+//
+//                        DispatchQueue.main.async {
+//
+//                            completion(Result.success(commentData))
+//                        }
+//
+//                    } catch {
+//
+//                        completion(Result.failure(error))
+//
+//                    }
+//
+//                case .failure(let error):
+//
+//                    completion(Result.failure(error))
+//                }
+//        })
+//    }
 }

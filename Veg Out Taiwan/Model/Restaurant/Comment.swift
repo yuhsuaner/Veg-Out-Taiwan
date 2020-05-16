@@ -19,6 +19,7 @@ struct Comment: Codable {
     var imageURL: [String]
     let rating: Double
     let commentText: String
+//    let timestamp: Date
     let user: User
 }
 
@@ -51,4 +52,13 @@ struct ImageService {
             }
         }
     }
+}
+
+struct UserComment: Codable {
+    
+    let restaurantName: String
+    var imageURL: [String]
+    let rating: Double
+    let commentText: String
+//    let timestamp: Date
 }

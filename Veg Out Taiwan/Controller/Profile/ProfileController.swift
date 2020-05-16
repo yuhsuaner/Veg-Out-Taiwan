@@ -23,12 +23,22 @@ class ProfileController: UICollectionViewController {
         }
     }
     
+    var userComment: [UserComment]? {
+        didSet {
+            collectionView.reloadData()
+        }
+    }
+    
+    let votProvider = VOTProvider()
+    
     // MARK: - LifeCycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         configureCollectionView()
+        
+//        fetchUserComment()
     }
     
     init() {
@@ -53,7 +63,31 @@ class ProfileController: UICollectionViewController {
         
         self.collectionView.register(ProfileCollectionViewCell.self, forCellWithReuseIdentifier: cellId)
     }
-
+    
+//    func fetchUserComment() {
+//        
+//        guard let uid = Auth.auth().currentUser?.uid  else { return }
+//        
+//        votProvider.fetchUserComment(uid: uid) { [weak self] result in
+//            
+//            switch result {
+//                
+//            case .success(let comment):
+//                
+//                self?.userComment = comment
+//                
+//                print(self?.userComment)
+//                
+//            case .failure(let error):
+//                
+//                print(error)
+//                
+//                VOTProgressHUD.showFailure(text: "讀取資料失敗！")
+//            }
+//            
+//        }
+//    }
+    
 }
 
 // MARK: - UICollectionView DataSource/ Delegate
@@ -86,7 +120,7 @@ extension ProfileController {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
         guard let tab = appDelegate.window?.rootViewController as? MainTabViewController else { return }
         tab.selectedIndex = 0
-
+        
     }
     
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -95,7 +129,7 @@ extension ProfileController {
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        return 25
+        return 2
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -103,6 +137,8 @@ extension ProfileController {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as? ProfileCollectionViewCell else { return UICollectionViewCell()}
         
         cell.layer.cornerRadius = 10
+        
+//        cell.cellImageView.loadImage(image, placeHolder: #imageLiteral(resourceName: "Pic9"))
         
         return cell
     }

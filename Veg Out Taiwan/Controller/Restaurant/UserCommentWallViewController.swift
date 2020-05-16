@@ -15,7 +15,6 @@ class UserCommentWallViewController: UIViewController {
     private lazy var collectionView: UICollectionView = {
         
         let layout = UICollectionViewFlowLayout()
-//        layout.scrollDirection = .horizontal
         
         let collectionView  = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
@@ -89,5 +88,4 @@ extension UserCommentWallViewController: UICollectionViewDelegateFlowLayout {
           
           return 10
       }
-    
 }

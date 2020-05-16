@@ -22,6 +22,41 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" contentInsetAdjustmentBehavior="never" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="PaN-R4-vVM">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="358.5"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="A6I-yi-IiE">
+                                    <size key="itemSize" width="420" height="355.5"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="RestaurantHeaderImageViewCell" id="ccD-9R-Pzn" customClass="RestaurantHeaderImageViewCell" customModule="Veg_Out_Taiwan" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="1.5" width="420" height="355.5"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="BA0-i6-ImE">
+                                            <rect key="frame" x="0.0" y="0.0" width="420" height="355.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Pic1" translatesAutoresizingMaskIntoConstraints="NO" id="XnQ-gt-Aaa">
+                                                    <rect key="frame" x="0.0" y="0.0" width="420" height="355.5"/>
+                                                </imageView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="XnQ-gt-Aaa" secondAttribute="trailing" id="PKN-2h-Ntz"/>
+                                                <constraint firstItem="XnQ-gt-Aaa" firstAttribute="leading" secondItem="BA0-i6-ImE" secondAttribute="leading" id="Wur-XB-VvA"/>
+                                                <constraint firstItem="XnQ-gt-Aaa" firstAttribute="top" secondItem="BA0-i6-ImE" secondAttribute="top" id="aUu-zc-S9f"/>
+                                                <constraint firstAttribute="bottom" secondItem="XnQ-gt-Aaa" secondAttribute="bottom" id="xbp-VX-Jt2"/>
+                                            </constraints>
+                                        </collectionViewCellContentView>
+                                        <size key="customSize" width="420" height="355.5"/>
+                                        <connections>
+                                            <outlet property="topImageView" destination="XnQ-gt-Aaa" id="JjF-kW-aZc"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="WFB-Wx-ccP">
                                 <rect key="frame" x="0.0" y="358.5" width="414" height="537.5"/>
                                 <color key="backgroundColor" name="CreamyWhite"/>
@@ -267,41 +302,6 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" contentInsetAdjustmentBehavior="never" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="PaN-R4-vVM">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="358.5"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="A6I-yi-IiE">
-                                    <size key="itemSize" width="420" height="355.5"/>
-                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                </collectionViewFlowLayout>
-                                <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="RestaurantHeaderImageViewCell" id="ccD-9R-Pzn" customClass="RestaurantHeaderImageViewCell" customModule="Veg_Out_Taiwan" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="1.5" width="420" height="355.5"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="BA0-i6-ImE">
-                                            <rect key="frame" x="0.0" y="0.0" width="420" height="355.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Pic1" translatesAutoresizingMaskIntoConstraints="NO" id="XnQ-gt-Aaa">
-                                                    <rect key="frame" x="0.0" y="0.0" width="420" height="355.5"/>
-                                                </imageView>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="XnQ-gt-Aaa" secondAttribute="trailing" id="PKN-2h-Ntz"/>
-                                                <constraint firstItem="XnQ-gt-Aaa" firstAttribute="leading" secondItem="BA0-i6-ImE" secondAttribute="leading" id="Wur-XB-VvA"/>
-                                                <constraint firstItem="XnQ-gt-Aaa" firstAttribute="top" secondItem="BA0-i6-ImE" secondAttribute="top" id="aUu-zc-S9f"/>
-                                                <constraint firstAttribute="bottom" secondItem="XnQ-gt-Aaa" secondAttribute="bottom" id="xbp-VX-Jt2"/>
-                                            </constraints>
-                                        </collectionViewCellContentView>
-                                        <size key="customSize" width="420" height="355.5"/>
-                                        <connections>
-                                            <outlet property="topImageView" destination="XnQ-gt-Aaa" id="JjF-kW-aZc"/>
-                                        </connections>
-                                    </collectionViewCell>
-                                </cells>
-                            </collectionView>
                         </subviews>
                         <color key="backgroundColor" name="CreamyWhite"/>
                         <constraints>

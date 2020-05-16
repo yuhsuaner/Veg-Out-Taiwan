@@ -9,11 +9,6 @@
 import UIKit
 import FirebaseDatabase
 
-//protocol CategoryRowDelegate: AnyObject {
-//
-//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath)
-//}
-
 class CommentTableViewCell: UITableViewCell {
     
     // MARK: - Properties
@@ -58,7 +53,7 @@ class CommentTableViewCell: UITableViewCell {
     func getCommentfromFirebase() {
 
         ref = Database.database().reference()
-        ref.child("comment_user").queryOrdered(byChild: "restaurantName").queryEqual(toValue: self.restaurantName).observe(.value, with: { (snapshot) in
+        ref.child("comments").queryOrdered(byChild: "restaurantName").queryEqual(toValue: self.restaurantName).observe(.value, with: { (snapshot) in
             
             guard let dictionary = snapshot.value as? [String: [String: Any]] else { return }
             
@@ -102,11 +97,6 @@ extension CommentTableViewCell: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-
-//        if let delegate = delegate {
-//
-//            delegate.collectionView(collectionView, didSelectItemAt: indexPath)
-//        }
         
         let comment = restaurantComments[indexPath.row]
         didpassCommentData?(comment)
