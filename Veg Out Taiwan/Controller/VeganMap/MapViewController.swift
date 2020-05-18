@@ -279,7 +279,7 @@ extension MapViewController: UICollectionViewDataSource {
         cell.layer.cornerRadius = 15
         cell.ratingLabel.text = restaurant[indexPath.row].rating
         cell.restaurantNameLabel.text = restaurant[indexPath.row].restaurantName
-        cell.restaurantImage.loadImage(restaurant[indexPath.row].imageURL[0], placeHolder: #imageLiteral(resourceName: "Pic7"))
+        cell.restaurantImage.loadImage(restaurant[indexPath.row].imageURL[0], placeHolder: #imageLiteral(resourceName: "non_photo-2"))
         return cell
     }
     

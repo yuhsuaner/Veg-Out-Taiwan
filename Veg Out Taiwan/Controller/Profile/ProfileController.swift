@@ -29,8 +29,6 @@ class ProfileController: UICollectionViewController {
         }
     }
     
-    var userCommentData: [Data]?
-    
     let votProvider = VOTProvider()
     
     var ref: DatabaseReference!
@@ -41,6 +39,10 @@ class ProfileController: UICollectionViewController {
         super.viewDidLoad()
         
         configureCollectionView()
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         
         getUserComment()
     }
@@ -70,59 +72,53 @@ class ProfileController: UICollectionViewController {
     
     // MARK: - API
     func getUserComment() {
-
+        
         ref = Database.database().reference()
         
         guard let user = Auth.auth().currentUser?.uid else { return }
         
-        ref.child("user_comments").queryOrdered(byChild: "\(user)").observeSingleEvent(of: .value) { (snapshot) in
+        ref.child("user_comments").child("\(user)").observe(.value, with: { (snapshot) in
             
-            guard let dictionary = snapshot.value as? [String: [String: Any]] else { return }
+            var comment: [[String: Any]] = []
             
-            guard let data = try? JSONSerialization.data(withJSONObject: Array(dictionary.values), options: .fragmentsAllowed) else { return }
-            
-            for comment in data {
+            for child in snapshot.children {
                 
+                print(child)
+                
+                print(type(of: child))
+                
+                guard let childSnapShot = child as? DataSnapshot,
+                    let value = childSnapShot.value as? [String: Any] else {
+                        
+                        print(789)
+                        
+                        return
+                }
+                
+                print(87979879)
+
+                comment.append(value)
             }
             
+            print(comment.count)
+            
+            guard let data = try? JSONSerialization.data(withJSONObject: comment, options: .fragmentsAllowed) else { return }
+            
             do {
-                
+
                 let json = try JSONDecoder().decode([UserComment].self, from: data)
-                print("===========")
                 print(json)
-                print("===========")
-                
+
             } catch {
                 print(error)
             }
-        }
+            
+        })
+        
     }
     
-//    func fetchUserComment() {
-//        
-//        guard let uid = Auth.auth().currentUser?.uid  else { return }
-//        
-//        votProvider.fetchUserComment(uid: uid) { [weak self] result in
-//            
-//            switch result {
-//                
-//            case .success(let comment):
-//                
-//                self?.userComment = comment
-//                
-//                print(self?.userComment)
-//                
-//            case .failure(let error):
-//                
-//                print(error)
-//                
-//                VOTProgressHUD.showFailure(text: "讀取資料失敗！")
-//            }
-//            
-//        }
-//    }
-    
 }
+
 
 // MARK: - UICollectionView DataSource/ Delegate
 extension ProfileController {
@@ -147,6 +143,7 @@ extension ProfileController {
     @objc func handleSetting() {
         do {
             try Auth.auth().signOut()
+            VOTProgressHUD.showSuccess(text: "登出")
         } catch let error {
             print(error.localizedDescription)
         }
@@ -171,8 +168,6 @@ extension ProfileController {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as? ProfileCollectionViewCell else { return UICollectionViewCell()}
         
         cell.layer.cornerRadius = 10
-        
-//        cell.cellImageView.loadImage(image, placeHolder: #imageLiteral(resourceName: "Pic9"))
         
         return cell
     }

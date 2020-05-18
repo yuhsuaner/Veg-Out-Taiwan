@@ -126,6 +126,8 @@ extension RestaurantInformationViewController: UITableViewDataSource {
         
         let controller = UserCommentWallViewController()
         
+        controller.restaurantComments = comments
+        
         navigationController?.pushViewController(controller, animated: true)
     }
 }
@@ -155,7 +157,7 @@ extension RestaurantInformationViewController: UICollectionViewDataSource {
         
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RestaurantHeaderImageViewCell", for: indexPath) as? RestaurantHeaderImageViewCell else { return UICollectionViewCell() }
         
-        cell.topImageView.loadImage(restaurant.imageURL[0], placeHolder: #imageLiteral(resourceName: "Pic0"))
+        cell.topImageView.loadImage(restaurant.imageURL[0], placeHolder: UIImage.init(named: "non_photo-1"))
         
         return cell
     }

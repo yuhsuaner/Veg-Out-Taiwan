@@ -79,7 +79,7 @@ class UserFoodDiaryViewController: UIViewController, UIGestureRecognizerDelegate
         
         self.restaurantNameLabel.text = restaurantComments?.restaurantName
         userNameLabel.text = restaurantComments?.user.userName
-        userImageView.loadImage(restaurantComments?.user.profileImageUrl, placeHolder: #imageLiteral(resourceName: "VOT tab bar icons-10"))
+        userImageView.loadImage(restaurantComments?.user.profileImageUrl, placeHolder: #imageLiteral(resourceName: "VOT tab bar icons-12"))
         contentOfCommentTextView.text = restaurantComments?.commentText
     }
 }
@@ -97,7 +97,7 @@ extension UserFoodDiaryViewController: UICollectionViewDataSource {
         
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ImageCollectionViewCell", for: indexPath) as? ImageCollectionViewCell else { return UICollectionViewCell() }
         
-        cell.postImage.loadImage(restaurantComments?.imageURL[indexPath.row], placeHolder: #imageLiteral(resourceName: "Pic2"))
+        cell.postImage.loadImage(restaurantComments?.imageURL[indexPath.row], placeHolder: #imageLiteral(resourceName: "non_photo-2"))
         
         return cell
     }

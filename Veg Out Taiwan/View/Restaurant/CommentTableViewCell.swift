@@ -84,7 +84,7 @@ extension CommentTableViewCell: UICollectionViewDataSource {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CommentCollectionViewCell", for: indexPath) as? CommentCollectionViewCell else { return UICollectionViewCell() }
         
         let restaurantComment = restaurantComments[indexPath.row]
-        cell.photoFromCommentImage.loadImage(restaurantComment.imageURL[0], placeHolder: #imageLiteral(resourceName: "Pic0"))
+        cell.photoFromCommentImage.loadImage(restaurantComment.imageURL[0], placeHolder: #imageLiteral(resourceName: "non_photo-2"))
         cell.commentLabel.text = restaurantComment.commentText
         cell.ratingFromCommentLabel.text = "★ \(restaurantComment.rating)"
         

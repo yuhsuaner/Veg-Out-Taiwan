@@ -143,7 +143,7 @@ class CommentViewController: UIViewController {
                                  commentText: commentText,
                                  user: User(uid: uid, username: userName, userImage: userImage, email: userMail))
         
-        var userComment = UserComment(restaurantName: newComment.restaurantName,
+        var userComment = UserComment(
                                       imageURL: [],
                                       rating: newComment.rating,
                                       commentText: newComment.commentText)
