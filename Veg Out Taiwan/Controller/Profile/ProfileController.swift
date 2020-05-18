@@ -90,12 +90,8 @@ class ProfileController: UICollectionViewController {
                 guard let childSnapShot = child as? DataSnapshot,
                     let value = childSnapShot.value as? [String: Any] else {
                         
-                        print(789)
-                        
                         return
                 }
-                
-                print(87979879)
 
                 comment.append(value)
             }
@@ -107,7 +103,8 @@ class ProfileController: UICollectionViewController {
             do {
 
                 let json = try JSONDecoder().decode([UserComment].self, from: data)
-                print(json)
+                
+                self.userComment = json
 
             } catch {
                 print(error)
@@ -118,7 +115,6 @@ class ProfileController: UICollectionViewController {
     }
     
 }
-
 
 // MARK: - UICollectionView DataSource/ Delegate
 extension ProfileController {
@@ -160,7 +156,9 @@ extension ProfileController {
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        return 2
+        guard let data = userComment?.count else { return 0 }
+        
+        return data
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -169,12 +167,34 @@ extension ProfileController {
         
         cell.layer.cornerRadius = 10
         
+        guard let image = userComment?[indexPath.row].imageURL else { return UICollectionViewCell() }
+        
+        cell.cellImageView.loadImage(image[0], placeHolder: #imageLiteral(resourceName: "non_photo-1"))
+        
         return cell
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         guard let viewController = UIStoryboard(name: "UserFoodDiary", bundle: nil).instantiateViewController(identifier: "UserFoodDiary") as? UserFoodDiaryViewController else { return }
+        
+        guard
+            let userName = UserDefaults.standard.value(forKey: "Username") as? String,
+            let userImage = UserDefaults.standard.value(forKey: "UserImage") as? String,
+            let userMail = UserDefaults.standard.value(forKey: "UserMail") as? String,
+            let uid = UserDefaults.standard.value(forKey: "UID") as? String
+            else { return }
+        
+        guard let userComment = userComment else { return }
+        
+        let comment = Comment(commentId: "",
+                              restaurantName: userComment[indexPath.row].restaurantName,
+                              imageURL: userComment[indexPath.row].imageURL,
+                              rating: userComment[indexPath.row].rating,
+                              commentText: userComment[indexPath.row].commentText,
+                              user: User(uid: uid, username: userName, userImage: userImage, email: userMail))
+        
+        viewController.restaurantComments = comment
         
         show(viewController, sender: nil)
     }

@@ -56,7 +56,7 @@ struct ImageService {
 
 struct UserComment: Codable {
     
-//    let restaurantName: String
+    let restaurantName: String
     var imageURL: [String]
     let rating: Double
     let commentText: String
