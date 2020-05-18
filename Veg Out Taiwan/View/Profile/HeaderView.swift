@@ -28,7 +28,6 @@ class HeaderView: UICollectionViewCell {
     
     let usernameLabel: UILabel = {
         let label = UILabel()
-//        label.text = "Irene Chen"
         label.textAlignment = .center
         label.font = UIFont(name: "jf-openhuninn-1.0", size: 24)
         label.textColor = .G2

@@ -131,6 +131,8 @@ extension ProfileController {
         
         headerView.user = user
         
+        headerView.postLabel.addAttributeText(primaryText: "\(userComment?.count ?? 0)", secondaryText: "評論")
+        
         headerView.settingButton.addTarget(self, action: #selector(handleSetting), for: .touchUpInside)
         
         return headerView

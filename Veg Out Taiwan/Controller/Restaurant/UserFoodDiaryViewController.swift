@@ -11,7 +11,6 @@ import UIKit
 class UserFoodDiaryViewController: UIViewController, UIGestureRecognizerDelegate {
     
     // MARK: - Properties
-//    let  restaurant: Restaurant
     
     var currentPage = 0
     
@@ -51,7 +50,7 @@ class UserFoodDiaryViewController: UIViewController, UIGestureRecognizerDelegate
         configureUI()
         configureComment()
         
-        imagePageControl.numberOfPages = 10
+        imagePageControl.numberOfPages = restaurantComments?.imageURL.count ?? 0
         imagePageControl.pageIndicatorTintColor = UIColor.W1
         imagePageControl.currentPageIndicatorTintColor = UIColor.O1
     }
