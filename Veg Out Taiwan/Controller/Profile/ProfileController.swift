@@ -29,7 +29,11 @@ class ProfileController: UICollectionViewController {
         }
     }
     
+    var userCommentData: [Data]?
+    
     let votProvider = VOTProvider()
+    
+    var ref: DatabaseReference!
     
     // MARK: - LifeCycle
     
@@ -38,7 +42,7 @@ class ProfileController: UICollectionViewController {
         
         configureCollectionView()
         
-//        fetchUserComment()
+        getUserComment()
     }
     
     init() {
@@ -62,6 +66,36 @@ class ProfileController: UICollectionViewController {
         collectionView.register(HeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: headerViewId)
         
         self.collectionView.register(ProfileCollectionViewCell.self, forCellWithReuseIdentifier: cellId)
+    }
+    
+    // MARK: - API
+    func getUserComment() {
+
+        ref = Database.database().reference()
+        
+        guard let user = Auth.auth().currentUser?.uid else { return }
+        
+        ref.child("user_comments").queryOrdered(byChild: "\(user)").observeSingleEvent(of: .value) { (snapshot) in
+            
+            guard let dictionary = snapshot.value as? [String: [String: Any]] else { return }
+            
+            guard let data = try? JSONSerialization.data(withJSONObject: Array(dictionary.values), options: .fragmentsAllowed) else { return }
+            
+            for comment in data {
+                
+            }
+            
+            do {
+                
+                let json = try JSONDecoder().decode([UserComment].self, from: data)
+                print("===========")
+                print(json)
+                print("===========")
+                
+            } catch {
+                print(error)
+            }
+        }
     }
     
 //    func fetchUserComment() {
