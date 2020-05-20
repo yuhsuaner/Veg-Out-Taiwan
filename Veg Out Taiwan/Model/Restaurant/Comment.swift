@@ -21,6 +21,8 @@ struct Comment: Codable {
     let commentText: String
 //    let timestamp: Date
     let user: User
+    var likes: Int = 0
+    var didLike: Bool?
 }
 
 struct ImageService {

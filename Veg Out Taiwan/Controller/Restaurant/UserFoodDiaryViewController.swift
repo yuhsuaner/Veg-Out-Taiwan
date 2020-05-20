@@ -33,11 +33,44 @@ class UserFoodDiaryViewController: UIViewController, UIGestureRecognizerDelegate
     
     @IBOutlet weak var collectionButton: UIButton!
     
-    @IBOutlet weak var favoriteButton: UIButton!
+    @IBOutlet weak var likeButton: UIButton!
     
-    @IBAction func handleLeaveMessage(_ sender: Any) {
+    @IBAction func handleReplyTapped(_ sender: Any) {
     }
-    @IBAction func handleAddFavorite(_ sender: Any) {
+    
+    @IBAction func handleLikeTapped(_ sender: Any) {
+        
+        guard var comment = restaurantComments else { return }
+        
+        guard var didlike = comment.didLike else { return }
+        
+        CommentService.shared.likeComment(comment: comment) { (err, ref) in
+            
+            didlike.toggle()
+            
+            let like = didlike ? comment.likes - 1 : comment.likes + 1
+            comment.likes = like
+            
+            self.setLikeButtonImage()
+            
+            VOTProgressHUD.showSuccess(text: "Like")
+        }
+    }
+    
+    func setLikeButtonImage() {
+        
+        guard var comment = restaurantComments else { return }
+        
+        if comment.didLike == false {
+            DispatchQueue.main.async {
+                self.likeButton.setBackgroundImage(UIImage(named: "like_filled"), for: .normal)
+                comment.didLike = true
+            }
+        } else {
+            DispatchQueue.main.async {
+                self.likeButton.setBackgroundImage(UIImage(named: "like"), for: .normal)
+            }
+        }
     }
     
     @IBOutlet weak var imagePageControl: UIPageControl!

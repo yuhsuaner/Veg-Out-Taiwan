@@ -6,37 +6,37 @@
 //  Copyright © 2020 Irene.C. All rights reserved.
 //
 
-import FirebaseDatabase
+import Firebase
 
-//struct CommentService {
-//
-//    static let shared = CommentService()
-//
-//    var comment: [Comment] = []
-//
-//    var ref = Database.database().reference()
-//
-//    func fetchCommentfromFirebase(restaurantName: String, completion: @escaping(Comment) -> Void) {
-//
-//        var result: [Comment] = []
-//
-//        ref.child("comment_user").queryOrdered(byChild: "restaurantName").queryEqual(toValue: restaurantName).observe(.value, with: { (snapshot) in
-//
-//            guard let dictionary = snapshot.value as? [String: [String: Any]] else { return }
-//
-//            guard let data = try? JSONSerialization.data(withJSONObject: Array(dictionary.values), options: .fragmentsAllowed) else { return }
-//
-//            do {
-//
-//                let json = try JSONDecoder().decode([Comment].self, from: data)
-//                result.append(contentsOf: json)
-//
-//            } catch {
-//                print(error)
-//            }
-//
-//            self.comment = result
-//            completion(result)
-//        })
-//    }
-//}
+typealias DatabaseCompletion = ((Error?, DatabaseReference) -> Void)
+
+struct CommentService {
+    
+    static let shared = CommentService()
+    
+    func likeComment(comment: Comment, completion: @escaping (DatabaseCompletion)) {
+        
+        guard let  uid = Auth.auth().currentUser?.uid else { return }
+        
+        guard let didlike = comment.didLike else { return }
+        
+        let likes  = didlike == true ? comment.likes - 1 : comment.likes + 1
+        
+        Database.database().reference().child("comments").child(comment.commentId).child("likes").setValue(likes)
+        
+        if didlike == true {
+            //[Unlike]remove like data from firebase
+            Database.database().reference().child("user-likes").child(uid).child(comment.commentId).removeValue { (err, ref) in
+                
+                Database.database().reference().child("comment-likes").child(comment.commentId).removeValue(completionBlock: completion)
+            }
+            
+        } else {
+            //[Like]add like data to firebase
+            Database.database().reference().child("user-likes").child(uid).updateChildValues([comment.commentId: 1]) { (err, ref) in
+                
+                Database.database().reference().child("comment-likes").child(comment.commentId).updateChildValues([uid: 1], withCompletionBlock: completion)
+            }
+        }
+    }
+}

@@ -13,7 +13,6 @@ import UIKit
 
 typealias RestaurantHanlder = (Result<[Restaurant]>) -> Void
 typealias CommentHanlder = (Result<[Comment]>) -> Void
-typealias UserCommentHanlder = (Result<[UserComment]>) -> Void
 
 class VOTProvider {
     
@@ -44,10 +43,6 @@ class VOTProvider {
                             
                             completion(Result.success(restaurantData))
                         }
-                        
-//                        NotificationCenter.default.post(name: NSNotification.Name("addRestaurantMarker"),
-//                        object: nil,
-//                        userInfo: ["restaurants": restaurantData])
                         
                     } catch {
                         
@@ -95,37 +90,4 @@ class VOTProvider {
         
         task.resume()
     }
-    
-    //    func fetchUserComment(uid: String, completion: @escaping UserCommentHanlder) {
-    //
-    //        HTTPClient.shared.request(
-    //            VOTDataRequest.userComment(uid: uid),
-    //            completion: { [weak self] result in
-    //
-    //                guard let strongSelf = self else { return }
-    //
-    //                switch result {
-    //
-    //                case .success(let data):
-    //
-    //                    do {
-    //                        let commentData = try strongSelf.decoder.decode([UserComment].self, from: data)
-    //
-    //                        DispatchQueue.main.async {
-    //
-    //                            completion(Result.success(commentData))
-    //                        }
-    //
-    //                    } catch {
-    //
-    //                        completion(Result.failure(error))
-    //
-    //                    }
-    //
-    //                case .failure(let error):
-    //
-    //                    completion(Result.failure(error))
-    //                }
-    //        })
-    //    }
 }

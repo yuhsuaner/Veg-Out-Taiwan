@@ -7,32 +7,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "C8520ADD-4EDF-43FE-8D0F-60E899546BD9"
+            uuid = "657BB050-3E96-45B0-9B92-A9DC3F7145F9"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Veg Out Taiwan/Controller/VeganMap/MapViewController.swift"
+            filePath = "Veg Out Taiwan/Model/Restaurant/CommentService.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "261"
-            endingLineNumber = "261"
-            landmarkName = "createMarkersFrom(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "5A6C1483-48D0-418D-8B55-89E29755FF03"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Veg Out Taiwan/Controller/VeganMap/MapViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "105"
-            endingLineNumber = "105"
-            landmarkName = "fetchData()"
+            startingLineNumber = "27"
+            endingLineNumber = "27"
+            landmarkName = "likeComment(comment:completion:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

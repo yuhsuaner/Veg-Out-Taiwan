@@ -141,7 +141,8 @@ class CommentViewController: UIViewController {
                                  imageURL: [],
                                  rating: currentStar,
                                  commentText: commentText,
-                                 user: User(uid: uid, username: userName, userImage: userImage, email: userMail))
+                                 user: User(uid: uid, username: userName, userImage: userImage, email: userMail),
+                                 didLike: false)
         
         var userComment = UserComment(restaurantName: newComment.restaurantName,
                                       imageURL: [],

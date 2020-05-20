@@ -28,9 +28,6 @@ class MapViewController: UIViewController {
     
     private var mapView: GMSMapView!
     var locationManager = CLLocationManager()
-    //    var markers: [GMSMarker] = []
-    
-    var coordinates: [Coordinates] = []
     
     private var searchButton: UIButton = {
         let button = UIButton(type: .system)
@@ -87,8 +84,7 @@ class MapViewController: UIViewController {
         fetchUser()
         configureMap()
         configureUI()
-        
-//        addObservers()
+
     }
 
     // MARK: - API
@@ -103,12 +99,6 @@ class MapViewController: UIViewController {
                 self?.restaurant = restaurants
                 
                 self?.createMarkersFrom(restaurants)
-                
-//                let restaurantslist = restaurants
-                
-//                NotificationCenter.default.post(name: NSNotification.Name("addRestaurantMarker"),
-//                                                object: nil,
-//                                                userInfo: ["restaurants": restaurants])
                 
             case .failure:
                 
@@ -236,27 +226,6 @@ class MapViewController: UIViewController {
         tableView.register(SearchTableViewCell.self, forCellReuseIdentifier: reuseIdentifier)
     }
     
-    //Create Marker Pin on map function
-    
-//    func createMarker(titleMarker : String, iconMarker: UIImage, latitude: CLLocationDegrees, longitude: CLLocationDegrees) {
-//
-//        let marker = GMSMarker()
-//        marker.position = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
-//        marker.title = titleMarker
-//        marker.icon = GMSMarker.markerImage(with: .red)
-//        marker.map = mapView
-//    }
-    
-//    func addMarker(){
-//        for coordinate in markersArray {
-//            let marker = GMSMarker()
-//            marker.position = coordinate
-//            marker.map = mapView
-//            marker.isDraggable = true
-//            marker.icon = GMSMarker.markerImage(with: UIColor.blue)
-//        }
-//    }
-    
     // MARK: Creating markers
     func createMarkersFrom(_ restaurants: [Restaurant]) {
         for restaurant in restaurants {
@@ -272,39 +241,12 @@ class MapViewController: UIViewController {
         marker.position = CLLocationCoordinate2D(latitude: restaurant.coordinates.latitude,
                                                  longitude: restaurant.coordinates.longitude)
         marker.title = title
-        print(marker.title)
-        marker.snippet = "Tap for details"
+//        marker.snippet = "Tap for details"
         marker.icon = UIImage(named: "Pin")
         marker.map = mapView
     }
     
-//    func addMarker(lat: Double, long: Double) {
-//
-//        let marker = GMSMarker(position: CLLocationCoordinate2D(latitude: lat, longitude: long))
-//        marker.icon = UIImage(named: "Pin")
-//        marker.title = restaurant[1].restaurantName
-//        markers.append(marker)
-//        print(markers)
-//
-//        marker.map = mapView
-//    }
-    
-//    fileprivate func addObservers() {
-//        NotificationCenter.default.addObserver(self,
-//                                               selector: #selector(restaurantsListData),
-//                                               name: NSNotification.Name(rawValue: "addRestaurantMarker"),
-//                                               object: nil)
-//
-//    }
-    
     // MARK: - selector
-//    @objc func restaurantsListData(notification: NSNotification) {
-//
-//        guard let list = notification.userInfo?["restaurants"] as? [Restaurant] else { return }
-//
-//        MapMarkerManager.shared.addMarkersFor(restaurants: list, to: mapView)
-//    }
-    
     @objc func handleSearchAction() {
         
         print("123")
@@ -364,14 +306,6 @@ extension MapViewController: GMSMapViewDelegate {
 extension MapViewController: CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        
-//        let location = locations.last
-//
-//        let locationTarget = CLLocation(latitude: 10.3540762, longitude: 123.9115758)
-//
-//        createMarker(titleMarker: "Location", iconMarker: #imageLiteral(resourceName: "Pin"), latitude: locationTarget.coordinate.latitude, longitude: locationTarget.coordinate.longitude)
-//
-//        self.locationManager.stopUpdatingLocation()
         
         let location = locations.last!
 
@@ -524,17 +458,6 @@ extension MapViewController: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         let searchText  = textField.text! + string
         
-        //        if searchText.count >= 3 {
-        //            searchedList = self.locationList.filter { (($0["title"]!).localizedCaseInsensitiveContains(searchText)) }
-        //            if searchedList.count == 0 {
-        //                searching = false
-        //            } else {
-        //                searching = true
-        //            }
-        //        } else {
-        //            searchedList = []
-        //        }
-        
         tableView.reloadData()
         return true
     }
@@ -574,5 +497,4 @@ extension MapViewController: UITableViewDelegate {
         self.tableView.isHidden = true
         self.view.endEditing(true)
     }
-    
 }
