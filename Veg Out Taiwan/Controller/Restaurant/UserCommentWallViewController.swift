@@ -12,10 +12,11 @@ class UserCommentWallViewController: UIViewController {
     
     // MARK: - Properties
     
+    var restaurantComments: [Comment] = []
+    
     private lazy var collectionView: UICollectionView = {
         
         let layout = UICollectionViewFlowLayout()
-//        layout.scrollDirection = .horizontal
         
         let collectionView  = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
@@ -31,6 +32,7 @@ class UserCommentWallViewController: UIViewController {
     }()
     
     // MARK: - LifeCycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -58,16 +60,14 @@ class UserCommentWallViewController: UIViewController {
 extension UserCommentWallViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+
+        return 5
         
-        return 10
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "UserCommentWallCollectionViewCell", for: indexPath) as? UserCommentWallCollectionViewCell else { return UICollectionViewCell() }
-        
-        cell.layer.cornerRadius = 10
-        cell.backgroundColor = .O1
         
         return cell
     }    
@@ -89,5 +89,4 @@ extension UserCommentWallViewController: UICollectionViewDelegateFlowLayout {
           
           return 10
       }
-    
 }

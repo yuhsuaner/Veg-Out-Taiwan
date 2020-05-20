@@ -2,7 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -156,7 +156,7 @@
                                                 <color key="tintColor" name="Orange"/>
                                                 <state key="normal" image="text.bubble" catalog="system"/>
                                                 <connections>
-                                                    <action selector="handleLeaveMessage:" destination="IaB-DZ-vx2" eventType="touchUpInside" id="SjH-O0-qGy"/>
+                                                    <action selector="handleReplyTapped:" destination="IaB-DZ-vx2" eventType="touchUpInside" id="SjH-O0-qGy"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bmb-rt-8Jn">
@@ -164,7 +164,7 @@
                                                 <color key="tintColor" name="Orange"/>
                                                 <state key="normal" image="heart" catalog="system"/>
                                                 <connections>
-                                                    <action selector="handleAddFavorite:" destination="IaB-DZ-vx2" eventType="touchUpInside" id="rs2-IF-inz"/>
+                                                    <action selector="handleLikeTapped:" destination="IaB-DZ-vx2" eventType="touchUpInside" id="rs2-IF-inz"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -235,14 +235,14 @@
                     </view>
                     <connections>
                         <outlet property="collectionButton" destination="koF-vH-qzF" id="Evl-jC-hl7"/>
+                        <outlet property="collectionView" destination="EYa-nv-1AY" id="yyk-kj-erZ"/>
                         <outlet property="contentOfCommentTextView" destination="hfu-j7-3Wh" id="mtm-E5-0uV"/>
-                        <outlet property="favoriteButton" destination="bmb-rt-8Jn" id="eXp-gS-hCg"/>
-                        <outlet property="imageCollectionView" destination="EYa-nv-1AY" id="yyk-kj-erZ"/>
                         <outlet property="imagePageControl" destination="Ki5-VY-94T" id="j7K-Ct-fI3"/>
+                        <outlet property="likeButton" destination="bmb-rt-8Jn" id="eXp-gS-hCg"/>
                         <outlet property="postDateLabel" destination="ilN-ek-RGZ" id="V3R-Pq-tpE"/>
-                        <outlet property="restaurantAddressLabel" destination="4V7-Rf-fcR" id="YG2-DS-kX4"/>
+                        <outlet property="restaurantNameLabel" destination="4V7-Rf-fcR" id="YG2-DS-kX4"/>
                         <outlet property="userImageView" destination="u53-qW-aIe" id="HAi-5z-4qC"/>
-                        <outlet property="userNameLabel" destination="bPs-aS-f20" id="9Fp-S2-U3I"/>
+                        <outlet property="userNameLabel" destination="Szw-uP-c7e" id="0di-CK-9pC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="90B-aY-WQf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

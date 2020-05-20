@@ -21,7 +21,13 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Show your location on a map!!!!</string>
+	<string>探索周邊美食資訊，允許開啟您的“地點位置”，謝謝。</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>當您有需要上傳照片時，您的照片將在Veg Out Taiwan內被使用，謝謝。</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>Veg Out Taiwan 將使用您的相片。</string>
+	<key>NSCameraUsageDescription</key>
+	<string>請開啟相機權限，上傳照片。</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>jf-openhuninn-1.0.ttf</string>
@@ -45,5 +51,7 @@
 	</array>
 	<key>UIUserInterfaceStyle</key>
 	<string>light</string>
+	<key>VOTBaseURL</key>
+	<string>https://veg-out-taiwan-1584254182301.firebaseio.com</string>
 </dict>
 </plist>

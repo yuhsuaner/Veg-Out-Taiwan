@@ -32,7 +32,7 @@ class PhotoWallViewController: UIViewController {
         
         collectionView.backgroundColor = .clear
         
-//        collectionView.delegate = self
+        collectionView.delegate = self
         collectionView.dataSource = self
         
         return collectionView
@@ -65,7 +65,7 @@ class PhotoWallViewController: UIViewController {
     }
 }
 
-// MARK: - UICollectionViewDataSource
+// MARK: - UICollectionView DataSource
 extension PhotoWallViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -81,6 +81,18 @@ extension PhotoWallViewController: UICollectionViewDataSource {
         cell.postImageView.image = #imageLiteral(resourceName: "Pic7")
         
         return cell
+    }
+
+}
+
+// MARK: - UICollectionViewDelegate
+extension PhotoWallViewController: UICollectionViewDelegate {
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        guard let viewController = UIStoryboard(name: "UserFoodDiary", bundle: nil).instantiateViewController(identifier: "UserFoodDiary") as? UserFoodDiaryViewController else { return }
+        
+        show(viewController, sender: nil)
     }
 }
 

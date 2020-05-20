@@ -10,8 +10,15 @@ import UIKit
 
 class RestaurantCollectionViewCell: UICollectionViewCell {
     
+    // MARK: - Properties
+//    var restaurant: [Restaurant]? = [] {
+//        didSet { configure() }
+//    }
+//
+//    let votProvider = VOTProvider()
+    
     @IBOutlet weak var restaurantImage: UIImageView! {
-        didSet{
+        didSet {
             restaurantImage.layer.cornerRadius = 15
         }
     }
@@ -22,21 +29,12 @@ class RestaurantCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var distanceLabel: UILabel!
     
+    // MARK: - Lifecycle
     override func awakeFromNib() {
         super.awakeFromNib()
         
+//        fetchRestaurant()
     }
-    
-//    override func layoutSubviews() {
-//        super.layoutSubviews()
-//
-//        self.layer.cornerRadius = 15
-//        layer.shadowOpacity = 0.4
-//        layer.shadowColor = UIColor.DG?.cgColor
-//        layer.shadowOffset = CGSize(width: 5, height: 5)
-//
-////        self.clipsToBounds = false
-//    }
     
     override func layoutSubviews() {
         super.layoutSubviews()
@@ -47,7 +45,33 @@ class RestaurantCollectionViewCell: UICollectionViewCell {
         layer.shadowOpacity = 0.7
         layer.shadowColor = UIColor.black.cgColor
         layer.masksToBounds = false
-        
     }
+    
+    // MARK: - Helper
+    
+//    func fetchRestaurant() {
+//
+//        votProvider.fetchRestaurant(completion: { [weak self] result in
+//
+//            switch result {
+//
+//            case .success(let restaurants):
+//
+//                self?.restaurant = restaurants
+//                print(result)
+//
+//            case .failure:
+//
+//                VOTProgressHUD.showFailure(text: "讀取資料失敗！")
+//            }
+//        })
+//    }
+    
+//    func configure() {
+//        guard let restaurant = restaurant else { return }
+//
+//        restaurantNameLabel.text = restaurant.restaurantName
+//        restaurantImage.loadImage(restaurant.imageUrl, placeHolder: #imageLiteral(resourceName: "Pic4"))
+//    }
     
 }

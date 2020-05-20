@@ -20,10 +20,18 @@ target 'Veg Out Taiwan' do
   pod 'Firebase/Firestore'
   pod 'Firebase/Storage'
   pod 'Firebase/Database'
+  pod 'Crashlytics'
+  pod 'Fabric'
   
   pod 'collection-view-layouts'
   pod 'IQKeyboardManagerSwift'
   pod 'SDWebImage'
+  pod 'JGProgressHUD'
   
+  # Pod for star rate
+  pod 'Cosmos'
+  
+  # Pod for IG like select photo
+  pod 'YPImagePicker'
 
 end

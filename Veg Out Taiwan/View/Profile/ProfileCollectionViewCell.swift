@@ -21,7 +21,7 @@ class ProfileCollectionViewCell: UICollectionViewCell {
     
     let cellImageView: UIImageView = {
         let image = UIImageView()
-        image.image = #imageLiteral(resourceName: "Pic6")
+        image.image = #imageLiteral(resourceName: "non_photo-3")
         image.contentMode = .scaleAspectFill
         image.layer.cornerRadius = 10
         image.clipsToBounds = true

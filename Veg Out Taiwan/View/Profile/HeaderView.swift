@@ -8,6 +8,8 @@
 
 import UIKit
 import SDWebImage
+import FirebaseDatabase
+import FirebaseAuth
 
 class HeaderView: UICollectionViewCell {
     
@@ -26,7 +28,6 @@ class HeaderView: UICollectionViewCell {
     
     let usernameLabel: UILabel = {
         let label = UILabel()
-        label.text = "Irene Chen"
         label.textAlignment = .center
         label.font = UIFont(name: "jf-openhuninn-1.0", size: 24)
         label.textColor = .G2
@@ -81,6 +82,8 @@ class HeaderView: UICollectionViewCell {
         renderSettingButton()
         renderUsernameLabel()
         renderInfoLabelGroup()
+        
+        fetchUser()
     }
     
     required init?(coder: NSCoder) {
@@ -106,14 +109,23 @@ class HeaderView: UICollectionViewCell {
         stackView.anchor(top: profileImageView.bottomAnchor, left: leftAnchor, right: rightAnchor, paddingTop: 5, paddingLeft: 12, paddingRight: 12, height: 80)
     }
     
+    func fetchUser() {
+        
+        guard let uid = Auth.auth().currentUser?.uid  else { return }
+        
+        UserService.shared.fetchUser(uid: uid) { user in
+            
+            self.user = user
+        }
+    }
+    
     func configure() {
         guard let user = user else { return }
         
-        profileImageView.sd_setImage(with: user.profileImageUrl)
+        profileImageView.loadImage(user.profileImageUrl, placeHolder: #imageLiteral(resourceName: "VOT tab bar icons-11"))
         
-        usernameLabel.text = user.userNmae
+        usernameLabel.text = user.userName
     }
-    
 }
 
 extension UILabel {

@@ -8,6 +8,8 @@
 
 import UIKit
 import FirebaseAuth
+import FirebaseDatabase
+import SDWebImage
 
 class ProfileController: UICollectionViewController {
     
@@ -15,6 +17,21 @@ class ProfileController: UICollectionViewController {
     fileprivate let headerViewId = "HeaderView"
     
     // MARK: - Properties
+    var user: User? {
+        didSet {
+            collectionView.reloadData()
+        }
+    }
+    
+    var userComment: [UserComment]? {
+        didSet {
+            collectionView.reloadData()
+        }
+    }
+    
+    let votProvider = VOTProvider()
+    
+    var ref: DatabaseReference!
     
     // MARK: - LifeCycle
     
@@ -22,13 +39,13 @@ class ProfileController: UICollectionViewController {
         super.viewDidLoad()
         
         configureCollectionView()
+        
     }
-//
-//    override func viewDidAppear(_ animated: Bool) {
-//        super.viewDidAppear(animated)
-//
-//        print(harderview?.profileImageView.frame)
-//    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+        getUserComment()
+    }
     
     init() {
         super.init(collectionViewLayout: UICollectionViewFlowLayout())
@@ -48,21 +65,58 @@ class ProfileController: UICollectionViewController {
         
         collectionView.backgroundColor = .white
         
-//        let headerNib = UINib(nibName: "HeaderView", bundle: nil)
-//        self.collectionView.register(headerNib, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: headerViewId)
-        
         collectionView.register(HeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: headerViewId)
         
         self.collectionView.register(ProfileCollectionViewCell.self, forCellWithReuseIdentifier: cellId)
     }
     
-    func fetchUserData() {
+    // MARK: - API
+    func getUserComment() {
         
-//        UserService.shared.fetchUser
+        ref = Database.database().reference()
+        
+        guard let user = Auth.auth().currentUser?.uid else { return }
+        
+        ref.child("user_comments").child("\(user)").observe(.value, with: { (snapshot) in
+            
+            var comment: [[String: Any]] = []
+            
+            for child in snapshot.children {
+                
+//                print(child)
+//
+//                print(type(of: child))
+                
+                guard let childSnapShot = child as? DataSnapshot,
+                    let value = childSnapShot.value as? [String: Any] else {
+                        
+                        return
+                }
+
+                comment.append(value)
+            }
+            
+            print(comment.count)
+            
+            guard let data = try? JSONSerialization.data(withJSONObject: comment, options: .fragmentsAllowed) else { return }
+            
+            do {
+
+                let json = try JSONDecoder().decode([UserComment].self, from: data)
+                
+                self.userComment = json
+
+            } catch {
+                print(error)
+            }
+            
+        })
+        
     }
+    
 }
 
-// MARK: - UICollectionViewDataSource
+// MARK: - UICollectionView DataSource/ Delegate
 extension ProfileController {
     
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
@@ -75,7 +129,9 @@ extension ProfileController {
                 fatalError("Cannot create header view")
         }
         
-//        self.harderview = headerView
+        headerView.user = user
+        
+        headerView.postLabel.addAttributeText(primaryText: "\(userComment?.count ?? 0)", secondaryText: "評論")
         
         headerView.settingButton.addTarget(self, action: #selector(handleSetting), for: .touchUpInside)
         
@@ -85,6 +141,7 @@ extension ProfileController {
     @objc func handleSetting() {
         do {
             try Auth.auth().signOut()
+            VOTProgressHUD.showSuccess(text: "登出")
         } catch let error {
             print(error.localizedDescription)
         }
@@ -93,15 +150,6 @@ extension ProfileController {
         guard let tab = appDelegate.window?.rootViewController as? MainTabViewController else { return }
         tab.selectedIndex = 0
         
-//
-//        if let authVC = UIStoryboard(name: "Auth", bundle: nil).instantiateViewController(identifier: "LogInVC") as? LogInViewController {
-//
-//
-//
-//            authVC.modalPresentationStyle = .overCurrentContext
-//
-//            present(authVC, animated: false, completion: nil)
-//        }
     }
     
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -110,7 +158,9 @@ extension ProfileController {
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        return 25
+        guard let data = userComment?.count else { return 0 }
+        
+        return data
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -119,7 +169,36 @@ extension ProfileController {
         
         cell.layer.cornerRadius = 10
         
+        guard let image = userComment?[indexPath.row].imageURL else { return UICollectionViewCell() }
+        
+        cell.cellImageView.loadImage(image[0], placeHolder: #imageLiteral(resourceName: "non_photo-1"))
+        
         return cell
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        guard let viewController = UIStoryboard(name: "UserFoodDiary", bundle: nil).instantiateViewController(identifier: "UserFoodDiary") as? UserFoodDiaryViewController else { return }
+        
+        guard
+            let userName = UserDefaults.standard.value(forKey: "Username") as? String,
+            let userImage = UserDefaults.standard.value(forKey: "UserImage") as? String,
+            let userMail = UserDefaults.standard.value(forKey: "UserMail") as? String,
+            let uid = UserDefaults.standard.value(forKey: "UID") as? String
+            else { return }
+        
+        guard let userComment = userComment else { return }
+        
+        let comment = Comment(commentId: "",
+                              restaurantName: userComment[indexPath.row].restaurantName,
+                              imageURL: userComment[indexPath.row].imageURL,
+                              rating: userComment[indexPath.row].rating,
+                              commentText: userComment[indexPath.row].commentText,
+                              user: User(uid: uid, username: userName, userImage: userImage, email: userMail))
+        
+        viewController.restaurantComments = comment
+        
+        show(viewController, sender: nil)
     }
 }
 
