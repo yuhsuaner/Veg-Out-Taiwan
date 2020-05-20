@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import GoogleMaps
 
 struct Restaurant: Codable {
     
@@ -14,7 +15,7 @@ struct Restaurant: Codable {
     let phone: String
     let restaurantName: String
     var categories: [String]?
-    var coordinates: Coordinates?
+    let coordinates: Coordinates
     let imageURL: [String]
     let rating: String
     let bussinessHours: [String]

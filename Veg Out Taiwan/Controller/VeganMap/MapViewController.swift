@@ -10,6 +10,8 @@ import UIKit
 import GoogleMaps
 import FirebaseAuth
 
+private let reuseIdentifier = "SearchTabeleViewCell"
+
 class MapViewController: UIViewController {
     
     // MARK: - Properties
@@ -23,6 +25,12 @@ class MapViewController: UIViewController {
     }
     
     let votProvider = VOTProvider()
+    
+    private var mapView: GMSMapView!
+    var locationManager = CLLocationManager()
+    //    var markers: [GMSMarker] = []
+    
+    var coordinates: [Coordinates] = []
     
     private var searchButton: UIButton = {
         let button = UIButton(type: .system)
@@ -47,12 +55,9 @@ class MapViewController: UIViewController {
         return textField
     }()
     
+    let tableView = UITableView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
+    
     private lazy var collectionView: UICollectionView = {
-        
-        //        let layout = RestaurantCollectionViewFlowLayout()
-        //        layout.scrollDirection = .horizontal
-        
-        //        let collectionView  = UICollectionView(frame: .zero, collectionViewLayout: layout)
         
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
@@ -66,8 +71,6 @@ class MapViewController: UIViewController {
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.layer.cornerRadius = 15
         
-        //        collectionView.isPagingEnabled = true
-        
         collectionView.backgroundColor = .clear
         
         collectionView.delegate = self
@@ -77,12 +80,60 @@ class MapViewController: UIViewController {
     }()
     
     // MARK: - Life cycle
-    override func loadView() {
-        super.loadView()
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        fetchData()
+        fetchUser()
+        configureMap()
+        configureUI()
+        
+//        addObservers()
+    }
+
+    // MARK: - API
+    func fetchData() {
+        
+        votProvider.fetchRestaurant(completion: { [weak self] result in
+            
+            switch result {
+                
+            case .success(let restaurants):
+                
+                self?.restaurant = restaurants
+                
+                self?.createMarkersFrom(restaurants)
+                
+//                let restaurantslist = restaurants
+                
+//                NotificationCenter.default.post(name: NSNotification.Name("addRestaurantMarker"),
+//                                                object: nil,
+//                                                userInfo: ["restaurants": restaurants])
+                
+            case .failure:
+                
+                VOTProgressHUD.showFailure(text: "讀取資料失敗！")
+            }
+        })
+    }
+    
+    func fetchUser() {
+        
+        guard let uid = Auth.auth().currentUser?.uid  else { return }
+        
+        UserService.shared.fetchUser(uid: uid) { user in
+            
+            self.user = user
+        }
+    }
+    
+    // MARK: - Helper
+    
+    func configureMap() {
         
         let camera = GMSCameraPosition.camera(withLatitude: 25.033493, longitude: 121.564101, zoom: 15.0)
         
-        let mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
+        mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
         
         do {
             // Set the map style by passing the URL of the local file.
@@ -106,30 +157,24 @@ class MapViewController: UIViewController {
             mapView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
         
-        //  Google Map SDK: COMPASS
         mapView.settings.compassButton = true
-        
-        //  Google Map SDK: User's loaction
         mapView.isMyLocationEnabled = true
         mapView.settings.myLocationButton = true
         mapView.padding = UIEdgeInsets(top: 0, left: 0, bottom: view.frame.height / 4 + 5, right: 10)
         
-        let locationButton = mapView.subviews
-               .filter { $0.description.contains("GMSUISettingsPaddingView") }
-               .flatMap { $0.subviews }
-               .flatMap { $0.subviews }
-               .filter { $0.description.contains("GMSx_QTMButton") }
-               .first
-             let customImage = UIImage(imageLiteralResourceName: "VOT_nav")
-             let myLocationButton = locationButton as? UIButton
-             myLocationButton?.setImage(customImage, for: .normal)
+        locationManager.delegate = self
+
+        mapView.delegate = self
         
-        let marker = GMSMarker()
-        marker.position = CLLocationCoordinate2DMake(25.034012, 121.563461)
-        marker.map = mapView
-        marker.title = "台北101"
-        marker.snippet = "好吃！"
-        marker.icon = UIImage(named: "Pin")
+        let locationButton = mapView.subviews
+            .filter { $0.description.contains("GMSUISettingsPaddingView") }
+            .flatMap { $0.subviews }
+            .flatMap { $0.subviews }
+            .filter { $0.description.contains("GMSx_QTMButton") }
+            .first
+        let customImage = UIImage(imageLiteralResourceName: "VOT_nav")
+        let myLocationButton = locationButton as? UIButton
+        myLocationButton?.setImage(customImage, for: .normal)
         
         let marker1 = GMSMarker()
         marker1.position = CLLocationCoordinate2DMake(25.04434, 121.563468)
@@ -137,98 +182,7 @@ class MapViewController: UIViewController {
         marker1.title = "BaganHood 蔬食餐酒館"
         marker1.snippet = "好吃~~~~~~~~！"
         marker1.icon = UIImage(named: "Pin")
-        
-        let marker2 = GMSMarker()
-        marker2.position = CLLocationCoordinate2DMake(25.034012, 121.566461)
-        marker2.map = mapView
-        marker2.title = "標題2"
-        marker2.snippet = "副標題2"
     }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        configureUI()
-        
-        searchTextField.delegate = self
-        
-        //        fetchAllRestaurants()
-        fetchData()
-        fetchUser()
-    }
-    
-    func fetchData() {
-        
-        votProvider.fetchRestaurant(completion: { [weak self] result in
-            
-            switch result {
-                
-            case .success(let restaurants):
-                
-                self?.restaurant = restaurants
-                
-            case .failure:
-                
-                VOTProgressHUD.showFailure(text: "讀取資料失敗！")
-            }
-        })
-    }
-    
-    func fetchUser() {
-        
-        guard let uid = Auth.auth().currentUser?.uid  else { return }
-        
-        UserService.shared.fetchUser(uid: uid) { user in
-            
-            self.user = user
-        }
-    }
-    
-//    func fetchAllRestaurants() {
-//
-//        let session = URLSession.shared
-//        let url = URL(string: "https://veg-out-taiwan-1584254182301.firebaseio.com/VOT_Restaurants.json")!
-//
-//        let task = session.dataTask(with: url) { data, response, error in
-//
-//            if error != nil || data == nil {
-//                print("Client error!")
-//                return
-//            }
-//
-//            guard let response = response as? HTTPURLResponse, (200...299).contains(response.statusCode) else {
-//                print("Server error!")
-//                return
-//            }
-//
-//            guard let mime = response.mimeType, mime == "application/json" else {
-//                print("Wrong MIME type!")
-//                return
-//            }
-//
-//            do {
-//                let json = try JSONDecoder().decode([Restaurant].self, from: data!)
-//                print(json)
-//            } catch {
-//                print("JSON error: \(error.localizedDescription)")
-//            }
-//        }
-//
-//        task.resume()
-//    }
-    
-    // MARK: - selector
-    @objc func handleSearchAction() {
-        
-        print("123")
-    }
-    
-    @objc func searchControl() {
-        
-        print(self.searchTextField.text ?? "123")
-    }
-    
-    // MARK: - Helper
     
     func configureUI() {
         
@@ -243,6 +197,8 @@ class MapViewController: UIViewController {
             searchTextField.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.height/24),
             searchTextField.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: -30)
         ])
+        
+        searchTextField.delegate = self
         
         NSLayoutConstraint(item: searchTextField, attribute: NSLayoutConstraint.Attribute.centerY, relatedBy: NSLayoutConstraint.Relation.equal, toItem: view, attribute: NSLayoutConstraint.Attribute.centerY, multiplier: 1/5, constant: 0).isActive = true
         
@@ -260,7 +216,172 @@ class MapViewController: UIViewController {
         ])
         
         NSLayoutConstraint(item: collectionView, attribute: NSLayoutConstraint.Attribute.centerY, relatedBy: NSLayoutConstraint.Relation.equal, toItem: view, attribute: NSLayoutConstraint.Attribute.centerY, multiplier: 1.5, constant: 0).isActive = true
-    }    
+    }
+    
+    func setUpTableView() {
+        
+        tableView.dataSource = self
+        tableView.delegate = self
+        
+        view.addSubview(tableView)
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            tableView.topAnchor.constraint(equalTo: searchTextField.bottomAnchor, constant: 8),
+            tableView.leftAnchor.constraint(equalTo: view.leftAnchor),
+            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            tableView.rightAnchor.constraint(equalTo: view.rightAnchor)
+        ])
+        
+        tableView.register(SearchTableViewCell.self, forCellReuseIdentifier: reuseIdentifier)
+    }
+    
+    //Create Marker Pin on map function
+    
+//    func createMarker(titleMarker : String, iconMarker: UIImage, latitude: CLLocationDegrees, longitude: CLLocationDegrees) {
+//
+//        let marker = GMSMarker()
+//        marker.position = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+//        marker.title = titleMarker
+//        marker.icon = GMSMarker.markerImage(with: .red)
+//        marker.map = mapView
+//    }
+    
+//    func addMarker(){
+//        for coordinate in markersArray {
+//            let marker = GMSMarker()
+//            marker.position = coordinate
+//            marker.map = mapView
+//            marker.isDraggable = true
+//            marker.icon = GMSMarker.markerImage(with: UIColor.blue)
+//        }
+//    }
+    
+    // MARK: Creating markers
+    func createMarkersFrom(_ restaurants: [Restaurant]) {
+        for restaurant in restaurants {
+            createMarker(title: restaurant.restaurantName,
+                         with: CLLocation(latitude: restaurant.coordinates.latitude,
+                                          longitude: restaurant.coordinates.longitude),
+                         from: restaurant)
+        }
+    }
+    
+    func createMarker(title: String, with location: CLLocation, from restaurant: Restaurant) {
+        let marker = GMSMarker()
+        marker.position = CLLocationCoordinate2D(latitude: restaurant.coordinates.latitude,
+                                                 longitude: restaurant.coordinates.longitude)
+        marker.title = title
+        print(marker.title)
+        marker.snippet = "Tap for details"
+        marker.icon = UIImage(named: "Pin")
+        marker.map = mapView
+    }
+    
+//    func addMarker(lat: Double, long: Double) {
+//
+//        let marker = GMSMarker(position: CLLocationCoordinate2D(latitude: lat, longitude: long))
+//        marker.icon = UIImage(named: "Pin")
+//        marker.title = restaurant[1].restaurantName
+//        markers.append(marker)
+//        print(markers)
+//
+//        marker.map = mapView
+//    }
+    
+//    fileprivate func addObservers() {
+//        NotificationCenter.default.addObserver(self,
+//                                               selector: #selector(restaurantsListData),
+//                                               name: NSNotification.Name(rawValue: "addRestaurantMarker"),
+//                                               object: nil)
+//
+//    }
+    
+    // MARK: - selector
+//    @objc func restaurantsListData(notification: NSNotification) {
+//
+//        guard let list = notification.userInfo?["restaurants"] as? [Restaurant] else { return }
+//
+//        MapMarkerManager.shared.addMarkersFor(restaurants: list, to: mapView)
+//    }
+    
+    @objc func handleSearchAction() {
+        
+        print("123")
+    }
+    
+    @objc func searchControl() {
+        
+        print(self.searchTextField.text ?? "123")
+    }
+}
+
+// MARK: - GMSMapViewDelegate
+extension MapViewController: GMSMapViewDelegate {
+    
+    func mapView(_ mapView: GMSMapView, didTapInfoWindowOf marker: GMSMarker) {
+        print("1234567")
+    }
+    
+//    func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
+//
+//        self.reloadMapViewWithChangeLocation(lat: marker.position.latitude, long: marker.position.longitude, zoom: 15)
+//
+//        return true
+//    }
+    
+//    func reloadMapViewWithChangeLocation(lat: Double, long: Double, zoom: Float) {
+//
+//        var indexNum = Int()
+//
+//        for (index, data) in restaurant[indexNum] where
+//
+//            lat == data.location!.latitude {
+//
+//                indexNum = index
+//        }
+//
+//        self.collectionView.scrollToItem(
+//            at: IndexPath(row: indexNum, section: 0),
+//            at: .centeredHorizontally,
+//            animated: true
+//        )
+//
+//        self.updateMapView(lat: lat, long: long, zoom: zoom)
+//    }
+    
+    func updateMapView(lat: Double, long: Double, zoom: Float) {
+        
+        let camera = GMSCameraPosition.camera(withLatitude: lat,
+                                              longitude: long ,
+                                              zoom: zoom)
+        
+        mapView.animate(to: camera)
+    }
+}
+
+// MARK: - CLLocationManagerDelegate
+extension MapViewController: CLLocationManagerDelegate {
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        
+//        let location = locations.last
+//
+//        let locationTarget = CLLocation(latitude: 10.3540762, longitude: 123.9115758)
+//
+//        createMarker(titleMarker: "Location", iconMarker: #imageLiteral(resourceName: "Pin"), latitude: locationTarget.coordinate.latitude, longitude: locationTarget.coordinate.longitude)
+//
+//        self.locationManager.stopUpdatingLocation()
+        
+        let location = locations.last!
+
+        let camera = GMSCameraPosition.camera(withTarget: location.coordinate, zoom: 15)
+
+        mapView.camera = camera
+
+        locationManager.stopUpdatingLocation()
+        
+    }
 }
 
 // MARK: - UICollectionViewDataSource
@@ -288,10 +409,10 @@ extension MapViewController: UICollectionViewDataSource {
         let data = restaurant[indexPath.row]
         
         let viewController = UIStoryboard(name: "RestaurantInformation", bundle: nil).instantiateViewController(
-              identifier: "RestaurantInformation",
-              creator: { coder in
-              RestaurantInformationViewController(coder: coder, restaurant: data)
-          })
+            identifier: "RestaurantInformation",
+            creator: { coder in
+                RestaurantInformationViewController(coder: coder, restaurant: data)
+        })
         
         show(viewController, sender: self)
     }
@@ -304,13 +425,8 @@ extension MapViewController: UICollectionViewDelegateFlowLayout {
         
         return CGSize(width: (collectionView.frame.width)*3/4,
                       height: collectionView.frame.width / 3)
-
+        
     }
-    
-    //    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-    //
-    //        return UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
-    //    }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         
@@ -318,6 +434,7 @@ extension MapViewController: UICollectionViewDelegateFlowLayout {
     }
 }
 
+// MARK: - UIScrollViewDelegate
 extension MapViewController: UIScrollViewDelegate {
     
     // perform scaling whenever the collection view is being scrolled
@@ -382,9 +499,80 @@ extension MapViewController: UIScrollViewDelegate {
         
         collectionView.scrollToItem(at: IndexPath(item: indexOfCellWithLargestWidth, section: 0), at: .centeredHorizontally, animated: true)
     }
+}
+
+// MARK: - UITextFieldDelegate
+extension MapViewController: UITextFieldDelegate {
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        setUpTableView()
+        //        searchedList.removeAll()
+        tableView.isHidden = false
+        //        searching = false
+        tableView.reloadData()
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        tableView.isHidden = true
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let searchText  = textField.text! + string
+        
+        //        if searchText.count >= 3 {
+        //            searchedList = self.locationList.filter { (($0["title"]!).localizedCaseInsensitiveContains(searchText)) }
+        //            if searchedList.count == 0 {
+        //                searching = false
+        //            } else {
+        //                searching = true
+        //            }
+        //        } else {
+        //            searchedList = []
+        //        }
+        
+        tableView.reloadData()
+        return true
+    }
+}
+
+// MARK: - UITableViewDataSource
+extension MapViewController: UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        return 3
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as? SearchTableViewCell else { return UITableViewCell() }
+        
+        cell.backgroundColor = .red
+        
+        return cell
+    }
     
 }
 
-extension MapViewController: UITextFieldDelegate {
+// MARK: - UITableViewDelegate
+extension MapViewController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
+        return 60
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        //        searchResult = locationList[indexPath.row]["title"]!
+        //        zoomInSearchLocation?(searchResult)
+        self.tableView.isHidden = true
+        self.view.endEditing(true)
+    }
     
 }

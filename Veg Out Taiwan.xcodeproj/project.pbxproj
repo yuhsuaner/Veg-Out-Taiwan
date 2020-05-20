@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		421CD8C72473A0DF00A2753B /* MapMarkerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 421CD8C62473A0DF00A2753B /* MapMarkerManager.swift */; };
 		4237B0CC24651D33008A395E /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4237B0CB24651D33008A395E /* Comment.swift */; };
 		4237B11E246A9EE9008A395E /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4237B11D246A9EE9008A395E /* UIImageView.swift */; };
 		42411779241F424F0094B0FB /* ToEatListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42411778241F424F0094B0FB /* ToEatListController.swift */; };
@@ -15,7 +16,6 @@
 		4244483A2443118C00000E96 /* CommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 424448392443118C00000E96 /* CommentTableViewCell.swift */; };
 		4244483C244315D600000E96 /* CommentCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4244483B244315D600000E96 /* CommentCollectionViewCell.swift */; };
 		4244483E24432E1100000E96 /* UserCommentWallViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4244483D24432E1100000E96 /* UserCommentWallViewController.swift */; };
-		424448422444260200000E96 /* RestaurantCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 424448412444260200000E96 /* RestaurantCollectionViewFlowLayout.swift */; };
 		4244484424445CA700000E96 /* UserCommentWallCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4244484324445CA700000E96 /* UserCommentWallCollectionViewCell.swift */; };
 		42444846244460EC00000E96 /* UserFoodDiaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42444845244460EC00000E96 /* UserFoodDiaryViewController.swift */; };
 		424448482444611400000E96 /* UserFoodDiary.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 424448472444611400000E96 /* UserFoodDiary.storyboard */; };
@@ -53,6 +53,7 @@
 		426F4C982462A3A2003DE5C6 /* VOTDataRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426F4C972462A3A2003DE5C6 /* VOTDataRequest.swift */; };
 		426F4C9B2462A4CF003DE5C6 /* VOTParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426F4C9A2462A4CF003DE5C6 /* VOTParser.swift */; };
 		426F4C9D2462A509003DE5C6 /* VOTProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426F4C9C2462A509003DE5C6 /* VOTProvider.swift */; };
+		428F13A42472B0B0007F2A13 /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428F13A32472B0B0007F2A13 /* SearchTableViewCell.swift */; };
 		429B9538244D7E1E00596956 /* PhotoWallCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429B9537244D7E1E00596956 /* PhotoWallCollectionViewCell.swift */; };
 		429B953A244D904100596956 /* MapStyle_Orange.json in Resources */ = {isa = PBXBuildFile; fileRef = 429B9539244D904100596956 /* MapStyle_Orange.json */; };
 		42ABD1C5246D7B0D00A58BDA /* UIAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42ABD1C4246D7B0D00A58BDA /* UIAlertController.swift */; };
@@ -69,6 +70,7 @@
 
 /* Begin PBXFileReference section */
 		1930BBD6D392A26188062ED7 /* Pods-Veg Out Taiwan.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Veg Out Taiwan.debug.xcconfig"; path = "Target Support Files/Pods-Veg Out Taiwan/Pods-Veg Out Taiwan.debug.xcconfig"; sourceTree = "<group>"; };
+		421CD8C62473A0DF00A2753B /* MapMarkerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapMarkerManager.swift; sourceTree = "<group>"; };
 		4237B0CB24651D33008A395E /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
 		4237B11D246A9EE9008A395E /* UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
 		42411778241F424F0094B0FB /* ToEatListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToEatListController.swift; sourceTree = "<group>"; };
@@ -77,7 +79,6 @@
 		424448392443118C00000E96 /* CommentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentTableViewCell.swift; sourceTree = "<group>"; };
 		4244483B244315D600000E96 /* CommentCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentCollectionViewCell.swift; sourceTree = "<group>"; };
 		4244483D24432E1100000E96 /* UserCommentWallViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCommentWallViewController.swift; sourceTree = "<group>"; };
-		424448412444260200000E96 /* RestaurantCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
 		4244484324445CA700000E96 /* UserCommentWallCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCommentWallCollectionViewCell.swift; sourceTree = "<group>"; };
 		42444845244460EC00000E96 /* UserFoodDiaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFoodDiaryViewController.swift; sourceTree = "<group>"; };
 		424448472444611400000E96 /* UserFoodDiary.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = UserFoodDiary.storyboard; sourceTree = "<group>"; };
@@ -117,6 +118,7 @@
 		426F4C972462A3A2003DE5C6 /* VOTDataRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VOTDataRequest.swift; sourceTree = "<group>"; };
 		426F4C9A2462A4CF003DE5C6 /* VOTParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VOTParser.swift; sourceTree = "<group>"; };
 		426F4C9C2462A509003DE5C6 /* VOTProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VOTProvider.swift; sourceTree = "<group>"; };
+		428F13A32472B0B0007F2A13 /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
 		429B9537244D7E1E00596956 /* PhotoWallCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoWallCollectionViewCell.swift; sourceTree = "<group>"; };
 		429B9539244D904100596956 /* MapStyle_Orange.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = MapStyle_Orange.json; sourceTree = "<group>"; };
 		42ABD1C4246D7B0D00A58BDA /* UIAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAlertController.swift; sourceTree = "<group>"; };
@@ -213,7 +215,6 @@
 				42461E04241E43F5009EC9AB /* Third Party Wrapper */,
 				42461E26241E446C009EC9AB /*  Supporting Files */,
 				42461E0B241E442F009EC9AB /* Extension */,
-				42B980E824505A5A00B4DE22 /* API */,
 				42461E27241E4495009EC9AB /* Model */,
 				42461E0A241E4429009EC9AB /* View */,
 				42461E09241E441E009EC9AB /* Controller */,
@@ -270,6 +271,7 @@
 				426F4C8F2462A022003DE5C6 /* VOTConstant.swift */,
 				4237B11D246A9EE9008A395E /* UIImageView.swift */,
 				42ABD1C4246D7B0D00A58BDA /* UIAlertController.swift */,
+				421CD8C62473A0DF00A2753B /* MapMarkerManager.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -389,9 +391,9 @@
 		42761E262424953400405CC9 /* VeganMap */ = {
 			isa = PBXGroup;
 			children = (
+				428F13A32472B0B0007F2A13 /* SearchTableViewCell.swift */,
 				42471EB024324CD2002B1577 /* RestaurantCollectionViewCell.swift */,
 				42471EB124324CD2002B1577 /* RestaurantCollectionViewCell.xib */,
-				424448412444260200000E96 /* RestaurantCollectionViewFlowLayout.swift */,
 			);
 			path = VeganMap;
 			sourceTree = "<group>";
@@ -402,13 +404,6 @@
 				429B9537244D7E1E00596956 /* PhotoWallCollectionViewCell.swift */,
 			);
 			path = PhotoWall;
-			sourceTree = "<group>";
-		};
-		42B980E824505A5A00B4DE22 /* API */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = API;
 			sourceTree = "<group>";
 		};
 		42B981072452B35100B4DE22 /* ToEat */ = {
@@ -626,11 +621,12 @@
 				4244484424445CA700000E96 /* UserCommentWallCollectionViewCell.swift in Sources */,
 				426F4C9D2462A509003DE5C6 /* VOTProvider.swift in Sources */,
 				429B9538244D7E1E00596956 /* PhotoWallCollectionViewCell.swift in Sources */,
+				421CD8C72473A0DF00A2753B /* MapMarkerManager.swift in Sources */,
 				426F4C59245AAE34003DE5C6 /* RestaurantHeaderImageViewCell.swift in Sources */,
 				42461E07241E440E009EC9AB /* JGProgressHUDWrapper.swift in Sources */,
 				42411779241F424F0094B0FB /* ToEatListController.swift in Sources */,
+				428F13A42472B0B0007F2A13 /* SearchTableViewCell.swift in Sources */,
 				42461E08241E440E009EC9AB /* KingFisherWrapper.swift in Sources */,
-				424448422444260200000E96 /* RestaurantCollectionViewFlowLayout.swift in Sources */,
 				4237B0CC24651D33008A395E /* Comment.swift in Sources */,
 				42B980F424516D4100B4DE22 /* Utilies.swift in Sources */,
 				42B981062452B34800B4DE22 /* ToEatListTableViewCell.swift in Sources */,
