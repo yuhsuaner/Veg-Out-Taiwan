@@ -84,10 +84,27 @@ class UserFoodDiaryViewController: UIViewController, UIGestureRecognizerDelegate
         
         configureUI()
         configureComment()
+        fetchUserLike()
         
         imagePageControl.numberOfPages = restaurantComments?.imageURL.count ?? 0
         imagePageControl.pageIndicatorTintColor = UIColor.W1
         imagePageControl.currentPageIndicatorTintColor = UIColor.O1
+    }
+    
+    // MARK: - API
+    
+    func fetchUserLike() {
+        
+        guard let comment = restaurantComments else { return }
+        
+        CommentService.shared.userLikeComment(comment) { didLike in
+            guard didLike == true else { return }
+            
+            if comment.commentId == self.restaurantComments?.commentId {
+                
+                self.likeButton.setImage(UIImage(named: "like_filled"), for: .normal)
+            }
+        }
     }
     
     // MARK: - Helper

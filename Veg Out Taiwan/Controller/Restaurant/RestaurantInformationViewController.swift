@@ -35,7 +35,6 @@ class RestaurantInformationViewController: UIViewController {
         super.viewDidLoad()
         
         configureUI()
-        
     }
     
     // MARK: - Helper
