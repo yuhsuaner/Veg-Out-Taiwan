@@ -9,6 +9,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Cache.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Cosmos.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -124,6 +129,21 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>ImagePicker-ImagePicker.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>ImagePicker.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Imaginary.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>JGProgressHUD.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -134,12 +154,12 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-Veg Out Taiwan.xcscheme</key>
+		<key>Lightbox.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>PryntTrimmerView.xcscheme</key>
+		<key>Pods-Veg Out Taiwan.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -149,17 +169,7 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>SteviaLayout.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>SwiftLint.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>YPImagePicker.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>

@@ -64,3 +64,11 @@ struct UserComment: Codable {
     let commentText: String
 //    let timestamp: Date
 }
+
+class Image: NSObject, Codable {
+    var imageName: String
+    
+    init(imageName: String) {
+        self.imageName = imageName
+    }
+}

@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		421CD8C72473A0DF00A2753B /* MapMarkerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 421CD8C62473A0DF00A2753B /* MapMarkerManager.swift */; };
 		4237B0CC24651D33008A395E /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4237B0CB24651D33008A395E /* Comment.swift */; };
 		4237B11E246A9EE9008A395E /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4237B11D246A9EE9008A395E /* UIImageView.swift */; };
 		42411779241F424F0094B0FB /* ToEatListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42411778241F424F0094B0FB /* ToEatListController.swift */; };
@@ -70,7 +69,6 @@
 
 /* Begin PBXFileReference section */
 		1930BBD6D392A26188062ED7 /* Pods-Veg Out Taiwan.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Veg Out Taiwan.debug.xcconfig"; path = "Target Support Files/Pods-Veg Out Taiwan/Pods-Veg Out Taiwan.debug.xcconfig"; sourceTree = "<group>"; };
-		421CD8C62473A0DF00A2753B /* MapMarkerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapMarkerManager.swift; sourceTree = "<group>"; };
 		4237B0CB24651D33008A395E /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
 		4237B11D246A9EE9008A395E /* UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
 		42411778241F424F0094B0FB /* ToEatListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToEatListController.swift; sourceTree = "<group>"; };
@@ -271,7 +269,6 @@
 				426F4C8F2462A022003DE5C6 /* VOTConstant.swift */,
 				4237B11D246A9EE9008A395E /* UIImageView.swift */,
 				42ABD1C4246D7B0D00A58BDA /* UIAlertController.swift */,
-				421CD8C62473A0DF00A2753B /* MapMarkerManager.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -621,7 +618,6 @@
 				4244484424445CA700000E96 /* UserCommentWallCollectionViewCell.swift in Sources */,
 				426F4C9D2462A509003DE5C6 /* VOTProvider.swift in Sources */,
 				429B9538244D7E1E00596956 /* PhotoWallCollectionViewCell.swift in Sources */,
-				421CD8C72473A0DF00A2753B /* MapMarkerManager.swift in Sources */,
 				426F4C59245AAE34003DE5C6 /* RestaurantHeaderImageViewCell.swift in Sources */,
 				42461E07241E440E009EC9AB /* JGProgressHUDWrapper.swift in Sources */,
 				42411779241F424F0094B0FB /* ToEatListController.swift in Sources */,
