@@ -39,4 +39,14 @@ struct CommentService {
             }
         }
     }
+    
+    func userLikeComment(_ comment: Comment, completion: @escaping(Bool) -> Void) {
+        
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        
+        Database.database().reference().child("user-likes").child(uid).child(comment.commentId).observeSingleEvent(of: .value) { snapshot in
+            
+            completion(snapshot.exists())
+        }
+    }
 }

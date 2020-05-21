@@ -100,7 +100,6 @@ extension RestaurantInformationViewController: UITableViewDataSource {
             
             cell.updateData(restaurantName: restaurant.restaurantName)
             
-            //            cell.delegate = self
             cell.didpassCommentData = { [weak self] comment in
                 
                 let viewController = UIStoryboard(name: "UserFoodDiary", bundle: nil).instantiateViewController(

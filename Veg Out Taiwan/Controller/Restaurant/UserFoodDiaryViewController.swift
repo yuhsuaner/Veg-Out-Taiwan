@@ -38,28 +38,6 @@ class UserFoodDiaryViewController: UIViewController, UIGestureRecognizerDelegate
     @IBAction func handleReplyTapped(_ sender: Any) {
     }
     
-//    @IBAction func handleLikeTapped(_ sender: Any) {
-//
-//        guard var comment = restaurantComments else { return }
-//
-//        CommentService.shared.likeComment(comment: comment) { [weak self] (err, ref) in
-//
-//            guard let self = self else { return }
-//
-//            self.restaurantComments?.didLike?.toggle()
-//
-//            let like = self.restaurantComments!.didLike! ? self.restaurantComments!.likes - 1 : self.restaurantComments!.likes + 1
-//
-//            self.restaurantComments!.likes = like
-//
-//            self.setLikeButtonImage()
-//
-//            let text = self.restaurantComments!.didLike! ? "Like" : "DisLike"
-//
-//            VOTProgressHUD.showSuccess(text: text)
-//        }
-//    }
-    
     @IBAction func handleLikeTapped(_ sender: Any) {
         
         guard let comment = restaurantComments else { return }
