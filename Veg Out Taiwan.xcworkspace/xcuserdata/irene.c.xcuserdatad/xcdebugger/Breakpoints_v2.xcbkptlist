@@ -7,16 +7,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "657BB050-3E96-45B0-9B92-A9DC3F7145F9"
+            uuid = "17F7D5C5-FDA1-4539-A442-CB7E77F50B0B"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Veg Out Taiwan/Model/Restaurant/CommentService.swift"
+            filePath = "Veg Out Taiwan/Controller/Restaurant/CommentViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "27"
-            endingLineNumber = "27"
-            landmarkName = "likeComment(comment:completion:)"
+            startingLineNumber = "124"
+            endingLineNumber = "124"
+            landmarkName = "enterButtonTapped()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
