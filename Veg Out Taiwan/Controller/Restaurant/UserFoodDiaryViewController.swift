@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class UserFoodDiaryViewController: UIViewController, UIGestureRecognizerDelegate {
     
@@ -15,6 +16,8 @@ class UserFoodDiaryViewController: UIViewController, UIGestureRecognizerDelegate
     var currentPage = 0
     
     var restaurantComments: Comment?
+    
+    var userLikeComment: [String] = []
     
     @IBOutlet weak var restaurantNameLabel: UILabel!
     
@@ -40,41 +43,35 @@ class UserFoodDiaryViewController: UIViewController, UIGestureRecognizerDelegate
     
     @IBAction func handleLikeTapped(_ sender: Any) {
         
-        guard let comment = restaurantComments else { return }
+        guard let uid = Auth.auth().currentUser?.uid else { return }
         
-        CommentService.shared.likeComment(comment: comment) { [weak self] (err, ref) in
+        //拿到全部currentUser 按過Like的存進userLikeArray
+        Database.database().reference().child("user-likes").child(uid).observeSingleEvent(of: .value) { snapshot in
             
-            guard let self = self else { return }
+            guard let dictionary = snapshot.value as? [String: Int] else { return }
             
-            self.restaurantComments?.didLike?.toggle()
-            
-            let like = self.restaurantComments!.didLike! ? self.restaurantComments!.likes + 1 : self.restaurantComments!.likes - 1
-            
-            self.restaurantComments!.likes = like
-            
-            self.setLikeButtonImage()
-            
-            let text = self.restaurantComments!.didLike! ? "Like" : "DisLike"
-            
-            VOTProgressHUD.showSuccess(text: text)
-        }
-    }
-
-    func setLikeButtonImage() {
-        
-        guard let comment = restaurantComments else { return }
-        
-        if comment.didLike == true {
-            DispatchQueue.main.async {
-                self.likeButton.setImage(UIImage(named: "like_filled"), for: .normal)
+            for keys in dictionary.keys {
+                
+                print(keys)
+                
+                print(type(of: keys))
+                
+                self.userLikeComment.append(keys)
             }
-        } else {
-            DispatchQueue.main.async {
-                self.likeButton.setImage(UIImage(named: "like"), for: .normal)
+            
+            //拿出userLikeArray的值 與當前commentId比較
+            for (index, value) in self.userLikeComment.enumerated() {
+                print("Item \(index + 1): \(value)")
+                
+                if value != self.restaurantComments?.commentId {
+                    self.createdTappedLikeComment()
+                } else {
+                    return
+                }
             }
         }
     }
-
+    
     @IBOutlet weak var imagePageControl: UIPageControl!
     
     // MARK: - LifeCycle
@@ -103,6 +100,44 @@ class UserFoodDiaryViewController: UIViewController, UIGestureRecognizerDelegate
             if comment.commentId == self.restaurantComments?.commentId {
                 
                 self.likeButton.setImage(UIImage(named: "like_filled"), for: .normal)
+                
+            }
+        }
+    }
+    
+    func createdTappedLikeComment() {
+        
+        guard let comment = restaurantComments else { return }
+        
+        CommentService.shared.likeComment(comment: comment) { [weak self] (err, ref) in
+            
+            guard let self = self else { return }
+            
+            self.restaurantComments?.didLike?.toggle()
+            
+            let like = self.restaurantComments!.didLike! ? self.restaurantComments!.likes + 1 : self.restaurantComments!.likes - 1
+            
+            self.restaurantComments!.likes = like
+            
+            self.setLikeButtonImage()
+            
+            let text = self.restaurantComments!.didLike! ? "Like" : "DisLike"
+            
+            VOTProgressHUD.showSuccess(text: text)
+        }
+    }
+    
+    func setLikeButtonImage() {
+        
+        guard let comment = restaurantComments else { return }
+        
+        if comment.didLike == true {
+            DispatchQueue.main.async {
+                self.likeButton.setImage(UIImage(named: "like_filled"), for: .normal)
+            }
+        } else {
+            DispatchQueue.main.async {
+                self.likeButton.setImage(UIImage(named: "like"), for: .normal)
             }
         }
     }

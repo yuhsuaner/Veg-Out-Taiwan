@@ -49,4 +49,17 @@ struct CommentService {
             completion(snapshot.exists())
         }
     }
+    
+    func fetchUserLikeComment(_ comment: Comment, completion: @escaping(String) -> Void) {
+        
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        
+        Database.database().reference().child("user-likes").child(uid).observeSingleEvent(of: .value) { snapshot in
+            
+            guard let snapshot = snapshot.value as? String else { return }
+            
+            completion(snapshot)
+        }
+    }
+    
 }
