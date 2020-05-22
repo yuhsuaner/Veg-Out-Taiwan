@@ -48,7 +48,6 @@ class MapViewController: UIViewController {
         textField.borderStyle = UITextField.BorderStyle.roundedRect
         textField.clearButtonMode = UITextField.ViewMode.whileEditing
         textField.contentVerticalAlignment = UIControl.ContentVerticalAlignment.center
-        //        textField.addTarget(self, action: #selector(searchControl), for: .editingChanged)
         return textField
     }()
     
@@ -255,13 +254,7 @@ class MapViewController: UIViewController {
     
     // MARK: - selector
     @objc func handleSearchAction() {
-        
-        print("123")
-    }
-    
-    @objc func searchControl() {
-        
-        print(self.searchTextField.text ?? "123")
+        fetchData()
     }
 }
 
@@ -446,6 +439,7 @@ extension MapViewController: UIScrollViewDelegate {
 extension MapViewController: UITextFieldDelegate {
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
+        
         setUpTableView()
         //        searchedList.removeAll()
         tableView.isHidden = false
@@ -463,9 +457,9 @@ extension MapViewController: UITextFieldDelegate {
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        let searchText  = textField.text! + string
         
         tableView.reloadData()
+        
         return true
     }
 }
@@ -475,18 +469,18 @@ extension MapViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return 3
+        return restaurant.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as? SearchTableViewCell else { return UITableViewCell() }
         
-        cell.backgroundColor = .red
+        cell.titleLabel.text = restaurant[indexPath.row].restaurantName
+        cell.addressLabel.text = restaurant[indexPath.row].address
         
         return cell
     }
-    
 }
 
 // MARK: - UITableViewDelegate
@@ -499,9 +493,14 @@ extension MapViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        //        searchResult = locationList[indexPath.row]["title"]!
-        //        zoomInSearchLocation?(searchResult)
-        self.tableView.isHidden = true
-        self.view.endEditing(true)
+        let data = restaurant[indexPath.row]
+        
+        let viewController = UIStoryboard(name: "RestaurantInformation", bundle: nil).instantiateViewController(
+            identifier: "RestaurantInformation",
+            creator: { coder in
+                RestaurantInformationViewController(coder: coder, restaurant: data)
+        })
+
+        show(viewController, sender: self)
     }
 }

@@ -9,16 +9,37 @@
 import UIKit
 
 class SearchTableViewCell: UITableViewCell {
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+    
+    var titleLabel: UILabel = {
+        let label = UILabel()
+        label.text = "我家"
+        label.textColor = .G1
+        return label
+    }()
+    
+    var addressLabel: UILabel = {
+        let label = UILabel()
+        label.text = "台北市信義區基隆路四段10號"
+        label.textColor = .lightGray
+        return label
+    }()
+    
+    // MARK: - Lifecycle
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        
+        let stack = UIStackView(arrangedSubviews: [titleLabel, addressLabel])
+        stack.axis = .vertical
+        stack.distribution = .fillProportionally
+        stack.spacing = 4
+        
+        addSubview(stack)
+        stack.anchor(top: topAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor,
+                     paddingTop: 2, paddingLeft: 2, paddingBottom: 2, paddingRight: 2)
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 
 }
