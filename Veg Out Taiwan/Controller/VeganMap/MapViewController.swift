@@ -44,7 +44,7 @@ class MapViewController: UIViewController {
         textField.keyboardType = UIKeyboardType.default
         textField.returnKeyType = UIReturnKeyType.done
         textField.autocorrectionType = UITextAutocorrectionType.no
-        textField.font = UIFont(name: "jf-openhuninn-1.0", size: 15)
+        textField.font = UIFont(name: "jf-openhuninn-1.0", size: 18)
         textField.borderStyle = UITextField.BorderStyle.roundedRect
         textField.clearButtonMode = UITextField.ViewMode.whileEditing
         textField.contentVerticalAlignment = UIControl.ContentVerticalAlignment.center
@@ -184,7 +184,7 @@ class MapViewController: UIViewController {
         view.addSubview(searchTextField)
         NSLayoutConstraint.activate([
             searchTextField.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.7, constant: 0),
-            searchTextField.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.height/24),
+            searchTextField.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.height/20),
             searchTextField.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: -30)
         ])
         
@@ -192,10 +192,17 @@ class MapViewController: UIViewController {
         
         NSLayoutConstraint(item: searchTextField, attribute: NSLayoutConstraint.Attribute.centerY, relatedBy: NSLayoutConstraint.Relation.equal, toItem: view, attribute: NSLayoutConstraint.Attribute.centerY, multiplier: 1/5, constant: 0).isActive = true
         
-        view.addSubview(searchButton)
-        searchButton.anchor(left: searchTextField.rightAnchor, paddingLeft: 10, width: UIScreen.main.bounds.height/24, height: UIScreen.main.bounds.height/24)
+        searchTextField.addSubview(searchButton)
+        searchButton.anchor(right: searchTextField.rightAnchor, paddingRight: 5,
+                            width: UIScreen.main.bounds.height/20,
+                            height: UIScreen.main.bounds.height/20)
         
-        NSLayoutConstraint(item: searchButton, attribute: NSLayoutConstraint.Attribute.centerY, relatedBy: NSLayoutConstraint.Relation.equal, toItem: view, attribute: NSLayoutConstraint.Attribute.centerY, multiplier: 1/5, constant: 0).isActive = true
+//        view.addSubview(searchButton)
+//        searchButton.anchor(left: searchTextField.rightAnchor, paddingLeft: 10,
+//                            width: UIScreen.main.bounds.height/20,
+//                            height: UIScreen.main.bounds.height/20)
+//
+//        NSLayoutConstraint(item: searchButton, attribute: NSLayoutConstraint.Attribute.centerY, relatedBy: NSLayoutConstraint.Relation.equal, toItem: view, attribute: NSLayoutConstraint.Attribute.centerY, multiplier: 1/5, constant: 0).isActive = true
         
         view.addSubview(collectionView)
         collectionView.backgroundColor = .clear
