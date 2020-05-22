@@ -24,6 +24,9 @@ class MapViewController: UIViewController {
         }
     }
     
+    var restaurantList: [String] = []
+    var searchedArray: [String] = []
+    
     let votProvider = VOTProvider()
     
     private var mapView: GMSMapView!
@@ -42,7 +45,7 @@ class MapViewController: UIViewController {
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.attributedPlaceholder = NSAttributedString(string: "探索美食...")
         textField.keyboardType = UIKeyboardType.default
-        textField.returnKeyType = UIReturnKeyType.done
+        textField.returnKeyType = UIReturnKeyType.search
         textField.autocorrectionType = UITextAutocorrectionType.no
         textField.font = UIFont(name: "jf-openhuninn-1.0", size: 18)
         textField.borderStyle = UITextField.BorderStyle.roundedRect
@@ -83,7 +86,10 @@ class MapViewController: UIViewController {
         fetchUser()
         configureMap()
         configureUI()
-
+        
+        for str in restaurantList {
+            searchedArray.append(str)
+        }
     }
 
     // MARK: - API
@@ -98,6 +104,14 @@ class MapViewController: UIViewController {
                 self?.restaurant = restaurants
                 
                 self?.createMarkersFrom(restaurants)
+                
+                guard let self = self else { return }
+                
+                for list in self.restaurant {
+                    
+                    let list = list.restaurantName
+                    self.restaurantList.append(list)
+                }
                 
             case .failure:
                 
@@ -195,13 +209,6 @@ class MapViewController: UIViewController {
         searchButton.anchor(right: searchTextField.rightAnchor, paddingRight: 5,
                             width: UIScreen.main.bounds.height/20,
                             height: UIScreen.main.bounds.height/20)
-        
-//        view.addSubview(searchButton)
-//        searchButton.anchor(left: searchTextField.rightAnchor, paddingLeft: 10,
-//                            width: UIScreen.main.bounds.height/20,
-//                            height: UIScreen.main.bounds.height/20)
-//
-//        NSLayoutConstraint(item: searchButton, attribute: NSLayoutConstraint.Attribute.centerY, relatedBy: NSLayoutConstraint.Relation.equal, toItem: view, attribute: NSLayoutConstraint.Attribute.centerY, multiplier: 1/5, constant: 0).isActive = true
         
         view.addSubview(collectionView)
         collectionView.backgroundColor = .clear
@@ -439,11 +446,10 @@ extension MapViewController: UIScrollViewDelegate {
 extension MapViewController: UITextFieldDelegate {
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        
+
         setUpTableView()
-        //        searchedList.removeAll()
+        searchedArray.removeAll()
         tableView.isHidden = false
-        //        searching = false
         tableView.reloadData()
     }
     
@@ -451,15 +457,49 @@ extension MapViewController: UITextFieldDelegate {
         tableView.isHidden = true
     }
     
+    func textFieldShouldClear(_ textField: UITextField) -> Bool {
+        
+        searchTextField.resignFirstResponder()
+        searchTextField.text = ""
+        
+        searchedArray.removeAll()
+        
+        for str in restaurantList {
+            searchedArray.append(str)
+        }
+        
+        tableView.reloadData()
+        
+        return false
+    }
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
+        
+        if (searchTextField.text?.count)! != 0 {
+            
+            self.searchedArray.removeAll()
+            
+            for str in restaurantList {
+                
+                let range = str.lowercased().range(of: textField.text!,
+                                                   options: .caseInsensitive,
+                                                   range: nil,
+                                                   locale: nil)
+                if range != nil {
+                    self.searchedArray.append(str)
+                }
+            }
+        }
+        
+        tableView.reloadData()
+        
         return true
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        
+
         tableView.reloadData()
-        
+
         return true
     }
 }
@@ -469,14 +509,15 @@ extension MapViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return restaurant.count
+        return searchedArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as? SearchTableViewCell else { return UITableViewCell() }
         
-        cell.titleLabel.text = restaurant[indexPath.row].restaurantName
+        cell.titleLabel.text = searchedArray[indexPath.row]
+//        cell.titleLabel.text = restaurant[indexPath.row].restaurantName
         cell.addressLabel.text = restaurant[indexPath.row].address
         
         return cell
