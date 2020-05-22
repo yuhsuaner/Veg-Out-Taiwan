@@ -517,7 +517,6 @@ extension MapViewController: UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as? SearchTableViewCell else { return UITableViewCell() }
         
         cell.titleLabel.text = searchedArray[indexPath.row]
-//        cell.titleLabel.text = restaurant[indexPath.row].restaurantName
         cell.addressLabel.text = restaurant[indexPath.row].address
         
         return cell
