@@ -16,8 +16,6 @@ class CommentTableViewCell: UITableViewCell {
     
     var restaurantComments: [Comment] = []
     
-    var ref: DatabaseReference!
-    
     @IBOutlet weak var tapForMoreLabel: UILabel!
     
     @IBOutlet weak var collectionView: UICollectionView!
@@ -46,14 +44,13 @@ class CommentTableViewCell: UITableViewCell {
         
         self.restaurantName = restaurantName
         
-        getCommentfromFirebase()
+        fetchComment()
     }
     // MARK: - API
     
-    func getCommentfromFirebase() {
+    func fetchComment() {
 
-        ref = Database.database().reference()
-        ref.child("comments").queryOrdered(byChild: "restaurantName").queryEqual(toValue: self.restaurantName).observe(.value, with: { (snapshot) in
+        Database.database().reference().child("comments").queryOrdered(byChild: "restaurantName").queryEqual(toValue: self.restaurantName).observe(.value, with: { (snapshot) in
             
             guard let dictionary = snapshot.value as? [String: [String: Any]] else { return }
             
@@ -62,7 +59,7 @@ class CommentTableViewCell: UITableViewCell {
             do {
                 
                 let json = try JSONDecoder().decode([Comment].self, from: data)
-                self.restaurantComments = json
+                self.restaurantComments = json                
                 self.collectionView.reloadData()
                 
             } catch {

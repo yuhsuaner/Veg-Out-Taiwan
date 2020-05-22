@@ -8,11 +8,11 @@
 
 import UIKit
 import Cosmos
-import YPImagePicker
-import AVKit
 import FirebaseStorage
 import FirebaseFirestore
 import FirebaseAuth
+import ImagePicker
+import Lightbox
 
 enum ViewState {
     
@@ -34,9 +34,11 @@ class CommentViewController: UIViewController {
     
     var currentStar = 3.7
     
-    @IBOutlet weak var restaurantNameLabel: UILabel!
+    let imagePicker = ImagePickerController()
     
-    private let imagePicker = UIImagePickerController()
+    var selectedImages: [UIImage] = []
+    
+    @IBOutlet weak var restaurantNameLabel: UILabel!
     
     @IBOutlet weak var imageCollectionView: UICollectionView!
     
@@ -72,8 +74,6 @@ class CommentViewController: UIViewController {
             imageCollectionView.reloadData()
         }
     }
-    
-    var selectedImages: [UIImage] = []
     
     // MARK: - ViewLifecyele
     override func viewDidLoad() {
@@ -224,12 +224,17 @@ extension CommentViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        //Open Image Picker
+        let config = Configuration()
+        config.doneButtonTitle = "Finish"
+        config.noImagesTitle = "Sorry! There are no images here!"
+        config.recordLocation = false
+        config.allowVideoSelection = true
+
+        let imagePicker = ImagePickerController(configuration: config)
         imagePicker.delegate = self
-        imagePicker.allowsEditing = true
-        
-        imagePicker.sourceType = .photoLibrary
+
         present(imagePicker, animated: true, completion: nil)
+
     }
 }
 
@@ -248,24 +253,40 @@ extension CommentViewController: UICollectionViewDelegateFlowLayout {
     }
 }
 
-extension CommentViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+// MARK: - ImagePickerDelegate
+extension CommentViewController: ImagePickerDelegate {
     
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
+    //按下所拍攝之相片縮圖時
+    func wrapperDidPress(_ imagePicker: ImagePickerController, images: [UIImage]) {
         
-        guard let image: UIImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else { return }
+        guard images.count > 0 else { return }
         
-        viewStates = .data([image])
+        let lightboxImages = images.map {
+            return LightboxImage(image: $0)
+        }
         
-        picker.dismiss(animated: true) { () -> Void in
+        let lightbox = LightboxController(images: lightboxImages, startIndex: 0)
+        imagePicker.present(lightbox, animated: true, completion: nil)
+        
+    }
+    
+    //按下完成按鈕時
+    func doneButtonDidPress(_ imagePicker: ImagePickerController, images: [UIImage]) {
+        
+        viewStates = .data(images)
+                
+        imagePicker.dismiss(animated: true) { () -> Void in
             
             self.imageCollectionView.reloadData()
         }
+        
     }
     
-    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        
+    //按下取消按鈕時
+    func cancelButtonDidPress(_ imagePicker: ImagePickerController) {
         imagePicker.dismiss(animated: true, completion: nil)
     }
+    
 }
 
 extension CommentViewController: UITextViewDelegate {
