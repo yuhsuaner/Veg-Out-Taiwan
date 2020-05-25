@@ -18,6 +18,8 @@ class VOTProvider {
     
     static let shared = VOTProvider()
     
+    var allRestaurant = [Restaurant]()
+    
     let decoder = JSONDecoder()
     let encoder = JSONEncoder()
     
