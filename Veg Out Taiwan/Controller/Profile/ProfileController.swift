@@ -87,7 +87,8 @@ class ProfileController: UICollectionViewController {
 //
                 print(type(of: child))
                 
-                guard let childSnapShot = child as? DataSnapshot,
+                guard
+                    let childSnapShot = child as? DataSnapshot,
                     let value = childSnapShot.value as? [String: Any] else {
                         
                         return
