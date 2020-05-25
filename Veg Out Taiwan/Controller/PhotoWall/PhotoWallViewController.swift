@@ -7,11 +7,17 @@
 //
 
 import UIKit
+import Firebase
 import collection_view_layouts
 
 class PhotoWallViewController: UIViewController {
     
     // MARK: - Properties
+    
+    var imageList: [String] = []
+    
+    var votProvider = VOTProvider()
+    
     private func getLayout() -> UICollectionViewLayout {
         
         let layout = InstagramLayout()
@@ -45,6 +51,39 @@ class PhotoWallViewController: UIViewController {
         configureUI()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        fetchImageComment()
+    }
+    
+    // MARK: - API
+    
+    func fetchImageComment() {
+        
+        let customerRef = Database.database().reference().child("comments")
+        
+        customerRef.observeSingleEvent(of: .value, with: { snapshot in
+            
+            for commentsChild in snapshot.children {
+                
+                guard let childSnap = commentsChild as? DataSnapshot else { return }
+                
+                let imageSnap = childSnap.childSnapshot(forPath: "imageURL")
+                
+                for imageURL in imageSnap.children {
+                    
+                    guard let snap = imageURL as? DataSnapshot else { return }
+                    guard let image = snap.value as? String else { return }
+                    self.imageList.append(image)
+                }
+            }
+
+            self.collectionView.reloadData()
+        })
+
+    }
+    
     // MARK: - Helper
     
     func configureUI() {
@@ -70,7 +109,7 @@ extension PhotoWallViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        return 20
+        return self.imageList.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -78,11 +117,11 @@ extension PhotoWallViewController: UICollectionViewDataSource {
         guard let cell = collectionView.dequeueReusableCell(
             withReuseIdentifier: "cell", for: indexPath) as? PhotoWallCollectionViewCell else { return UICollectionViewCell()}
         
-        cell.postImageView.image = #imageLiteral(resourceName: "Pic7")
+        cell.postImageView.loadImage(imageList[indexPath.row], placeHolder: #imageLiteral(resourceName: "non_photo-4"))
         
         return cell
     }
-
+    
 }
 
 // MARK: - UICollectionViewDelegate

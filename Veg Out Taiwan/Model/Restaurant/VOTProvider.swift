@@ -90,4 +90,41 @@ class VOTProvider {
         
         task.resume()
     }
+    
+//    func fetchCommentImage(comment: [Comment], completion: @escaping CommentHanlder) {
+//
+//        HTTPClient.shared.request(
+//
+//            VOTDataRequest.comment(commentID: comment[0].commentId),
+//            completion: { [weak self] result in
+//                
+//                guard let strongSelf = self else { return }
+//
+//                switch result {
+//
+//                case .success(let data):
+//
+//                    do {
+//                        let commentData = try strongSelf.decoder.decode(
+//                            [Comment].self,
+//                            from: data
+//                        )
+//
+//                        DispatchQueue.main.async {
+//
+//                            completion(Result.success(commentData))
+//                        }
+//
+//                    } catch {
+//
+//                        completion(Result.failure(error))
+//
+//                    }
+//
+//                case .failure(let error):
+//
+//                    completion(Result.failure(error))
+//                }
+//        })
+//    }
 }
