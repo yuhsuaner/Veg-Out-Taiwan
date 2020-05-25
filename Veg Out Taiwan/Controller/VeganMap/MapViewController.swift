@@ -272,32 +272,34 @@ extension MapViewController: GMSMapViewDelegate {
         print("1234567")
     }
     
-//    func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
-//
-//        self.reloadMapViewWithChangeLocation(lat: marker.position.latitude, long: marker.position.longitude, zoom: 15)
-//
-//        return true
-//    }
+    func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
+
+        self.reloadMapView(lat: marker.position.latitude,
+                           long: marker.position.longitude,
+                           zoom: 15)
+
+        return true
+    }
     
-//    func reloadMapViewWithChangeLocation(lat: Double, long: Double, zoom: Float) {
-//
-//        var indexNum = Int()
-//
-//        for (index, data) in restaurant[indexNum] where
-//
-//            lat == data.location!.latitude {
-//
-//                indexNum = index
-//        }
-//
-//        self.collectionView.scrollToItem(
-//            at: IndexPath(row: indexNum, section: 0),
-//            at: .centeredHorizontally,
-//            animated: true
-//        )
-//
-//        self.updateMapView(lat: lat, long: long, zoom: zoom)
-//    }
+    func reloadMapView(lat: Double, long: Double, zoom: Float) {
+
+        var indexNum = Int()
+
+        for (index, data) in VOTProvider.shared.allRestaurant.enumerated() where
+
+            lat == data.coordinates.latitude {
+
+                indexNum = index
+        }
+
+        self.collectionView.scrollToItem(
+            at: IndexPath(row: indexNum, section: 0),
+            at: .centeredHorizontally,
+            animated: true
+        )
+
+        self.updateMapView(lat: lat, long: long, zoom: zoom)
+    }
     
     func updateMapView(lat: Double, long: Double, zoom: Float) {
         
@@ -321,7 +323,6 @@ extension MapViewController: CLLocationManagerDelegate {
         mapView.camera = camera
 
         locationManager.stopUpdatingLocation()
-        
     }
 }
 
@@ -440,6 +441,10 @@ extension MapViewController: UIScrollViewDelegate {
         
         collectionView.scrollToItem(at: IndexPath(item: indexOfCellWithLargestWidth, section: 0), at: .centeredHorizontally, animated: true)
     }
+    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+       
+    }
 }
 
 // MARK: - UITextFieldDelegate
@@ -517,7 +522,6 @@ extension MapViewController: UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as? SearchTableViewCell else { return UITableViewCell() }
         
         cell.titleLabel.text = searchedArray[indexPath.row]
-//        cell.titleLabel.text = restaurant[indexPath.row].restaurantName
         cell.addressLabel.text = restaurant[indexPath.row].address
         
         return cell
