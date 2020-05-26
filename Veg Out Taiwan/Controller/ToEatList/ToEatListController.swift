@@ -26,7 +26,10 @@ class ToEatListViewController: UIViewController {
         
         configureUI()
         configureTableView()
+        
     }
+    
+    // MARK: - API
     
     // MARK: - Helper
 
@@ -57,25 +60,42 @@ class ToEatListViewController: UIViewController {
 // MARK: - UITableView Delegate & DataSource
 extension ToEatListViewController: UITableViewDelegate, UITableViewDataSource {
     
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return 3
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         guard let cell = tableview.dequeueReusableCell(withIdentifier: "ToEatListCell", for: indexPath) as? ToEatListTableViewCell else { return UITableViewCell() }
         
-        cell.backgroundColor = .clear
-        cell.dayLabel.text = "VOT \(indexPath.row+1)"
+        cell.backgroundColor = .W1
+        
+        switch indexPath.row {
+            
+        case 0:
+            cell.dayLabel.text = "  Want 2 GO"
+        case 1:
+            cell.dayLabel.text = "  My Favorites"
+        default:
+            cell.dayLabel.text = "  Other"
+        }
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        switch indexPath.row {
+            
+        case 0: return print(indexPath.row)
+        case 1: return print(indexPath.row)
+        default: return print(indexPath.row)
+            
+        }
+
     }
 }

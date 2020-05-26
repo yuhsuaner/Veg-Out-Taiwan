@@ -7,8 +7,7 @@
 //
 
 import UIKit
-import FirebaseAuth
-import FirebaseDatabase
+import Firebase
 import SDWebImage
 
 class ProfileController: UICollectionViewController {

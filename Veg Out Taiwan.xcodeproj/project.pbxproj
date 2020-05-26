@@ -41,6 +41,8 @@
 		42471FB324405214002B1577 /* ProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42471FB224405214002B1577 /* ProfileController.swift */; };
 		42471FB724418B04002B1577 /* MapStyle.json in Resources */ = {isa = PBXBuildFile; fileRef = 42471FB624418B03002B1577 /* MapStyle.json */; };
 		42471FBA2441C64B002B1577 /* RestaurantInformation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42471FB92441C64A002B1577 /* RestaurantInformation.storyboard */; };
+		42670A5B247C0176006D7ACB /* ToEatList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42670A5A247C0176006D7ACB /* ToEatList.swift */; };
+		42670A5D247CCBBD006D7ACB /* ToEatListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42670A5C247CCBBD006D7ACB /* ToEatListService.swift */; };
 		426F4C5724581738003DE5C6 /* Restaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426F4C5624581738003DE5C6 /* Restaurant.swift */; };
 		426F4C59245AAE34003DE5C6 /* RestaurantHeaderImageViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426F4C58245AAE34003DE5C6 /* RestaurantHeaderImageViewCell.swift */; };
 		426F4C5B245AD3B5003DE5C6 /* Comment.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 426F4C5A245AD3B5003DE5C6 /* Comment.storyboard */; };
@@ -104,6 +106,8 @@
 		42471FB224405214002B1577 /* ProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileController.swift; sourceTree = "<group>"; };
 		42471FB624418B03002B1577 /* MapStyle.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = MapStyle.json; sourceTree = "<group>"; };
 		42471FB92441C64A002B1577 /* RestaurantInformation.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RestaurantInformation.storyboard; sourceTree = "<group>"; };
+		42670A5A247C0176006D7ACB /* ToEatList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToEatList.swift; sourceTree = "<group>"; };
+		42670A5C247CCBBD006D7ACB /* ToEatListService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToEatListService.swift; sourceTree = "<group>"; };
 		426F4C5624581738003DE5C6 /* Restaurant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Restaurant.swift; sourceTree = "<group>"; };
 		426F4C58245AAE34003DE5C6 /* RestaurantHeaderImageViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantHeaderImageViewCell.swift; sourceTree = "<group>"; };
 		426F4C5A245AD3B5003DE5C6 /* Comment.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Comment.storyboard; sourceTree = "<group>"; };
@@ -288,6 +292,7 @@
 			children = (
 				426F4C9E2462CD5A003DE5C6 /* User */,
 				426F4C962462A2D0003DE5C6 /* Restaurant */,
+				42670A59247C014E006D7ACB /* ToEatList */,
 				426F4C992462A4B2003DE5C6 /* Parser */,
 				426F4C912462A080003DE5C6 /* HTTP */,
 			);
@@ -345,6 +350,15 @@
 				426F4C5A245AD3B5003DE5C6 /* Comment.storyboard */,
 			);
 			path = Restaurant;
+			sourceTree = "<group>";
+		};
+		42670A59247C014E006D7ACB /* ToEatList */ = {
+			isa = PBXGroup;
+			children = (
+				42670A5A247C0176006D7ACB /* ToEatList.swift */,
+				42670A5C247CCBBD006D7ACB /* ToEatListService.swift */,
+			);
+			path = ToEatList;
 			sourceTree = "<group>";
 		};
 		426F4C912462A080003DE5C6 /* HTTP */ = {
@@ -592,9 +606,11 @@
 			files = (
 				426F4C932462A092003DE5C6 /* HTTPClient.swift in Sources */,
 				42471EB224324CD2002B1577 /* RestaurantCollectionViewCell.swift in Sources */,
+				42670A5D247CCBBD006D7ACB /* ToEatListService.swift in Sources */,
 				4244484A2445B05100000E96 /* ImageCollectionViewCell.swift in Sources */,
 				42471F40243C69EA002B1577 /* UIColor.swift in Sources */,
 				42ABD1C5246D7B0D00A58BDA /* UIAlertController.swift in Sources */,
+				42670A5B247C0176006D7ACB /* ToEatList.swift in Sources */,
 				42471F49243D7AB4002B1577 /* ProfileCollectionViewCell.swift in Sources */,
 				42B980FE2451DF0200B4DE22 /* User.swift in Sources */,
 				4244483E24432E1100000E96 /* UserCommentWallViewController.swift in Sources */,

@@ -8,8 +8,7 @@
 
 import UIKit
 import SDWebImage
-import FirebaseDatabase
-import FirebaseAuth
+import Firebase
 
 class HeaderView: UICollectionViewCell {
     

@@ -7,7 +7,7 @@
 //
 
 import FirebaseAuth
-import FirebaseDatabase
+import Firebase
 
 struct UserService {
     

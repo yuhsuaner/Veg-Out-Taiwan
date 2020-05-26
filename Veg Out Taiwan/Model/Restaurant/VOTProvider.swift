@@ -7,8 +7,7 @@
 //
 
 import Foundation
-import FirebaseDatabase
-import FirebaseAuth
+import Firebase
 import UIKit
 
 typealias RestaurantHanlder = (Result<[Restaurant]>) -> Void
@@ -16,7 +15,7 @@ typealias CommentHanlder = (Result<[Comment]>) -> Void
 
 class VOTProvider {
     
-    static let shared = VOTProvider()
+//    static let shared = VOTProvider()
     
     let decoder = JSONDecoder()
     let encoder = JSONEncoder()
@@ -91,40 +90,20 @@ class VOTProvider {
         task.resume()
     }
     
-//    func fetchCommentImage(comment: [Comment], completion: @escaping CommentHanlder) {
-//
-//        HTTPClient.shared.request(
-//
-//            VOTDataRequest.comment(commentID: comment[0].commentId),
-//            completion: { [weak self] result in
-//                
-//                guard let strongSelf = self else { return }
-//
-//                switch result {
-//
-//                case .success(let data):
-//
-//                    do {
-//                        let commentData = try strongSelf.decoder.decode(
-//                            [Comment].self,
-//                            from: data
-//                        )
-//
-//                        DispatchQueue.main.async {
-//
-//                            completion(Result.success(commentData))
-//                        }
-//
-//                    } catch {
-//
-//                        completion(Result.failure(error))
-//
-//                    }
-//
-//                case .failure(let error):
-//
-//                    completion(Result.failure(error))
-//                }
-//        })
-//    }
+    func createWantToGoList(uid: String, wantToGo: WantToGo, completion: @escaping (Bool) -> Void) {
+        
+        let url = URL(string: "https://veg-out-taiwan-1584254182301.firebaseio.com/toEatList/\(uid)/want2Go.json")!
+        
+        var request = URLRequest(url: url)
+        
+        request.httpMethod = "POST"
+        
+        request.httpBody = try? JSONEncoder().encode(wantToGo)
+        
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            completion(error == nil)
+        }
+        
+        task.resume()
+    }
 }

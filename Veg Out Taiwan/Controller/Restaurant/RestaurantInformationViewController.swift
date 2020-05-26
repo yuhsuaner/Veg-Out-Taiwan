@@ -7,14 +7,18 @@
 //
 
 import UIKit
+import Firebase
 
 class RestaurantInformationViewController: UIViewController {
     
     // MARK: - Properties
+    let votProvider = VOTProvider()
     
     let  restaurant: Restaurant
     
     var comments: [Comment] = []
+    
+    var wnatToGo: [WantToGo] = []
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -35,6 +39,34 @@ class RestaurantInformationViewController: UIViewController {
         super.viewDidLoad()
         
         configureUI()
+    }
+    
+    // MARK: - API
+    func createWantToGo() {
+        
+//        guard
+//            let uid = Auth.auth().currentUser?.uid
+//            else {
+//                return
+//
+//        }
+//
+//        let data = WantToGo(restaurant: [restaurant])
+//
+//        votProvider.createWantToGoList(uid: uid, wantToGo: data) { result in
+//
+//            guard result else {
+//                return
+//            }
+//            self.wnatToGo.append(data)
+//
+//            DispatchQueue.main.async {
+//
+//                VOTProgressHUD.showSuccess()
+//                self.navigationController?.popViewController(animated: true)
+//            }
+//
+//        }
     }
     
     // MARK: - Helper
@@ -166,13 +198,37 @@ extension RestaurantInformationViewController: InfoCellDelegate {
     
     func didTapAddToEatListButton(_ sender: UIButton) {
         
-        self.openAlert(title: "!",
-                       message: "正在開發中🚧",
-                       alertStyle: .alert,
-                       actionTitles: ["OK"],
-                       actionStyles: [.default],
-                       actions: [{_ in print("okay click")}]
-        )
+//        self.openAlert(title: "!",
+//                       message: "正在開發中🚧",
+//                       alertStyle: .alert,
+//                       actionTitles: ["OK"],
+//                       actionStyles: [.default],
+//                       actions: [{_ in print("okay click")}]
+//        )
+        
+        self.openAlert(title: "加入收藏清單",
+         message: "add your message",
+         alertStyle: .actionSheet,
+         actionTitles: ["Want 2 Go", "My Favorite", "Other", "取消"],
+         actionStyles: [.default, .default, .default, .cancel],
+         actions: [
+             { _ in
+//                self.createWantToGo()
+             },
+             
+             { _ in
+                print(123)
+             },
+             
+             { _ in
+                
+                print(456)
+             },
+             
+             { _ in
+                  print("cancel click")
+             }
+        ])
     }
     
     func didTapMakePhoneCallButton(_ sender: UIButton) {
@@ -183,6 +239,16 @@ extension RestaurantInformationViewController: InfoCellDelegate {
     }
     
     func didTapNavigationButton(_ sender: UIButton) {
+        
+        let latitude = restaurant.coordinates.latitude
+        
+        let longitude = restaurant.coordinates.longitude
+        
+        if UIApplication.shared.canOpenURL(URL(string:"comgooglemaps://")!) {
+            UIApplication.shared.open(URL(string:"comgooglemaps://?center=\(latitude),\(longitude)&zoom=14&views=traffic&q=\(latitude),\(longitude)")!, options: [:], completionHandler: nil)
+        } else {
+            UIApplication.shared.open(URL(string: "http://maps.google.com/maps?q=loc:\(latitude),\(longitude)&zoom=14&views=traffic&q=\(latitude),\(longitude)")!, options: [:], completionHandler: nil)
+        }
         
     }
     

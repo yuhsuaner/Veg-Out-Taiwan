@@ -7,9 +7,7 @@
 //
 
 import UIKit
-import FirebaseAuth
-import FirebaseStorage
-import FirebaseDatabase
+import Firebase
 
 struct AuthCredentials {
     let email: String
@@ -19,6 +17,7 @@ struct AuthCredentials {
 }
 
 struct AuthService {
+    
     static let shared = AuthService()
     
     func registerUser(credentials: AuthCredentials, completion: @escaping(Error?, DatabaseReference) -> Void) {

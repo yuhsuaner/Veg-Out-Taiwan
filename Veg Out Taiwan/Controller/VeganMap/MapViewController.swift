@@ -8,7 +8,7 @@
 
 import UIKit
 import GoogleMaps
-import FirebaseAuth
+import Firebase
 
 private let reuseIdentifier = "SearchTabeleViewCell"
 

@@ -8,8 +8,7 @@
 
 import Foundation
 import UIKit
-import FirebaseStorage
-import FirebaseDatabase
+import Firebase
 
 struct Comment: Codable {
     
