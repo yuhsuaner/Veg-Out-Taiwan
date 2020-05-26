@@ -442,14 +442,12 @@ extension MapViewController: UIScrollViewDelegate {
         
         let page = collectionView.contentOffset.x / itemSize.width
         
-        let roundPage = round(page)
-        
         var targetIndex = 0
         
-        if page - 0.5 >= roundPage {
-            targetIndex = Int(roundPage) + 1
+        if page - 0.5 >= page {
+            targetIndex = Int(page) + 1
         } else {
-            targetIndex = roundPage == 0 || roundPage == -1 ? 0 : Int(roundPage)
+            targetIndex = page == 0 || page == -1 ? 0 : Int(page)
         }
         
         collectionView.scrollToItem(at: IndexPath(row: targetIndex, section: 0),
