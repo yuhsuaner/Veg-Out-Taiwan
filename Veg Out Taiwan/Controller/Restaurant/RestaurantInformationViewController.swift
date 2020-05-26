@@ -44,29 +44,58 @@ class RestaurantInformationViewController: UIViewController {
     // MARK: - API
     func createWantToGo() {
         
-//        guard
-//            let uid = Auth.auth().currentUser?.uid
-//            else {
-//                return
-//
-//        }
-//
-//        let data = WantToGo(restaurant: [restaurant])
-//
-//        votProvider.createWantToGoList(uid: uid, wantToGo: data) { result in
-//
-//            guard result else {
-//                return
-//            }
-//            self.wnatToGo.append(data)
-//
-//            DispatchQueue.main.async {
-//
-//                VOTProgressHUD.showSuccess()
-//                self.navigationController?.popViewController(animated: true)
-//            }
-//
-//        }
+        let toEatListRef = Database.database().reference().child("toEatList")
+        
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        
+        let listObject = [
+            "restaurant": restaurant
+            ] as [String: Any]
+        
+        toEatListRef.child(uid).child("want2Go").updateChildValues(listObject, withCompletionBlock: { error, ref in
+            
+            if error == nil {
+                self.dismiss(animated: true, completion: nil)
+            }
+        })
+        
+//        [
+//            "address": restaurant.address,
+//            "phone": restaurant.phone,
+//            "restaurantName": restaurant.restaurantName,
+//            "coordinates": [
+//                "latitude": restaurant.coordinates.latitude,
+//                "longitude": restaurant.coordinates.longitude
+//            ],
+//            "imageURL": restaurant.imageURL,
+//            "rating": restaurant.rating,
+//            "bussinessHours": restaurant.bussinessHours
+//        ]
+        
+        
+        //        guard
+        //            let uid = Auth.auth().currentUser?.uid
+        //            else {
+        //                return
+        //
+        //        }
+        //
+        //        let data = WantToGo(restaurant: [restaurant])
+        //
+        //        votProvider.createWantToGoList(uid: uid, wantToGo: data) { result in
+        //
+        //            guard result else {
+        //                return
+        //            }
+        //            self.wnatToGo.append(data)
+        //
+        //            DispatchQueue.main.async {
+        //
+        //                VOTProgressHUD.showSuccess()
+        //                self.navigationController?.popViewController(animated: true)
+        //            }
+        //
+        //        }
     }
     
     // MARK: - Helper
@@ -198,36 +227,36 @@ extension RestaurantInformationViewController: InfoCellDelegate {
     
     func didTapAddToEatListButton(_ sender: UIButton) {
         
-//        self.openAlert(title: "!",
-//                       message: "正在開發中🚧",
-//                       alertStyle: .alert,
-//                       actionTitles: ["OK"],
-//                       actionStyles: [.default],
-//                       actions: [{_ in print("okay click")}]
-//        )
+        //        self.openAlert(title: "!",
+        //                       message: "正在開發中🚧",
+        //                       alertStyle: .alert,
+        //                       actionTitles: ["OK"],
+        //                       actionStyles: [.default],
+        //                       actions: [{_ in print("okay click")}]
+        //        )
         
         self.openAlert(title: "加入收藏清單",
-         message: "add your message",
-         alertStyle: .actionSheet,
-         actionTitles: ["Want 2 Go", "My Favorite", "Other", "取消"],
-         actionStyles: [.default, .default, .default, .cancel],
-         actions: [
-             { _ in
-//                self.createWantToGo()
-             },
-             
-             { _ in
-                print(123)
-             },
-             
-             { _ in
-                
-                print(456)
-             },
-             
-             { _ in
-                  print("cancel click")
-             }
+                       message: "add your message",
+                       alertStyle: .actionSheet,
+                       actionTitles: ["Want 2 Go", "My Favorite", "Other", "取消"],
+                       actionStyles: [.default, .default, .default, .cancel],
+                       actions: [
+                        { _ in
+                            self.createWantToGo()
+                        },
+                        
+                        { _ in
+                            print(123)
+                        },
+                        
+                        { _ in
+                            
+                            print(456)
+                        },
+                        
+                        { _ in
+                            print("cancel click")
+                        }
         ])
     }
     

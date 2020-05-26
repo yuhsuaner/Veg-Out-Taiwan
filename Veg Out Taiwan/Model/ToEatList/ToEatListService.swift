@@ -19,6 +19,22 @@ struct ToEatListService {
         guard let uid = Auth.auth().currentUser?.uid else { return }
         
         toEatListRef.child(uid).child("want2Go").setValue(wantToGo)
-
+        
+    }
+    
+    func uploadTweet(uid: String, wantToGo: WantToGo, restaurant: Restaurant,
+                     completion: @escaping(DatabaseCompletion)) {
+        
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        
+//        let values = [Restaurant(address: restaurant.address,
+//                                 phone: restaurant.phone,
+//                                 restaurantName: restaurant.restaurantName,
+//                                 categories: <#T##[String]?#>,
+//                                 coordinates: <#T##Coordinates#>,
+//                                 imageURL: <#T##[String]#>, rating: <#T##String#>,
+//                                 bussinessHours: <#T##[String]#>)] as [String: Any]
+        
+//        toEatListRef.child(uid).child("want2Go").updateChildValues(values, withCompletionBlock: completion)
     }
 }
