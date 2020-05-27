@@ -66,7 +66,60 @@ class RestaurantInformationViewController: UIViewController {
                 VOTProgressHUD.showSuccess()
                 self.navigationController?.popViewController(animated: true)
             }
+        }
+    }
+    
+    func createMyFavorite() {
+        
+        guard
+            let uid = Auth.auth().currentUser?.uid
+            else {
+                return
+                
+        }
+        
+        votProvider.addToMyFavoriteList(uid: uid, restaurant: restaurant) { [weak self] result in
             
+            guard let self = self else { return }
+            
+            guard result else {
+                return
+            }
+            
+            self.wnatToGo.append(WantToGo(restaurant: [self.restaurant]))
+            
+            DispatchQueue.main.async {
+                
+                VOTProgressHUD.showSuccess()
+                self.navigationController?.popViewController(animated: true)
+            }
+        }
+    }
+    
+    func createOtherList() {
+        
+        guard
+            let uid = Auth.auth().currentUser?.uid
+            else {
+                return
+                
+        }
+        
+        votProvider.addToOtherList(uid: uid, restaurant: restaurant) { [weak self] result in
+            
+            guard let self = self else { return }
+            
+            guard result else {
+                return
+            }
+            
+            self.wnatToGo.append(WantToGo(restaurant: [self.restaurant]))
+            
+            DispatchQueue.main.async {
+                
+                VOTProgressHUD.showSuccess()
+                self.navigationController?.popViewController(animated: true)
+            }
         }
     }
     
@@ -198,36 +251,12 @@ extension RestaurantInformationViewController: InfoCellDelegate {
     
     func didTapAddToEatListButton(_ sender: UIButton) {
         
-        //        self.openAlert(title: "!",
-        //                       message: "正在開發中🚧",
-        //                       alertStyle: .alert,
-        //                       actionTitles: ["OK"],
-        //                       actionStyles: [.default],
-        //                       actions: [{_ in print("okay click")}]
-        //        )
-        
         self.openAlert(title: "加入收藏清單",
                        message: "add your message",
                        alertStyle: .actionSheet,
                        actionTitles: ["Want 2 Go", "My Favorite", "Other", "取消"],
                        actionStyles: [.default, .default, .default, .cancel],
-                       actions: [
-                        { _ in
-                            self.createWantToGo()
-                        },
-                        
-                        { _ in
-                            print(123)
-                        },
-                        
-                        { _ in
-                            
-                            print(456)
-                        },
-                        
-                        { _ in
-                            print("cancel click")
-                        }
+                       actions: [ {_ in self.createWantToGo() }, {_ in self.createMyFavorite() }, {_ in self.createOtherList() }, {_ in print("cancel click") }
         ])
     }
     

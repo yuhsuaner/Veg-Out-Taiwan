@@ -90,15 +90,15 @@ class VOTProvider {
         task.resume()
     }
     
-    func createWantToGoList(uid: String, wantToGo: WantToGo, completion: @escaping (Bool) -> Void) {
+    func addWantToGoList(uid: String, restaurant: Restaurant, completion: @escaping (Bool) -> Void) {
         
-        let url = URL(string: "https://veg-out-taiwan-1584254182301.firebaseio.com/toEatList/\(uid)/want2Go.json")!
+        let url = URL(string: "https://veg-out-taiwan-1584254182301.firebaseio.com/toEatList/\(uid)/want2Go/\(UUID().uuidString).json")!
         
         var request = URLRequest(url: url)
         
-        request.httpMethod = "POST"
+        request.httpMethod = "PUT"
         
-        request.httpBody = try? JSONEncoder().encode(wantToGo)
+        request.httpBody = try? JSONEncoder().encode(restaurant)
         
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             completion(error == nil)
@@ -107,13 +107,30 @@ class VOTProvider {
         task.resume()
     }
     
-    func addWantToGoList(uid: String, restaurant: Restaurant, completion: @escaping (Bool) -> Void) {
+    func addToMyFavoriteList(uid: String, restaurant: Restaurant, completion: @escaping (Bool) -> Void) {
         
-        let url = URL(string: "https://veg-out-taiwan-1584254182301.firebaseio.com/toEatList/\(uid)/want2Go/\(UUID().uuidString).json")!
+        let url = URL(string: "https://veg-out-taiwan-1584254182301.firebaseio.com/toEatList/\(uid)/myFavorite/\(UUID().uuidString).json")!
         
         var request = URLRequest(url: url)
         
-        request.httpMethod = "POST"
+        request.httpMethod = "PUT"
+        
+        request.httpBody = try? JSONEncoder().encode(restaurant)
+        
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            completion(error == nil)
+        }
+        
+        task.resume()
+    }
+    
+    func addToOtherList(uid: String, restaurant: Restaurant, completion: @escaping (Bool) -> Void) {
+        
+        let url = URL(string: "https://veg-out-taiwan-1584254182301.firebaseio.com/toEatList/\(uid)/other/\(UUID().uuidString).json")!
+        
+        var request = URLRequest(url: url)
+        
+        request.httpMethod = "PUT"
         
         request.httpBody = try? JSONEncoder().encode(restaurant)
         
