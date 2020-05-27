@@ -25,17 +25,17 @@ class ToEatListDetailsCollectionViewCell: UICollectionViewCell {
         image.contentMode = .scaleAspectFill
         image.layer.cornerRadius = 10
         image.clipsToBounds = true
+//        image.setDimensions(width: 150, height: 150)
         return image
     }()
     
     let restaurantName: UILabel = {
         let title = UILabel()
-        title.textAlignment = .center
-        title.font = UIFont(name: "jf-openhuninn-1.0", size: 18)
-        title.textColor = .G2
+        title.textAlignment = .left
+        title.font = UIFont(name: "jf-openhuninn-1.0", size: 24)
+        title.textColor = .G1
         return title
     }()
-    
     
     // MARK: - Lifecycle
     
@@ -43,7 +43,7 @@ class ToEatListDetailsCollectionViewCell: UICollectionViewCell {
         super.init(frame: frame)
         
         let stackView = UIStackView(arrangedSubviews: [cellImageView, restaurantName])
-        stackView.distribution = .fillEqually
+        stackView.distribution = .fill
         stackView.axis = .vertical
         
         addSubview(stackView)

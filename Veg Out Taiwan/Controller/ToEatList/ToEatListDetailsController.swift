@@ -53,12 +53,25 @@ class ToEatListDetailsController: UIViewController {
     // MARK: - Properties
     var bigTitle: String = ""
     
-    private let collectionView: UICollectionView = {
-        let collectionView = UICollectionView()
-        collectionView.backgroundColor = UIColor.W1
-        collectionView.translatesAutoresizingMaskIntoConstraints = false
-        return collectionView
-    }()
+    private lazy var collectionView: UICollectionView = {
+         
+         let layout = UICollectionViewFlowLayout()
+         layout.scrollDirection = .vertical
+         
+         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+         
+         collectionView.translatesAutoresizingMaskIntoConstraints = false
+                collectionView.register(ToEatListDetailsCollectionViewCell.self, forCellWithReuseIdentifier: "DetailsCell")
+//         collectionView.showsHorizontalScrollIndicator = false
+         collectionView.layer.cornerRadius = 15
+         
+         collectionView.backgroundColor = UIColor.W1
+         
+         collectionView.delegate = self
+         collectionView.dataSource = self
+         
+         return collectionView
+     }()
     
     // MARK: - LifeCycle
     
@@ -66,19 +79,19 @@ class ToEatListDetailsController: UIViewController {
         super.viewDidLoad()
         
         configureUI()
-        configureTableView()
+        configureCollectionView()
         
     }
     
     // MARK: - API
-//    fileprivate func fetchCategory() {
-//        
-//        APIService.shared.fetchCategoryAPI(urlLocation: url) { (podcast) in
-//            
-//            self.podcasts = podcast
-//            self.collectionView.reloadData()
-//        }
-//    }
+    fileprivate func fetchCategory() {
+        
+        APIService.shared.fetchCategoryAPI(urlLocation: url) { (podcast) in
+            
+            self.podcasts = podcast
+            self.collectionView.reloadData()
+        }
+    }
     
     // MARK: - Helper
 
@@ -89,7 +102,7 @@ class ToEatListDetailsController: UIViewController {
         navigationItem.title = "我的 To Eat List"
     }
     
-    func configureTableView() {
+    func configureCollectionView() {
         
         view.addSubview(collectionView)
         
@@ -100,11 +113,10 @@ class ToEatListDetailsController: UIViewController {
             collectionView.leftAnchor.constraint(equalTo: view.leftAnchor)
         ])
         
-        collectionView.register(ToEatListDetailsCollectionViewCell.self, forCellWithReuseIdentifier: "DetailsCell")
-        collectionView.dataSource = self
     }
 }
 
+// MARK: - UICollectionViewDataSource
 extension ToEatListDetailsController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -115,9 +127,38 @@ extension ToEatListDetailsController: UICollectionViewDataSource {
         
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DetailsCell", for: indexPath) as? ToEatListDetailsCollectionViewCell else { return UICollectionViewCell() }
         
-        cell.backgroundColor = .G2
+        cell.backgroundColor = .clear
+        cell.restaurantName.text = "HiHi"
         
         return cell
     }
     
+}
+
+// MARK: - UICollectionViewDelegateFlowLayout
+extension ToEatListDetailsController: UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        return CGSize(width: Int((collectionView.frame.width - 40) / 2),
+                      height: Int(collectionView.frame.width * 0.7))
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        
+        return UIEdgeInsets(top: 10, left: 10, bottom: 0, right: 10)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        
+        return 10
+    }
+}
+
+// MARK: - UICollectionViewDelegate
+extension ToEatListDetailsController: UICollectionViewDelegate {
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+    }
 }
