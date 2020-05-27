@@ -2,7 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -144,27 +144,39 @@
                                         </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="MM4-ES-x9m">
-                                        <rect key="frame" x="271.66666666666669" y="306.66666666666663" width="92.333333333333314" height="81.333333333333314"/>
+                                        <rect key="frame" x="242" y="358" width="122" height="30"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="koF-vH-qzF">
-                                                <rect key="frame" x="0.0" y="0.0" width="17.333333333333332" height="81.333333333333329"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="30" id="2ae-xu-NPP"/>
+                                                    <constraint firstAttribute="width" constant="30" id="mG4-EA-FW6"/>
+                                                </constraints>
                                                 <color key="tintColor" name="Orange"/>
                                                 <state key="normal" image="bookmark" catalog="system"/>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GPy-TC-JQx">
-                                                <rect key="frame" x="33.333333333333314" y="0.0" width="22.333333333333329" height="81.333333333333329"/>
+                                                <rect key="frame" x="46" y="0.0" width="30" height="30"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="30" id="17m-xb-hjL"/>
+                                                    <constraint firstAttribute="height" constant="30" id="PaE-hn-9xo"/>
+                                                </constraints>
                                                 <color key="tintColor" name="Orange"/>
                                                 <state key="normal" image="text.bubble" catalog="system"/>
                                                 <connections>
-                                                    <action selector="handleLeaveMessage:" destination="IaB-DZ-vx2" eventType="touchUpInside" id="SjH-O0-qGy"/>
+                                                    <action selector="handleReplyTapped:" destination="IaB-DZ-vx2" eventType="touchUpInside" id="SjH-O0-qGy"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bmb-rt-8Jn">
-                                                <rect key="frame" x="71.666666666666629" y="0.0" width="20.666666666666671" height="81.333333333333329"/>
+                                                <rect key="frame" x="92" y="0.0" width="30" height="30"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="30" id="B4z-Qd-d1T"/>
+                                                    <constraint firstAttribute="height" constant="30" id="VG6-GQ-8ql"/>
+                                                </constraints>
                                                 <color key="tintColor" name="Orange"/>
                                                 <state key="normal" image="heart" catalog="system"/>
                                                 <connections>
-                                                    <action selector="handleAddFavorite:" destination="IaB-DZ-vx2" eventType="touchUpInside" id="rs2-IF-inz"/>
+                                                    <action selector="handleLikeTapped:" destination="IaB-DZ-vx2" eventType="touchUpInside" id="rs2-IF-inz"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -180,7 +192,7 @@
                                             <action selector="handleFollowAction:" destination="IaB-DZ-vx2" eventType="touchUpInside" id="1Vz-Lr-Woy"/>
                                         </connections>
                                     </button>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hfu-j7-3Wh">
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hfu-j7-3Wh">
                                         <rect key="frame" x="0.0" y="57.999999999999986" width="364" height="238.66666666666663"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</string>
@@ -189,7 +201,7 @@
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2020.04.13" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ilN-ek-RGZ">
-                                        <rect key="frame" x="0.0" y="306.66666666666663" width="65.333333333333329" height="81.333333333333314"/>
+                                        <rect key="frame" x="0.0" y="358" width="65.333333333333329" height="30"/>
                                         <fontDescription key="fontDescription" name="jf-openhuninn-1.0" family="jf-openhuninn-1.0" pointSize="13"/>
                                         <color key="textColor" name="DarkGary"/>
                                         <nil key="highlightedColor"/>
@@ -198,7 +210,6 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="hx5-IM-pVj" firstAttribute="leading" secondItem="DOE-3c-gMS" secondAttribute="leading" id="5eS-fS-TGx"/>
-                                    <constraint firstItem="MM4-ES-x9m" firstAttribute="top" secondItem="hfu-j7-3Wh" secondAttribute="bottom" constant="10" id="8kM-5K-CI5"/>
                                     <constraint firstItem="qf7-L6-WlR" firstAttribute="trailing" secondItem="MM4-ES-x9m" secondAttribute="trailing" id="LOX-O8-dYm"/>
                                     <constraint firstAttribute="trailing" secondItem="MM4-ES-x9m" secondAttribute="trailing" id="NSg-bQ-cey"/>
                                     <constraint firstItem="ilN-ek-RGZ" firstAttribute="centerY" secondItem="MM4-ES-x9m" secondAttribute="centerY" id="UCw-BD-yoi"/>
@@ -235,14 +246,14 @@
                     </view>
                     <connections>
                         <outlet property="collectionButton" destination="koF-vH-qzF" id="Evl-jC-hl7"/>
+                        <outlet property="collectionView" destination="EYa-nv-1AY" id="yyk-kj-erZ"/>
                         <outlet property="contentOfCommentTextView" destination="hfu-j7-3Wh" id="mtm-E5-0uV"/>
-                        <outlet property="favoriteButton" destination="bmb-rt-8Jn" id="eXp-gS-hCg"/>
-                        <outlet property="imageCollectionView" destination="EYa-nv-1AY" id="yyk-kj-erZ"/>
                         <outlet property="imagePageControl" destination="Ki5-VY-94T" id="j7K-Ct-fI3"/>
+                        <outlet property="likeButton" destination="bmb-rt-8Jn" id="eXp-gS-hCg"/>
                         <outlet property="postDateLabel" destination="ilN-ek-RGZ" id="V3R-Pq-tpE"/>
-                        <outlet property="restaurantAddressLabel" destination="4V7-Rf-fcR" id="YG2-DS-kX4"/>
+                        <outlet property="restaurantNameLabel" destination="4V7-Rf-fcR" id="YG2-DS-kX4"/>
                         <outlet property="userImageView" destination="u53-qW-aIe" id="HAi-5z-4qC"/>
-                        <outlet property="userNameLabel" destination="bPs-aS-f20" id="9Fp-S2-U3I"/>
+                        <outlet property="userNameLabel" destination="Szw-uP-c7e" id="0di-CK-9pC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="90B-aY-WQf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

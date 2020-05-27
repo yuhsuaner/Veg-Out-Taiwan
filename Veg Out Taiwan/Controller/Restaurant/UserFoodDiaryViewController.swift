@@ -7,19 +7,25 @@
 //
 
 import UIKit
+import Firebase
 
 class UserFoodDiaryViewController: UIViewController, UIGestureRecognizerDelegate {
     
     // MARK: - Properties
+    
     var currentPage = 0
     
-    @IBOutlet weak var restaurantAddressLabel: UILabel!
+    var restaurantComments: Comment?
     
-    @IBOutlet weak var imageCollectionView: UICollectionView!
+    var userLikeComment: [String] = []
+    
+    @IBOutlet weak var restaurantNameLabel: UILabel!
+    
+    @IBOutlet weak var collectionView: UICollectionView!
     
     @IBOutlet weak var userImageView: UIImageView!
     
-    @IBOutlet weak var userNameLabel: NSLayoutConstraint!
+    @IBOutlet weak var userNameLabel: UILabel!
     
     @IBAction func handleFollowAction(_ sender: UIButton) {
     }
@@ -30,24 +36,110 @@ class UserFoodDiaryViewController: UIViewController, UIGestureRecognizerDelegate
     
     @IBOutlet weak var collectionButton: UIButton!
     
-    @IBOutlet weak var favoriteButton: UIButton!
+    @IBOutlet weak var likeButton: UIButton!
     
-    @IBAction func handleLeaveMessage(_ sender: Any) {
+    @IBAction func handleReplyTapped(_ sender: Any) {
     }
-    @IBAction func handleAddFavorite(_ sender: Any) {
+    
+    @IBAction func handleLikeTapped(_ sender: Any) {
+        
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        
+        //拿到全部currentUser 按過Like的存進userLikeArray
+        Database.database().reference().child("user-likes").child(uid).observeSingleEvent(of: .value) { snapshot in
+            
+            guard let dictionary = snapshot.value as? [String: Int] else { return }
+            
+            for keys in dictionary.keys {
+                
+                print(keys)
+                
+                print(type(of: keys))
+                
+                self.userLikeComment.append(keys)
+            }
+            
+            //拿出userLikeArray的值 與當前commentId比較
+            for (index, value) in self.userLikeComment.enumerated() {
+                print("Item \(index + 1): \(value)")
+                
+                if value != self.restaurantComments?.commentId {
+                    self.createdTappedLikeComment()
+                } else {
+                    return
+                }
+            }
+        }
     }
     
     @IBOutlet weak var imagePageControl: UIPageControl!
     
     // MARK: - LifeCycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         configureUI()
+        configureComment()
+        fetchUserLike()
         
-        imagePageControl.numberOfPages = 10
+        imagePageControl.numberOfPages = restaurantComments?.imageURL.count ?? 0
         imagePageControl.pageIndicatorTintColor = UIColor.W1
         imagePageControl.currentPageIndicatorTintColor = UIColor.O1
+    }
+    
+    // MARK: - API
+    
+    func fetchUserLike() {
+        
+        guard let comment = restaurantComments else { return }
+        
+        CommentService.shared.userLikeComment(comment) { didLike in
+            guard didLike == true else { return }
+            
+            if comment.commentId == self.restaurantComments?.commentId {
+                
+                self.likeButton.setImage(UIImage(named: "like_filled"), for: .normal)
+                
+            }
+        }
+    }
+    
+    func createdTappedLikeComment() {
+        
+        guard let comment = restaurantComments else { return }
+        
+        CommentService.shared.likeComment(comment: comment) { [weak self] (err, ref) in
+            
+            guard let self = self else { return }
+            
+            self.restaurantComments?.didLike?.toggle()
+            
+            let like = self.restaurantComments!.didLike! ? self.restaurantComments!.likes + 1 : self.restaurantComments!.likes - 1
+            
+            self.restaurantComments!.likes = like
+            
+            self.setLikeButtonImage()
+            
+            let text = self.restaurantComments!.didLike! ? "Like" : "DisLike"
+            
+            VOTProgressHUD.showSuccess(text: text)
+        }
+    }
+    
+    func setLikeButtonImage() {
+        
+        guard let comment = restaurantComments else { return }
+        
+        if comment.didLike == true {
+            DispatchQueue.main.async {
+                self.likeButton.setImage(UIImage(named: "like_filled"), for: .normal)
+            }
+        } else {
+            DispatchQueue.main.async {
+                self.likeButton.setImage(UIImage(named: "like"), for: .normal)
+            }
+        }
     }
     
     // MARK: - Helper
@@ -57,9 +149,6 @@ class UserFoodDiaryViewController: UIViewController, UIGestureRecognizerDelegate
         view.setBackgroundView()
         navigationController?.navigationBar.largeTitleTextAttributes = [.foregroundColor: UIColor.W1!, .font: UIFont(name: "jf-openhuninn-1.0", size: 25)!]
         
-//        navigationItem.hidesBackButton = true
-//        navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "VOT_back_Gray"), style: .plain, target: self, action: #selector(back(sender:)))
-        
         let backBTN = UIBarButtonItem(image: UIImage(named: "VOT_back_Gray"),
                                       style: .plain,
                                       target: navigationController,
@@ -67,48 +156,34 @@ class UserFoodDiaryViewController: UIViewController, UIGestureRecognizerDelegate
         navigationItem.leftBarButtonItem = backBTN
         navigationController?.interactivePopGestureRecognizer?.delegate = self
         
-        imageCollectionView.dataSource = self
-        imageCollectionView.delegate = self
+        collectionView.dataSource = self
+        collectionView.delegate = self
+        
     }
     
-//    @objc func back(sender: UIBarButtonItem) {
-//        self.navigationController?.popViewController(animated: true)
-//    }
+    func configureComment() {
+        
+        self.restaurantNameLabel.text = restaurantComments?.restaurantName
+        userNameLabel.text = restaurantComments?.user.userName
+        userImageView.loadImage(restaurantComments?.user.profileImageUrl, placeHolder: #imageLiteral(resourceName: "VOT tab bar icons-12"))
+        contentOfCommentTextView.text = restaurantComments?.commentText
+    }
 }
 
 extension UserFoodDiaryViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        return 10
+        guard let image = restaurantComments?.imageURL else { return 0 }
+        
+        return image.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ImageCollectionViewCell", for: indexPath) as? ImageCollectionViewCell else { return UICollectionViewCell() }
         
-        cell.postImage.image = UIImage(named: "Pic\(indexPath.item)")
-        
-//        switch indexPath.item {
-//
-//        case 0:
-//            cell.postImage.image = UIImage(named: "Pic1")
-//
-//        case 1:
-//            cell.postImage.image = UIImage(named: "Pic2")
-//
-//        case 2:
-//            cell.postImage.image = UIImage(named: "Pic3")
-//
-//        case 3:
-//            cell.postImage.image = UIImage(named: "Pic4")
-//
-//        case 4:
-//            cell.postImage.image = UIImage(named: "Pic5")
-//
-//        default:
-//            cell.postImage.image = UIImage(named: "Pic6")
-//        }
+        cell.postImage.loadImage(restaurantComments?.imageURL[indexPath.row], placeHolder: #imageLiteral(resourceName: "non_photo-2"))
         
         return cell
     }
@@ -118,7 +193,8 @@ extension UserFoodDiaryViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        return CGSize(width: collectionView.frame.width, height: collectionView.frame.height)
+        return CGSize(width: collectionView.frame.width,
+                      height: collectionView.frame.height)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {

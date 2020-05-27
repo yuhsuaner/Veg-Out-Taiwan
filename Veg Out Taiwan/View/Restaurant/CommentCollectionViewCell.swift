@@ -7,16 +7,6 @@
 //
 
 import UIKit
-//
-//protocol CustomCollectionCellDelegate: class {
-//
-//func selectedCollectionView(collectioncell: CommentCollectionViewCell?, collectionRow: IndexPath)
-//
-//}
-
-protocol CategoryRowDelegate: class {
-    func cellTapped()
-}
 
 class CommentCollectionViewCell: UICollectionViewCell {
     
@@ -29,13 +19,5 @@ class CommentCollectionViewCell: UICollectionViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        self.layer.cornerRadius = 15.0
-//        layer.shadowRadius = 20
-        layer.shadowOpacity = 0.4
-        layer.shadowColor = UIColor.DG?.cgColor
-        layer.shadowOffset = CGSize(width: 7, height: 7)
-        
-        self.clipsToBounds = false
     }
-    
 }

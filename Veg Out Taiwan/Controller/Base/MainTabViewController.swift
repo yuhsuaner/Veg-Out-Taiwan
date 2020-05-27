@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import FirebaseAuth
+import Firebase
 
 class MainTabViewController: UITabBarController, UITabBarControllerDelegate {
     

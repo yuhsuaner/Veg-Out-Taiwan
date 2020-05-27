@@ -24,7 +24,7 @@ class ToEatListTableViewCell: UITableViewCell {
         let label = UILabel()
         label.text = "VOT"
         label.textColor = UIColor.G1
-        label.font = UIFont(name: "jf-openhuninn-1.0", size: 16)
+        label.font = UIFont(name: "jf-openhuninn-1.0", size: 20)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()

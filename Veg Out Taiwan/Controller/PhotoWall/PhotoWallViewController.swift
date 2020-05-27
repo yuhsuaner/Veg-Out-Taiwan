@@ -7,11 +7,19 @@
 //
 
 import UIKit
+import Firebase
 import collection_view_layouts
 
 class PhotoWallViewController: UIViewController {
     
     // MARK: - Properties
+    
+    var comment: [Comment] = []
+    
+    var imageList: [String] = []
+    
+    var votProvider = VOTProvider()
+    
     private func getLayout() -> UICollectionViewLayout {
         
         let layout = InstagramLayout()
@@ -32,7 +40,7 @@ class PhotoWallViewController: UIViewController {
         
         collectionView.backgroundColor = .clear
         
-//        collectionView.delegate = self
+        collectionView.delegate = self
         collectionView.dataSource = self
         
         return collectionView
@@ -43,6 +51,57 @@ class PhotoWallViewController: UIViewController {
         super.viewDidLoad()
         
         configureUI()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        fetchImageComment()
+    }
+    
+    // MARK: - API
+    
+    func fetchImageComment() {
+        
+        let customerRef = Database.database().reference().child("comments")
+        
+        customerRef.observeSingleEvent(of: .value, with: { snapshot in
+            
+            var comment: [[String: Any]] = []
+            
+            for commentsChild in snapshot.children {
+                
+                guard let childSnap = commentsChild as? DataSnapshot else { return }
+                
+                //拿comment 資料
+                guard let value = childSnap.value as? [String: Any] else { return }
+                comment.append(value)
+                
+                //拿所以有comment中的imageURL 資料
+                let imageSnap = childSnap.childSnapshot(forPath: "imageURL")
+                
+                for imageURL in imageSnap.children {
+                    
+                    guard let snap = imageURL as? DataSnapshot else { return }
+                    guard let image = snap.value as? String else { return }
+                    self.imageList.append(image)
+                }
+            }
+            
+            guard let data = try? JSONSerialization.data(withJSONObject: comment, options: .fragmentsAllowed) else { return }
+            
+            do {
+
+                let json = try JSONDecoder().decode([Comment].self, from: data)
+                
+                self.comment = json
+                
+            } catch {
+                print(error)
+            }
+
+            self.collectionView.reloadData()
+        })
     }
     
     // MARK: - Helper
@@ -65,12 +124,13 @@ class PhotoWallViewController: UIViewController {
     }
 }
 
-// MARK: - UICollectionViewDataSource
+// MARK: - UICollectionView DataSource
 extension PhotoWallViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        return 20
+        return comment.count
+
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -78,9 +138,41 @@ extension PhotoWallViewController: UICollectionViewDataSource {
         guard let cell = collectionView.dequeueReusableCell(
             withReuseIdentifier: "cell", for: indexPath) as? PhotoWallCollectionViewCell else { return UICollectionViewCell()}
         
-        cell.postImageView.image = #imageLiteral(resourceName: "Pic7")
+        cell.postImageView.loadImage(comment[indexPath.row].imageURL[0], placeHolder: #imageLiteral(resourceName: "non_photo-4"))
         
         return cell
+    }
+    
+}
+
+// MARK: - UICollectionViewDelegate
+extension PhotoWallViewController: UICollectionViewDelegate {
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        guard let viewController = UIStoryboard(name: "UserFoodDiary", bundle: nil).instantiateViewController(identifier: "UserFoodDiary") as? UserFoodDiaryViewController else { return }
+        
+        guard
+            let userName = UserDefaults.standard.value(forKey: "Username") as? String,
+            let userImage = UserDefaults.standard.value(forKey: "UserImage") as? String,
+            let userMail = UserDefaults.standard.value(forKey: "UserMail") as? String,
+            let uid = UserDefaults.standard.value(forKey: "UID") as? String
+            else { return }
+        
+        let restaurantName = comment[indexPath.row].restaurantName
+        let imageURL = comment[indexPath.row].imageURL
+        let rating = comment[indexPath.row].rating
+        let commentText = comment[indexPath.row].commentText
+        
+        let comment = Comment(restaurantName: restaurantName,
+                              imageURL: imageURL,
+                              rating: rating,
+                              commentText: commentText,
+                              user: User(uid: uid, username: userName, userImage: userImage, email: userMail))
+        
+        viewController.restaurantComments = comment
+        
+        show(viewController, sender: nil)
     }
 }
 

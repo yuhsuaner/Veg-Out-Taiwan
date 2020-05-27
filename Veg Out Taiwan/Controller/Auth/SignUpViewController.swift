@@ -119,12 +119,11 @@ class SignUpViewController: UIViewController {
             }
             print("Successfully Sign up")
                         
-//            guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
-//            guard let tab = appDelegate.window?.rootViewController as? MainTabViewController else { return }
-//            tab.selectedIndex = 3
-            self.present(ProfileController(), animated: true, completion: nil)
-            
-            self.dismiss(animated: true, completion: nil)
+            guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+            guard let tab = appDelegate.window?.rootViewController as? MainTabViewController else { return }
+            tab.dismiss(animated: true, completion: nil)
+            tab.selectedIndex = 3
+
         }
     }
     
