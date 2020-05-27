@@ -8,8 +8,7 @@
 
 import Foundation
 import UIKit
-import FirebaseStorage
-import FirebaseDatabase
+import Firebase
 
 struct Comment: Codable {
     
@@ -23,6 +22,7 @@ struct Comment: Codable {
     let user: User
     var likes: Int = 0
     var didLike: Bool?
+    
 }
 
 struct ImageService {
@@ -63,12 +63,4 @@ struct UserComment: Codable {
     let rating: Double
     let commentText: String
 //    let timestamp: Date
-}
-
-class Image: NSObject, Codable {
-    var imageName: String
-    
-    init(imageName: String) {
-        self.imageName = imageName
-    }
 }

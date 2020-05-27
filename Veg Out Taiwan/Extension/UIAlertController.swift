@@ -69,3 +69,14 @@ extension UIViewController {
       }
  ])
  */
+
+
+/*
+ self.openAlert(title: "!",
+ message: "正在開發中🚧",
+ alertStyle: .alert,
+ actionTitles: ["OK"],
+ actionStyles: [.default],
+ actions: [{_ in print("okay click")}]
+ )
+ */

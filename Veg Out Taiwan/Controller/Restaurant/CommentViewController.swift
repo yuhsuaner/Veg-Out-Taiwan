@@ -8,9 +8,7 @@
 
 import UIKit
 import Cosmos
-import FirebaseStorage
-import FirebaseFirestore
-import FirebaseAuth
+import Firebase
 import ImagePicker
 import Lightbox
 

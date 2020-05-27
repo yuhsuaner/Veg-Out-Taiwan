@@ -8,7 +8,7 @@
 
 import UIKit
 import GoogleMaps
-import FirebaseAuth
+import Firebase
 
 private let reuseIdentifier = "SearchTabeleViewCell"
 
@@ -268,36 +268,34 @@ class MapViewController: UIViewController {
 // MARK: - GMSMapViewDelegate
 extension MapViewController: GMSMapViewDelegate {
     
-    func mapView(_ mapView: GMSMapView, didTapInfoWindowOf marker: GMSMarker) {
-        print("1234567")
+    func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
+
+        self.changeMapViewLocation(lat: marker.position.latitude,
+                                   long: marker.position.longitude, zoom: 15)
+
+        return true
     }
     
-//    func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
-//
-//        self.reloadMapViewWithChangeLocation(lat: marker.position.latitude, long: marker.position.longitude, zoom: 15)
-//
-//        return true
-//    }
-    
-//    func reloadMapViewWithChangeLocation(lat: Double, long: Double, zoom: Float) {
-//
-//        var indexNum = Int()
-//
-//        for (index, data) in restaurant[indexNum] where
-//
-//            lat == data.location!.latitude {
-//
-//                indexNum = index
-//        }
-//
-//        self.collectionView.scrollToItem(
-//            at: IndexPath(row: indexNum, section: 0),
-//            at: .centeredHorizontally,
-//            animated: true
-//        )
-//
-//        self.updateMapView(lat: lat, long: long, zoom: zoom)
-//    }
+    func changeMapViewLocation(lat: Double, long: Double, zoom: Float) {
+        
+        var indexNum = Int()
+        
+        for (index, data) in restaurant.enumerated() where
+            
+            lat == data.coordinates.latitude {
+                
+                indexNum = index
+        }
+        
+        collectionView.scrollToItem(
+            at: IndexPath(row: indexNum, section: 0),
+            at: .centeredHorizontally,
+            animated: true
+        )
+        
+        updateMapView(lat: lat, long: long, zoom: zoom)
+        
+    }
     
     func updateMapView(lat: Double, long: Double, zoom: Float) {
         
@@ -422,23 +420,43 @@ extension MapViewController: UIScrollViewDelegate {
         return ((maxAlpha - minAlpha) * (xSize - minScale)) / (maxScale - minScale) + minAlpha
     }
     
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        self.page()
+    }
+    
     // for custom snap-to paging, when user stop scrolling
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         
-        var indexOfCellWithLargestWidth = 0
-        var largestWidth: CGFloat = 1
-        
-        for cell in self.collectionView.visibleCells {
-            
-            if cell.frame.size.width > largestWidth {
-                largestWidth = cell.frame.size.width
-                if let indexPath = self.collectionView.indexPath(for: cell) {
-                    indexOfCellWithLargestWidth = indexPath.item
-                }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            if !self.collectionView.isDecelerating {
+                self.page()
             }
         }
+    }
+    
+    func page() {
         
-        collectionView.scrollToItem(at: IndexPath(item: indexOfCellWithLargestWidth, section: 0), at: .centeredHorizontally, animated: true)
+//        let itemSize: CGSize = CGSize(width: 200, height: 150)
+        let itemSize: CGSize = CGSize(width: (collectionView.frame.width)*3/4,
+                                      height: collectionView.frame.width / 3)
+        
+        let page = collectionView.contentOffset.x / itemSize.width
+        
+        var targetIndex = 0
+        
+        if page - 0.5 >= page {
+            targetIndex = Int(page) + 1
+        } else {
+            targetIndex = page == 0 || page == -1 ? 0 : Int(page)
+        }
+        
+        collectionView.scrollToItem(at: IndexPath(row: targetIndex, section: 0),
+                                                   at: .centeredHorizontally,
+                                                   animated: true)
+        
+        let location = restaurant[targetIndex].coordinates
+        
+        updateMapView(lat: location.latitude, long: location.longitude, zoom: 15)
     }
 }
 
