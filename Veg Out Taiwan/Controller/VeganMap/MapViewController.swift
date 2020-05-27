@@ -307,6 +307,7 @@ extension MapViewController: GMSMapViewDelegate {
     }
 }
 
+
 // MARK: - CLLocationManagerDelegate
 extension MapViewController: CLLocationManagerDelegate {
     
@@ -319,7 +320,6 @@ extension MapViewController: CLLocationManagerDelegate {
         mapView.camera = camera
 
         locationManager.stopUpdatingLocation()
-        
     }
 }
 
