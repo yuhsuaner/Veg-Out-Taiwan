@@ -7,8 +7,7 @@
 //
 
 import UIKit
-import FirebaseAuth
-import FirebaseDatabase
+import Firebase
 import SDWebImage
 
 class ProfileController: UICollectionViewController {
@@ -87,7 +86,8 @@ class ProfileController: UICollectionViewController {
 //
                 print(type(of: child))
                 
-                guard let childSnapShot = child as? DataSnapshot,
+                guard
+                    let childSnapShot = child as? DataSnapshot,
                     let value = childSnapShot.value as? [String: Any] else {
                         
                         return
@@ -189,8 +189,7 @@ extension ProfileController {
         
         guard let userComment = userComment else { return }
         
-        let comment = Comment(commentId: "",
-                              restaurantName: userComment[indexPath.row].restaurantName,
+        let comment = Comment(restaurantName: userComment[indexPath.row].restaurantName,
                               imageURL: userComment[indexPath.row].imageURL,
                               rating: userComment[indexPath.row].rating,
                               commentText: userComment[indexPath.row].commentText,
