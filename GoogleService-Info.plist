@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>204161159573-csttsribelgirhapgrpiebimmej56inf.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.204161159573-csttsribelgirhapgrpiebimmej56inf</string>
+	<key>API_KEY</key>
+	<string>AIzaSyC-mwbwdODhwugwtgkgMGDeZiEyCT7vMPo</string>
+	<key>GCM_SENDER_ID</key>
+	<string>204161159573</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.irenechen.Veg-Out-Taiwan</string>
+	<key>PROJECT_ID</key>
+	<string>veg-out-taiwan-1584254182301</string>
+	<key>STORAGE_BUCKET</key>
+	<string>veg-out-taiwan-1584254182301.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:204161159573:ios:9247ef3c22e8bbb7e5669c</string>
+	<key>DATABASE_URL</key>
+	<string>https://veg-out-taiwan-1584254182301.firebaseio.com</string>
+</dict>
+</plist>

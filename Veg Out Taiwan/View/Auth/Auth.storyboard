@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="jf-openhuninn-1.0.ttf">
+            <string>jf-openhuninn-1.0</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--Log In View Controller-->
+        <scene sceneID="bHF-Dl-zUM">
+            <objects>
+                <viewController storyboardIdentifier="LogInVC" id="ZwT-0l-bOx" customClass="LogInViewController" customModule="Veg_Out_Taiwan" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="9dp-Gw-062">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view alpha="0.40000000000000002" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LLR-aS-R4T">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zoc-I8-isK">
+                                <rect key="frame" x="0.0" y="152.5" width="414" height="743.5"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="VOT_logo_only-04_0" translatesAutoresizingMaskIntoConstraints="NO" id="N5v-aX-uur">
+                                        <rect key="frame" x="107.5" y="25" width="199" height="198.5"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="N5v-aX-uur" secondAttribute="height" multiplier="1:1" id="8N1-z9-dZR"/>
+                                        </constraints>
+                                    </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6aE-D0-I2Z">
+                                        <rect key="frame" x="95" y="460.5" width="30" height="26"/>
+                                        <fontDescription key="fontDescription" name="jf-openhuninn-1.0" family="jf-openhuninn-1.0" pointSize="12"/>
+                                        <state key="normal" title="註冊">
+                                            <color key="titleColor" name="CreamyWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="handleSignup:" destination="ZwT-0l-bOx" eventType="touchUpInside" id="EaT-WJ-aSr"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vog Out Taiwan" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JDT-ow-DAx">
+                                        <rect key="frame" x="123.5" y="226.5" width="167.5" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="JiQ-YA-Dig"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="jf-openhuninn-1.0" family="jf-openhuninn-1.0" pointSize="24"/>
+                                        <color key="textColor" name="CreamyWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="mDF-r7-pMD">
+                                        <rect key="frame" x="95" y="291.5" width="224" height="149"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kJU-WV-AO2">
+                                                <rect key="frame" x="0.0" y="0.0" width="224" height="43"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="帳號" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zgm-q9-lfH">
+                                                        <rect key="frame" x="20" y="12" width="32" height="19"/>
+                                                        <fontDescription key="fontDescription" name="jf-openhuninn-1.0" family="jf-openhuninn-1.0" pointSize="16"/>
+                                                        <color key="textColor" name="CreamyWhite"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="請輸入您的Eamil" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="She-P4-nbf">
+                                                        <rect key="frame" x="62" y="5" width="157" height="33"/>
+                                                        <color key="textColor" name="CreamyWhite"/>
+                                                        <fontDescription key="fontDescription" name="jf-openhuninn-1.0" family="jf-openhuninn-1.0" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
+                                                    </textField>
+                                                </subviews>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstItem="Zgm-q9-lfH" firstAttribute="centerY" secondItem="kJU-WV-AO2" secondAttribute="centerY" id="6Yp-Ey-Stj"/>
+                                                    <constraint firstItem="Zgm-q9-lfH" firstAttribute="leading" secondItem="kJU-WV-AO2" secondAttribute="leading" constant="20" id="Iec-pG-58v"/>
+                                                    <constraint firstItem="She-P4-nbf" firstAttribute="leading" secondItem="Zgm-q9-lfH" secondAttribute="trailing" constant="10" id="NP9-jz-rUN"/>
+                                                    <constraint firstItem="She-P4-nbf" firstAttribute="top" secondItem="kJU-WV-AO2" secondAttribute="top" constant="5" id="bsL-ZL-AXk"/>
+                                                    <constraint firstItem="She-P4-nbf" firstAttribute="centerY" secondItem="Zgm-q9-lfH" secondAttribute="centerY" id="eCj-dd-zOy"/>
+                                                    <constraint firstAttribute="trailing" secondItem="She-P4-nbf" secondAttribute="trailing" constant="5" id="xkP-uM-6E7"/>
+                                                    <constraint firstAttribute="bottom" secondItem="She-P4-nbf" secondAttribute="bottom" constant="5" id="ypc-5C-YIB"/>
+                                                </constraints>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bi7-js-J4C">
+                                                <rect key="frame" x="0.0" y="53" width="224" height="43"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="密碼" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wqm-Nv-oBI">
+                                                        <rect key="frame" x="20" y="12" width="32" height="19"/>
+                                                        <fontDescription key="fontDescription" name="jf-openhuninn-1.0" family="jf-openhuninn-1.0" pointSize="16"/>
+                                                        <color key="textColor" name="CreamyWhite"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FbL-nM-hIy">
+                                                        <rect key="frame" x="62" y="5" width="157" height="33"/>
+                                                        <color key="textColor" name="CreamyWhite"/>
+                                                        <fontDescription key="fontDescription" name="jf-openhuninn-1.0" family="jf-openhuninn-1.0" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                                    </textField>
+                                                </subviews>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstItem="Wqm-Nv-oBI" firstAttribute="leading" secondItem="bi7-js-J4C" secondAttribute="leading" constant="20" id="5Mr-mP-5An"/>
+                                                    <constraint firstAttribute="trailing" secondItem="FbL-nM-hIy" secondAttribute="trailing" constant="5" id="Fdz-fr-CLi"/>
+                                                    <constraint firstItem="Wqm-Nv-oBI" firstAttribute="centerY" secondItem="bi7-js-J4C" secondAttribute="centerY" id="HmF-us-9PC"/>
+                                                    <constraint firstItem="FbL-nM-hIy" firstAttribute="leading" secondItem="Wqm-Nv-oBI" secondAttribute="trailing" constant="10" id="Jgg-uD-ZaA"/>
+                                                    <constraint firstItem="FbL-nM-hIy" firstAttribute="centerY" secondItem="Wqm-Nv-oBI" secondAttribute="centerY" id="WDK-tc-nMy"/>
+                                                    <constraint firstItem="FbL-nM-hIy" firstAttribute="top" secondItem="bi7-js-J4C" secondAttribute="top" constant="5" id="hLy-Lq-dWO"/>
+                                                    <constraint firstAttribute="bottom" secondItem="FbL-nM-hIy" secondAttribute="bottom" constant="5" id="yOy-X7-8N6"/>
+                                                </constraints>
+                                            </view>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fn5-PO-vha">
+                                                <rect key="frame" x="0.0" y="106" width="224" height="43"/>
+                                                <color key="backgroundColor" name="Orange"/>
+                                                <fontDescription key="fontDescription" name="jf-openhuninn-1.0" family="jf-openhuninn-1.0" pointSize="16"/>
+                                                <state key="normal" title="開始探索！">
+                                                    <color key="titleColor" name="CreamyWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="handleEnterAction:" destination="ZwT-0l-bOx" eventType="touchUpInside" id="zBK-mq-uPK"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2b2-Bi-heR">
+                                        <rect key="frame" x="271" y="460.5" width="48" height="26"/>
+                                        <fontDescription key="fontDescription" name="jf-openhuninn-1.0" family="jf-openhuninn-1.0" pointSize="12"/>
+                                        <state key="normal" title="忘記密碼">
+                                            <color key="titleColor" name="CreamyWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="handleForgotPassword:" destination="ZwT-0l-bOx" eventType="touchUpInside" id="gaf-X0-6CW"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lqd-sC-8f6">
+                                        <rect key="frame" x="364" y="30" width="25" height="25"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="25" id="L4c-H7-DdZ"/>
+                                            <constraint firstAttribute="width" constant="25" id="XrY-Fs-bd5"/>
+                                        </constraints>
+                                        <color key="tintColor" name="CreamyWhite"/>
+                                        <state key="normal" image="cancel"/>
+                                        <connections>
+                                            <action selector="handleCancelAction:" destination="ZwT-0l-bOx" eventType="touchUpInside" id="f1K-WP-gCi"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" name="DarkGreen"/>
+                                <constraints>
+                                    <constraint firstItem="mDF-r7-pMD" firstAttribute="width" secondItem="N5v-aX-uur" secondAttribute="width" multiplier="1:1" constant="25" id="7ri-gS-DEI"/>
+                                    <constraint firstItem="6aE-D0-I2Z" firstAttribute="centerY" secondItem="2b2-Bi-heR" secondAttribute="centerY" id="BT9-uQ-lRm"/>
+                                    <constraint firstItem="N5v-aX-uur" firstAttribute="centerX" secondItem="Zoc-I8-isK" secondAttribute="centerX" id="Erw-g3-Cd0"/>
+                                    <constraint firstItem="mDF-r7-pMD" firstAttribute="centerX" secondItem="Zoc-I8-isK" secondAttribute="centerX" id="Eyi-WW-q01"/>
+                                    <constraint firstItem="mDF-r7-pMD" firstAttribute="height" secondItem="Zoc-I8-isK" secondAttribute="height" multiplier="0.2" id="G84-ms-Myj"/>
+                                    <constraint firstItem="JDT-ow-DAx" firstAttribute="centerX" secondItem="Zoc-I8-isK" secondAttribute="centerX" id="JvS-rA-Fv4"/>
+                                    <constraint firstItem="JDT-ow-DAx" firstAttribute="top" secondItem="N5v-aX-uur" secondAttribute="bottom" constant="3" id="UBe-w7-2k9"/>
+                                    <constraint firstItem="2b2-Bi-heR" firstAttribute="top" secondItem="mDF-r7-pMD" secondAttribute="bottom" constant="20" id="UYS-7i-LNg"/>
+                                    <constraint firstItem="mDF-r7-pMD" firstAttribute="top" secondItem="JDT-ow-DAx" secondAttribute="bottom" constant="25" id="XwN-2Z-PXu"/>
+                                    <constraint firstItem="6aE-D0-I2Z" firstAttribute="top" secondItem="mDF-r7-pMD" secondAttribute="bottom" constant="20" id="amp-nf-tfd"/>
+                                    <constraint firstAttribute="trailing" secondItem="Lqd-sC-8f6" secondAttribute="trailing" constant="25" id="ccf-QQ-OCw"/>
+                                    <constraint firstItem="6aE-D0-I2Z" firstAttribute="leading" secondItem="fn5-PO-vha" secondAttribute="leading" id="dHW-ph-od4"/>
+                                    <constraint firstItem="Lqd-sC-8f6" firstAttribute="top" secondItem="Zoc-I8-isK" secondAttribute="top" constant="30" id="eJA-pb-NKZ"/>
+                                    <constraint firstItem="N5v-aX-uur" firstAttribute="width" secondItem="Zoc-I8-isK" secondAttribute="width" multiplier="180:375" id="hcR-dl-kln"/>
+                                    <constraint firstItem="2b2-Bi-heR" firstAttribute="trailing" secondItem="fn5-PO-vha" secondAttribute="trailing" id="mLt-2P-0pm"/>
+                                    <constraint firstItem="N5v-aX-uur" firstAttribute="top" secondItem="Zoc-I8-isK" secondAttribute="top" constant="25" id="tD6-kj-wih"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Zoc-I8-isK" firstAttribute="height" secondItem="LLR-aS-R4T" secondAttribute="height" multiplier="0.83" id="SqC-np-5eJ"/>
+                            <constraint firstItem="LLR-aS-R4T" firstAttribute="top" secondItem="9dp-Gw-062" secondAttribute="top" id="V6k-Th-D1w"/>
+                            <constraint firstAttribute="bottom" secondItem="Zoc-I8-isK" secondAttribute="bottom" id="eJ8-Bh-krs"/>
+                            <constraint firstItem="Zoc-I8-isK" firstAttribute="leading" secondItem="9dp-Gw-062" secondAttribute="leading" id="gFr-3L-Rxw"/>
+                            <constraint firstAttribute="bottom" secondItem="LLR-aS-R4T" secondAttribute="bottom" id="gSG-Nq-dB8"/>
+                            <constraint firstAttribute="trailing" secondItem="Zoc-I8-isK" secondAttribute="trailing" id="h8x-QN-yEM"/>
+                            <constraint firstItem="LLR-aS-R4T" firstAttribute="trailing" secondItem="9dp-Gw-062" secondAttribute="trailing" id="hKt-Of-k8h"/>
+                            <constraint firstItem="LLR-aS-R4T" firstAttribute="leading" secondItem="9dp-Gw-062" secondAttribute="leading" id="nED-H3-3M0"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="RKt-T9-XS6"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Gp5-fZ-TuL"/>
+                    <connections>
+                        <outlet property="accountView" destination="kJU-WV-AO2" id="eaV-BH-3EF"/>
+                        <outlet property="backgroundView" destination="Zoc-I8-isK" id="1bu-S3-2Ni"/>
+                        <outlet property="emailTextField" destination="She-P4-nbf" id="XzE-pu-xmC"/>
+                        <outlet property="enterButton" destination="fn5-PO-vha" id="d1r-gG-xHp"/>
+                        <outlet property="passwordTextField" destination="FbL-nM-hIy" id="JC3-vU-bw6"/>
+                        <outlet property="passwordView" destination="bi7-js-J4C" id="cv4-Gc-vz4"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7sa-TM-aAS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="127.53623188405798" y="91.741071428571431"/>
+        </scene>
+        <!--Sign Up View Controller-->
+        <scene sceneID="FNF-TV-aoK">
+            <objects>
+                <viewController storyboardIdentifier="SignUpVC" id="Lpo-ae-x1v" customClass="SignUpViewController" customModule="Veg_Out_Taiwan" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="7QE-Cg-DUt">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="Rti-mP-xiP"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="gno-pG-rBs"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Eig-Fc-haj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="975" y="96"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="VOT_logo_only-04_0" width="2133" height="2133"/>
+        <image name="cancel" width="64" height="64"/>
+        <namedColor name="CreamyWhite">
+            <color red="0.98799997568130493" green="0.98000001907348633" blue="0.94900000095367432" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
+        <namedColor name="DarkGreen">
+            <color red="0.42399999499320984" green="0.50999999046325684" blue="0.35699999332427979" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="Orange">
+            <color red="0.93699997663497925" green="0.5690000057220459" blue="0.37599998712539673" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

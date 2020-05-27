@@ -8,5 +8,30 @@ target 'Veg Out Taiwan' do
   # Pods for Veg Out Taiwan
   pod 'SwiftLint'
   pod 'Kingfisher'
+  
+  # GoogleMap
+  pod 'GoogleMaps'
+  pod 'GooglePlaces'
+  
+  # Firebase
+  pod 'Firebase/Core'
+  pod 'Firebase/Analytics'
+  pod 'Firebase/Auth'
+  pod 'Firebase/Firestore'
+  pod 'Firebase/Storage'
+  pod 'Firebase/Database'
+  pod 'Crashlytics'
+  pod 'Fabric'
+  
+  pod 'collection-view-layouts'
+  pod 'IQKeyboardManagerSwift'
+  pod 'SDWebImage'
+  pod 'JGProgressHUD'
+  
+  # Pod for star rate
+  pod 'Cosmos'
+  
+  pod 'ImagePicker'
+  pod 'Lightbox'
 
 end

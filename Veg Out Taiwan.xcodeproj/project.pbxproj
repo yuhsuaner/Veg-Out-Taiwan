@@ -7,25 +7,133 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4237B0CC24651D33008A395E /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4237B0CB24651D33008A395E /* Comment.swift */; };
+		4237B11E246A9EE9008A395E /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4237B11D246A9EE9008A395E /* UIImageView.swift */; };
+		42411779241F424F0094B0FB /* ToEatListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42411778241F424F0094B0FB /* ToEatListController.swift */; };
+		4241177D241F85A50094B0FB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4241177C241F85A50094B0FB /* GoogleService-Info.plist */; };
+		4244483824430CE800000E96 /* BaseInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4244483724430CE800000E96 /* BaseInfoTableViewCell.swift */; };
+		4244483A2443118C00000E96 /* CommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 424448392443118C00000E96 /* CommentTableViewCell.swift */; };
+		4244483C244315D600000E96 /* CommentCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4244483B244315D600000E96 /* CommentCollectionViewCell.swift */; };
+		4244483E24432E1100000E96 /* UserCommentWallViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4244483D24432E1100000E96 /* UserCommentWallViewController.swift */; };
+		4244484424445CA700000E96 /* UserCommentWallCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4244484324445CA700000E96 /* UserCommentWallCollectionViewCell.swift */; };
+		42444846244460EC00000E96 /* UserFoodDiaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42444845244460EC00000E96 /* UserFoodDiaryViewController.swift */; };
+		424448482444611400000E96 /* UserFoodDiary.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 424448472444611400000E96 /* UserFoodDiary.storyboard */; };
+		4244484A2445B05100000E96 /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 424448492445B05000000E96 /* ImageCollectionViewCell.swift */; };
 		42461DEB241DC74D009EC9AB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42461DEA241DC74D009EC9AB /* AppDelegate.swift */; };
-		42461DED241DC74D009EC9AB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42461DEC241DC74D009EC9AB /* SceneDelegate.swift */; };
-		42461DEF241DC74D009EC9AB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42461DEE241DC74D009EC9AB /* ViewController.swift */; };
-		42461DF2241DC74D009EC9AB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42461DF0241DC74D009EC9AB /* Main.storyboard */; };
 		42461DF4241DC74F009EC9AB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 42461DF3241DC74F009EC9AB /* Assets.xcassets */; };
 		42461DF7241DC74F009EC9AB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42461DF5241DC74F009EC9AB /* LaunchScreen.storyboard */; };
+		42461E01241E2BCE009EC9AB /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42461E00241E2BCE009EC9AB /* MapViewController.swift */; };
+		42461E07241E440E009EC9AB /* JGProgressHUDWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42461E05241E440E009EC9AB /* JGProgressHUDWrapper.swift */; };
+		42461E08241E440E009EC9AB /* KingFisherWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42461E06241E440E009EC9AB /* KingFisherWrapper.swift */; };
+		42471EAB24309A9E002B1577 /* jf-openhuninn-1.0.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 42471EAA24309A9D002B1577 /* jf-openhuninn-1.0.ttf */; };
+		42471EAD2430E240002B1577 /* MainTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42471EAC2430E240002B1577 /* MainTabViewController.swift */; };
+		42471EB224324CD2002B1577 /* RestaurantCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42471EB024324CD2002B1577 /* RestaurantCollectionViewCell.swift */; };
+		42471EB324324CD2002B1577 /* RestaurantCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 42471EB124324CD2002B1577 /* RestaurantCollectionViewCell.xib */; };
+		42471F2724399898002B1577 /* RestaurantInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42471F2624399898002B1577 /* RestaurantInformationViewController.swift */; };
+		42471F35243B778B002B1577 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42471F34243B778B002B1577 /* LogInViewController.swift */; };
+		42471F38243C195F002B1577 /* PhotoWallViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42471F37243C195F002B1577 /* PhotoWallViewController.swift */; };
+		42471F3A243C2606002B1577 /* Background.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42471F39243C2605002B1577 /* Background.swift */; };
+		42471F3E243C66BD002B1577 /* UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42471F3D243C66BD002B1577 /* UIFont.swift */; };
+		42471F40243C69EA002B1577 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42471F3F243C69E9002B1577 /* UIColor.swift */; };
+		42471F42243C944F002B1577 /* Constraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42471F41243C944E002B1577 /* Constraint.swift */; };
+		42471F49243D7AB4002B1577 /* ProfileCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42471F48243D7AB4002B1577 /* ProfileCollectionViewCell.swift */; };
+		42471FB02440336C002B1577 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42471FAE2440336C002B1577 /* HeaderView.swift */; };
+		42471FB324405214002B1577 /* ProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42471FB224405214002B1577 /* ProfileController.swift */; };
+		42471FB724418B04002B1577 /* MapStyle.json in Resources */ = {isa = PBXBuildFile; fileRef = 42471FB624418B03002B1577 /* MapStyle.json */; };
+		42471FBA2441C64B002B1577 /* RestaurantInformation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42471FB92441C64A002B1577 /* RestaurantInformation.storyboard */; };
+		42670A5B247C0176006D7ACB /* ToEatList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42670A5A247C0176006D7ACB /* ToEatList.swift */; };
+		42670A5D247CCBBD006D7ACB /* ToEatListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42670A5C247CCBBD006D7ACB /* ToEatListService.swift */; };
+		42670A86247E4C91006D7ACB /* ToEatListDetailsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42670A85247E4C91006D7ACB /* ToEatListDetailsController.swift */; };
+		42670A88247E4D60006D7ACB /* ToEatListDetailsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42670A87247E4D60006D7ACB /* ToEatListDetailsCollectionViewCell.swift */; };
+		426F4C5724581738003DE5C6 /* Restaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426F4C5624581738003DE5C6 /* Restaurant.swift */; };
+		426F4C59245AAE34003DE5C6 /* RestaurantHeaderImageViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426F4C58245AAE34003DE5C6 /* RestaurantHeaderImageViewCell.swift */; };
+		426F4C5B245AD3B5003DE5C6 /* Comment.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 426F4C5A245AD3B5003DE5C6 /* Comment.storyboard */; };
+		426F4C5D245AD402003DE5C6 /* CommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426F4C5C245AD402003DE5C6 /* CommentViewController.swift */; };
+		426F4C902462A022003DE5C6 /* VOTConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426F4C8F2462A022003DE5C6 /* VOTConstant.swift */; };
+		426F4C932462A092003DE5C6 /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426F4C922462A092003DE5C6 /* HTTPClient.swift */; };
+		426F4C952462A138003DE5C6 /* Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426F4C942462A138003DE5C6 /* Bundle.swift */; };
+		426F4C982462A3A2003DE5C6 /* VOTDataRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426F4C972462A3A2003DE5C6 /* VOTDataRequest.swift */; };
+		426F4C9B2462A4CF003DE5C6 /* VOTParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426F4C9A2462A4CF003DE5C6 /* VOTParser.swift */; };
+		426F4C9D2462A509003DE5C6 /* VOTProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426F4C9C2462A509003DE5C6 /* VOTProvider.swift */; };
+		428F13A42472B0B0007F2A13 /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428F13A32472B0B0007F2A13 /* SearchTableViewCell.swift */; };
+		429B9538244D7E1E00596956 /* PhotoWallCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429B9537244D7E1E00596956 /* PhotoWallCollectionViewCell.swift */; };
+		429B953A244D904100596956 /* MapStyle_Orange.json in Resources */ = {isa = PBXBuildFile; fileRef = 429B9539244D904100596956 /* MapStyle_Orange.json */; };
+		42ABD1C5246D7B0D00A58BDA /* UIAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42ABD1C4246D7B0D00A58BDA /* UIAlertController.swift */; };
+		42ABD1C7246D93EB00A58BDA /* CommentService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42ABD1C6246D93EB00A58BDA /* CommentService.swift */; };
+		42B980C2244DF70000B4DE22 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B980C1244DF70000B4DE22 /* SignUpViewController.swift */; };
+		42B980F424516D4100B4DE22 /* Utilies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B980F324516D4100B4DE22 /* Utilies.swift */; };
+		42B980F624516E6900B4DE22 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B980F524516E6900B4DE22 /* AuthService.swift */; };
+		42B980FC2451DE8900B4DE22 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B980FB2451DE8900B4DE22 /* UserService.swift */; };
+		42B980FE2451DF0200B4DE22 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B980FD2451DF0200B4DE22 /* User.swift */; };
+		42B981062452B34800B4DE22 /* ToEatListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B981052452B34700B4DE22 /* ToEatListTableViewCell.swift */; };
+		42C004F2244DD23E007BDF69 /* Auth.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42C004F1244DD23E007BDF69 /* Auth.storyboard */; };
 		7A409E371BAB71AD01BBE07F /* Pods_Veg_Out_Taiwan.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AEFAC4F1D191A2C3B5C4700 /* Pods_Veg_Out_Taiwan.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		1930BBD6D392A26188062ED7 /* Pods-Veg Out Taiwan.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Veg Out Taiwan.debug.xcconfig"; path = "Target Support Files/Pods-Veg Out Taiwan/Pods-Veg Out Taiwan.debug.xcconfig"; sourceTree = "<group>"; };
+		4237B0CB24651D33008A395E /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
+		4237B11D246A9EE9008A395E /* UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
+		42411778241F424F0094B0FB /* ToEatListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToEatListController.swift; sourceTree = "<group>"; };
+		4241177C241F85A50094B0FB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		4244483724430CE800000E96 /* BaseInfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseInfoTableViewCell.swift; sourceTree = "<group>"; };
+		424448392443118C00000E96 /* CommentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentTableViewCell.swift; sourceTree = "<group>"; };
+		4244483B244315D600000E96 /* CommentCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentCollectionViewCell.swift; sourceTree = "<group>"; };
+		4244483D24432E1100000E96 /* UserCommentWallViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCommentWallViewController.swift; sourceTree = "<group>"; };
+		4244484324445CA700000E96 /* UserCommentWallCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCommentWallCollectionViewCell.swift; sourceTree = "<group>"; };
+		42444845244460EC00000E96 /* UserFoodDiaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFoodDiaryViewController.swift; sourceTree = "<group>"; };
+		424448472444611400000E96 /* UserFoodDiary.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = UserFoodDiary.storyboard; sourceTree = "<group>"; };
+		424448492445B05000000E96 /* ImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewCell.swift; sourceTree = "<group>"; };
 		42461DE7241DC74D009EC9AB /* Veg Out Taiwan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Veg Out Taiwan.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		42461DEA241DC74D009EC9AB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		42461DEC241DC74D009EC9AB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		42461DEE241DC74D009EC9AB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		42461DF1241DC74D009EC9AB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		42461DF3241DC74F009EC9AB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		42461DF6241DC74F009EC9AB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		42461DF8241DC74F009EC9AB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		42461E00241E2BCE009EC9AB /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		42461E05241E440E009EC9AB /* JGProgressHUDWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JGProgressHUDWrapper.swift; sourceTree = "<group>"; };
+		42461E06241E440E009EC9AB /* KingFisherWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KingFisherWrapper.swift; sourceTree = "<group>"; };
+		42471EAA24309A9D002B1577 /* jf-openhuninn-1.0.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "jf-openhuninn-1.0.ttf"; sourceTree = "<group>"; };
+		42471EAC2430E240002B1577 /* MainTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabViewController.swift; sourceTree = "<group>"; };
+		42471EB024324CD2002B1577 /* RestaurantCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantCollectionViewCell.swift; sourceTree = "<group>"; };
+		42471EB124324CD2002B1577 /* RestaurantCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RestaurantCollectionViewCell.xib; sourceTree = "<group>"; };
+		42471F2624399898002B1577 /* RestaurantInformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantInformationViewController.swift; sourceTree = "<group>"; };
+		42471F34243B778B002B1577 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
+		42471F37243C195F002B1577 /* PhotoWallViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoWallViewController.swift; sourceTree = "<group>"; };
+		42471F39243C2605002B1577 /* Background.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Background.swift; sourceTree = "<group>"; };
+		42471F3D243C66BD002B1577 /* UIFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFont.swift; sourceTree = "<group>"; };
+		42471F3F243C69E9002B1577 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
+		42471F41243C944E002B1577 /* Constraint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constraint.swift; sourceTree = "<group>"; };
+		42471F48243D7AB4002B1577 /* ProfileCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCollectionViewCell.swift; sourceTree = "<group>"; };
+		42471FAE2440336C002B1577 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
+		42471FB224405214002B1577 /* ProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileController.swift; sourceTree = "<group>"; };
+		42471FB624418B03002B1577 /* MapStyle.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = MapStyle.json; sourceTree = "<group>"; };
+		42471FB92441C64A002B1577 /* RestaurantInformation.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RestaurantInformation.storyboard; sourceTree = "<group>"; };
+		42670A5A247C0176006D7ACB /* ToEatList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToEatList.swift; sourceTree = "<group>"; };
+		42670A5C247CCBBD006D7ACB /* ToEatListService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToEatListService.swift; sourceTree = "<group>"; };
+		42670A85247E4C91006D7ACB /* ToEatListDetailsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToEatListDetailsController.swift; sourceTree = "<group>"; };
+		42670A87247E4D60006D7ACB /* ToEatListDetailsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToEatListDetailsCollectionViewCell.swift; sourceTree = "<group>"; };
+		426F4C5624581738003DE5C6 /* Restaurant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Restaurant.swift; sourceTree = "<group>"; };
+		426F4C58245AAE34003DE5C6 /* RestaurantHeaderImageViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantHeaderImageViewCell.swift; sourceTree = "<group>"; };
+		426F4C5A245AD3B5003DE5C6 /* Comment.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Comment.storyboard; sourceTree = "<group>"; };
+		426F4C5C245AD402003DE5C6 /* CommentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentViewController.swift; sourceTree = "<group>"; };
+		426F4C6A246136A5003DE5C6 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = "Veg Out Taiwan/Info.plist"; sourceTree = "<group>"; };
+		426F4C8F2462A022003DE5C6 /* VOTConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VOTConstant.swift; sourceTree = "<group>"; };
+		426F4C922462A092003DE5C6 /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
+		426F4C942462A138003DE5C6 /* Bundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bundle.swift; sourceTree = "<group>"; };
+		426F4C972462A3A2003DE5C6 /* VOTDataRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VOTDataRequest.swift; sourceTree = "<group>"; };
+		426F4C9A2462A4CF003DE5C6 /* VOTParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VOTParser.swift; sourceTree = "<group>"; };
+		426F4C9C2462A509003DE5C6 /* VOTProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VOTProvider.swift; sourceTree = "<group>"; };
+		428F13A32472B0B0007F2A13 /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
+		429B9537244D7E1E00596956 /* PhotoWallCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoWallCollectionViewCell.swift; sourceTree = "<group>"; };
+		429B9539244D904100596956 /* MapStyle_Orange.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = MapStyle_Orange.json; sourceTree = "<group>"; };
+		42ABD1C4246D7B0D00A58BDA /* UIAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAlertController.swift; sourceTree = "<group>"; };
+		42ABD1C6246D93EB00A58BDA /* CommentService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentService.swift; sourceTree = "<group>"; };
+		42B980C1244DF70000B4DE22 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		42B980F324516D4100B4DE22 /* Utilies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilies.swift; sourceTree = "<group>"; };
+		42B980F524516E6900B4DE22 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
+		42B980FB2451DE8900B4DE22 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
+		42B980FD2451DF0200B4DE22 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		42B981052452B34700B4DE22 /* ToEatListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToEatListTableViewCell.swift; sourceTree = "<group>"; };
+		42C004F1244DD23E007BDF69 /* Auth.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Auth.storyboard; sourceTree = "<group>"; };
 		5AEFAC4F1D191A2C3B5C4700 /* Pods_Veg_Out_Taiwan.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Veg_Out_Taiwan.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B7A18B52CEFFAAB7F14BF56 /* Pods-Veg Out Taiwan.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Veg Out Taiwan.release.xcconfig"; path = "Target Support Files/Pods-Veg Out Taiwan/Pods-Veg Out Taiwan.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -50,10 +158,46 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		4241170A241E868F0094B0FB /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				42471EAC2430E240002B1577 /* MainTabViewController.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		42411775241F38280094B0FB /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				42471FB224405214002B1577 /* ProfileController.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		42411776241F382C0094B0FB /* ToEatList */ = {
+			isa = PBXGroup;
+			children = (
+				42411778241F424F0094B0FB /* ToEatListController.swift */,
+				42670A85247E4C91006D7ACB /* ToEatListDetailsController.swift */,
+			);
+			path = ToEatList;
+			sourceTree = "<group>";
+		};
+		42411777241F382E0094B0FB /* VeganMap */ = {
+			isa = PBXGroup;
+			children = (
+				42461E00241E2BCE009EC9AB /* MapViewController.swift */,
+			);
+			path = VeganMap;
+			sourceTree = "<group>";
+		};
 		42461DDE241DC74C009EC9AB = {
 			isa = PBXGroup;
 			children = (
 				42461DE9241DC74D009EC9AB /* Veg Out Taiwan */,
+				42461DEA241DC74D009EC9AB /* AppDelegate.swift */,
+				426F4C6A246136A5003DE5C6 /* Info.plist */,
+				4241177C241F85A50094B0FB /* GoogleService-Info.plist */,
 				42461DE8241DC74D009EC9AB /* Products */,
 				E65F627A00BD39985ED421A9 /* Pods */,
 				2BF2149BB3B20D2098CC3BC9 /* Frameworks */,
@@ -71,15 +215,225 @@
 		42461DE9241DC74D009EC9AB /* Veg Out Taiwan */ = {
 			isa = PBXGroup;
 			children = (
-				42461DEA241DC74D009EC9AB /* AppDelegate.swift */,
-				42461DEC241DC74D009EC9AB /* SceneDelegate.swift */,
-				42461DEE241DC74D009EC9AB /* ViewController.swift */,
-				42461DF0241DC74D009EC9AB /* Main.storyboard */,
-				42461DF3241DC74F009EC9AB /* Assets.xcassets */,
-				42461DF5241DC74F009EC9AB /* LaunchScreen.storyboard */,
-				42461DF8241DC74F009EC9AB /* Info.plist */,
+				42471EAA24309A9D002B1577 /* jf-openhuninn-1.0.ttf */,
+				42461E04241E43F5009EC9AB /* Third Party Wrapper */,
+				42461E26241E446C009EC9AB /*  Supporting Files */,
+				42461E0B241E442F009EC9AB /* Extension */,
+				42461E27241E4495009EC9AB /* Model */,
+				42461E0A241E4429009EC9AB /* View */,
+				42461E09241E441E009EC9AB /* Controller */,
 			);
 			path = "Veg Out Taiwan";
+			sourceTree = "<group>";
+		};
+		42461E04241E43F5009EC9AB /* Third Party Wrapper */ = {
+			isa = PBXGroup;
+			children = (
+				42461E06241E440E009EC9AB /* KingFisherWrapper.swift */,
+				42461E05241E440E009EC9AB /* JGProgressHUDWrapper.swift */,
+			);
+			path = "Third Party Wrapper";
+			sourceTree = "<group>";
+		};
+		42461E09241E441E009EC9AB /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				42471F33243B7762002B1577 /* Auth */,
+				42411777241F382E0094B0FB /* VeganMap */,
+				42471F252439984A002B1577 /* Restaurant */,
+				42471F36243C18E7002B1577 /* PhotoWall */,
+				42411776241F382C0094B0FB /* ToEatList */,
+				42411775241F38280094B0FB /* Profile */,
+				4241170A241E868F0094B0FB /* Base */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		42461E0A241E4429009EC9AB /* View */ = {
+			isa = PBXGroup;
+			children = (
+				42C004F3244DD2C2007BDF69 /* Auth */,
+				42761E262424953400405CC9 /* VeganMap */,
+				42471FB82441C621002B1577 /* Restaurant */,
+				429B9536244D7DF100596956 /* PhotoWall */,
+				42B981072452B35100B4DE22 /* ToEat */,
+				42471F47243D7A95002B1577 /* Profile */,
+				42461DF5241DC74F009EC9AB /* LaunchScreen.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		42461E0B241E442F009EC9AB /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				42471F39243C2605002B1577 /* Background.swift */,
+				42471F3D243C66BD002B1577 /* UIFont.swift */,
+				42471F3F243C69E9002B1577 /* UIColor.swift */,
+				42471F41243C944E002B1577 /* Constraint.swift */,
+				42B980F324516D4100B4DE22 /* Utilies.swift */,
+				426F4C942462A138003DE5C6 /* Bundle.swift */,
+				426F4C8F2462A022003DE5C6 /* VOTConstant.swift */,
+				4237B11D246A9EE9008A395E /* UIImageView.swift */,
+				42ABD1C4246D7B0D00A58BDA /* UIAlertController.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		42461E26241E446C009EC9AB /*  Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				429B9539244D904100596956 /* MapStyle_Orange.json */,
+				42471FB624418B03002B1577 /* MapStyle.json */,
+				42461DF3241DC74F009EC9AB /* Assets.xcassets */,
+			);
+			path = " Supporting Files";
+			sourceTree = "<group>";
+		};
+		42461E27241E4495009EC9AB /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				426F4C9E2462CD5A003DE5C6 /* User */,
+				426F4C962462A2D0003DE5C6 /* Restaurant */,
+				42670A59247C014E006D7ACB /* ToEatList */,
+				426F4C992462A4B2003DE5C6 /* Parser */,
+				426F4C912462A080003DE5C6 /* HTTP */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		42471F252439984A002B1577 /* Restaurant */ = {
+			isa = PBXGroup;
+			children = (
+				42471F2624399898002B1577 /* RestaurantInformationViewController.swift */,
+				4244483D24432E1100000E96 /* UserCommentWallViewController.swift */,
+				426F4C5C245AD402003DE5C6 /* CommentViewController.swift */,
+				42444845244460EC00000E96 /* UserFoodDiaryViewController.swift */,
+			);
+			path = Restaurant;
+			sourceTree = "<group>";
+		};
+		42471F33243B7762002B1577 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				42471F34243B778B002B1577 /* LogInViewController.swift */,
+				42B980C1244DF70000B4DE22 /* SignUpViewController.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		42471F36243C18E7002B1577 /* PhotoWall */ = {
+			isa = PBXGroup;
+			children = (
+				42471F37243C195F002B1577 /* PhotoWallViewController.swift */,
+			);
+			path = PhotoWall;
+			sourceTree = "<group>";
+		};
+		42471F47243D7A95002B1577 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				42471F48243D7AB4002B1577 /* ProfileCollectionViewCell.swift */,
+				42471FAE2440336C002B1577 /* HeaderView.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		42471FB82441C621002B1577 /* Restaurant */ = {
+			isa = PBXGroup;
+			children = (
+				42471FB92441C64A002B1577 /* RestaurantInformation.storyboard */,
+				426F4C58245AAE34003DE5C6 /* RestaurantHeaderImageViewCell.swift */,
+				4244483724430CE800000E96 /* BaseInfoTableViewCell.swift */,
+				424448392443118C00000E96 /* CommentTableViewCell.swift */,
+				4244483B244315D600000E96 /* CommentCollectionViewCell.swift */,
+				4244484324445CA700000E96 /* UserCommentWallCollectionViewCell.swift */,
+				424448472444611400000E96 /* UserFoodDiary.storyboard */,
+				424448492445B05000000E96 /* ImageCollectionViewCell.swift */,
+				426F4C5A245AD3B5003DE5C6 /* Comment.storyboard */,
+			);
+			path = Restaurant;
+			sourceTree = "<group>";
+		};
+		42670A59247C014E006D7ACB /* ToEatList */ = {
+			isa = PBXGroup;
+			children = (
+				42670A5A247C0176006D7ACB /* ToEatList.swift */,
+				42670A5C247CCBBD006D7ACB /* ToEatListService.swift */,
+			);
+			path = ToEatList;
+			sourceTree = "<group>";
+		};
+		426F4C912462A080003DE5C6 /* HTTP */ = {
+			isa = PBXGroup;
+			children = (
+				426F4C922462A092003DE5C6 /* HTTPClient.swift */,
+			);
+			path = HTTP;
+			sourceTree = "<group>";
+		};
+		426F4C962462A2D0003DE5C6 /* Restaurant */ = {
+			isa = PBXGroup;
+			children = (
+				426F4C5624581738003DE5C6 /* Restaurant.swift */,
+				426F4C972462A3A2003DE5C6 /* VOTDataRequest.swift */,
+				426F4C9C2462A509003DE5C6 /* VOTProvider.swift */,
+				4237B0CB24651D33008A395E /* Comment.swift */,
+				42ABD1C6246D93EB00A58BDA /* CommentService.swift */,
+			);
+			path = Restaurant;
+			sourceTree = "<group>";
+		};
+		426F4C992462A4B2003DE5C6 /* Parser */ = {
+			isa = PBXGroup;
+			children = (
+				426F4C9A2462A4CF003DE5C6 /* VOTParser.swift */,
+			);
+			path = Parser;
+			sourceTree = "<group>";
+		};
+		426F4C9E2462CD5A003DE5C6 /* User */ = {
+			isa = PBXGroup;
+			children = (
+				42B980FD2451DF0200B4DE22 /* User.swift */,
+				42B980F524516E6900B4DE22 /* AuthService.swift */,
+				42B980FB2451DE8900B4DE22 /* UserService.swift */,
+			);
+			path = User;
+			sourceTree = "<group>";
+		};
+		42761E262424953400405CC9 /* VeganMap */ = {
+			isa = PBXGroup;
+			children = (
+				428F13A32472B0B0007F2A13 /* SearchTableViewCell.swift */,
+				42471EB024324CD2002B1577 /* RestaurantCollectionViewCell.swift */,
+				42471EB124324CD2002B1577 /* RestaurantCollectionViewCell.xib */,
+			);
+			path = VeganMap;
+			sourceTree = "<group>";
+		};
+		429B9536244D7DF100596956 /* PhotoWall */ = {
+			isa = PBXGroup;
+			children = (
+				429B9537244D7E1E00596956 /* PhotoWallCollectionViewCell.swift */,
+			);
+			path = PhotoWall;
+			sourceTree = "<group>";
+		};
+		42B981072452B35100B4DE22 /* ToEat */ = {
+			isa = PBXGroup;
+			children = (
+				42B981052452B34700B4DE22 /* ToEatListTableViewCell.swift */,
+				42670A87247E4D60006D7ACB /* ToEatListDetailsCollectionViewCell.swift */,
+			);
+			path = ToEat;
+			sourceTree = "<group>";
+		};
+		42C004F3244DD2C2007BDF69 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				42C004F1244DD23E007BDF69 /* Auth.storyboard */,
+			);
+			path = Auth;
 			sourceTree = "<group>";
 		};
 		E65F627A00BD39985ED421A9 /* Pods */ = {
@@ -103,6 +457,8 @@
 				42461DE4241DC74D009EC9AB /* Frameworks */,
 				42461DE5241DC74D009EC9AB /* Resources */,
 				655868092CF24F7CC44E2C67 /* [CP] Embed Pods Frameworks */,
+				1163829BF13DAE5E468ADD7D /* [CP] Copy Pods Resources */,
+				42411774241F37170094B0FB /* SwiftLint */,
 			);
 			buildRules = (
 			);
@@ -120,7 +476,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1130;
-				LastUpgradeCheck = 1130;
+				LastUpgradeCheck = 1140;
 				ORGANIZATIONNAME = Irene.C;
 				TargetAttributes = {
 					42461DE6241DC74D009EC9AB = {
@@ -135,6 +491,7 @@
 			knownRegions = (
 				en,
 				Base,
+				"zh-Hant",
 			);
 			mainGroup = 42461DDE241DC74C009EC9AB;
 			productRefGroup = 42461DE8241DC74D009EC9AB /* Products */;
@@ -153,13 +510,56 @@
 			files = (
 				42461DF7241DC74F009EC9AB /* LaunchScreen.storyboard in Resources */,
 				42461DF4241DC74F009EC9AB /* Assets.xcassets in Resources */,
-				42461DF2241DC74D009EC9AB /* Main.storyboard in Resources */,
+				42C004F2244DD23E007BDF69 /* Auth.storyboard in Resources */,
+				42471EB324324CD2002B1577 /* RestaurantCollectionViewCell.xib in Resources */,
+				42471FBA2441C64B002B1577 /* RestaurantInformation.storyboard in Resources */,
+				426F4C5B245AD3B5003DE5C6 /* Comment.storyboard in Resources */,
+				42471EAB24309A9E002B1577 /* jf-openhuninn-1.0.ttf in Resources */,
+				429B953A244D904100596956 /* MapStyle_Orange.json in Resources */,
+				424448482444611400000E96 /* UserFoodDiary.storyboard in Resources */,
+				4241177D241F85A50094B0FB /* GoogleService-Info.plist in Resources */,
+				42471FB724418B04002B1577 /* MapStyle.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		1163829BF13DAE5E468ADD7D /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Veg Out Taiwan/Pods-Veg Out Taiwan-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Veg Out Taiwan/Pods-Veg Out Taiwan-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Veg Out Taiwan/Pods-Veg Out Taiwan-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		42411774241F37170094B0FB /* SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = SwiftLint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/SwiftLint/swiftlint\"\n";
+		};
 		655868092CF24F7CC44E2C67 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -206,23 +606,61 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				42461DEF241DC74D009EC9AB /* ViewController.swift in Sources */,
+				426F4C932462A092003DE5C6 /* HTTPClient.swift in Sources */,
+				42471EB224324CD2002B1577 /* RestaurantCollectionViewCell.swift in Sources */,
+				42670A5D247CCBBD006D7ACB /* ToEatListService.swift in Sources */,
+				42670A88247E4D60006D7ACB /* ToEatListDetailsCollectionViewCell.swift in Sources */,
+				4244484A2445B05100000E96 /* ImageCollectionViewCell.swift in Sources */,
+				42471F40243C69EA002B1577 /* UIColor.swift in Sources */,
+				42ABD1C5246D7B0D00A58BDA /* UIAlertController.swift in Sources */,
+				42670A5B247C0176006D7ACB /* ToEatList.swift in Sources */,
+				42471F49243D7AB4002B1577 /* ProfileCollectionViewCell.swift in Sources */,
+				42B980FE2451DF0200B4DE22 /* User.swift in Sources */,
+				4244483E24432E1100000E96 /* UserCommentWallViewController.swift in Sources */,
+				42471F38243C195F002B1577 /* PhotoWallViewController.swift in Sources */,
+				42B980C2244DF70000B4DE22 /* SignUpViewController.swift in Sources */,
+				426F4C952462A138003DE5C6 /* Bundle.swift in Sources */,
+				426F4C5D245AD402003DE5C6 /* CommentViewController.swift in Sources */,
+				426F4C9B2462A4CF003DE5C6 /* VOTParser.swift in Sources */,
+				42ABD1C7246D93EB00A58BDA /* CommentService.swift in Sources */,
+				42471F42243C944F002B1577 /* Constraint.swift in Sources */,
+				42471FB324405214002B1577 /* ProfileController.swift in Sources */,
+				426F4C902462A022003DE5C6 /* VOTConstant.swift in Sources */,
 				42461DEB241DC74D009EC9AB /* AppDelegate.swift in Sources */,
-				42461DED241DC74D009EC9AB /* SceneDelegate.swift in Sources */,
+				4244483A2443118C00000E96 /* CommentTableViewCell.swift in Sources */,
+				42B980F624516E6900B4DE22 /* AuthService.swift in Sources */,
+				42444846244460EC00000E96 /* UserFoodDiaryViewController.swift in Sources */,
+				426F4C5724581738003DE5C6 /* Restaurant.swift in Sources */,
+				42B980FC2451DE8900B4DE22 /* UserService.swift in Sources */,
+				426F4C982462A3A2003DE5C6 /* VOTDataRequest.swift in Sources */,
+				42471FB02440336C002B1577 /* HeaderView.swift in Sources */,
+				4244484424445CA700000E96 /* UserCommentWallCollectionViewCell.swift in Sources */,
+				42670A86247E4C91006D7ACB /* ToEatListDetailsController.swift in Sources */,
+				426F4C9D2462A509003DE5C6 /* VOTProvider.swift in Sources */,
+				429B9538244D7E1E00596956 /* PhotoWallCollectionViewCell.swift in Sources */,
+				426F4C59245AAE34003DE5C6 /* RestaurantHeaderImageViewCell.swift in Sources */,
+				42461E07241E440E009EC9AB /* JGProgressHUDWrapper.swift in Sources */,
+				42411779241F424F0094B0FB /* ToEatListController.swift in Sources */,
+				428F13A42472B0B0007F2A13 /* SearchTableViewCell.swift in Sources */,
+				42461E08241E440E009EC9AB /* KingFisherWrapper.swift in Sources */,
+				4237B0CC24651D33008A395E /* Comment.swift in Sources */,
+				42B980F424516D4100B4DE22 /* Utilies.swift in Sources */,
+				42B981062452B34800B4DE22 /* ToEatListTableViewCell.swift in Sources */,
+				4244483C244315D600000E96 /* CommentCollectionViewCell.swift in Sources */,
+				42471EAD2430E240002B1577 /* MainTabViewController.swift in Sources */,
+				4244483824430CE800000E96 /* BaseInfoTableViewCell.swift in Sources */,
+				42471F2724399898002B1577 /* RestaurantInformationViewController.swift in Sources */,
+				42471F3E243C66BD002B1577 /* UIFont.swift in Sources */,
+				4237B11E246A9EE9008A395E /* UIImageView.swift in Sources */,
+				42471F35243B778B002B1577 /* LogInViewController.swift in Sources */,
+				42461E01241E2BCE009EC9AB /* MapViewController.swift in Sources */,
+				42471F3A243C2606002B1577 /* Background.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		42461DF0241DC74D009EC9AB /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				42461DF1241DC74D009EC9AB /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		42461DF5241DC74F009EC9AB /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -238,6 +676,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -284,7 +723,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -298,6 +737,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -338,7 +778,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -356,6 +796,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 89764ZZ42N;
 				INFOPLIST_FILE = "Veg Out Taiwan/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -363,7 +804,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.irenechen.Veg-Out-Taiwan";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -375,6 +816,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 89764ZZ42N;
 				INFOPLIST_FILE = "Veg Out Taiwan/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -382,7 +824,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.irenechen.Veg-Out-Taiwan";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
