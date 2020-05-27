@@ -7,8 +7,7 @@
 //
 
 import Foundation
-import FirebaseDatabase
-import FirebaseAuth
+import Firebase
 import UIKit
 
 typealias RestaurantHanlder = (Result<[Restaurant]>) -> Void
@@ -16,7 +15,7 @@ typealias CommentHanlder = (Result<[Comment]>) -> Void
 
 class VOTProvider {
     
-    static let shared = VOTProvider()
+//    static let shared = VOTProvider()
     
     var allRestaurant = [Restaurant]()
     
@@ -92,4 +91,56 @@ class VOTProvider {
         
         task.resume()
     }
+    
+    func addWantToGoList(uid: String, restaurant: Restaurant, completion: @escaping (Bool) -> Void) {
+        
+        let url = URL(string: "https://veg-out-taiwan-1584254182301.firebaseio.com/toEatList/\(uid)/want2Go/\(UUID().uuidString).json")!
+        
+        var request = URLRequest(url: url)
+        
+        request.httpMethod = "PUT"
+        
+        request.httpBody = try? JSONEncoder().encode(restaurant)
+        
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            completion(error == nil)
+        }
+        
+        task.resume()
+    }
+    
+    func addToMyFavoriteList(uid: String, restaurant: Restaurant, completion: @escaping (Bool) -> Void) {
+        
+        let url = URL(string: "https://veg-out-taiwan-1584254182301.firebaseio.com/toEatList/\(uid)/myFavorite/\(UUID().uuidString).json")!
+        
+        var request = URLRequest(url: url)
+        
+        request.httpMethod = "PUT"
+        
+        request.httpBody = try? JSONEncoder().encode(restaurant)
+        
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            completion(error == nil)
+        }
+        
+        task.resume()
+    }
+    
+    func addToOtherList(uid: String, restaurant: Restaurant, completion: @escaping (Bool) -> Void) {
+        
+        let url = URL(string: "https://veg-out-taiwan-1584254182301.firebaseio.com/toEatList/\(uid)/other/\(UUID().uuidString).json")!
+        
+        var request = URLRequest(url: url)
+        
+        request.httpMethod = "PUT"
+        
+        request.httpBody = try? JSONEncoder().encode(restaurant)
+        
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            completion(error == nil)
+        }
+        
+        task.resume()
+    }
+
 }
