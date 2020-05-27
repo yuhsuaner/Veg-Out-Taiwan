@@ -47,7 +47,6 @@
 		426F4C59245AAE34003DE5C6 /* RestaurantHeaderImageViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426F4C58245AAE34003DE5C6 /* RestaurantHeaderImageViewCell.swift */; };
 		426F4C5B245AD3B5003DE5C6 /* Comment.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 426F4C5A245AD3B5003DE5C6 /* Comment.storyboard */; };
 		426F4C5D245AD402003DE5C6 /* CommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426F4C5C245AD402003DE5C6 /* CommentViewController.swift */; };
-		426F4C69246135D3003DE5C6 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 426F4C68246135D3003DE5C6 /* Default-568h@2x.png */; };
 		426F4C902462A022003DE5C6 /* VOTConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426F4C8F2462A022003DE5C6 /* VOTConstant.swift */; };
 		426F4C932462A092003DE5C6 /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426F4C922462A092003DE5C6 /* HTTPClient.swift */; };
 		426F4C952462A138003DE5C6 /* Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426F4C942462A138003DE5C6 /* Bundle.swift */; };
@@ -112,7 +111,6 @@
 		426F4C58245AAE34003DE5C6 /* RestaurantHeaderImageViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantHeaderImageViewCell.swift; sourceTree = "<group>"; };
 		426F4C5A245AD3B5003DE5C6 /* Comment.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Comment.storyboard; sourceTree = "<group>"; };
 		426F4C5C245AD402003DE5C6 /* CommentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentViewController.swift; sourceTree = "<group>"; };
-		426F4C68246135D3003DE5C6 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		426F4C6A246136A5003DE5C6 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = "Veg Out Taiwan/Info.plist"; sourceTree = "<group>"; };
 		426F4C8F2462A022003DE5C6 /* VOTConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VOTConstant.swift; sourceTree = "<group>"; };
 		426F4C922462A092003DE5C6 /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
@@ -191,7 +189,6 @@
 		42461DDE241DC74C009EC9AB = {
 			isa = PBXGroup;
 			children = (
-				426F4C68246135D3003DE5C6 /* Default-568h@2x.png */,
 				42461DE9241DC74D009EC9AB /* Veg Out Taiwan */,
 				42461DEA241DC74D009EC9AB /* AppDelegate.swift */,
 				426F4C6A246136A5003DE5C6 /* Info.plist */,
@@ -510,7 +507,6 @@
 				42C004F2244DD23E007BDF69 /* Auth.storyboard in Resources */,
 				42471EB324324CD2002B1577 /* RestaurantCollectionViewCell.xib in Resources */,
 				42471FBA2441C64B002B1577 /* RestaurantInformation.storyboard in Resources */,
-				426F4C69246135D3003DE5C6 /* Default-568h@2x.png in Resources */,
 				426F4C5B245AD3B5003DE5C6 /* Comment.storyboard in Resources */,
 				42471EAB24309A9E002B1577 /* jf-openhuninn-1.0.ttf in Resources */,
 				429B953A244D904100596956 /* MapStyle_Orange.json in Resources */,

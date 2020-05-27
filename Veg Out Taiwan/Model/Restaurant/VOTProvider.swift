@@ -106,4 +106,22 @@ class VOTProvider {
         
         task.resume()
     }
+    
+    func addWantToGoList(uid: String, restaurant: Restaurant, completion: @escaping (Bool) -> Void) {
+        
+        let url = URL(string: "https://veg-out-taiwan-1584254182301.firebaseio.com/toEatList/\(uid)/want2Go/\(UUID().uuidString).json")!
+        
+        var request = URLRequest(url: url)
+        
+        request.httpMethod = "POST"
+        
+        request.httpBody = try? JSONEncoder().encode(restaurant)
+        
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            completion(error == nil)
+        }
+        
+        task.resume()
+    }
+
 }

@@ -44,62 +44,33 @@ class RestaurantInformationViewController: UIViewController {
     // MARK: - API
     func createWantToGo() {
         
-        let toEatListRef = Database.database().reference().child("toEatList")
+        guard
+            let uid = Auth.auth().currentUser?.uid
+            else {
+                return
+                
+        }
         
-        guard let uid = Auth.auth().currentUser?.uid else { return }
-        
-        let listObject = [
-            "restaurant": restaurant
-            ] as [String: Any]
-        
-        toEatListRef.child(uid).child("want2Go").updateChildValues(listObject, withCompletionBlock: { error, ref in
+        votProvider.addWantToGoList(uid: uid, restaurant: restaurant) { [weak self] result in
             
-            if error == nil {
-                self.dismiss(animated: true, completion: nil)
+            guard let self = self else { return }
+            
+            guard result else {
+                return
             }
-        })
-        
-//        [
-//            "address": restaurant.address,
-//            "phone": restaurant.phone,
-//            "restaurantName": restaurant.restaurantName,
-//            "coordinates": [
-//                "latitude": restaurant.coordinates.latitude,
-//                "longitude": restaurant.coordinates.longitude
-//            ],
-//            "imageURL": restaurant.imageURL,
-//            "rating": restaurant.rating,
-//            "bussinessHours": restaurant.bussinessHours
-//        ]
-        
-        
-        //        guard
-        //            let uid = Auth.auth().currentUser?.uid
-        //            else {
-        //                return
-        //
-        //        }
-        //
-        //        let data = WantToGo(restaurant: [restaurant])
-        //
-        //        votProvider.createWantToGoList(uid: uid, wantToGo: data) { result in
-        //
-        //            guard result else {
-        //                return
-        //            }
-        //            self.wnatToGo.append(data)
-        //
-        //            DispatchQueue.main.async {
-        //
-        //                VOTProgressHUD.showSuccess()
-        //                self.navigationController?.popViewController(animated: true)
-        //            }
-        //
-        //        }
+            
+            self.wnatToGo.append(WantToGo(restaurant: [self.restaurant]))
+            
+            DispatchQueue.main.async {
+                
+                VOTProgressHUD.showSuccess()
+                self.navigationController?.popViewController(animated: true)
+            }
+            
+        }
     }
     
     // MARK: - Helper
-    
     func configureUI() {
         
         navigationController?.navigationBar.tintColor = .W1
