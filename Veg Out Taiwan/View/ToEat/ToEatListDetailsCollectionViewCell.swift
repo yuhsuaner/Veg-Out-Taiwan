@@ -25,15 +25,15 @@ class ToEatListDetailsCollectionViewCell: UICollectionViewCell {
         image.contentMode = .scaleAspectFill
         image.layer.cornerRadius = 10
         image.clipsToBounds = true
-//        image.setDimensions(width: 150, height: 150)
         return image
     }()
     
     let restaurantName: UILabel = {
         let title = UILabel()
         title.textAlignment = .left
-        title.font = UIFont(name: "jf-openhuninn-1.0", size: 24)
+        title.font = UIFont(name: "jf-openhuninn-1.0", size: 20)
         title.textColor = .G1
+        title.numberOfLines = 0
         return title
     }()
     
@@ -45,6 +45,8 @@ class ToEatListDetailsCollectionViewCell: UICollectionViewCell {
         let stackView = UIStackView(arrangedSubviews: [cellImageView, restaurantName])
         stackView.distribution = .fill
         stackView.axis = .vertical
+        
+        cellImageView.anchor(width: self.frame.width, height: self.frame.width)
         
         addSubview(stackView)
         stackView.anchor(top: topAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor)

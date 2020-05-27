@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 enum ListType {
     
@@ -16,21 +17,21 @@ enum ListType {
     
     case other
     
-    var url: String {
+    var listName: String {
         
         switch self {
             
         case .wantToGo:
             
-            return "https://itunes.apple.com/search?term=business&kind=podcast&genreId=1321&country=TW&limit=15"
+            return "want2Go"
             
         case .myFavorite:
             
-            return "https://itunes.apple.com/search?term=technology&kind=podcast&genreId=1318&country=TW&limit=15"
+            return "myFavorite"
             
         case .other:
             
-            return "https://itunes.apple.com/search?term=education&kind=podcast&genreId=1304&country=TW&limit=15"
+            return "other"
         }
         
     }
@@ -52,6 +53,10 @@ class ToEatListDetailsController: UIViewController {
 
     // MARK: - Properties
     var bigTitle: String = ""
+    
+    var listName: String = ""
+    
+    var restaurant: [Restaurant] = []
     
     private lazy var collectionView: UICollectionView = {
          
@@ -80,17 +85,45 @@ class ToEatListDetailsController: UIViewController {
         
         configureUI()
         configureCollectionView()
+        fetchToEatList(listName: listName)
         
     }
     
     // MARK: - API
-    fileprivate func fetchCategory() {
+    
+    fileprivate func fetchToEatList(listName: String) {
         
-        APIService.shared.fetchCategoryAPI(urlLocation: url) { (podcast) in
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        
+        let listRef = Database.database().reference().child("toEatList").child(uid).child(listName)
+        
+        listRef.observeSingleEvent(of: .value, with: { snapshot in
+
+            var restaurant: [[String: Any]] = []
             
-            self.podcasts = podcast
+            for child in snapshot.children {
+                
+                guard let childSnap = child as? DataSnapshot else { return }
+                
+                guard let value = childSnap.value as? [String: Any] else { return }
+                restaurant.append(value)
+
+            }
+            
+            guard let data = try? JSONSerialization.data(withJSONObject: restaurant, options: .fragmentsAllowed) else { return }
+            
+            do {
+
+                let json = try JSONDecoder().decode([Restaurant].self, from: data)
+                
+                self.restaurant = json
+                
+            } catch {
+                print(error)
+            }
+
             self.collectionView.reloadData()
-        }
+        })
     }
     
     // MARK: - Helper
@@ -99,7 +132,7 @@ class ToEatListDetailsController: UIViewController {
         
         view.backgroundColor = .W1
         
-        navigationItem.title = "我的 To Eat List"
+        navigationItem.title = bigTitle
     }
     
     func configureCollectionView() {
@@ -120,7 +153,8 @@ class ToEatListDetailsController: UIViewController {
 extension ToEatListDetailsController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        
+        return restaurant.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -128,7 +162,8 @@ extension ToEatListDetailsController: UICollectionViewDataSource {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DetailsCell", for: indexPath) as? ToEatListDetailsCollectionViewCell else { return UICollectionViewCell() }
         
         cell.backgroundColor = .clear
-        cell.restaurantName.text = "HiHi"
+        cell.restaurantName.text = restaurant[indexPath.row].restaurantName
+        cell.cellImageView.loadImage(restaurant[indexPath.row].imageURL[0], placeHolder: #imageLiteral(resourceName: "non_photo-4"))
         
         return cell
     }
@@ -160,5 +195,14 @@ extension ToEatListDetailsController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
+        let data = restaurant[indexPath.item]
+        
+        let viewController = UIStoryboard(name: "RestaurantInformation", bundle: nil).instantiateViewController(
+            identifier: "RestaurantInformation",
+            creator: { coder in
+                RestaurantInformationViewController(coder: coder, restaurant: data)
+        })
+        
+        show(viewController, sender: self)
     }
 }
