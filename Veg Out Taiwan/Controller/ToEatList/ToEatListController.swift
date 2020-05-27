@@ -11,6 +11,10 @@ import UIKit
 class ToEatListViewController: UIViewController {
 
     // MARK: - Properties
+    var listType: [ListType] = [
+        .wantToGo, .myFavorite, .other
+    ]
+    
     private let tableview: UITableView = {
         let tableview = UITableView()
         tableview.backgroundColor = UIColor.W1
@@ -28,8 +32,6 @@ class ToEatListViewController: UIViewController {
         configureTableView()
         
     }
-    
-    // MARK: - API
     
     // MARK: - Helper
 
@@ -89,13 +91,23 @@ extension ToEatListViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        switch indexPath.row {
-            
-        case 0: return print(indexPath.row)
-        case 1: return print(indexPath.row)
-        default: return print(indexPath.row)
-            
-        }
+        let controller = ToEatListDetailsController()
+        
+//        controller.url = categoryType[indexPath.item].url
+//        controller.bigTitle = listType[indexPath.item].listTitle
+        
+        navigationController?.pushViewController(controller, animated: true)
+        
+//        switch indexPath.row {
+//
+//        case 0:
+//            return print(indexPath.row)
+//        case 1:
+//            return print(indexPath.row)
+//        default:
+//            return print(indexPath.row)
+//
+//        }
 
     }
 }

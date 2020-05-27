@@ -43,6 +43,8 @@
 		42471FBA2441C64B002B1577 /* RestaurantInformation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42471FB92441C64A002B1577 /* RestaurantInformation.storyboard */; };
 		42670A5B247C0176006D7ACB /* ToEatList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42670A5A247C0176006D7ACB /* ToEatList.swift */; };
 		42670A5D247CCBBD006D7ACB /* ToEatListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42670A5C247CCBBD006D7ACB /* ToEatListService.swift */; };
+		42670A86247E4C91006D7ACB /* ToEatListDetailsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42670A85247E4C91006D7ACB /* ToEatListDetailsController.swift */; };
+		42670A88247E4D60006D7ACB /* ToEatListDetailsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42670A87247E4D60006D7ACB /* ToEatListDetailsCollectionViewCell.swift */; };
 		426F4C5724581738003DE5C6 /* Restaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426F4C5624581738003DE5C6 /* Restaurant.swift */; };
 		426F4C59245AAE34003DE5C6 /* RestaurantHeaderImageViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426F4C58245AAE34003DE5C6 /* RestaurantHeaderImageViewCell.swift */; };
 		426F4C5B245AD3B5003DE5C6 /* Comment.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 426F4C5A245AD3B5003DE5C6 /* Comment.storyboard */; };
@@ -107,6 +109,8 @@
 		42471FB92441C64A002B1577 /* RestaurantInformation.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RestaurantInformation.storyboard; sourceTree = "<group>"; };
 		42670A5A247C0176006D7ACB /* ToEatList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToEatList.swift; sourceTree = "<group>"; };
 		42670A5C247CCBBD006D7ACB /* ToEatListService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToEatListService.swift; sourceTree = "<group>"; };
+		42670A85247E4C91006D7ACB /* ToEatListDetailsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToEatListDetailsController.swift; sourceTree = "<group>"; };
+		42670A87247E4D60006D7ACB /* ToEatListDetailsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToEatListDetailsCollectionViewCell.swift; sourceTree = "<group>"; };
 		426F4C5624581738003DE5C6 /* Restaurant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Restaurant.swift; sourceTree = "<group>"; };
 		426F4C58245AAE34003DE5C6 /* RestaurantHeaderImageViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantHeaderImageViewCell.swift; sourceTree = "<group>"; };
 		426F4C5A245AD3B5003DE5C6 /* Comment.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Comment.storyboard; sourceTree = "<group>"; };
@@ -174,6 +178,7 @@
 			isa = PBXGroup;
 			children = (
 				42411778241F424F0094B0FB /* ToEatListController.swift */,
+				42670A85247E4C91006D7ACB /* ToEatListDetailsController.swift */,
 			);
 			path = ToEatList;
 			sourceTree = "<group>";
@@ -418,6 +423,7 @@
 			isa = PBXGroup;
 			children = (
 				42B981052452B34700B4DE22 /* ToEatListTableViewCell.swift */,
+				42670A87247E4D60006D7ACB /* ToEatListDetailsCollectionViewCell.swift */,
 			);
 			path = ToEat;
 			sourceTree = "<group>";
@@ -603,6 +609,7 @@
 				426F4C932462A092003DE5C6 /* HTTPClient.swift in Sources */,
 				42471EB224324CD2002B1577 /* RestaurantCollectionViewCell.swift in Sources */,
 				42670A5D247CCBBD006D7ACB /* ToEatListService.swift in Sources */,
+				42670A88247E4D60006D7ACB /* ToEatListDetailsCollectionViewCell.swift in Sources */,
 				4244484A2445B05100000E96 /* ImageCollectionViewCell.swift in Sources */,
 				42471F40243C69EA002B1577 /* UIColor.swift in Sources */,
 				42ABD1C5246D7B0D00A58BDA /* UIAlertController.swift in Sources */,
@@ -628,6 +635,7 @@
 				426F4C982462A3A2003DE5C6 /* VOTDataRequest.swift in Sources */,
 				42471FB02440336C002B1577 /* HeaderView.swift in Sources */,
 				4244484424445CA700000E96 /* UserCommentWallCollectionViewCell.swift in Sources */,
+				42670A86247E4C91006D7ACB /* ToEatListDetailsController.swift in Sources */,
 				426F4C9D2462A509003DE5C6 /* VOTProvider.swift in Sources */,
 				429B9538244D7E1E00596956 /* PhotoWallCollectionViewCell.swift in Sources */,
 				426F4C59245AAE34003DE5C6 /* RestaurantHeaderImageViewCell.swift in Sources */,
