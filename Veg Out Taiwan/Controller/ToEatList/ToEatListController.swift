@@ -28,12 +28,17 @@ class ToEatListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        checkUser()
         configureUI()
         configureTableView()
         
     }
     
     // MARK: - Helper
+    func checkUser() {
+        
+        
+    }
 
     func configureUI() {
         

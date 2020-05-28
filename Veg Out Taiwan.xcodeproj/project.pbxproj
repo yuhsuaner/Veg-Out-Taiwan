@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		42107CCA247F7E7900F44B78 /* VOTWebsiteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42107CC9247F7E7900F44B78 /* VOTWebsiteViewController.swift */; };
 		4237B0CC24651D33008A395E /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4237B0CB24651D33008A395E /* Comment.swift */; };
 		4237B11E246A9EE9008A395E /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4237B11D246A9EE9008A395E /* UIImageView.swift */; };
 		42411779241F424F0094B0FB /* ToEatListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42411778241F424F0094B0FB /* ToEatListController.swift */; };
@@ -72,6 +73,7 @@
 
 /* Begin PBXFileReference section */
 		1930BBD6D392A26188062ED7 /* Pods-Veg Out Taiwan.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Veg Out Taiwan.debug.xcconfig"; path = "Target Support Files/Pods-Veg Out Taiwan/Pods-Veg Out Taiwan.debug.xcconfig"; sourceTree = "<group>"; };
+		42107CC9247F7E7900F44B78 /* VOTWebsiteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VOTWebsiteViewController.swift; sourceTree = "<group>"; };
 		4237B0CB24651D33008A395E /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
 		4237B11D246A9EE9008A395E /* UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
 		42411778241F424F0094B0FB /* ToEatListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToEatListController.swift; sourceTree = "<group>"; };
@@ -317,6 +319,7 @@
 			children = (
 				42471F34243B778B002B1577 /* LogInViewController.swift */,
 				42B980C1244DF70000B4DE22 /* SignUpViewController.swift */,
+				42107CC9247F7E7900F44B78 /* VOTWebsiteViewController.swift */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -648,6 +651,7 @@
 				42B981062452B34800B4DE22 /* ToEatListTableViewCell.swift in Sources */,
 				4244483C244315D600000E96 /* CommentCollectionViewCell.swift in Sources */,
 				42471EAD2430E240002B1577 /* MainTabViewController.swift in Sources */,
+				42107CCA247F7E7900F44B78 /* VOTWebsiteViewController.swift in Sources */,
 				4244483824430CE800000E96 /* BaseInfoTableViewCell.swift in Sources */,
 				42471F2724399898002B1577 /* RestaurantInformationViewController.swift in Sources */,
 				42471F3E243C66BD002B1577 /* UIFont.swift in Sources */,
