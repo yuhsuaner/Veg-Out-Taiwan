@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		42107CCA247F7E7900F44B78 /* VOTWebsiteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42107CC9247F7E7900F44B78 /* VOTWebsiteViewController.swift */; };
 		42107CCC247FA4A700F44B78 /* MapStyle_blue.json in Resources */ = {isa = PBXBuildFile; fileRef = 42107CCB247FA4A700F44B78 /* MapStyle_blue.json */; };
+		42107CCE247FC32000F44B78 /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42107CCD247FC32000F44B78 /* ForgotPasswordViewController.swift */; };
 		4237B0CC24651D33008A395E /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4237B0CB24651D33008A395E /* Comment.swift */; };
 		4237B11E246A9EE9008A395E /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4237B11D246A9EE9008A395E /* UIImageView.swift */; };
 		42411779241F424F0094B0FB /* ToEatListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42411778241F424F0094B0FB /* ToEatListController.swift */; };
@@ -76,6 +77,7 @@
 		1930BBD6D392A26188062ED7 /* Pods-Veg Out Taiwan.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Veg Out Taiwan.debug.xcconfig"; path = "Target Support Files/Pods-Veg Out Taiwan/Pods-Veg Out Taiwan.debug.xcconfig"; sourceTree = "<group>"; };
 		42107CC9247F7E7900F44B78 /* VOTWebsiteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VOTWebsiteViewController.swift; sourceTree = "<group>"; };
 		42107CCB247FA4A700F44B78 /* MapStyle_blue.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = MapStyle_blue.json; sourceTree = "<group>"; };
+		42107CCD247FC32000F44B78 /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
 		4237B0CB24651D33008A395E /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
 		4237B11D246A9EE9008A395E /* UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
 		42411778241F424F0094B0FB /* ToEatListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToEatListController.swift; sourceTree = "<group>"; };
@@ -323,6 +325,7 @@
 				42471F34243B778B002B1577 /* LogInViewController.swift */,
 				42B980C1244DF70000B4DE22 /* SignUpViewController.swift */,
 				42107CC9247F7E7900F44B78 /* VOTWebsiteViewController.swift */,
+				42107CCD247FC32000F44B78 /* ForgotPasswordViewController.swift */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -624,6 +627,7 @@
 				42471F49243D7AB4002B1577 /* ProfileCollectionViewCell.swift in Sources */,
 				42B980FE2451DF0200B4DE22 /* User.swift in Sources */,
 				4244483E24432E1100000E96 /* UserCommentWallViewController.swift in Sources */,
+				42107CCE247FC32000F44B78 /* ForgotPasswordViewController.swift in Sources */,
 				42471F38243C195F002B1577 /* PhotoWallViewController.swift in Sources */,
 				42B980C2244DF70000B4DE22 /* SignUpViewController.swift in Sources */,
 				426F4C952462A138003DE5C6 /* Bundle.swift in Sources */,

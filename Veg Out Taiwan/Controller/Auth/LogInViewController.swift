@@ -61,7 +61,6 @@ class LogInViewController: UIViewController {
         
     }
     
-    
     //    func setupAppleSignInView() {
     //        let appleButton = ASAuthorizationAppleIDButton(authorizationButtonType: .default, authorizationButtonStyle: .white)
     //        appleButton.translatesAutoresizingMaskIntoConstraints = false
