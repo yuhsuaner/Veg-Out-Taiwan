@@ -39,6 +39,7 @@ class RestaurantInformationViewController: UIViewController {
         super.viewDidLoad()
         
         configureUI()
+        
     }
     
     // MARK: - API
@@ -133,6 +134,7 @@ class RestaurantInformationViewController: UIViewController {
         
         collectionView.dataSource = self
     }
+    
 }
 
 // MARK: - UITableViewDataSource
@@ -152,6 +154,9 @@ extension RestaurantInformationViewController: UITableViewDataSource {
             
             cell.restaurantNameLabel.text = restaurant.restaurantName
             cell.addressLabel.text = restaurant.address
+            
+            cell.getToday(restaurant)
+            
             cell.ratingLabel.text = "★ \(restaurant.rating)"
             
             cell.commentButtonAction = { [unowned self] in

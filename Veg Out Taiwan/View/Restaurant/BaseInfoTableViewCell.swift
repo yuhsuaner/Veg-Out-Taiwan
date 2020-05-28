@@ -19,6 +19,7 @@ protocol InfoCellDelegate: class {
 
 class BaseInfoTableViewCell: UITableViewCell {
     
+    // MARK: - Properties
     weak var delegate: InfoCellDelegate?
     
     @IBOutlet weak var restaurantNameLabel: UILabel!
@@ -45,9 +46,9 @@ class BaseInfoTableViewCell: UITableViewCell {
     
     var commentButtonAction: (() -> Void)?
     
+    // MARK: - Lifecycle
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
         
         self.addCommentButton.addTarget(self, action: #selector(commentButtonTapped), for: .touchUpInside)
         
@@ -59,9 +60,50 @@ class BaseInfoTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    // MARK: - Selector
     @objc func commentButtonTapped() {
         
         commentButtonAction?()
+    }
+    
+    // MARK: - Helper
+    func getToday(_ bussinessHour: Restaurant) {
+        
+        // 設定日期顯示格式
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "EEEE"
+        
+        // 取得現在日期資訊
+        let timeString = dateFormatter.string(from: Date())
+        
+        if timeString == "Monday" {
+            businessHoursLabel.text = "營業時間: \(bussinessHour.bussinessHours[0])"
+        }
+        
+        if timeString == "Tuesday" {
+            businessHoursLabel.text = "營業時間: \(bussinessHour.bussinessHours[1])"
+        }
+        
+        if timeString == "Wednesday" {
+            businessHoursLabel.text = "營業時間: \(bussinessHour.bussinessHours[2])"
+        }
+        
+        if timeString == "Thursday" {
+            businessHoursLabel.text = "營業時間: \(bussinessHour.bussinessHours[3])"
+        }
+        
+        if timeString == "Firday" {
+            businessHoursLabel.text = "營業時間: \(bussinessHour.bussinessHours[4])"
+        }
+        
+        if timeString == "Saturday" {
+            businessHoursLabel.text = "營業時間: \(bussinessHour.bussinessHours[5])"
+        }
+        
+        if timeString == "Sunday" {
+            businessHoursLabel.text = "營業時間: \(bussinessHour.bussinessHours[6])"
+        }
+        
     }
 
 }
