@@ -134,13 +134,13 @@ class MapViewController: UIViewController {
     
     func configureMap() {
         
-        let camera = GMSCameraPosition.camera(withLatitude: 25.033493, longitude: 121.564101, zoom: 15.0)
+        let camera = GMSCameraPosition.camera(withLatitude: 25.03672102, longitude: 121.5442539, zoom: 18.0)
         
         mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
         
         do {
             // Set the map style by passing the URL of the local file.
-            if let styleURL = Bundle.main.url(forResource: "MapStyle_Orange", withExtension: "json") {
+            if let styleURL = Bundle.main.url(forResource: "MapStyle_blue", withExtension: "json") {
                 mapView.mapStyle = try GMSMapStyle(contentsOfFileURL: styleURL)
             } else {
                 NSLog("Unable to find style.json")
@@ -179,12 +179,12 @@ class MapViewController: UIViewController {
         let myLocationButton = locationButton as? UIButton
         myLocationButton?.setImage(customImage, for: .normal)
         
-        let marker1 = GMSMarker()
-        marker1.position = CLLocationCoordinate2DMake(25.04434, 121.563468)
-        marker1.map = mapView
-        marker1.title = "BaganHood 蔬食餐酒館"
-        marker1.snippet = "好吃~~~~~~~~！"
-        marker1.icon = UIImage(named: "Pin")
+//        let marker1 = GMSMarker()
+//        marker1.position = CLLocationCoordinate2DMake(25.04434, 121.563468)
+//        marker1.map = mapView
+//        marker1.title = "BaganHood 蔬食餐酒館"
+//        marker1.snippet = "好吃~~~~~~~~！"
+//        marker1.icon = UIImage(named: "Pin")
     }
     
     func configureUI() {
@@ -271,8 +271,9 @@ extension MapViewController: GMSMapViewDelegate {
     func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
 
         self.changeMapViewLocation(lat: marker.position.latitude,
-                                   long: marker.position.longitude, zoom: 15)
-
+                                   long: marker.position.longitude,
+                                   zoom: 2)
+        
         return true
     }
     
@@ -286,7 +287,7 @@ extension MapViewController: GMSMapViewDelegate {
                 
                 indexNum = index
         }
-        
+    
         collectionView.scrollToItem(
             at: IndexPath(row: indexNum, section: 0),
             at: .centeredHorizontally,
@@ -307,7 +308,6 @@ extension MapViewController: GMSMapViewDelegate {
     }
 }
 
-
 // MARK: - CLLocationManagerDelegate
 extension MapViewController: CLLocationManagerDelegate {
     
@@ -315,7 +315,7 @@ extension MapViewController: CLLocationManagerDelegate {
         
         let location = locations.last!
 
-        let camera = GMSCameraPosition.camera(withTarget: location.coordinate, zoom: 15)
+        let camera = GMSCameraPosition.camera(withTarget: location.coordinate, zoom: 18)
 
         mapView.camera = camera
 
@@ -456,7 +456,7 @@ extension MapViewController: UIScrollViewDelegate {
         
         let location = restaurant[targetIndex].coordinates
         
-        updateMapView(lat: location.latitude, long: location.longitude, zoom: 15)
+        updateMapView(lat: location.latitude, long: location.longitude, zoom: 18)
     }
 }
 

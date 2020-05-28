@@ -52,7 +52,7 @@
                 "lightness": "-1"
             },
             {
-                "visibility": "simplified"
+                "visibility": "on"
             }
         ]
     },
@@ -112,7 +112,7 @@
                 "lightness": 31
             },
             {
-                "visibility": "simplified"
+                "visibility": "on"
             }
         ]
     },
@@ -250,7 +250,7 @@
                 "lightness": -2
             },
             {
-                "visibility": "simplified"
+                "visibility": "on"
             }
         ]
     },
@@ -259,7 +259,7 @@
         "elementType": "labels.text",
         "stylers": [
             {
-                "visibility": "off"
+                "visibility": "on"
             }
         ]
     },

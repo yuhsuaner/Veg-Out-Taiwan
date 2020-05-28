@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class ToEatListViewController: UIViewController {
 
@@ -36,7 +37,6 @@ class ToEatListViewController: UIViewController {
     
     // MARK: - Helper
     func checkUser() {
-        
         
     }
 
@@ -95,6 +95,13 @@ extension ToEatListViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        guard Auth.auth().currentUser != nil else {
+            
+            VOTProgressHUD.showFailure(text: "請先登入會員喔！")
+            
+            return
+        }
         
         let controller = ToEatListDetailsController()
         

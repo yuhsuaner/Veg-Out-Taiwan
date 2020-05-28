@@ -179,8 +179,9 @@ extension RestaurantInformationViewController: UITableViewDataSource {
         case 1:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "CommentTableViewCell", for: indexPath) as? CommentTableViewCell else { return UITableViewCell() }
             
-            let tap = UITapGestureRecognizer(target: self, action: #selector(toNextPage))
-            cell.tapForMoreLabel.addGestureRecognizer(tap)
+//            let tap = UITapGestureRecognizer(target: self, action: #selector(toNextPage))
+//            
+//            cell.tapForMoreLabel.addGestureRecognizer(tap)
             
             cell.updateData(restaurantName: restaurant.restaurantName)
             
@@ -205,14 +206,14 @@ extension RestaurantInformationViewController: UITableViewDataSource {
     }
     
     // MARK: - Selector
-    @objc func toNextPage() {
-        
-        let controller = UserCommentWallViewController()
-        
-        controller.restaurantComments = comments
-        
-        navigationController?.pushViewController(controller, animated: true)
-    }
+//    @objc func toNextPage() {
+//
+//        let controller = UserCommentWallViewController()
+//
+//        controller.restaurantComments = comments
+//
+//        navigationController?.pushViewController(controller, animated: true)
+//    }
 }
 
 // MARK: - UITableViewDelegate
@@ -251,6 +252,13 @@ extension RestaurantInformationViewController: InfoCellDelegate {
     
     func didTapAddToEatListButton(_ sender: UIButton) {
         
+        guard Auth.auth().currentUser != nil else {
+            
+            VOTProgressHUD.showFailure(text: "請先登入會員喔！")
+            
+            return
+        }
+        
         self.openAlert(title: "加入收藏清單",
                        message: "add your message",
                        alertStyle: .actionSheet,
@@ -273,10 +281,17 @@ extension RestaurantInformationViewController: InfoCellDelegate {
         
         let longitude = restaurant.coordinates.longitude
         
-        if UIApplication.shared.canOpenURL(URL(string:"comgooglemaps://")!) {
-            UIApplication.shared.open(URL(string:"comgooglemaps://?center=\(latitude),\(longitude)&zoom=14&views=traffic&q=\(latitude),\(longitude)")!, options: [:], completionHandler: nil)
+        if UIApplication.shared.canOpenURL(URL(string: "comgooglemaps://")!) {
+            
+            UIApplication.shared.open(
+                URL(string: "comgooglemaps://?center=\(latitude),\(longitude)&zoom=14&views=traffic&q=\(latitude),\(longitude)")!,
+                                      options: [:], completionHandler: nil)
+            
         } else {
-            UIApplication.shared.open(URL(string: "http://maps.google.com/maps?q=loc:\(latitude),\(longitude)&zoom=14&views=traffic&q=\(latitude),\(longitude)")!, options: [:], completionHandler: nil)
+            
+            UIApplication.shared.open(
+                URL(string: "http://maps.google.com/maps?q=loc:\(latitude),\(longitude)&zoom=14&views=traffic&q=\(latitude),\(longitude)")!,
+                                      options: [:], completionHandler: nil)
         }
         
     }
