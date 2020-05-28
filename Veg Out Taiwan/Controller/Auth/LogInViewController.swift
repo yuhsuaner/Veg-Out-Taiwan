@@ -54,6 +54,14 @@ class LogInViewController: UIViewController {
         }
     }
     
+    @IBAction func privacyPolicyButton(_ sender: UIButton) {
+        let prsentVC = VOTWebsiteViewController()
+        prsentVC.votUrl = "https://yuhsuaner.wixsite.com/vegouttaiwan"
+        self.show(prsentVC, sender: nil)
+        
+    }
+    
+    
     //    func setupAppleSignInView() {
     //        let appleButton = ASAuthorizationAppleIDButton(authorizationButtonType: .default, authorizationButtonStyle: .white)
     //        appleButton.translatesAutoresizingMaskIntoConstraints = false
