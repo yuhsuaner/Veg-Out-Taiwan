@@ -93,6 +93,7 @@ class ProfileController: UICollectionViewController {
                 }
 
                 comment.append(value)
+                self.collectionView.reloadData()
             }
             
             print(comment.count)

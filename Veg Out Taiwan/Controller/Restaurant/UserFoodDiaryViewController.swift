@@ -48,27 +48,49 @@ class UserFoodDiaryViewController: UIViewController, UIGestureRecognizerDelegate
         //拿到全部currentUser 按過Like的存進userLikeArray
         Database.database().reference().child("user-likes").child(uid).observeSingleEvent(of: .value) { snapshot in
             
-            guard let dictionary = snapshot.value as? [String: Int] else { return }
-            
-            for keys in dictionary.keys {
+            print(snapshot)
+            print(snapshot.childrenCount)
+            print(123)
+            if snapshot.childrenCount != 0 {
+                guard let dictionary = snapshot.value as? [String: Int] else { return }
                 
-                print(keys)
-                
-                print(type(of: keys))
-                
-                self.userLikeComment.append(keys)
-            }
-            
-            //拿出userLikeArray的值 與當前commentId比較
-            for (index, value) in self.userLikeComment.enumerated() {
-                print("Item \(index + 1): \(value)")
-                
-                if value != self.restaurantComments?.commentId {
-                    self.createdTappedLikeComment()
-                } else {
-                    return
+                for keys in dictionary.keys {
+                    
+                    print(keys)
+                    
+                    print(type(of: keys))
+                    
+                    self.userLikeComment.append(keys)
+                    
+                    //拿出userLikeArray的值 與當前commentId比較
+                    for (index, value) in self.userLikeComment.enumerated() {
+                        print("Item \(index + 1): \(value)")
+                        
+                        if value != self.restaurantComments?.commentId {
+                            self.createdTappedLikeComment()
+                        } else {
+                            return
+                        }
+                    }
                 }
+                
+            } else {
+                
+                self.createdTappedLikeComment()
+                
+                //拿出userLikeArray的值 與當前commentId比較
+//                for (index, value) in self.userLikeComment.enumerated() {
+//                    print("Item \(index + 1): \(value)")
+//
+//                    if value != self.restaurantComments?.commentId {
+//                        self.createdTappedLikeComment()
+//                    } else {
+//                        return
+//                    }
+//                }
+                
             }
+
         }
     }
     
