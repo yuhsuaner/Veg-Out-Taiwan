@@ -123,6 +123,13 @@ class CommentViewController: UIViewController {
         
         VOTProgressHUD.show()
         
+        if commentTextView.text == "這裏輸入留言..." || commentTextView.text == "" {
+            
+            VOTProgressHUD.showFailure(text: "尚未輸入任何文字喔～ ")
+            
+            return
+        }
+        
         guard
             let restaurantName = restaurantNameLabel.text,
             let commentText = commentTextView.text
