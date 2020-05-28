@@ -83,7 +83,6 @@ class ProfileController: UICollectionViewController {
             for child in snapshot.children {
                 
                 print(child)
-//
                 print(type(of: child))
                 
                 guard
@@ -139,17 +138,31 @@ extension ProfileController {
     }
     
     @objc func handleSetting() {
-        do {
-            try Auth.auth().signOut()
-            VOTProgressHUD.showSuccess(text: "登出")
-        } catch let error {
-            print(error.localizedDescription)
-        }
         
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
-        guard let tab = appDelegate.window?.rootViewController as? MainTabViewController else { return }
-        tab.selectedIndex = 0
-        
+        self.openAlert(title: "登出囉～",
+         message: "你確定嗎？",
+         alertStyle: .actionSheet,
+         actionTitles: ["是的", "我不要"],
+         actionStyles: [.default, .cancel],
+         actions: [
+             {_ in
+                do {
+                    try Auth.auth().signOut()
+                    VOTProgressHUD.showSuccess(text: "登出")
+                } catch let error {
+                    print(error.localizedDescription)
+                }
+                
+                guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+                guard let tab = appDelegate.window?.rootViewController as? MainTabViewController else { return }
+                tab.selectedIndex = 0
+                
+                  print("okay click")
+             },
+             {_ in
+                  print("cancel click")
+             }
+        ])
     }
     
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
