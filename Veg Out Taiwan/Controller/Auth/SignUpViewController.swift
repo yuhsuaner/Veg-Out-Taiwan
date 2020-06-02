@@ -104,6 +104,12 @@ class SignUpViewController: UIViewController {
     
     @objc func handleRegistration() {
         
+        if profileImage == nil || emailTextField.text == "" || passwordTextField.text == "" || userNameTextField.text == "" {
+            
+            openAlert(title: "!", message: "請確認是否所有資訊皆無遺漏", alertStyle: .alert, actionTitles: ["OK"], actionStyles: [.default], actions: [{_ in print("okay click")}])
+
+        }
+        
         guard
             let profileImage = profileImage,
             let email = emailTextField.text,
@@ -111,7 +117,6 @@ class SignUpViewController: UIViewController {
             let userName = userNameTextField.text
             else {
                 return
-                
         }
         
         let credentials = AuthCredentials(email: email, username: userName, password: password, profileImage: profileImage)

@@ -98,7 +98,7 @@ class HeaderView: UICollectionViewCell {
     
     fileprivate func renderUsernameLabel() {
         addSubview(usernameLabel)
-        usernameLabel.anchor(top: topAnchor, left: profileImageView.rightAnchor, right: rightAnchor, paddingTop: 50, paddingLeft: 20, paddingRight: 10, height: 25)
+        usernameLabel.anchor(top: topAnchor, left: profileImageView.rightAnchor, right: rightAnchor, paddingTop: 50, paddingLeft: 20, paddingRight: 10, height: 30)
     }
     
     fileprivate func renderInfoLabelGroup() {
