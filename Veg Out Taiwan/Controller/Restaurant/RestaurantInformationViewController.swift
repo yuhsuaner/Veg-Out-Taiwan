@@ -127,7 +127,7 @@ class RestaurantInformationViewController: UIViewController {
     // MARK: - Helper
     func configureUI() {
         
-        navigationController?.navigationBar.tintColor = .W1
+        navigationController?.navigationBar.tintColor = .DG
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -160,6 +160,13 @@ extension RestaurantInformationViewController: UITableViewDataSource {
             cell.ratingLabel.text = "★ \(restaurant.rating)"
             
             cell.commentButtonAction = { [unowned self] in
+                
+                guard Auth.auth().currentUser != nil else {
+                    
+                    VOTProgressHUD.showFailure(text: "請先登入會員喔！")
+                    
+                    return
+                }
                 
                 guard let title = cell.restaurantNameLabel.text else { return }
                 

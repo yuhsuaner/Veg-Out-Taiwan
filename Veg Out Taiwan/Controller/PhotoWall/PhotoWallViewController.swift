@@ -107,6 +107,7 @@ class PhotoWallViewController: UIViewController {
     // MARK: - Helper
     
     func configureUI() {
+        navigationController?.navigationBar.tintColor = .W1
         
         view.setBackgroundView()
         

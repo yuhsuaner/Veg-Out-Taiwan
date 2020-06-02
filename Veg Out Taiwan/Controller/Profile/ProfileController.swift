@@ -62,6 +62,8 @@ class ProfileController: UICollectionViewController {
         barAppearance.configureWithTransparentBackground()
         navigationController?.navigationBar.standardAppearance = barAppearance
         
+        navigationController?.navigationBar.tintColor = .DG
+        
         collectionView.backgroundColor = .white
         
         collectionView.register(HeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: headerViewId)

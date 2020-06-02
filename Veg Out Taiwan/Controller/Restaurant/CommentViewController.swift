@@ -87,7 +87,6 @@ class CommentViewController: UIViewController {
     // MARK: - Helper
     
     func configureUI() {
-        navigationController?.navigationBar.tintColor = .black
         navigationItem.title = "我要評論"
         
         imageCollectionView.backgroundColor = .clear

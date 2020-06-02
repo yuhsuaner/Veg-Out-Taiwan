@@ -29,18 +29,15 @@ class ToEatListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        checkUser()
         configureUI()
         configureTableView()
         
     }
     
     // MARK: - Helper
-    func checkUser() {
-        
-    }
 
     func configureUI() {
+        navigationController?.navigationBar.tintColor = .G1
         
         view.backgroundColor = .W1
         
