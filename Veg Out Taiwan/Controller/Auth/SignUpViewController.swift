@@ -104,19 +104,25 @@ class SignUpViewController: UIViewController {
     
     @objc func handleRegistration() {
         
-        guard let profileImage = profileImage else { return }
-        
-        guard let email = emailTextField.text else { return }
-        guard let password  = passwordTextField.text else { return }
-        guard let userName = userNameTextField.text else { return }
+        guard
+            let profileImage = profileImage,
+            let email = emailTextField.text,
+            let password  = passwordTextField.text,
+            let userName = userNameTextField.text
+            else {
+                return
+                
+        }
         
         let credentials = AuthCredentials(email: email, username: userName, password: password, profileImage: profileImage)
         
-        AuthService.shared.registerUser(credentials: credentials) { (error, ref) in
+        AuthService.shared.registerUser(credentials: credentials) { (error, _) in
+            
             if let error = error {
                 print(error.localizedDescription)
                 return
             }
+            
             print("Successfully Sign up")
                         
             guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }

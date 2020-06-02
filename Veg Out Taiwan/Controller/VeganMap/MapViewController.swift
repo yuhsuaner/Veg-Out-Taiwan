@@ -314,12 +314,47 @@ extension MapViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
         let location = locations.last!
-
+        
         let camera = GMSCameraPosition.camera(withTarget: location.coordinate, zoom: 18)
-
+        
         mapView.camera = camera
-
+        
         locationManager.stopUpdatingLocation()
+    }
+    
+    func didTapMyLocationButton(for mapView: GMSMapView) -> Bool {
+        
+        locationManager.requestWhenInUseAuthorization()
+        
+        if let myLocation = locationManager.location {
+            
+            updateMapView(lat: myLocation.coordinate.latitude,
+                          long: myLocation.coordinate.longitude,
+                          zoom: 15)
+            
+        } else {
+            
+            openAlert(title: "無法偵測位置",
+            message: "您未開啟定位系統無法定位喔！",
+            alertStyle: .alert,
+            actionTitles: ["我去設定", "取消"],
+            actionStyles: [.default, .cancel],
+            actions: [
+                {_ in
+                    
+                guard let settingsUrl = URL(string: UIApplication.openSettingsURLString) else {
+                return
+            }
+                                
+            if UIApplication.shared.canOpenURL(settingsUrl) {
+              
+                UIApplication.shared.open(settingsUrl, completionHandler: nil)
+            }
+                    
+                }, {_ in print("cancel click")}]
+            )
+        }
+        return true
     }
 }
 
