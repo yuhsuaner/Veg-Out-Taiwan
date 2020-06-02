@@ -127,10 +127,8 @@ class UserFoodDiaryViewController: UIViewController, UIGestureRecognizerDelegate
         guard let comment = restaurantComments else { return }
         
         CommentService.shared.likeComment(comment: comment) { [weak self] (err, ref) in
-            
-            print(err?.localizedDescription)
             guard let self = self else { return }
-            print(1234)
+
             self.restaurantComments?.didLike?.toggle()
             
             let like = self.restaurantComments!.didLike! ? self.restaurantComments!.likes + 1 : self.restaurantComments!.likes - 1

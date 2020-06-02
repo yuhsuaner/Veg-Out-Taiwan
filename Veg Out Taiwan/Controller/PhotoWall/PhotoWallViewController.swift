@@ -164,8 +164,9 @@ extension PhotoWallViewController: UICollectionViewDelegate {
         
         let commentId = comment[indexPath.row].commentId
         let like = comment[indexPath.row].likes
+        let didlike = comment[indexPath.row].didLike
         
-        let comment = Comment(commentId: commentId, restaurantName: restaurantName, imageURL: imageURL, rating: rating, commentText: commentText, user: User(uid: uid, username: userName, userImage: userImage, email: userMail), likes: like)
+        let comment = Comment(commentId: commentId, restaurantName: restaurantName, imageURL: imageURL, rating: rating, commentText: commentText, user: User(uid: uid, username: userName, userImage: userImage, email: userMail), likes: like, didLike: didlike)
         
         viewController.restaurantComments = comment
         
