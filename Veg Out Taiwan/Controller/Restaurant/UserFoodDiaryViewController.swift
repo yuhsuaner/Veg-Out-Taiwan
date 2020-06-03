@@ -43,7 +43,7 @@ class UserFoodDiaryViewController: UIViewController, UIGestureRecognizerDelegate
     
     @IBAction func handleLikeTapped(_ sender: Any) {
         
-        if userLikeComment != [""] {
+        if userLikeComment != [] {
             // 拿出userLikeArray的值 與當前commentId比較
             for (index, value) in self.userLikeComment.enumerated() {
                 print("Item \(index + 1): \(value)")
@@ -56,7 +56,8 @@ class UserFoodDiaryViewController: UIViewController, UIGestureRecognizerDelegate
             }
             
         } else {
-            self.createdTappedLikeComment()
+            
+            createdTappedLikeComment()
         }
     }
     
