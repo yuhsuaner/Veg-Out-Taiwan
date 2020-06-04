@@ -30,8 +30,6 @@ class ProfileController: UICollectionViewController {
     
     let votProvider = VOTProvider()
     
-    var ref: DatabaseReference!
-    
     // MARK: - LifeCycle
     
     override func viewDidLoad() {
@@ -74,7 +72,7 @@ class ProfileController: UICollectionViewController {
     // MARK: - API
     func getUserComment() {
         
-        ref = Database.database().reference()
+        let ref = Database.database().reference()
         
         guard let user = Auth.auth().currentUser?.uid else { return }
         

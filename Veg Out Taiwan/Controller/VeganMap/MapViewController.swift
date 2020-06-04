@@ -32,13 +32,13 @@ class MapViewController: UIViewController {
     private var mapView: GMSMapView!
     var locationManager = CLLocationManager()
     
-    private var searchButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.tintColor = UIColor.G2
-        button.setImage(UIImage(named: "VOT_Search"), for: .normal)
-        button.addTarget(self, action: #selector(handleSearchAction), for: .touchUpInside)
-        return button
-    }()
+//    private var searchButton: UIButton = {
+//        let button = UIButton(type: .system)
+//        button.tintColor = UIColor.G2
+//        button.setImage(UIImage(named: "VOT_Search"), for: .normal)
+//        button.addTarget(self, action: #selector(handleSearchAction), for: .touchUpInside)
+//        return button
+//    }()
     
     private var searchTextField: UITextField = {
         let textField = UITextField()
@@ -198,17 +198,17 @@ class MapViewController: UIViewController {
         NSLayoutConstraint.activate([
             searchTextField.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.7, constant: 0),
             searchTextField.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.height/20),
-            searchTextField.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: -30)
+            searchTextField.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0)
         ])
         
         searchTextField.delegate = self
         
         NSLayoutConstraint(item: searchTextField, attribute: NSLayoutConstraint.Attribute.centerY, relatedBy: NSLayoutConstraint.Relation.equal, toItem: view, attribute: NSLayoutConstraint.Attribute.centerY, multiplier: 1/5, constant: 0).isActive = true
         
-        searchTextField.addSubview(searchButton)
-        searchButton.anchor(right: searchTextField.rightAnchor, paddingRight: 5,
-                            width: UIScreen.main.bounds.height/20,
-                            height: UIScreen.main.bounds.height/20)
+//        searchTextField.addSubview(searchButton)
+//        searchButton.anchor(right: searchTextField.rightAnchor, paddingRight: 5,
+//                            width: UIScreen.main.bounds.height/20,
+//                            height: UIScreen.main.bounds.height/20)
         
         view.addSubview(collectionView)
         collectionView.backgroundColor = .clear
@@ -272,7 +272,7 @@ extension MapViewController: GMSMapViewDelegate {
 
         self.changeMapViewLocation(lat: marker.position.latitude,
                                    long: marker.position.longitude,
-                                   zoom: 2)
+                                   zoom: 18)
         
         return true
     }

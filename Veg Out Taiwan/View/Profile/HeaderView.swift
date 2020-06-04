@@ -20,7 +20,7 @@ class HeaderView: UICollectionViewCell {
     
     let profileImageView: UIImageView = {
         let image = UIImageView()
-        image.image = #imageLiteral(resourceName: "Pic2")
+        image.image = #imageLiteral(resourceName: "VOT tab bar icons-10")
         image.contentMode = .scaleAspectFill
         return image
     }()
@@ -58,7 +58,7 @@ class HeaderView: UICollectionViewCell {
         return button
     }()
     
-// MARK: - Lifecycle
+// MARK: - Lifecycle    
     override init(frame: CGRect) {
         super.init(frame: frame)
         

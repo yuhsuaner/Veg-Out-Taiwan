@@ -30,7 +30,7 @@ class RestaurantInformationViewController: UIViewController {
         self.restaurant = restaurant
         super.init(coder: coder)
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError()
     }

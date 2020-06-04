@@ -12,9 +12,9 @@ import Firebase
 import YPImagePicker
 
 enum ViewState {
-
+    
     case empty
-
+    
     case data([UIImage])
 }
 
@@ -29,7 +29,7 @@ class CommentViewController: UIViewController {
     
     let votProvider = VOTProvider()
     
-    var currentStar = 3.7
+    var currentStar = 4.5
     
     var selectedImages: [UIImage] = []
     
@@ -49,28 +49,28 @@ class CommentViewController: UIViewController {
         }
     }
     
-        var viewStates: ViewState = .empty {
-    
-            didSet {
-    
-                switch viewStates {
-    
-                case .empty: selectedImages = [#imageLiteral(resourceName: "Add_Photo")]
-    
-                case .data(let data):
-    
-                    switch oldValue {
-    
-                    case .empty: selectedImages = data
-    
-                    case .data: selectedImages.append(contentsOf: data)
-    
-                    }
+    var viewStates: ViewState = .empty {
+        
+        didSet {
+            
+            switch viewStates {
+                
+            case .empty: selectedImages = [#imageLiteral(resourceName: "Add_Photo")]
+                
+            case .data(let data):
+                
+                switch oldValue {
+                    
+                case .empty: selectedImages = data
+                    
+                case .data: selectedImages.append(contentsOf: data)
+                    
                 }
-    
-                imageCollectionView.reloadData()
             }
+            
+            imageCollectionView.reloadData()
         }
+    }
     
     // MARK: - ViewLifecyele
     override func viewDidLoad() {
@@ -103,13 +103,9 @@ class CommentViewController: UIViewController {
     
     func configureRatingView() {
         
-        // A closure that is called when user changes the rating by touching the view.
-        // This can be used to update UI as the rating is being changed by moving a finger.
         ratingView.didTouchCosmos = { rating in
             
             self.currentStar = Double(rating)
-            
-            print(rating)
         }
     }
     
@@ -216,6 +212,7 @@ extension CommentViewController: UICollectionViewDataSource {
         guard let cell = imageCollectionView.dequeueReusableCell(withReuseIdentifier: "ImageCollectionViewCell", for: indexPath) as? ImageCollectionViewCell else { return UICollectionViewCell() }
         
         cell.backgroundColor = .clear
+        
         cell.postImage.image = selectedImages[indexPath.item]
         
         return cell
@@ -234,38 +231,39 @@ extension CommentViewController: UICollectionViewDelegate {
         picker.didFinishPicking { [unowned picker] items, cancelled in
             
             if cancelled {
-                   
-                    picker.dismiss(animated: true, completion: nil)
-                    return
-                }
-                _ = items.map { print("🧀 \($0)") }
                 
-                self.selectedItems = items
-
-                for item in items {
-                    
-                    switch item {
-                        
-                    case .photo(let image):
-                        
-                        let imageV = image.image
-                        
-                        self.selectedImages.append(imageV)
-                        
-                    default:
-                        print("Default Case")
-                    }
-                }
-                
-                picker.dismiss(animated: true, completion: {
-                    self.viewStates = .data(self.selectedImages)
-                    self.imageCollectionView.reloadData()
-                })
+                picker.dismiss(animated: true, completion: nil)
+                return
             }
+            
+            for item in items {
+                
+                switch item {
+                    
+                case .photo(let image):
+                    
+                    let imageV = image.image
+                    
+                    self.viewStates = .data([imageV])
+                    
+                default:
+                    
+                    print("Default Case")
+                }
+            }
+            
+            print(self.selectedImages.count)
+            
+            picker.dismiss(animated: true, completion: {
+                
+                self.imageCollectionView.reloadData()
+            })
+        }
         
-            present(picker, animated: true, completion: nil)
+        present(picker, animated: true, completion: nil)
+        
     }
-        
+    
     func configuration() -> YPImagePickerConfiguration {
         
         var config = YPImagePickerConfiguration()
@@ -302,6 +300,7 @@ extension CommentViewController: UICollectionViewDelegateFlowLayout {
 
 // MARK: - UITextViewDelegate
 extension CommentViewController: UITextViewDelegate {
+    
     func textViewDidBeginEditing(_ textView: UITextView) {
         if commentTextView.text == "這裏輸入留言..." {
             commentTextView.text = ""
