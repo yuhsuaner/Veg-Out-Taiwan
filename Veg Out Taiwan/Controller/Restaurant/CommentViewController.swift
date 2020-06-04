@@ -9,13 +9,12 @@
 import UIKit
 import Cosmos
 import Firebase
-import ImagePicker
-import Lightbox
+import YPImagePicker
 
 enum ViewState {
-    
+
     case empty
-    
+
     case data([UIImage])
 }
 
@@ -32,9 +31,9 @@ class CommentViewController: UIViewController {
     
     var currentStar = 3.7
     
-    let imagePicker = ImagePickerController()
-    
     var selectedImages: [UIImage] = []
+    
+    var selectedItems = [YPMediaItem]()
     
     @IBOutlet weak var restaurantNameLabel: UILabel!
     
@@ -50,28 +49,28 @@ class CommentViewController: UIViewController {
         }
     }
     
-    var viewStates: ViewState = .empty {
-        
-        didSet {
-            
-            switch viewStates {
-                
-            case .empty: selectedImages = [#imageLiteral(resourceName: "Add_Photo")]
-                
-            case .data(let data):
-                
-                switch oldValue {
-                    
-                case .empty: selectedImages = data
-                    
-                case .data: selectedImages.append(contentsOf: data)
-                    
+        var viewStates: ViewState = .empty {
+    
+            didSet {
+    
+                switch viewStates {
+    
+                case .empty: selectedImages = [#imageLiteral(resourceName: "Add_Photo")]
+    
+                case .data(let data):
+    
+                    switch oldValue {
+    
+                    case .empty: selectedImages = data
+    
+                    case .data: selectedImages.append(contentsOf: data)
+    
+                    }
                 }
+    
+                imageCollectionView.reloadData()
             }
-            
-            imageCollectionView.reloadData()
         }
-    }
     
     // MARK: - ViewLifecyele
     override func viewDidLoad() {
@@ -152,7 +151,7 @@ class CommentViewController: UIViewController {
                                       imageURL: [],
                                       rating: newComment.rating,
                                       commentText: newComment.commentText)
-                                      
+        
         //seletedImages upload firestore
         for image in selectedImages {
             
@@ -228,17 +227,61 @@ extension CommentViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        let config = Configuration()
-        config.doneButtonTitle = "Finish"
-        config.noImagesTitle = "Sorry! There are no images here!"
-        config.recordLocation = false
-        config.allowVideoSelection = true
+        selectedImages.removeAll()
+        
+        let picker = YPImagePicker(configuration: configuration())
+        
+        picker.didFinishPicking { [unowned picker] items, cancelled in
+            
+            if cancelled {
+                   
+                    picker.dismiss(animated: true, completion: nil)
+                    return
+                }
+                _ = items.map { print("🧀 \($0)") }
+                
+                self.selectedItems = items
 
-        let imagePicker = ImagePickerController(configuration: config)
-        imagePicker.delegate = self
-
-        present(imagePicker, animated: true, completion: nil)
-
+                for item in items {
+                    
+                    switch item {
+                        
+                    case .photo(let image):
+                        
+                        let imageV = image.image
+                        
+                        self.selectedImages.append(imageV)
+                        
+                    default:
+                        print("Default Case")
+                    }
+                }
+                
+                picker.dismiss(animated: true, completion: {
+                    self.viewStates = .data(self.selectedImages)
+                    self.imageCollectionView.reloadData()
+                })
+            }
+        
+            present(picker, animated: true, completion: nil)
+    }
+        
+    func configuration() -> YPImagePickerConfiguration {
+        
+        var config = YPImagePickerConfiguration()
+        config.library.mediaType = .photo
+        config.shouldSaveNewPicturesToAlbum = false
+        config.startOnScreen = .library
+        config.screens = [.library, .photo]
+        config.wordings.libraryTitle = "我的相簿"
+        config.wordings.cameraTitle = "相機"
+        config.hidesStatusBar = false
+        config.hidesBottomBar = false
+        config.maxCameraZoomFactor = 2.0
+        config.library.maxNumberOfItems = 10
+        config.gallery.hidesRemoveButton = false
+        config.library.preselectedItems = selectedItems
+        return config
     }
 }
 
@@ -257,42 +300,7 @@ extension CommentViewController: UICollectionViewDelegateFlowLayout {
     }
 }
 
-// MARK: - ImagePickerDelegate
-extension CommentViewController: ImagePickerDelegate {
-    
-    //按下所拍攝之相片縮圖時
-    func wrapperDidPress(_ imagePicker: ImagePickerController, images: [UIImage]) {
-        
-        guard images.count > 0 else { return }
-        
-        let lightboxImages = images.map {
-            return LightboxImage(image: $0)
-        }
-        
-        let lightbox = LightboxController(images: lightboxImages, startIndex: 0)
-        imagePicker.present(lightbox, animated: true, completion: nil)
-        
-    }
-    
-    //按下完成按鈕時
-    func doneButtonDidPress(_ imagePicker: ImagePickerController, images: [UIImage]) {
-        
-        viewStates = .data(images)
-                
-        imagePicker.dismiss(animated: true) { () -> Void in
-            
-            self.imageCollectionView.reloadData()
-        }
-        
-    }
-    
-    //按下取消按鈕時
-    func cancelButtonDidPress(_ imagePicker: ImagePickerController) {
-        imagePicker.dismiss(animated: true, completion: nil)
-    }
-    
-}
-
+// MARK: - UITextViewDelegate
 extension CommentViewController: UITextViewDelegate {
     func textViewDidBeginEditing(_ textView: UITextView) {
         if commentTextView.text == "這裏輸入留言..." {

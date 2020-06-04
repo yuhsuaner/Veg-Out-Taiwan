@@ -44,8 +44,8 @@
                                             <action selector="handleSignup:" destination="ZwT-0l-bOx" eventType="touchUpInside" id="EaT-WJ-aSr"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vog Out Taiwan" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JDT-ow-DAx">
-                                        <rect key="frame" x="123.5" y="226.5" width="167.5" height="40"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Veg Out Taiwan" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JDT-ow-DAx">
+                                        <rect key="frame" x="124" y="226.5" width="166.5" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="JiQ-YA-Dig"/>
                                         </constraints>
@@ -283,7 +283,7 @@
                                             <constraint firstAttribute="height" constant="200" id="nvR-6T-e27"/>
                                         </constraints>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vog Out Taiwan" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KdI-PX-rZY">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Veg Out Taiwan" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KdI-PX-rZY">
                                         <rect key="frame" x="0.0" y="203" width="200" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="KXp-wK-Mls"/>

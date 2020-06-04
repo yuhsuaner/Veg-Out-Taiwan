@@ -1,25 +1,71 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+    <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="jf-openhuninn-1.0.ttf">
+            <string>jf-openhuninn-1.0</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--View Controller-->
         <scene sceneID="EHf-IW-A2E">
             <objects>
                 <viewController id="01J-lp-oVM" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="Aw0-R9-VD5">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="VOT_logo_only-04_0" translatesAutoresizingMaskIntoConstraints="NO" id="N7E-yp-eL9">
+                                <rect key="frame" x="32" y="273" width="350" height="350"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="350" id="gLC-A4-C3G"/>
+                                    <constraint firstAttribute="width" constant="350" id="uNR-q6-quT"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Veg Out Taiwan" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rJ3-be-Yh0">
+                                <rect key="frame" x="30" y="203" width="354" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="wlQ-MT-PW0"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="jf-openhuninn-1.0" family="jf-openhuninn-1.0" pointSize="30"/>
+                                <color key="textColor" name="CreamyWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="rJ3-be-Yh0" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="0xV-oD-orV"/>
+                            <constraint firstAttribute="bottom" secondItem="Aw0-R9-VD5" secondAttribute="bottom" id="3jr-qS-fbD"/>
+                            <constraint firstItem="N7E-yp-eL9" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="7SG-vb-sOw"/>
+                            <constraint firstAttribute="trailing" secondItem="rJ3-be-Yh0" secondAttribute="trailing" constant="30" id="9yZ-0E-5Ly"/>
+                            <constraint firstItem="rJ3-be-Yh0" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" constant="30" id="OK5-8G-pnf"/>
+                            <constraint firstItem="Aw0-R9-VD5" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="emw-6h-NV2"/>
+                            <constraint firstItem="Aw0-R9-VD5" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="uB3-kQ-h6v"/>
+                            <constraint firstAttribute="trailing" secondItem="Aw0-R9-VD5" secondAttribute="trailing" id="vrq-rA-Lzb"/>
+                            <constraint firstItem="N7E-yp-eL9" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="vz0-dn-BKO"/>
+                            <constraint firstItem="N7E-yp-eL9" firstAttribute="top" secondItem="rJ3-be-Yh0" secondAttribute="bottom" constant="30" id="yXg-Bd-GOB"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="53" y="375"/>
+            <point key="canvasLocation" x="52.173913043478265" y="375"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="VOT_logo_only-04_0" width="2133" height="2133"/>
+        <image name="background" width="375" height="667"/>
+        <namedColor name="CreamyWhite">
+            <color red="0.98799997568130493" green="0.98000001907348633" blue="0.94900000095367432" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
+    </resources>
 </document>

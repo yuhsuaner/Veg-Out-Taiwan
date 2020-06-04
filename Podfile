@@ -30,8 +30,7 @@ target 'Veg Out Taiwan' do
   
   # Pod for star rate
   pod 'Cosmos'
-  
-  pod 'ImagePicker'
-  pod 'Lightbox'
 
+  pod 'YPImagePicker'
+  
 end
