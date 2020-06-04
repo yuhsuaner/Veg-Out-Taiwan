@@ -49,21 +49,21 @@ class SignUpViewController: UIViewController {
     
     private let emailTextField: UITextField = {
         
-        let textField = Utilies().textField(withPlaceholer: "Email")
+        let textField = Utilies().textField(withPlaceholer: " Email")
         textField.keyboardType = .emailAddress
         return textField
     }()
     
     private let passwordTextField: UITextField = {
         
-        let textField = Utilies().textField(withPlaceholer: "Password")
+        let textField = Utilies().textField(withPlaceholer: " 密碼(請輸入 6 位數以上)")
         textField.isSecureTextEntry = true
         return textField
     }()
     
     private let userNameTextField: UITextField = {
         
-        let textField = Utilies().textField(withPlaceholer: "UserName")
+        let textField = Utilies().textField(withPlaceholer: " 使用者名稱")
         return textField
     }()
     
@@ -106,8 +106,7 @@ class SignUpViewController: UIViewController {
         
         if profileImage == nil || emailTextField.text == "" || passwordTextField.text == "" || userNameTextField.text == "" {
             
-            openAlert(title: "!", message: "請確認是否所有資訊皆無遺漏", alertStyle: .alert, actionTitles: ["OK"], actionStyles: [.default], actions: [{_ in print("okay click")}])
-
+            openAlert(title: "!", message: "請確認是否所有資訊皆無遺漏", alertStyle: .alert, actionTitles: ["OK"], actionStyles: [.default], actions: [ {_ in print("okay click")}])
         }
         
         guard
@@ -139,7 +138,6 @@ class SignUpViewController: UIViewController {
     }
     
     // MARK: - Helper
-    
     func configureUI() {
         view.setBackgroundView()
         

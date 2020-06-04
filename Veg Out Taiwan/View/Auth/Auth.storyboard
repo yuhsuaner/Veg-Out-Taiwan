@@ -92,7 +92,7 @@
                                                         <color key="textColor" name="CreamyWhite"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FbL-nM-hIy">
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="請輸入至少 6 位數以上" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FbL-nM-hIy">
                                                         <rect key="frame" x="62" y="5" width="157" height="33"/>
                                                         <color key="textColor" name="CreamyWhite"/>
                                                         <fontDescription key="fontDescription" name="jf-openhuninn-1.0" family="jf-openhuninn-1.0" pointSize="14"/>

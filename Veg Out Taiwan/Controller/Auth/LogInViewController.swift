@@ -16,7 +16,6 @@ class LogInViewController: UIViewController {
     @IBOutlet weak var backgroundView: UIView! {
         
         didSet {
-            //            backgroundView.setBackgroundView()
             backgroundView.layer.cornerRadius = 25
         }
     }
@@ -88,8 +87,16 @@ class LogInViewController: UIViewController {
         guard let password = passwordTextField.text else { return }
         
         AuthService.shared.signIn(withEmail: email, password: password) { (result, error) in
+            
             if let error = error {
-                print(error.localizedDescription)
+                
+                 self.openAlert(title: "!",
+                                message: "\(error.localizedDescription)",
+                alertStyle: .alert,
+                actionTitles: ["OK"],
+                actionStyles: [.default],
+                actions: [ {_ in }]
+                )
                 return
             }
             print("Successfully log in")
@@ -133,11 +140,5 @@ class LogInViewController: UIViewController {
         super.viewDidAppear(animated)
         
         //        setupAppleSignInView()
-    }
-    
-    // MARK: - Helper
-    
-    func configureUI() {
-        
     }
 }
