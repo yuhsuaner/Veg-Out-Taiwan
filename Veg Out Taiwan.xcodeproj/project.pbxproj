@@ -11,7 +11,6 @@
 		42107CCC247FA4A700F44B78 /* MapStyle_blue.json in Resources */ = {isa = PBXBuildFile; fileRef = 42107CCB247FA4A700F44B78 /* MapStyle_blue.json */; };
 		42107CCE247FC32000F44B78 /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42107CCD247FC32000F44B78 /* ForgotPasswordViewController.swift */; };
 		4237B0CC24651D33008A395E /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4237B0CB24651D33008A395E /* Comment.swift */; };
-		4237B11E246A9EE9008A395E /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4237B11D246A9EE9008A395E /* UIImageView.swift */; };
 		42411779241F424F0094B0FB /* ToEatListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42411778241F424F0094B0FB /* ToEatListController.swift */; };
 		4241177D241F85A50094B0FB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4241177C241F85A50094B0FB /* GoogleService-Info.plist */; };
 		4244483824430CE800000E96 /* BaseInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4244483724430CE800000E96 /* BaseInfoTableViewCell.swift */; };
@@ -79,7 +78,6 @@
 		42107CCB247FA4A700F44B78 /* MapStyle_blue.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = MapStyle_blue.json; sourceTree = "<group>"; };
 		42107CCD247FC32000F44B78 /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
 		4237B0CB24651D33008A395E /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
-		4237B11D246A9EE9008A395E /* UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
 		42411778241F424F0094B0FB /* ToEatListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToEatListController.swift; sourceTree = "<group>"; };
 		4241177C241F85A50094B0FB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		4244483724430CE800000E96 /* BaseInfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseInfoTableViewCell.swift; sourceTree = "<group>"; };
@@ -279,7 +277,6 @@
 				42B980F324516D4100B4DE22 /* Utilies.swift */,
 				426F4C942462A138003DE5C6 /* Bundle.swift */,
 				426F4C8F2462A022003DE5C6 /* VOTConstant.swift */,
-				4237B11D246A9EE9008A395E /* UIImageView.swift */,
 				42ABD1C4246D7B0D00A58BDA /* UIAlertController.swift */,
 			);
 			path = Extension;
@@ -663,7 +660,6 @@
 				4244483824430CE800000E96 /* BaseInfoTableViewCell.swift in Sources */,
 				42471F2724399898002B1577 /* RestaurantInformationViewController.swift in Sources */,
 				42471F3E243C66BD002B1577 /* UIFont.swift in Sources */,
-				4237B11E246A9EE9008A395E /* UIImageView.swift in Sources */,
 				42471F35243B778B002B1577 /* LogInViewController.swift in Sources */,
 				42461E01241E2BCE009EC9AB /* MapViewController.swift in Sources */,
 				42471F3A243C2606002B1577 /* Background.swift in Sources */,
