@@ -45,9 +45,9 @@ struct AuthService {
                     
                     guard let uid = authResult?.user.uid else { return }
                     
-                    let value = ["email": email,
-                                 "userName": userName,
-                                 "profileImageUrl": profileImageUrl]
+                    let value = [VOTConstant.User.email: email,
+                                 VOTConstant.User.name: userName,
+                                 VOTConstant.User.imageURL: profileImageUrl]
                     
                     Database.database().reference().child("users").child(uid).updateChildValues(value, withCompletionBlock: completion)
                 }

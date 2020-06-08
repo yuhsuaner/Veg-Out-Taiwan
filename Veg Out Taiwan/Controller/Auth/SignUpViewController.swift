@@ -49,21 +49,21 @@ class SignUpViewController: UIViewController {
     
     private let emailTextField: UITextField = {
         
-        let textField = Utilies().textField(withPlaceholer: "Email")
+        let textField = Utilies().textField(withPlaceholer: " Email")
         textField.keyboardType = .emailAddress
         return textField
     }()
     
     private let passwordTextField: UITextField = {
         
-        let textField = Utilies().textField(withPlaceholer: "Password")
+        let textField = Utilies().textField(withPlaceholer: " 密碼(請輸入 6 位數以上)")
         textField.isSecureTextEntry = true
         return textField
     }()
     
     private let userNameTextField: UITextField = {
         
-        let textField = Utilies().textField(withPlaceholer: "UserName")
+        let textField = Utilies().textField(withPlaceholer: " 使用者名稱")
         return textField
     }()
     
@@ -104,19 +104,29 @@ class SignUpViewController: UIViewController {
     
     @objc func handleRegistration() {
         
-        guard let profileImage = profileImage else { return }
+        if profileImage == nil || emailTextField.text == "" || passwordTextField.text == "" || userNameTextField.text == "" {
+            
+            openAlert(title: "!", message: "請確認是否所有資訊皆無遺漏", alertStyle: .alert, actionTitles: ["OK"], actionStyles: [.default], actions: [ {_ in print("okay click")}])
+        }
         
-        guard let email = emailTextField.text else { return }
-        guard let password  = passwordTextField.text else { return }
-        guard let userName = userNameTextField.text else { return }
+        guard
+            let profileImage = profileImage,
+            let email = emailTextField.text,
+            let password  = passwordTextField.text,
+            let userName = userNameTextField.text
+            else {
+                return
+        }
         
         let credentials = AuthCredentials(email: email, username: userName, password: password, profileImage: profileImage)
         
-        AuthService.shared.registerUser(credentials: credentials) { (error, ref) in
+        AuthService.shared.registerUser(credentials: credentials) { (error, _) in
+            
             if let error = error {
                 print(error.localizedDescription)
                 return
             }
+            
             print("Successfully Sign up")
                         
             guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
@@ -128,7 +138,6 @@ class SignUpViewController: UIViewController {
     }
     
     // MARK: - Helper
-    
     func configureUI() {
         view.setBackgroundView()
         

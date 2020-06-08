@@ -276,7 +276,7 @@
                                                 <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="更多 〉" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LdR-aS-IdB">
                                                     <rect key="frame" x="356.5" y="31.5" width="52.5" height="19"/>
                                                     <fontDescription key="fontDescription" name="jf-openhuninn-1.0" family="jf-openhuninn-1.0" pointSize="16"/>
-                                                    <color key="textColor" name="DarkGary"/>
+                                                    <color key="textColor" name="CreamyWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>

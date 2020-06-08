@@ -30,8 +30,6 @@ class ProfileController: UICollectionViewController {
     
     let votProvider = VOTProvider()
     
-    var ref: DatabaseReference!
-    
     // MARK: - LifeCycle
     
     override func viewDidLoad() {
@@ -62,6 +60,8 @@ class ProfileController: UICollectionViewController {
         barAppearance.configureWithTransparentBackground()
         navigationController?.navigationBar.standardAppearance = barAppearance
         
+        navigationController?.navigationBar.tintColor = .DG
+        
         collectionView.backgroundColor = .white
         
         collectionView.register(HeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: headerViewId)
@@ -72,7 +72,7 @@ class ProfileController: UICollectionViewController {
     // MARK: - API
     func getUserComment() {
         
-        ref = Database.database().reference()
+        let ref = Database.database().reference()
         
         guard let user = Auth.auth().currentUser?.uid else { return }
         
@@ -83,7 +83,6 @@ class ProfileController: UICollectionViewController {
             for child in snapshot.children {
                 
                 print(child)
-//
                 print(type(of: child))
                 
                 guard
@@ -94,6 +93,7 @@ class ProfileController: UICollectionViewController {
                 }
 
                 comment.append(value)
+                self.collectionView.reloadData()
             }
             
             print(comment.count)
@@ -139,17 +139,31 @@ extension ProfileController {
     }
     
     @objc func handleSetting() {
-        do {
-            try Auth.auth().signOut()
-            VOTProgressHUD.showSuccess(text: "登出")
-        } catch let error {
-            print(error.localizedDescription)
-        }
         
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
-        guard let tab = appDelegate.window?.rootViewController as? MainTabViewController else { return }
-        tab.selectedIndex = 0
-        
+        self.openAlert(title: "登出囉～",
+         message: "你確定嗎？",
+         alertStyle: .actionSheet,
+         actionTitles: ["是的", "我不要"],
+         actionStyles: [.default, .cancel],
+         actions: [
+             {_ in
+                do {
+                    try Auth.auth().signOut()
+                    VOTProgressHUD.showSuccess(text: "登出")
+                } catch let error {
+                    print(error.localizedDescription)
+                }
+                
+                guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+                guard let tab = appDelegate.window?.rootViewController as? MainTabViewController else { return }
+                tab.selectedIndex = 0
+                
+                  print("okay click")
+             },
+             {_ in
+                  print("cancel click")
+             }
+        ])
     }
     
     override func numberOfSections(in collectionView: UICollectionView) -> Int {

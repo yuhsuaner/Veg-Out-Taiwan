@@ -129,6 +129,7 @@ class ToEatListDetailsController: UIViewController {
     // MARK: - Helper
 
     func configureUI() {
+        navigationController?.navigationBar.tintColor = .G1
         
         view.backgroundColor = .W1
         

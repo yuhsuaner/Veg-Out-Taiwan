@@ -13,7 +13,7 @@ struct Restaurant: Codable {
     
     let address: String
     let phone: String
-    let restaurantName: String
+    var restaurantName: String
     var categories: [String]?
     let coordinates: Coordinates
     let imageURL: [String]

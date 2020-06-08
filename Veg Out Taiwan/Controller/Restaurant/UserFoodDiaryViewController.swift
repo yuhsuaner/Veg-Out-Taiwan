@@ -43,32 +43,21 @@ class UserFoodDiaryViewController: UIViewController, UIGestureRecognizerDelegate
     
     @IBAction func handleLikeTapped(_ sender: Any) {
         
-        guard let uid = Auth.auth().currentUser?.uid else { return }
-        
-        //拿到全部currentUser 按過Like的存進userLikeArray
-        Database.database().reference().child("user-likes").child(uid).observeSingleEvent(of: .value) { snapshot in
-            
-            guard let dictionary = snapshot.value as? [String: Int] else { return }
-            
-            for keys in dictionary.keys {
-                
-                print(keys)
-                
-                print(type(of: keys))
-                
-                self.userLikeComment.append(keys)
-            }
-            
-            //拿出userLikeArray的值 與當前commentId比較
+        if userLikeComment != [] {
+            // 拿出userLikeArray的值 與當前commentId比較
             for (index, value) in self.userLikeComment.enumerated() {
                 print("Item \(index + 1): \(value)")
                 
-                if value != self.restaurantComments?.commentId {
+                guard let commentId = self.restaurantComments?.commentId else { return }
+                
+                if value != commentId {
                     self.createdTappedLikeComment()
-                } else {
-                    return
                 }
             }
+            
+        } else {
+            
+            createdTappedLikeComment()
         }
     }
     
@@ -79,16 +68,45 @@ class UserFoodDiaryViewController: UIViewController, UIGestureRecognizerDelegate
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        configureUI()
-        configureComment()
-        fetchUserLike()
-        
         imagePageControl.numberOfPages = restaurantComments?.imageURL.count ?? 0
         imagePageControl.pageIndicatorTintColor = UIColor.W1
         imagePageControl.currentPageIndicatorTintColor = UIColor.O1
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        
+        configureUI()
+        configureComment()
+        fetchUserLike()
+        getUserLikeArray()
+    }
+    
     // MARK: - API
+    
+    //拿到全部currentUser 按過Like的存進userLikeArray
+    func getUserLikeArray() {
+        
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        
+        Database.database().reference().child("user-likes").child(uid).observeSingleEvent(of: .value) { snapshot in
+            
+            print(snapshot)
+            print(snapshot.childrenCount)
+            
+            if snapshot.childrenCount != 0 {
+                guard let dictionary = snapshot.value as? [String: Int] else { return }
+                
+                for keys in dictionary.keys {
+                    
+                    print(keys)
+                    
+                    print(type(of: keys))
+                    
+                    self.userLikeComment.append(keys)
+                }
+            }
+        }
+    }
     
     func fetchUserLike() {
         
@@ -110,9 +128,8 @@ class UserFoodDiaryViewController: UIViewController, UIGestureRecognizerDelegate
         guard let comment = restaurantComments else { return }
         
         CommentService.shared.likeComment(comment: comment) { [weak self] (err, ref) in
-            
             guard let self = self else { return }
-            
+
             self.restaurantComments?.didLike?.toggle()
             
             let like = self.restaurantComments!.didLike! ? self.restaurantComments!.likes + 1 : self.restaurantComments!.likes - 1
@@ -167,6 +184,7 @@ class UserFoodDiaryViewController: UIViewController, UIGestureRecognizerDelegate
         userNameLabel.text = restaurantComments?.user.userName
         userImageView.loadImage(restaurantComments?.user.profileImageUrl, placeHolder: #imageLiteral(resourceName: "VOT tab bar icons-12"))
         contentOfCommentTextView.text = restaurantComments?.commentText
+        
     }
 }
 

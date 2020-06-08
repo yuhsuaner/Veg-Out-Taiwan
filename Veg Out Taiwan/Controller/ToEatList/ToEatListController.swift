@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class ToEatListViewController: UIViewController {
 
@@ -28,19 +29,15 @@ class ToEatListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        checkUser()
         configureUI()
         configureTableView()
         
     }
     
     // MARK: - Helper
-    func checkUser() {
-        
-        
-    }
 
     func configureUI() {
+        navigationController?.navigationBar.tintColor = .G1
         
         view.backgroundColor = .W1
         
@@ -95,6 +92,13 @@ extension ToEatListViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        guard Auth.auth().currentUser != nil else {
+            
+            VOTProgressHUD.showFailure(text: "請先登入會員喔！")
+            
+            return
+        }
         
         let controller = ToEatListDetailsController()
         

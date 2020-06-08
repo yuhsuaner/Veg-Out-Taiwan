@@ -20,7 +20,7 @@ class HeaderView: UICollectionViewCell {
     
     let profileImageView: UIImageView = {
         let image = UIImageView()
-        image.image = #imageLiteral(resourceName: "Pic2")
+        image.image = #imageLiteral(resourceName: "VOT tab bar icons-10")
         image.contentMode = .scaleAspectFill
         return image
     }()
@@ -58,7 +58,7 @@ class HeaderView: UICollectionViewCell {
         return button
     }()
     
-// MARK: - Lifecycle
+// MARK: - Lifecycle    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -98,7 +98,7 @@ class HeaderView: UICollectionViewCell {
     
     fileprivate func renderUsernameLabel() {
         addSubview(usernameLabel)
-        usernameLabel.anchor(top: topAnchor, left: profileImageView.rightAnchor, right: rightAnchor, paddingTop: 50, paddingLeft: 20, paddingRight: 10, height: 25)
+        usernameLabel.anchor(top: topAnchor, left: profileImageView.rightAnchor, right: rightAnchor, paddingTop: 50, paddingLeft: 20, paddingRight: 10, height: 30)
     }
     
     fileprivate func renderInfoLabelGroup() {

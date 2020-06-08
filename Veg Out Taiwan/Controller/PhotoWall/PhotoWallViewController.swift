@@ -107,6 +107,7 @@ class PhotoWallViewController: UIViewController {
     // MARK: - Helper
     
     func configureUI() {
+        navigationController?.navigationBar.tintColor = .W1
         
         view.setBackgroundView()
         
@@ -152,23 +153,20 @@ extension PhotoWallViewController: UICollectionViewDelegate {
         
         guard let viewController = UIStoryboard(name: "UserFoodDiary", bundle: nil).instantiateViewController(identifier: "UserFoodDiary") as? UserFoodDiaryViewController else { return }
         
-        guard
-            let userName = UserDefaults.standard.value(forKey: "Username") as? String,
-            let userImage = UserDefaults.standard.value(forKey: "UserImage") as? String,
-            let userMail = UserDefaults.standard.value(forKey: "UserMail") as? String,
-            let uid = UserDefaults.standard.value(forKey: "UID") as? String
-            else { return }
-        
         let restaurantName = comment[indexPath.row].restaurantName
         let imageURL = comment[indexPath.row].imageURL
         let rating = comment[indexPath.row].rating
         let commentText = comment[indexPath.row].commentText
+        let uid = comment[indexPath.row].user.uid
+        let userName = comment[indexPath.row].user.userName
+        let userImage = comment[indexPath.row].user.profileImageUrl!
+        let userMail = comment[indexPath.row].user.email
         
-        let comment = Comment(restaurantName: restaurantName,
-                              imageURL: imageURL,
-                              rating: rating,
-                              commentText: commentText,
-                              user: User(uid: uid, username: userName, userImage: userImage, email: userMail))
+        let commentId = comment[indexPath.row].commentId
+        let like = comment[indexPath.row].likes
+        let didlike = comment[indexPath.row].didLike
+        
+        let comment = Comment(commentId: commentId, restaurantName: restaurantName, imageURL: imageURL, rating: rating, commentText: commentText, user: User(uid: uid, username: userName, userImage: userImage, email: userMail), likes: like, didLike: didlike)
         
         viewController.restaurantComments = comment
         

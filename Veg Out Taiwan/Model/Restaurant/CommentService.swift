@@ -19,7 +19,7 @@ struct CommentService {
         guard let  uid = Auth.auth().currentUser?.uid else { return }
         
         guard let didlike = comment.didLike else { return }
-        
+        print("DEBUG: didlike")
         let likes  = didlike == true ? comment.likes - 1 : comment.likes + 1
         
         Database.database().reference().child("comments").child(comment.commentId).child("likes").setValue(likes)

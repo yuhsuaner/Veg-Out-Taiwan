@@ -32,27 +32,27 @@ class MapViewController: UIViewController {
     private var mapView: GMSMapView!
     var locationManager = CLLocationManager()
     
-    private var searchButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.tintColor = UIColor.G2
-        button.setImage(UIImage(named: "VOT_Search"), for: .normal)
-        button.addTarget(self, action: #selector(handleSearchAction), for: .touchUpInside)
-        return button
-    }()
+//    private var searchButton: UIButton = {
+//        let button = UIButton(type: .system)
+//        button.tintColor = UIColor.G2
+//        button.setImage(UIImage(named: "VOT_Search"), for: .normal)
+//        button.addTarget(self, action: #selector(handleSearchAction), for: .touchUpInside)
+//        return button
+//    }()
     
-    private var searchTextField: UITextField = {
-        let textField = UITextField()
-        textField.translatesAutoresizingMaskIntoConstraints = false
-        textField.attributedPlaceholder = NSAttributedString(string: "探索美食...")
-        textField.keyboardType = UIKeyboardType.default
-        textField.returnKeyType = UIReturnKeyType.search
-        textField.autocorrectionType = UITextAutocorrectionType.no
-        textField.font = UIFont(name: "jf-openhuninn-1.0", size: 18)
-        textField.borderStyle = UITextField.BorderStyle.roundedRect
-        textField.clearButtonMode = UITextField.ViewMode.whileEditing
-        textField.contentVerticalAlignment = UIControl.ContentVerticalAlignment.center
-        return textField
-    }()
+//    private var searchTextField: UITextField = {
+//        let textField = UITextField()
+//        textField.translatesAutoresizingMaskIntoConstraints = false
+//        textField.attributedPlaceholder = NSAttributedString(string: "探索美食...")
+//        textField.keyboardType = UIKeyboardType.default
+//        textField.returnKeyType = UIReturnKeyType.search
+//        textField.autocorrectionType = UITextAutocorrectionType.no
+//        textField.font = UIFont(name: "jf-openhuninn-1.0", size: 18)
+//        textField.borderStyle = UITextField.BorderStyle.roundedRect
+//        textField.clearButtonMode = UITextField.ViewMode.whileEditing
+//        textField.contentVerticalAlignment = UIControl.ContentVerticalAlignment.center
+//        return textField
+//    }()
     
     let tableView = UITableView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
     
@@ -134,13 +134,13 @@ class MapViewController: UIViewController {
     
     func configureMap() {
         
-        let camera = GMSCameraPosition.camera(withLatitude: 25.033493, longitude: 121.564101, zoom: 15.0)
+        let camera = GMSCameraPosition.camera(withLatitude: 25.03672102, longitude: 121.5442539, zoom: 16.0)
         
         mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
         
         do {
             // Set the map style by passing the URL of the local file.
-            if let styleURL = Bundle.main.url(forResource: "MapStyle_Orange", withExtension: "json") {
+            if let styleURL = Bundle.main.url(forResource: "MapStyle_blue", withExtension: "json") {
                 mapView.mapStyle = try GMSMapStyle(contentsOfFileURL: styleURL)
             } else {
                 NSLog("Unable to find style.json")
@@ -165,7 +165,11 @@ class MapViewController: UIViewController {
         mapView.settings.myLocationButton = true
         mapView.padding = UIEdgeInsets(top: 0, left: 0, bottom: view.frame.height / 4 + 5, right: 10)
         
+        //locationManager
         locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest  //設定為最佳精度
+        locationManager.requestWhenInUseAuthorization()  //user授權
+        locationManager.startUpdatingLocation()
 
         mapView.delegate = self
         
@@ -179,12 +183,12 @@ class MapViewController: UIViewController {
         let myLocationButton = locationButton as? UIButton
         myLocationButton?.setImage(customImage, for: .normal)
         
-        let marker1 = GMSMarker()
-        marker1.position = CLLocationCoordinate2DMake(25.04434, 121.563468)
-        marker1.map = mapView
-        marker1.title = "BaganHood 蔬食餐酒館"
-        marker1.snippet = "好吃~~~~~~~~！"
-        marker1.icon = UIImage(named: "Pin")
+//        let marker1 = GMSMarker()
+//        marker1.position = CLLocationCoordinate2DMake(25.04434, 121.563468)
+//        marker1.map = mapView
+//        marker1.title = "BaganHood 蔬食餐酒館"
+//        marker1.snippet = "好吃~~~~~~~~！"
+//        marker1.icon = UIImage(named: "Pin")
     }
     
     func configureUI() {
@@ -194,21 +198,21 @@ class MapViewController: UIViewController {
         barAppearance.configureWithTransparentBackground()
         navigationController?.navigationBar.standardAppearance = barAppearance
         
-        view.addSubview(searchTextField)
-        NSLayoutConstraint.activate([
-            searchTextField.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.7, constant: 0),
-            searchTextField.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.height/20),
-            searchTextField.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: -30)
-        ])
+//        view.addSubview(searchTextField)
+//        NSLayoutConstraint.activate([
+//            searchTextField.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.7, constant: 0),
+//            searchTextField.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.height/20),
+//            searchTextField.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0)
+//        ])
+//
+//        searchTextField.delegate = self
+//
+//        NSLayoutConstraint(item: searchTextField, attribute: NSLayoutConstraint.Attribute.centerY, relatedBy: NSLayoutConstraint.Relation.equal, toItem: view, attribute: NSLayoutConstraint.Attribute.centerY, multiplier: 1/5, constant: 0).isActive = true
         
-        searchTextField.delegate = self
-        
-        NSLayoutConstraint(item: searchTextField, attribute: NSLayoutConstraint.Attribute.centerY, relatedBy: NSLayoutConstraint.Relation.equal, toItem: view, attribute: NSLayoutConstraint.Attribute.centerY, multiplier: 1/5, constant: 0).isActive = true
-        
-        searchTextField.addSubview(searchButton)
-        searchButton.anchor(right: searchTextField.rightAnchor, paddingRight: 5,
-                            width: UIScreen.main.bounds.height/20,
-                            height: UIScreen.main.bounds.height/20)
+//        searchTextField.addSubview(searchButton)
+//        searchButton.anchor(right: searchTextField.rightAnchor, paddingRight: 5,
+//                            width: UIScreen.main.bounds.height/20,
+//                            height: UIScreen.main.bounds.height/20)
         
         view.addSubview(collectionView)
         collectionView.backgroundColor = .clear
@@ -229,12 +233,12 @@ class MapViewController: UIViewController {
         view.addSubview(tableView)
         tableView.translatesAutoresizingMaskIntoConstraints = false
         
-        NSLayoutConstraint.activate([
-            tableView.topAnchor.constraint(equalTo: searchTextField.bottomAnchor, constant: 8),
-            tableView.leftAnchor.constraint(equalTo: view.leftAnchor),
-            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            tableView.rightAnchor.constraint(equalTo: view.rightAnchor)
-        ])
+//        NSLayoutConstraint.activate([
+//            tableView.topAnchor.constraint(equalTo: searchTextField.bottomAnchor, constant: 8),
+//            tableView.leftAnchor.constraint(equalTo: view.leftAnchor),
+//            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+//            tableView.rightAnchor.constraint(equalTo: view.rightAnchor)
+//        ])
         
         tableView.register(SearchTableViewCell.self, forCellReuseIdentifier: reuseIdentifier)
     }
@@ -271,8 +275,9 @@ extension MapViewController: GMSMapViewDelegate {
     func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
 
         self.changeMapViewLocation(lat: marker.position.latitude,
-                                   long: marker.position.longitude, zoom: 15)
-
+                                   long: marker.position.longitude,
+                                   zoom: 18)
+        
         return true
     }
     
@@ -286,7 +291,7 @@ extension MapViewController: GMSMapViewDelegate {
                 
                 indexNum = index
         }
-        
+    
         collectionView.scrollToItem(
             at: IndexPath(row: indexNum, section: 0),
             at: .centeredHorizontally,
@@ -307,19 +312,53 @@ extension MapViewController: GMSMapViewDelegate {
     }
 }
 
-
 // MARK: - CLLocationManagerDelegate
 extension MapViewController: CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
         let location = locations.last!
-
-        let camera = GMSCameraPosition.camera(withTarget: location.coordinate, zoom: 15)
-
+        
+        let camera = GMSCameraPosition.camera(withTarget: location.coordinate, zoom: 16)
+        
         mapView.camera = camera
-
+        
         locationManager.stopUpdatingLocation()
+    }
+    
+    func didTapMyLocationButton(for mapView: GMSMapView) -> Bool {
+        
+        locationManager.requestWhenInUseAuthorization()
+        
+        if let myLocation = locationManager.location {
+            
+            updateMapView(lat: myLocation.coordinate.latitude,
+                          long: myLocation.coordinate.longitude,
+                          zoom: 20)
+            
+        } else {
+            
+            openAlert(title: "無法偵測位置",
+            message: "您未開啟定位系統無法定位喔！",
+            alertStyle: .alert,
+            actionTitles: ["我去設定", "取消"],
+            actionStyles: [.default, .cancel],
+            actions: [
+                {_ in
+                    
+                guard let settingsUrl = URL(string: UIApplication.openSettingsURLString) else {
+                return
+            }
+                                
+            if UIApplication.shared.canOpenURL(settingsUrl) {
+              
+                UIApplication.shared.open(settingsUrl, completionHandler: nil)
+            }
+                    
+                }, {_ in print("cancel click")}]
+            )
+        }
+        return true
     }
 }
 
@@ -456,7 +495,7 @@ extension MapViewController: UIScrollViewDelegate {
         
         let location = restaurant[targetIndex].coordinates
         
-        updateMapView(lat: location.latitude, long: location.longitude, zoom: 15)
+        updateMapView(lat: location.latitude, long: location.longitude, zoom: 20)
     }
 }
 
@@ -477,8 +516,8 @@ extension MapViewController: UITextFieldDelegate {
     
     func textFieldShouldClear(_ textField: UITextField) -> Bool {
         
-        searchTextField.resignFirstResponder()
-        searchTextField.text = ""
+//        searchTextField.resignFirstResponder()
+//        searchTextField.text = ""
         
         searchedArray.removeAll()
         
@@ -491,28 +530,28 @@ extension MapViewController: UITextFieldDelegate {
         return false
     }
     
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        
-        if (searchTextField.text?.count)! != 0 {
-            
-            self.searchedArray.removeAll()
-            
-            for str in restaurantList {
-                
-                let range = str.lowercased().range(of: textField.text!,
-                                                   options: .caseInsensitive,
-                                                   range: nil,
-                                                   locale: nil)
-                if range != nil {
-                    self.searchedArray.append(str)
-                }
-            }
-        }
-        
-        tableView.reloadData()
-        
-        return true
-    }
+//    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+//        
+//        if (searchTextField.text?.count)! != 0 {
+//            
+//            self.searchedArray.removeAll()
+//            
+//            for str in restaurantList {
+//                
+//                let range = str.lowercased().range(of: textField.text!,
+//                                                   options: .caseInsensitive,
+//                                                   range: nil,
+//                                                   locale: nil)
+//                if range != nil {
+//                    self.searchedArray.append(str)
+//                }
+//            }
+//        }
+//        
+//        tableView.reloadData()
+//        
+//        return true
+//    }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
 

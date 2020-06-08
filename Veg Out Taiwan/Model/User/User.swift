@@ -18,9 +18,9 @@ struct User: Codable {
     init(uid: String, dictionary: [String: AnyObject]) {
         
         self.uid = uid
-        self.email = dictionary["email"] as? String ?? ""
-        self.userName = dictionary["userName"] as? String ?? ""
-        self.profileImageUrl = dictionary["profileImageUrl"]  as? String
+        self.email = dictionary[VOTConstant.User.email] as? String ?? ""
+        self.userName = dictionary[VOTConstant.User.name] as? String ?? ""
+        self.profileImageUrl = dictionary[VOTConstant.User.imageURL]  as? String
     }
     
     init(uid: String, username: String, userImage: String, email: String) {
