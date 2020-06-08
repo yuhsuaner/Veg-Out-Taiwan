@@ -1,6 +1,5 @@
 # Veg Out Taiwan
 
-===
 ![](https://imgur.com/BjUYmkM.png) 
 
 ## Info
