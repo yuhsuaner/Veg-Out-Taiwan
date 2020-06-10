@@ -129,7 +129,7 @@ class UserFoodDiaryViewController: UIViewController, UIGestureRecognizerDelegate
         
         CommentService.shared.likeComment(comment: comment) { [weak self] (err, ref) in
             guard let self = self else { return }
-
+            
             self.restaurantComments?.didLike?.toggle()
             
             let like = self.restaurantComments!.didLike! ? self.restaurantComments!.likes + 1 : self.restaurantComments!.likes - 1
@@ -173,6 +173,12 @@ class UserFoodDiaryViewController: UIViewController, UIGestureRecognizerDelegate
         navigationItem.leftBarButtonItem = backBTN
         navigationController?.interactivePopGestureRecognizer?.delegate = self
         
+        let accuseBTN = UIBarButtonItem(image: UIImage(named: "warning"),
+                                        style: .plain,
+                                        target: self,
+                                        action: #selector(userButtonPressed))
+        navigationItem.rightBarButtonItem = accuseBTN
+        
         collectionView.dataSource = self
         collectionView.delegate = self
         
@@ -185,6 +191,23 @@ class UserFoodDiaryViewController: UIViewController, UIGestureRecognizerDelegate
         userImageView.loadImage(restaurantComments?.user.profileImageUrl, placeHolder: #imageLiteral(resourceName: "VOT tab bar icons-12"))
         contentOfCommentTextView.text = restaurantComments?.commentText
         
+    }
+    
+    // MARK: - Selector
+    @objc func userButtonPressed() {
+        
+        self.openAlert(title: "!",
+                       message: "檢舉 / 封鎖",
+                       alertStyle: .actionSheet,
+                       actionTitles: ["檢舉文章", "封鎖作者", "取消"],
+                       actionStyles: [.default, .default, .cancel],
+                       actions: [ { _ in VOTProgressHUD.show(type: .success("檢舉已收到\n將會盡快處理您的檢舉")) },
+                                  
+                                  { _ in
+                                    self.openAlert(title: "【封鎖】", message: "確定封鎖此人？", alertStyle: .alert, actionTitles: ["No", "Yes"], actionStyles: [.default, .cancel], actions: [ { _ in print("No click") }, { _ in VOTProgressHUD.showSuccess() }]) },
+                                  
+                                  { _ in print("cancel click") }
+        ])
     }
 }
 

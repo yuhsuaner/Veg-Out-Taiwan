@@ -11,12 +11,6 @@ import UIKit
 class RestaurantCollectionViewCell: UICollectionViewCell {
     
     // MARK: - Properties
-//    var restaurant: [Restaurant]? = [] {
-//        didSet { configure() }
-//    }
-//
-//    let votProvider = VOTProvider()
-    
     @IBOutlet weak var restaurantImage: UIImageView! {
         didSet {
             restaurantImage.layer.cornerRadius = 15
@@ -33,7 +27,6 @@ class RestaurantCollectionViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-//        fetchRestaurant()
     }
     
     override func layoutSubviews() {
@@ -46,32 +39,4 @@ class RestaurantCollectionViewCell: UICollectionViewCell {
         layer.shadowColor = UIColor.black.cgColor
         layer.masksToBounds = false
     }
-    
-    // MARK: - Helper
-    
-//    func fetchRestaurant() {
-//
-//        votProvider.fetchRestaurant(completion: { [weak self] result in
-//
-//            switch result {
-//
-//            case .success(let restaurants):
-//
-//                self?.restaurant = restaurants
-//                print(result)
-//
-//            case .failure:
-//
-//                VOTProgressHUD.showFailure(text: "讀取資料失敗！")
-//            }
-//        })
-//    }
-    
-//    func configure() {
-//        guard let restaurant = restaurant else { return }
-//
-//        restaurantNameLabel.text = restaurant.restaurantName
-//        restaurantImage.loadImage(restaurant.imageUrl, placeHolder: #imageLiteral(resourceName: "Pic4"))
-//    }
-    
 }
