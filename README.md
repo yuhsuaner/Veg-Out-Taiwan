@@ -1,7 +1,7 @@
 # Veg Out Taiwan
 
 <img src="https://imgur.com/BjUYmkM.png" width="100" height="100">
-[<img src="https://github.com/BigRoot9527/GoToMarket/blob/master/GoToMarket/ScreenShots/DownloadAppStoreBadge.png" width="170" height="50">](https://apps.apple.com/tw/app/id1516225729)
+<a href="https://apps.apple.com/tw/app/veg-out-taiwan/id1516225729"><img src="https://i.imgur.com/eRntvcA.png" height="40"></a>
 
 Veg Out Taiwan是一款給台灣地區的蔬食者和健康飲食者的外食地圖社群平台。
 
