@@ -264,6 +264,7 @@ PODS:
     - FirebaseAuthInterop (~> 1.0)
     - FirebaseCore (~> 6.0)
     - GTMSessionFetcher/Core (~> 1.1)
+  - FSPagerView (0.8.3)
   - GoogleAppMeasurement (6.1.7):
     - GoogleUtilities/AppDelegateSwizzler (~> 6.0)
     - GoogleUtilities/MethodSwizzler (~> 6.0)
@@ -348,6 +349,7 @@ DEPENDENCIES:
   - Firebase/Database
   - Firebase/Firestore
   - Firebase/Storage
+  - FSPagerView
   - GoogleMaps
   - GooglePlaces
   - IQKeyboardManagerSwift
@@ -376,6 +378,7 @@ SPEC REPOS:
     - FirebaseFirestore
     - FirebaseInstanceID
     - FirebaseStorage
+    - FSPagerView
     - GoogleAppMeasurement
     - GoogleDataTransport
     - GoogleDataTransportCCTSupport
@@ -414,6 +417,7 @@ SPEC CHECKSUMS:
   FirebaseFirestore: 52120e2833f804a874ba1a9f59aab864a8ae2286
   FirebaseInstanceID: ce993a3c3670a8f5d47ce371ac5d143c560608c5
   FirebaseStorage: 93fe2f8190a01bfb2b2c4932df7d679744c4ef1d
+  FSPagerView: 670405b2f18e2a87fa37f20b00de783e562c25a8
   GoogleAppMeasurement: db118eb61a97dd8c4f7014e368d3c335cbbcf80a
   GoogleDataTransport: 8e9b210c97d55fbff306cc5468ff91b9cb32dcf5
   GoogleDataTransportCCTSupport: 202d7cdf9c4a7d81a2bb7f7e7e1ba6faa421b1f2
@@ -434,6 +438,6 @@ SPEC CHECKSUMS:
   SwiftLint: 4105f061f9812b214568b736dab580ab2c73a582
   YPImagePicker: accf310f9526641a84372c0ecf943547d9b1e52c
 
-PODFILE CHECKSUM: 407e90236089d757801427940c697197476e13ee
+PODFILE CHECKSUM: d4564db3e5174d8a8c9ff4e0b0036dd02a2dedfc
 
 COCOAPODS: 1.8.4

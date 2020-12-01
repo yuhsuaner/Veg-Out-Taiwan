@@ -32,5 +32,6 @@ target 'Veg Out Taiwan' do
   pod 'Cosmos'
 
   pod 'YPImagePicker'
+  pod 'FSPagerView'
   
 end

@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import MapKit
 
 class RestaurantInformationViewController: UIViewController {
     
@@ -30,7 +31,7 @@ class RestaurantInformationViewController: UIViewController {
         self.restaurant = restaurant
         super.init(coder: coder)
     }
-
+    
     required init?(coder: NSCoder) {
         fatalError()
     }
@@ -191,9 +192,9 @@ extension RestaurantInformationViewController: UITableViewDataSource {
         case 1:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "CommentTableViewCell", for: indexPath) as? CommentTableViewCell else { return UITableViewCell() }
             
-//            let tap = UITapGestureRecognizer(target: self, action: #selector(toNextPage))
-//            
-//            cell.tapForMoreLabel.addGestureRecognizer(tap)
+            //            let tap = UITapGestureRecognizer(target: self, action: #selector(toNextPage))
+            //
+            //            cell.tapForMoreLabel.addGestureRecognizer(tap)
             
             cell.updateData(restaurantName: restaurant.restaurantName)
             
@@ -218,14 +219,14 @@ extension RestaurantInformationViewController: UITableViewDataSource {
     }
     
     // MARK: - Selector
-//    @objc func toNextPage() {
-//
-//        let controller = UserCommentWallViewController()
-//
-//        controller.restaurantComments = comments
-//
-//        navigationController?.pushViewController(controller, animated: true)
-//    }
+    //    @objc func toNextPage() {
+    //
+    //        let controller = UserCommentWallViewController()
+    //
+    //        controller.restaurantComments = comments
+    //
+    //        navigationController?.pushViewController(controller, animated: true)
+    //    }
 }
 
 // MARK: - UITableViewDelegate
@@ -293,19 +294,29 @@ extension RestaurantInformationViewController: InfoCellDelegate {
         
         let longitude = restaurant.coordinates.longitude
         
-        if UIApplication.shared.canOpenURL(URL(string: "comgooglemaps://")!) {
+        //        if UIApplication.shared.canOpenURL(URL(string: "comgooglemaps://")!) {
+        //
+        //            UIApplication.shared.open(
+        //                URL(string: "comgooglemaps://?center=\(latitude),\(longitude)&zoom=14&views=traffic&q=\(latitude),\(longitude)")!,
+        //                                      options: [:], completionHandler: nil)
+        //
+        //        } else
+        if UIApplication.shared.canOpenURL(URL(string: "maps://")!) {
             
-            UIApplication.shared.open(
-                URL(string: "comgooglemaps://?center=\(latitude),\(longitude)&zoom=14&views=traffic&q=\(latitude),\(longitude)")!,
-                                      options: [:], completionHandler: nil)
+            let source = MKMapItem(placemark: MKPlacemark(coordinate: CLLocationCoordinate2D(latitude: latitude, longitude: longitude)))
+            source.name = "目前位置"
+            
+            let destination = MKMapItem(placemark: MKPlacemark(coordinate: CLLocationCoordinate2D(latitude: latitude, longitude: longitude)))
+            destination.name = "目的地"
+            
+            MKMapItem.openMaps(with: [source, destination], launchOptions: [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDriving])
             
         } else {
             
             UIApplication.shared.open(
                 URL(string: "http://maps.google.com/maps?q=loc:\(latitude),\(longitude)&zoom=14&views=traffic&q=\(latitude),\(longitude)")!,
-                                      options: [:], completionHandler: nil)
+                options: [:], completionHandler: nil)
         }
-        
     }
     
 }
